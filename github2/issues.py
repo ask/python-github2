@@ -3,6 +3,7 @@ from github2.core import GithubCommand, BaseData
 class Issue(BaseData):
     attributes = ("position", "number", "votes", "body", "title",
                   "created_at", "updated_at", "user", "state")
+    date_attributes = ("created_at", "updated_at")
 
 
 class Issues(GithubCommand):
