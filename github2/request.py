@@ -4,13 +4,18 @@ import simplejson
 from urlparse import urlparse
 from urllib import urlencode
 
+GITHUB_URL = "http://github.com"
+
 URL_PREFIX = "http://github.com/api/v2/json"
 
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""
 
 class GithubRequest(object):
-    url_prefix = URL_PREFIX
+    github_url = GITHUB_URL
+    url_format = "%(github_url)s/api/%(api_version)s/%(api_format)s"
+    api_version = "v2"
+    api_format = "json"
     GithubError = GithubError
 
     connector_for_scheme = {
@@ -21,7 +26,13 @@ class GithubRequest(object):
     def __init__(self, username, api_token, url_prefix=None):
         self.username = username
         self.api_token = api_token
-        self.url_prefix = url_prefix or self.url_prefix
+        self.url_prefix = url_prefix
+        if not self.url_prefix:
+            self.url_prefix = self.url_format % {
+                "github_url": self.github_url,
+                "api_version": self.api_version,
+                "api_format": self.api_format,
+            }
     
     def encode_authentication_data(self, extra_post_data):
         post_data = {"user": self.username,
@@ -40,6 +51,9 @@ class GithubRequest(object):
     def make_request(self, path, extra_post_data=None):
         extra_post_data = extra_post_data or {}
         url = "/".join([self.url_prefix, path])
+        return self.raw_request(url, extra_post_data)
+
+    def raw_request(self, url, extra_post_data):
         print("URL: %s" % url)
         resource = urlparse(url)
         post_data = self.encode_authentication_data(extra_post_data)
@@ -51,8 +65,7 @@ class GithubRequest(object):
         connection = connector(resource.hostname, resource.port)
         connection.request("POST", resource.path, post_data, headers)
         response = connection.getresponse()
-        response_text = response.read()
-        print(response_text)
+        response_text = response.read().encode("utf-8")
         json = simplejson.loads(response_text)
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])

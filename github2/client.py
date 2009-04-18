@@ -24,4 +24,15 @@ class Github(object):
         tree = self.request.get("tree/show", project, tree_sha)
         return tree.get("tree", [])
 
+    def get_network_meta(self, project):
+        return self.request.raw_request("/".join([self.request.github_url,
+                                                  project,
+                                                  "network_meta"] ), {})
 
+    def get_network_data(self, project, nethash, start=None, end=None):
+        return self.request.raw_request("/".join([self.request.github_url,
+                                                  project,
+                                                  "network_data_chunk"]),
+                                                  {"nethash": nethash,
+                                                   "start": start,
+                                                   "end": end})
