@@ -4,7 +4,7 @@ import simplejson
 from urlparse import urlparse
 from urllib import urlencode
 
-URL_PREFIX = "https://github.com/api/v2/json"
+URL_PREFIX = "http://github.com/api/v2/json"
 
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""
@@ -30,9 +30,11 @@ class GithubRequest(object):
         return urlencode(post_data)
 
     def get(self, *path_components):
+        path_components = filter(None, path_components)
         return self.make_request("/".join(path_components))
 
     def post(self, *path_components, **extra_post_data):
+        path_components = filter(None, path_components)
         return self.make_request("/".join(path_components), extra_post_data)
 
     def make_request(self, path, extra_post_data=None):
