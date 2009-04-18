@@ -37,6 +37,9 @@ class Repositories(GithubCommand):
         return self.get_value("create", post_data=repo_data,
                               filter="repository", datatype=Repository)
 
+    def delete(self, name):
+        return self.make_request("delete", name)
+
     def set_private(self, repo_name):
         return self.make_request("set/private", repo_name)
 
