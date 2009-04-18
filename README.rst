@@ -47,204 +47,204 @@ Creating a request
 Users
 =====
 
-    Searching
-    ---------
+Searching
+---------
 
-        >>> results = github.users.search("foo")
+    >>> results = github.users.search("foo")
 
-    Getting User Information
-    ------------------------
+Getting User Information
+------------------------
 
-        >>> user = github.users.show("ask")
-        >>> user.name
-        "Ask Solem"
+    >>> user = github.users.show("ask")
+    >>> user.name
+    "Ask Solem"
 
-   Getting User Network
-   ---------------------
+Getting User Network
+---------------------
 
-        >>> github.users.followers("ask")
-        ['greut', 'howiworkdaily', 'emanchado', 'webiest']
+    >>> github.users.followers("ask")
+    ['greut', 'howiworkdaily', 'emanchado', 'webiest']
 
-        >>> github.users.following("ask")
-        ['sverrejoh',
-        'greut',
-        'jezdez',
-        'bradleywright',
-        'ericflo',
-        'howiworkdaily',
-        'emanchado',
-        'traviscline',
-        'russell']
+    >>> github.users.following("ask")
+    ['sverrejoh',
+    'greut',
+    'jezdez',
+    'bradleywright',
+    'ericflo',
+    'howiworkdaily',
+    'emanchado',
+    'traviscline',
+    'russell']
 
-    Following Network
-    ------------------
+Following Network
+------------------
 
-        >>> github.users.follow("jezdez")
+    >>> github.users.follow("jezdez")
 
-        >>> github.users.unfollow("jezdez")
+    >>> github.users.unfollow("jezdez")
 
 Issues
 ======
 
-    List a Projects Issues
-    ----------------------
+List a Projects Issues
+----------------------
 
-        >>> github.issues("ask/chishop", state="open")
-        >>> github.issues("ask/chishop", state="closed")
+    >>> github.issues("ask/chishop", state="open")
+    >>> github.issues("ask/chishop", state="closed")
 
-    View an Issue
-    -------------
+View an Issue
+-------------
 
-        >>> issue = github.issues.show("ask/chishop", 1)
-        >>> issue.title
-        'Should not be able to upload same version twice.'
+    >>> issue = github.issues.show("ask/chishop", 1)
+    >>> issue.title
+    'Should not be able to upload same version twice.'
 
-    Open and Close Issues
-    ---------------------
+Open and Close Issues
+---------------------
 
-        >>> new_issue = github.issues.open("ask/chishop", title="New bug",
-        ...                                body="This is a test bug")
-        >>> new_issue.number
-        2
+    >>> new_issue = github.issues.open("ask/chishop", title="New bug",
+    ...                                body="This is a test bug")
+    >>> new_issue.number
+    2
 
-        >>> github.issues.close("ask/chishop", new_issue.number)
+    >>> github.issues.close("ask/chishop", new_issue.number)
 
 
-    Add and Remove Labels
-    ---------------------
+Add and Remove Labels
+---------------------
 
-        >>> github.issues.add_label("ask/chishop", 2, "important")
+    >>> github.issues.add_label("ask/chishop", 2, "important")
 
-        >>> github.issues.remove_label("ask/chishop", 2, "important")
+    >>> github.issues.remove_label("ask/chishop", 2, "important")
 
 
 Network
 =======
 
-    Network Meta
-    -------------
+Network Meta
+-------------
 
-        >>> github.get_network_meta("ask/chishop")
+    >>> github.get_network_meta("ask/chishop")
 
-    Network Data
-    ------------
+Network Data
+------------
 
-        >>> github.get_network_data("schacon/simplegit",
-        ...     nethash="fa8fe264b926cdebaab36420b6501bd74402a6ff")
+    >>> github.get_network_data("schacon/simplegit",
+    ...     nethash="fa8fe264b926cdebaab36420b6501bd74402a6ff")
 
 
 Repository
 ==========
 
-    Searching Repositories
-    ----------------------
+Searching Repositories
+----------------------
 
-        >>> repositories = github.repos.search("django")
+    >>> repositories = github.repos.search("django")
 
 
-    Show Repo Info
-    --------------
+Show Repo Info
+--------------
 
-        >>> repo = github.repos.show("schacon/grit")
-        >>> repo.homepage
-        "http://grit.rubyforge.org/"
+    >>> repo = github.repos.show("schacon/grit")
+    >>> repo.homepage
+    "http://grit.rubyforge.org/"
 
-    List All Repositories
-    ---------------------
+List All Repositories
+---------------------
 
-        # By default lists all repos for the current user.
-        >>> repos = github.repos.list()
+    # By default lists all repos for the current user.
+    >>> repos = github.repos.list()
 
-        >>> repos = github.repos.list("schacon")
+    >>> repos = github.repos.list("schacon")
 
-    Watching Repositories
-    ---------------------
+Watching Repositories
+---------------------
 
-        >>> github.repos.watch("schacon/grit")
+    >>> github.repos.watch("schacon/grit")
 
-        >>> github.repos.unwatch("schacon/grit")
+    >>> github.repos.unwatch("schacon/grit")
 
-    Forking Repositories
-    --------------------
+Forking Repositories
+--------------------
 
-        >>> fork = github.repos.fork("schacon/grit")
+    >>> fork = github.repos.fork("schacon/grit")
 
-    Creating and Deleting Repositories
-    ----------------------------------
+Creating and Deleting Repositories
+----------------------------------
 
-        >>> new_repo = github.repos.create(name, description, homepage,
-        ...                                 public=True)
+    >>> new_repo = github.repos.create(name, description, homepage,
+    ...                                 public=True)
 
-        >>> github.repos.delete(name)
+    >>> github.repos.delete(name)
 
-    Repository Visibility
-    ---------------------
+Repository Visibility
+---------------------
 
-        >>> github.repos.set_private("ask/chishop")
+    >>> github.repos.set_private("ask/chishop")
 
-        >>> github.repos.set_public("ask/chishop")
+    >>> github.repos.set_public("ask/chishop")
 
-    Collaborators
-    -------------
+Collaborators
+-------------
 
-        >>> collabs = github.repos.list_collaborators("ask/chishop")
+    >>> collabs = github.repos.list_collaborators("ask/chishop")
 
-        >>> github.repos.add_collaborator("ask/chishop", "schacon")
-        
-        >>> github.repos.remove_collaborator("ask/chishop", "schacon")
+    >>> github.repos.add_collaborator("ask/chishop", "schacon")
+    
+    >>> github.repos.remove_collaborator("ask/chishop", "schacon")
 
-    Network
-    -------
+Network
+-------
 
-        >>> github.repos.network("ask/chishop")
+    >>> github.repos.network("ask/chishop")
 
-    Repository Refs
-    ---------------
+Repository Refs
+---------------
 
-        Get a list of tags
+    Get a list of tags
 
-        >>> tags = github.repos.tags("ask/chishop")
-   
-        Get a list of remote branches
+    >>> tags = github.repos.tags("ask/chishop")
 
-        >>> branches = github.repos.branches("ask/chishop") 
+    Get a list of remote branches
+
+    >>> branches = github.repos.branches("ask/chishop") 
 
 
 Commit
 ======
 
-    Listing Commits on a Branch
-    ----------------------------
+Listing Commits on a Branch
+----------------------------
 
-        >>> commits = github.commits.list("mojombo/grit", "master")
+    >>> commits = github.commits.list("mojombo/grit", "master")
 
 
-    Listing Commits for a File
-    --------------------------
+Listing Commits for a File
+--------------------------
 
-        >>> commits = github.commits.list("mojombo/grit", "master",
-        ...                               file="grit.gemspec")
+    >>> commits = github.commits.list("mojombo/grit", "master",
+    ...                               file="grit.gemspec")
 
-    Showing a Specific Commit
-    -------------------------
+Showing a Specific Commit
+-------------------------
 
-        >>> commit = github.commits.show("mojombo/grit",
-        ...             sha="5071bf9fbfb81778c456d62e111440fdc776f76c")
-        
+    >>> commit = github.commits.show("mojombo/grit",
+    ...             sha="5071bf9fbfb81778c456d62e111440fdc776f76c")
+    
 
 Object
 ======
 
-    Trees
-    -----
+Trees
+-----
 
-        >>> tree = github.get_tree(project, tree_sha)
+    >>> tree = github.get_tree(project, tree_sha)
 
-    Blobs
-    -----
+Blobs
+-----
 
-        >>> blob = github.get_blob_info(project, tree_sha, path)
-    
+    >>> blob = github.get_blob_info(project, tree_sha, path)
+
 
 License
 =======
