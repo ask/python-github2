@@ -1,9 +1,16 @@
-from github2.core import BaseData, GithubCommand
+from github2.core import BaseData, GithubCommand, Attribute
 
 
 class Repository(BaseData):
-    attributes = ("description", "forks", "name", "watchers", "private",
-                  "url", "fork", "owner", "homepage")
+    name = Attribute("Name of repository.")
+    description = Attribute("Repository description.")
+    forks = Attribute("Number of forks of this repository.")
+    watchers = Attribute("Number of people watching this repository.")
+    private = Attribute("If True, the repository is private.")
+    url = Attribute("Canonical URL to this repository")
+    fork = Attribute("If True, this is a fork of another repository.")
+    owner = Attribute("Username of the user owning this repository.")
+    homepage = Attribute("Homepage for this project.")
 
 
 class Repositories(GithubCommand):
