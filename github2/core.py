@@ -46,13 +46,54 @@ class GithubCommand(object):
         return values
 
 
+def doc_generator(docstring, attributes):
+    docstring = docstring or ""
+    def section(title):
+        return "\n".join([title, "-" * len(title)])
+
+    def bullet(title, text):
+        return """    *``%s``*\n      %s\n""" % (title, text)
+
+    a = section("Attributes")
+    b = "\n".join([bullet(attr_name, attr.help)
+                    for attr_name, attr in attributes.items()])
+    return "\n".join([docstring, a, b])
+
+
+class Attribute(object):
+
+    def __init__(self, help):
+        self.help = help
+
+    def to_python(self, value):
+        return value
+
+    from_python = to_python
+
+
+class DateAttribute(Attribute):
+
+    def to_python(self, value):
+        if value and not isinstance(value, datetime):
+            return ghdate_to_datetime(value)
+        return value
+
+    def from_python(self, value):
+        if value and isinstance(value, datetime):
+            return datetime_to_ghdate(value)
+        return value
+
+
 class BaseDataType(type):
 
     def __new__(cls, name, bases, attrs):
         super_new = super(BaseDataType, cls).__new__
 
-        attributes = attrs.pop("attributes", tuple())
-        date_attributes = set(attrs.pop("date_attributes", tuple()))
+        _meta = dict([(attr_name, attr_value)
+                        for attr_name, attr_value in attrs.items()
+                            if isinstance(attr_value, Attribute)])
+        attrs["_meta"] = _meta
+        attributes = _meta.keys()
         attrs.update(dict([(attr_name, None)
                         for attr_name in attributes]))
 
@@ -62,35 +103,34 @@ class BaseDataType(type):
 
         def constructor(self, **kwargs):
             for attr_name, attr_value in kwargs.items():
-                if attr_name not in attributes:
+                if attr_name not in self._meta:
                     raise TypeError("%s.__init__() doesn't support the "
-                                    "%s argument." % ( cls_name, attr_name))
-                setattr(self, attr_name, attr_value)
+                                    "%s argument." % (cls_name, attr_name))
+                attr = self._meta[attr_name]
+                setattr(self, attr_name, attr.to_python(attr_value))
 
-            # Convert dates to datetime objects.
-            for date_attr_name in date_attributes:
-                attr_value = getattr(self, date_attr_name)
-                if attr_value and not isinstance(attr_value, datetime):
-                    date_as_datetime = ghdate_to_datetime(attr_value)
-                    setattr(self, date_attr_name, date_as_datetime)
         _contribute_method("__init__", constructor)
+
+        def to_dict(self):
+            _meta = self.meta
+            dict_ = vars(self)
+            return dict([(attr_name, _meta[attr_name].from_python(attr_value))
+                            for attr_name, attr_value in dict_.items()])
+        _contribute_method("__dict__", to_dict)
 
         def iterate(self):
             not_empty = lambda e: e is not None
-            objdict = vars(self)
-            for date_attr_name in date_attributes:
-                date_value = objdict.get(date_attr_name)
-                if date_value and isinstance(date_value, datetime):
-                    objdict[date_attr_name] = datetime_to_ghdate(date_value)
-
-            return iter(filter(not_empty, objdict.items()))
+            return iter(filter(not_empty, vars(self).items()))
         _contribute_method("__iter__", iterate)
 
-        return super_new(cls, name, bases, attrs)
+        result_cls = super_new(cls, name, bases, attrs)
+        result_cls.__doc__ = doc_generator(result_cls.__doc__, _meta)
+        return result_cls
 
     def contribute_method_to_cls(cls, name, func):
         func.func_name = name
         return func
+
 
 class BaseData(object):
     __metaclass__ = BaseDataType

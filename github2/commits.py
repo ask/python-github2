@@ -1,11 +1,23 @@
-from github2.core import BaseData, GithubCommand
+from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
 
 class Commit(BaseData):
-    attributes = ("message", "parents", "url", "author", "id",
-                  "committed_date", "authored_date", "tree", "committer",
-                  "added", "removed", "modified")
-    date_attributes = ("committed_date", "authored_date")
+    messsage = Attribute("Commit message.")
+    parents = Attribute("List of parents for this commit.")
+    url = Attribute("Canonical URL for this commit.")
+    author = Attribute("Author metadata (dict with name/email.)")
+    id = Attribute("Commit ID.")
+    committed_date = DateAttribute("Date committed.")
+    authored_data = DateAttribute("Date authored.")
+    tree = Attribute("Tree SHA for this commit.")
+    committer = Attribute("Comitter metadata (dict with name/email.)")
+
+    added = Attribute("(If present) Datastructure representing what's been "
+                      "added since last commit.")
+    removed = Attribute("(if present) Datastructure representing what's been "
+                        "removed since last commit.")
+    modified = Attribute("(If present) Datastructure representing what's "
+                         "been modified since last commit.")
 
 
 class Commits(GithubCommand):

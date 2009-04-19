@@ -1,9 +1,15 @@
-from github2.core import GithubCommand, BaseData
+from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
 
 class Issue(BaseData):
-    attributes = ("position", "number", "votes", "body", "title",
-                  "created_at", "updated_at", "user", "state")
-    date_attributes = ("created_at", "updated_at")
+    position = Attribute("The position of this issue in a list.")
+    number = Attribute("The issue number (unique for project).")
+    votes = Attribute("Number of votes for this issue.")
+    body = Attribute("The full description for this issue.")
+    title = Attribute("Issue title.")
+    user = Attribute("The username of the user that created this issue.")
+    state = Attribute("State of this issue. Can be ``open`` or ``closed``.")
+    created_at = DateAttribute("The date this issue was created.")
+    updated_at = DateAttribute("The date when this issue was last updated.")
 
 
 class Issues(GithubCommand):
