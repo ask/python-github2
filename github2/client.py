@@ -6,8 +6,10 @@ from github2.commits import Commits
 
 class Github(object):
 
-    def __init__(self, username, api_token):
-        self.request = GithubRequest(username=username, api_token=api_token)
+    def __init__(self, username, api_token, debug=False):
+        self.debug = debug
+        self.request = GithubRequest(username=username, api_token=api_token,
+                                     debug=self.debug)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

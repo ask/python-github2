@@ -7,8 +7,8 @@ class Commit(BaseData):
     url = Attribute("Canonical URL for this commit.")
     author = Attribute("Author metadata (dict with name/email.)")
     id = Attribute("Commit ID.")
-    committed_date = DateAttribute("Date committed.")
-    authored_data = DateAttribute("Date authored.")
+    committed_date = DateAttribute("Date committed.", format="commit")
+    authored_data = DateAttribute("Date authored.", format="commit")
     tree = Attribute("Tree SHA for this commit.")
     committer = Attribute("Comitter metadata (dict with name/email.)")
 

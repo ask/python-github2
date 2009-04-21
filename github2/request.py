@@ -23,10 +23,11 @@ class GithubRequest(object):
         "https": httplib.HTTPSConnection,
     }
 
-    def __init__(self, username, api_token, url_prefix=None):
+    def __init__(self, username, api_token, url_prefix=None, debug=False):
         self.username = username
         self.api_token = api_token
         self.url_prefix = url_prefix
+        self.debug = debug
         if not self.url_prefix:
             self.url_prefix = self.url_format % {
                 "github_url": self.github_url,
@@ -55,15 +56,22 @@ class GithubRequest(object):
 
     def raw_request(self, url, extra_post_data):
         resource = urlparse(url)
-        post_data = self.encode_authentication_data(extra_post_data)
-        connector = self.connector_for_scheme[resource.scheme]
+        post_data = None
         headers = self.http_headers
         headers["Accept"] = "text/html"
-        headers["Content-Length"] = str(len(post_data))
+        method = "GET"
+        if extra_post_data:
+            post_data = self.encode_authentication_data(extra_post_data)
+            headers["Content-Length"] = str(len(post_data))
+            method = "POST"
+        connector = self.connector_for_scheme[resource.scheme]
         connection = connector(resource.hostname, resource.port)
-        connection.request("POST", resource.path, post_data, headers)
+        connection.request("GET", resource.path, post_data, headers)
         response = connection.getresponse()
         response_text = response.read().encode("utf-8")
+        if self.debug:
+            sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
+                                url, post_data, response_text))
         json = simplejson.loads(response_text)
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])

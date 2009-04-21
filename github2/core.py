@@ -2,6 +2,9 @@ from datetime import datetime
 
 GITHUB_TIMEZONE = "-0700"
 GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
+#2009-03-21T18:01:48-07:00
+COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
+
 
 
 def ghdate_to_datetime(github_date):
@@ -12,6 +15,16 @@ def ghdate_to_datetime(github_date):
 def datetime_to_ghdate(datetime_):
     date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
     return " ".join([date_without_tz, GITHUB_TIMEZONE])
+
+
+def commitdate_to_datetime(commit_date):
+    date_without_tz = commit_date[:-6]
+    return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
+
+
+def datetime_to_commitdate(datetime_):
+    date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
+    return "".join([date_without_tz, GITHUB_TIMEZONE])
 
 
 class GithubCommand(object):
@@ -72,15 +85,30 @@ class Attribute(object):
 
 
 class DateAttribute(Attribute):
+    format = "github"
+    converter_for_format = {
+        "github": {
+            "to": ghdate_to_datetime,
+            "from": datetime_to_ghdate,
+        },
+        "commit": {
+            "to": commitdate_to_datetime,
+            "from": datetime_to_commitdate,
+        },
+    }
+
+    def __init__(self, *args, **kwargs):
+        self.format = kwargs.pop("format", self.format)
+        super(DateAttribute, self).__init__(*args, **kwargs)
 
     def to_python(self, value):
         if value and not isinstance(value, datetime):
-            return ghdate_to_datetime(value)
+            return self.converter_for_format[self.format]["to"](value)
         return value
 
     def from_python(self, value):
         if value and isinstance(value, datetime):
-            return datetime_to_ghdate(value)
+            return self.converter_for_format[self.format]["from"](value)
         return value
 
 
@@ -105,7 +133,7 @@ class BaseDataType(type):
             for attr_name, attr_value in kwargs.items():
                 if attr_name not in self._meta:
                     raise TypeError("%s.__init__() doesn't support the "
-                                    "%s argument." % (cls_name, attr_name))
+                                    "%s argument." % (name, attr_name))
                 attr = self._meta[attr_name]
                 setattr(self, attr_name, attr.to_python(attr_value))
 
