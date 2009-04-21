@@ -54,10 +54,8 @@ class GithubRequest(object):
         return self.raw_request(url, extra_post_data)
 
     def raw_request(self, url, extra_post_data):
-        print("URL: %s" % url)
         resource = urlparse(url)
         post_data = self.encode_authentication_data(extra_post_data)
-        print("POST_DATA: %s" % post_data)
         connector = self.connector_for_scheme[resource.scheme]
         headers = self.http_headers
         headers["Accept"] = "text/html"
