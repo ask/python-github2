@@ -2,7 +2,7 @@ from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
 
 class Commit(BaseData):
-    messsage = Attribute("Commit message.")
+    message = Attribute("Commit message.")
     parents = Attribute("List of parents for this commit.")
     url = Attribute("Canonical URL for this commit.")
     author = Attribute("Author metadata (dict with name/email.)")
