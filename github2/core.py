@@ -5,7 +5,7 @@ GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
 
 
 def ghdate_to_datetime(github_date):
-    date_without_tz = github_date.rsplit("-")[0].strip()
+    date_without_tz = " ".join(github_date.strip().split()[:2])
     return datetime.strptime(date_without_tz, GITHUB_DATE_FORMAT)
 
 
