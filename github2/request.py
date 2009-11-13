@@ -34,7 +34,7 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
-    
+
     def encode_authentication_data(self, extra_post_data):
         post_data = {"login": self.username,
                      "token": self.api_token}
@@ -68,7 +68,7 @@ class GithubRequest(object):
         connection = connector(resource.hostname, resource.port)
         connection.request("GET", resource.path, post_data, headers)
         response = connection.getresponse()
-        response_text = response.read().encode("utf-8")
+        response_text = response.read()
         if self.debug:
             sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
                                 url, post_data, response_text))

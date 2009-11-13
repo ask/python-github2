@@ -11,6 +11,10 @@ class Repository(BaseData):
     fork = Attribute("If True, this is a fork of another repository.")
     owner = Attribute("Username of the user owning this repository.")
     homepage = Attribute("Homepage for this project.")
+    open_issues = Attribute("List of open issues for this repository.")
+
+    def __repr__(self):
+        return "<Repository: %s/%s>" % (self.owner, self.name)
 
 
 class Repositories(GithubCommand):
@@ -56,7 +60,7 @@ class Repositories(GithubCommand):
     def list_collaborators(self, project):
         return self.make_request("show", project, "collaborators",
                                  filter="collaborators")
-                                 
+
     def add_collaborator(self, repo_name, username):
         return self.make_request("collaborators", repo_name, "add", username)
 

@@ -8,8 +8,13 @@ class Issue(BaseData):
     title = Attribute("Issue title.")
     user = Attribute("The username of the user that created this issue.")
     state = Attribute("State of this issue. Can be ``open`` or ``closed``.")
+    labels = Attribute("Labels associated with this issue.")
     created_at = DateAttribute("The date this issue was created.")
+    closed_at = DateAttribute("The date this issue was closed.")
     updated_at = DateAttribute("The date when this issue was last updated.")
+
+    def __repr__(self):
+        return "<Issue: %s>" % self.title
 
 
 class Issues(GithubCommand):

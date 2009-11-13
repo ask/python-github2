@@ -19,6 +19,9 @@ class Commit(BaseData):
     modified = Attribute("(If present) Datastructure representing what's "
                          "been modified since last commit.")
 
+    def __repr__(self):
+        return "<Commit: %s %s>" % (self.id, self.message[:64])
+
 
 class Commits(GithubCommand):
     domain = "commits"

@@ -41,7 +41,7 @@ by doing the following,::
 Creating a request
 ==================
 
-    >>> from github.client import Github
+    >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
 Users
@@ -89,8 +89,8 @@ Issues
 List a Projects Issues
 ----------------------
 
-    >>> github.issues("ask/chishop", state="open")
-    >>> github.issues("ask/chishop", state="closed")
+    >>> github.issues.list("ask/chishop", state="open")
+    >>> github.issues.list("ask/chishop", state="closed")
 
 View an Issue
 -------------

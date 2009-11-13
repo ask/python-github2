@@ -131,11 +131,11 @@ class BaseDataType(type):
 
         def constructor(self, **kwargs):
             for attr_name, attr_value in kwargs.items():
-                if attr_name not in self._meta:
-                    raise TypeError("%s.__init__() doesn't support the "
-                                    "%s argument." % (name, attr_name))
-                attr = self._meta[attr_name]
-                setattr(self, attr_name, attr.to_python(attr_value))
+                attr = self._meta.get(attr_name)
+                if attr:
+                    setattr(self, attr_name, attr.to_python(attr_value))
+                else:
+                    setattr(self, attr_name, attr_value)
 
         _contribute_method("__init__", constructor)
 
