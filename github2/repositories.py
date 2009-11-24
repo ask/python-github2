@@ -66,7 +66,7 @@ class Repositories(GithubCommand):
 
     def remove_collaborator(self, repo_name, username):
         return self.make_request("collaborators", repo_name, "remove",
-                                 username)
+                                 username, method="POST")
 
     def network(self, project):
         return self.make_request("show", project, "network", filter="network")

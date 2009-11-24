@@ -47,26 +47,26 @@ class GithubRequest(object):
 
     def post(self, *path_components, **extra_post_data):
         path_components = filter(None, path_components)
-        return self.make_request("/".join(path_components), extra_post_data)
+        return self.make_request("/".join(path_components), extra_post_data,
+            method="POST")
 
-    def make_request(self, path, extra_post_data=None):
+    def make_request(self, path, extra_post_data=None, method="GET"):
         extra_post_data = extra_post_data or {}
         url = "/".join([self.url_prefix, path])
-        return self.raw_request(url, extra_post_data)
+        return self.raw_request(url, extra_post_data, method=method)
 
-    def raw_request(self, url, extra_post_data):
+    def raw_request(self, url, extra_post_data, method="GET"):
         resource = urlparse(url)
         post_data = None
         headers = self.http_headers
         headers["Accept"] = "text/html"
-        method = "GET"
-        if extra_post_data:
+        method = method.upper()
+        if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
             headers["Content-Length"] = str(len(post_data))
-            method = "POST"
         connector = self.connector_for_scheme[resource.scheme]
         connection = connector(resource.hostname, resource.port)
-        connection.request("GET", resource.path, post_data, headers)
+        connection.request(method, resource.path, post_data, headers)
         response = connection.getresponse()
         response_text = response.read()
         if self.debug:
