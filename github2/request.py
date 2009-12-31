@@ -1,7 +1,7 @@
 import sys
 import httplib
 import simplejson
-from urlparse import urlparse
+from urlparse import urlparse, parse_qs, urlunparse
 from urllib import urlencode
 
 GITHUB_URL = "http://github.com"
@@ -57,6 +57,8 @@ class GithubRequest(object):
 
     def raw_request(self, url, extra_post_data, method="GET"):
         resource = urlparse(url)
+        scheme, netloc, path, params, query, fragment = urlparse(url)
+        hostname = netloc.split(':')[0]
         post_data = None
         headers = self.http_headers
         headers["Accept"] = "text/html"
@@ -64,14 +66,18 @@ class GithubRequest(object):
         if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
             headers["Content-Length"] = str(len(post_data))
-        connector = self.connector_for_scheme[resource.scheme]
-        connection = connector(resource.hostname, resource.port)
-        connection.request(method, resource.path, post_data, headers)
+        else:
+            path = urlunparse((scheme, netloc, path, params,
+                self.encode_authentication_data(parse_qs(query)),
+                fragment))
+        connector = self.connector_for_scheme[scheme]
+        connection = connector(hostname)
+        connection.request(method, path, post_data, headers)
         response = connection.getresponse()
         response_text = response.read()
         if self.debug:
             sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
-                                url, post_data, response_text))
+                                path, post_data, response_text))
         json = simplejson.loads(response_text)
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])
