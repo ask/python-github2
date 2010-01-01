@@ -78,6 +78,9 @@ class GithubRequest(object):
         if self.debug:
             sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
                                 path, post_data, response_text))
+        if response.status >= 400:
+            raise RuntimeError("unexpected response from github.com %d: %r" % (
+                               response.status, response_text))
         json = simplejson.loads(response_text)
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])

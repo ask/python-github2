@@ -28,9 +28,14 @@ class Repositories(GithubCommand):
                               datatype=Repository)
 
     def list(self, for_user=None):
+        """Return a list of all repositories for a user.
+
+        If no user is given, repositoris for the currently logged in user are
+        returned.
+        """
         for_user = for_user or self.request.username
         return self.get_values("show", for_user, filter="repositories",
-                datatype=Repository)
+                               datatype=Repository)
 
     def watch(self, project):
         return self.make_request("watch", project)
@@ -58,13 +63,22 @@ class Repositories(GithubCommand):
         return self.make_request("set/public", repo_name)
 
     def list_collaborators(self, project):
+        """Lists all the collaborators in a project (user/repro)."""
         return self.make_request("show", project, "collaborators",
                                  filter="collaborators")
 
     def add_collaborator(self, repo_name, username):
+        """Adds an add_collaborator to a repro.
+
+        Do not prefix repro_name with the user owning the repro like you
+        do in list_collaborators()"""
         return self.make_request("collaborators", repo_name, "add", username)
 
     def remove_collaborator(self, repo_name, username):
+        """Removes an add_collaborator from a repro.
+
+        Do not prefix repro_name with the user owning the repro like you
+        do in list_collaborators()"""
         return self.make_request("collaborators", repo_name, "remove",
                                  username, method="POST")
 
