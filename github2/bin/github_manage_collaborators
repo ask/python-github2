@@ -19,7 +19,7 @@ import time
 def parse_commandline():
     """Parse the comandline and return parsed options."""
 
-    parser = OptionParser(version=True)
+    parser = OptionParser()
     parser.description = __doc__
 
     parser.set_usage('usage: %prog [options] (list|add|remove) [collaborator]. Try %prog --help for details.')

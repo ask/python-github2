@@ -20,6 +20,7 @@ setup(
     url=github2.__homepage__,
     platforms=["any"],
     packages=find_packages(exclude=['ez_setup']),
+    scripts=['github2/bin/github_manage_collaborators'],
     install_requires=[
     ],
     classifiers=[
