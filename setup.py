@@ -12,7 +12,7 @@ except ImportError:
 import github2
 
 setup(
-    name='python-github2',
+    name='github2',
     version=github2.__version__,
     description=github2.__doc__,
     author=github2.__author__,
