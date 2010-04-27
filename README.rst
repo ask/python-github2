@@ -26,11 +26,11 @@ or from source.
 
 To install using ``pip``,::
 
-    $ pip install python-github2
+    $ pip install github2
 
 To install using ``easy_install``,::
 
-    $ easy_install python-github2
+    $ easy_install github2
 
 If you have downloaded a source tarball you can install it
 by doing the following,::
