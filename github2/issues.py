@@ -52,3 +52,10 @@ class Issues(GithubCommand):
     def remove_label(self, project, number, label):
         return self.make_request("label/remove", project, label, str(number),
                                  filter="labels")
+
+    def comment(self, project, number, comment):
+        """Comment on an issue."""
+        comment_data = {'comment': comment}
+        return self.make_request("comment", project, str(number),
+                                 post_data=comment_data,
+                                 filter='comment')
