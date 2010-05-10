@@ -49,7 +49,11 @@ class GithubCommand(object):
         datatype = kwargs.pop("datatype", None)
         value = self.make_request(*args, **kwargs)
         if datatype:
-            return datatype(**value)
+            # unicode keys are not accepted as kwargs by python, see:
+            #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
+            # So we make a local dict with the same keys but as strings:
+            val = dict( (str(k), v) for (k,v) in value.iteritems() )
+            return datatype(**val)
         return value
 
     def get_values(self, *args, **kwargs):
