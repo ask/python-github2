@@ -37,8 +37,11 @@ class GithubRequest(object):
             }
 
     def encode_authentication_data(self, extra_post_data):
-        post_data = {"login": self.username,
-                     "token": self.api_token}
+        if self.username and self.api_token:
+            post_data = {"login": self.username,
+                         "token": self.api_token}
+        else:
+            post_data = {}
         post_data.update(extra_post_data) 
         return urlencode(post_data)
 
