@@ -24,7 +24,7 @@ class GithubRequest(object):
         "https": httplib.HTTPSConnection,
     }
 
-    def __init__(self, username, api_token, url_prefix=None, debug=False):
+    def __init__(self, username=None, api_token=None, url_prefix=None, debug=False):
         self.username = username
         self.api_token = api_token
         self.url_prefix = url_prefix
