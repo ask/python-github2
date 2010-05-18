@@ -2,7 +2,10 @@ import sys
 import httplib
 import simplejson
 from urlparse import urlparse, urlunparse
-from cgi import parse_qs # 2.5 compat
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from cgi import parse_qs
 from urllib import urlencode
 
 GITHUB_URL = "http://github.com"
