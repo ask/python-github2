@@ -6,7 +6,7 @@ from github2.commits import Commits
 
 class Github(object):
 
-    def __init__(self, username, api_token, debug=False):
+    def __init__(self, username=None, api_token=None, debug=False):
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
                                      debug=self.debug)

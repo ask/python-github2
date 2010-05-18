@@ -44,6 +44,10 @@ Creating a request
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
+Or for an unauthenticated connection
+
+    >>> github = Github()
+
 Users
 =====
 
