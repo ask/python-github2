@@ -14,12 +14,12 @@ available in version 2 of the `Github API`_.
 .. _`Github API`: http://develop.github.com/
 
 Introduction
-------------
+============
 
 You should read the developer documentation for the `Github API`_ first.
 
 Installation
-=============
+------------
 
 You can install ``python-github2`` either via the Python Package Index (PyPI)
 or from source.
@@ -39,7 +39,7 @@ by doing the following,::
     # python setup.py install # as root
 
 Creating a request
-==================
+------------------
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
