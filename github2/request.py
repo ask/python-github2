@@ -1,6 +1,9 @@
 import sys
 import httplib
-import simplejson
+try:
+    import json as simplejson # For Python 2.6
+except ImportError:
+    import simplejson
 from urlparse import urlparse, urlunparse
 try:
     from urlparse import parse_qs
