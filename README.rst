@@ -103,6 +103,12 @@ View an Issue
     >>> issue.title
     'Should not be able to upload same version twice.'
 
+View Comments on an Issue
+-------------------------
+    >>> comments = github.issues.comments("ask/chishop", 5)
+    >>> comments[0].body
+    'Fix merged into /ask branch.'
+
 Open and Close Issues
 ---------------------
 
