@@ -17,6 +17,17 @@ class Issue(BaseData):
         return "<Issue: %s>" % self.title
 
 
+class Comment(BaseData):
+    created_at = DateAttribute("The date this comment was created.")
+    updated_at = DateAttribute("The date when this comment was last updated.")
+    body = Attribute("The full text of this comment.")
+    id = Attribute("The comment id.")
+    user = Attribute("The username of the user that created this comment.")
+
+    def __repr__(self):
+        return "<Comment: %s>" % self.body
+
+
 class Issues(GithubCommand):
     domain = "issues"
 
@@ -59,3 +70,8 @@ class Issues(GithubCommand):
         return self.make_request("comment", project, str(number),
                                  post_data=comment_data,
                                  filter='comment')
+
+    def comments(self, project, number):
+        """View comments on an issue."""
+        return self.get_values("comments", project, str(number),
+                               filter="comments", datatype=Comment)
