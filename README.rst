@@ -203,6 +203,12 @@ Collaborators
     
     >>> github.repos.remove_collaborator("ask/chishop", "schacon")
 
+Watchers
+-------------
+
+    >>> watchers = github.repos.watchers("ask/chishop")
+
+
 Network
 -------
 

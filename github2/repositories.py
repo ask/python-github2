@@ -91,3 +91,8 @@ class Repositories(GithubCommand):
     def branches(self, project):
         return self.make_request("show", project, "branches",
                                  filter="branches")
+
+    def watchers(self, project):
+        return self.make_request("show", project, "watchers", 
+                                filter="watchers")
+
