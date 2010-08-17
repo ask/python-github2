@@ -91,3 +91,8 @@ class Repositories(GithubCommand):
     def branches(self, project):
         return self.make_request("show", project, "branches",
                                  filter="branches")
+
+     def list_contributors(self, project):
+         """Lists all the contributors in a project (user/repro)."""
+         return self.make_request("show", project, "contributors",
+                               filter="contributors")
