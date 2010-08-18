@@ -1,6 +1,9 @@
 import sys
 import httplib
-import simplejson
+try:
+    import json as simplejson # For Python 2.6
+except ImportError:
+    import simplejson
 from urlparse import urlparse, urlunparse
 try:
     from urlparse import parse_qs
@@ -8,9 +11,9 @@ except ImportError:
     from cgi import parse_qs
 from urllib import urlencode
 
-GITHUB_URL = "http://github.com"
+GITHUB_URL = "https://github.com"
 
-URL_PREFIX = "http://github.com/api/v2/json"
+URL_PREFIX = "https://github.com/api/v2/json"
 
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""

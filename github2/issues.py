@@ -14,7 +14,7 @@ class Issue(BaseData):
     updated_at = DateAttribute("The date when this issue was last updated.")
 
     def __repr__(self):
-        return "<Issue: %s>" % self.title
+        return "<Issue: %s>" % self.title.encode('utf-8')
 
 
 class Comment(BaseData):
