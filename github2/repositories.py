@@ -95,8 +95,14 @@ class Repositories(GithubCommand):
     def watchers(self, project):
         return self.make_request("show", project, "watchers", 
                                 filter="watchers")
+
     def watching(self, for_user=None):
         """Lists all the repos a user is watching."""
         for_user = for_user or self.request.username
         return self.get_values("watched", for_user, filter="repositories",
                                datatype=Repository)
+
+    def list_contributors(self, project):
+        """Lists all the contributors in a project (user/repo)."""
+        return self.make_request("show", project, "contributors",
+                           filter="contributors")
