@@ -1,4 +1,4 @@
-import sys
+import sys, time, datetime, math
 import httplib
 try:
     import json as simplejson # For Python 2.6
@@ -30,11 +30,20 @@ class GithubRequest(object):
         "https": httplib.HTTPSConnection,
     }
 
-    def __init__(self, username=None, api_token=None, url_prefix=None, debug=False):
+    def __init__(self, username=None, api_token=None, url_prefix=None, 
+            debug=False, requests_per_second=None):
+        """
+        Make an API request.
+        """
         self.username = username
         self.api_token = api_token
         self.url_prefix = url_prefix
         self.debug = debug
+        if requests_per_second is None:
+            self.delay = 0
+        else:
+            self.delay = 1.0 / requests_per_second
+        self.last_request = datetime.datetime(1900,1,1)
         if not self.url_prefix:
             self.url_prefix = self.url_format % {
                 "github_url": self.github_url,
@@ -61,9 +70,22 @@ class GithubRequest(object):
             method="POST")
 
     def make_request(self, path, extra_post_data=None, method="GET"):
+        if self.delay:
+            since_last = (datetime.datetime.now() - self.last_request
+                ).total_seconds()
+            if since_last < self.delay:
+                duration = self.delay - since_last
+                if self.debug:
+                    sys.stderr.write("delaying API call %s\n" % duration)
+                time.sleep(duration)
+                
         extra_post_data = extra_post_data or {}
         url = "/".join([self.url_prefix, path])
-        return self.raw_request(url, extra_post_data, method=method)
+        result = self.raw_request(url, extra_post_data, method=method)
+
+        if self.delay:
+            self.last_request = datetime.datetime.now()
+        return result
 
     def raw_request(self, url, extra_post_data, method="GET"):
         resource = urlparse(url)

@@ -6,10 +6,29 @@ from github2.commits import Commits
 
 class Github(object):
 
-    def __init__(self, username=None, api_token=None, debug=False):
+    def __init__(self, username=None, api_token=None, debug=False,
+        requests_per_second=None):
+        """
+        An interface to GitHub's API:
+            http://develop.github.com/
+        
+        Params:
+            `username` is your own GitHub username.
+    
+            `api_token` can be found here (while logged in as that user):
+                https://github.com/account
+    
+            `requests_per_second` is a float indicating the API rate limit
+                you're operating under (1 per second per GitHub at the moment),
+                or None to disable delays. 
+
+                The default is to disable delays (for backwards compatibility).
+        """
+        
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
-                                     debug=self.debug)
+                                     debug=self.debug, 
+                                     requests_per_second=requests_per_second)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

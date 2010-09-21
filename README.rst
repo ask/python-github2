@@ -38,15 +38,20 @@ by doing the following,::
     $ python setup.py build
     # python setup.py install # as root
 
-Creating a request
+Creating a client
 ------------------
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
-Or for an unauthenticated connection
+Or for an unauthenticated connection:
 
     >>> github = Github()
+
+API calls are limited by github.com to 1 per second by default.  To have the Github client enforce this and avoid rate limit errors, pass requests_per_second in:
+
+  >>> from github2.client import Github
+  >>> github = Github(username="ask", api_token=".......", requests_per_second=1)
 
 Users
 =====
