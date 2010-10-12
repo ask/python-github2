@@ -36,6 +36,9 @@ class Users(GithubCommand):
     def search(self, query):
         return self.get_values("search", query, filter="users", datatype=User)
 
+    def search_by_email(self, query):
+        return self.get_value("email", query, filter="user", datatype=User)
+
     def show(self, username):
         return self.get_value("show", username, filter="user", datatype=User)
 
