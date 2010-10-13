@@ -90,6 +90,9 @@ class Repositories(GithubCommand):
     def network(self, project):
         return self.make_request("show", project, "network", filter="network")
 
+    def languages(self, project):
+        return self.make_request("show", project, "languages", filter="languages")
+    
     def tags(self, project):
         return self.make_request("show", project, "tags", filter="tags")
 
