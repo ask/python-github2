@@ -152,10 +152,12 @@ class BaseDataType(type):
             dict_ = vars(self)
             return dict([(attr_name, _meta[attr_name].from_python(attr_value))
                             for attr_name, attr_value in dict_.items()])
-        _contribute_method("__dict__", to_dict)
+        # I don't understand what this is trying to do.
+        # whatever it was meant to do is broken and is breaking the ability to call "vars" on instantiations, which is breaking all kindsa shit. -AS
+        #_contribute_method("__dict__", to_dict)
 
         def iterate(self):
-            not_empty = lambda e: e is not None
+            not_empty = lambda e: e[1] is not None #AS I *think* this is what was intended.
             return iter(filter(not_empty, vars(self).items()))
         _contribute_method("__iter__", iterate)
 
