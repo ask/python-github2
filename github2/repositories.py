@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
 
 class Repository(BaseData):
@@ -12,6 +12,11 @@ class Repository(BaseData):
     owner = Attribute("Username of the user owning this repository.")
     homepage = Attribute("Homepage for this project.")
     open_issues = Attribute("List of open issues for this repository.")
+    created_at = DateAttribute("Datetime the repository was created.")
+    pushed_at = DateAttribute("Datetime of the last push to this repository")
+    has_downloads = Attribute("If True, this repository has downloads.")
+    has_wiki = Attribute("If True, this repository has a wiki.")
+    has_issues = Attribute("If True, this repository has an issue tracker.")
 
     def __repr__(self):
         return "<Repository: %s/%s>" % (self.owner, self.name)
