@@ -1,4 +1,4 @@
-VERSION = (0, 1, 3)
+VERSION = (0, 2, 0)
 __doc__ = "Github API v2 library for Python"
 __author__ = "Ask Solem"
 __contact__ = "askh@opera.com"
