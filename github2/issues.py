@@ -31,6 +31,17 @@ class Comment(BaseData):
 class Issues(GithubCommand):
     domain = "issues"
 
+    def search(self, project, term, state="open"):
+        """Get all issues for project that match term with given state.
+
+        ``project`` is a string with the project owner username and repository
+        name separated by ``/`` (e.g. ``ask/pygithub2``).
+        ``term`` is a string to search issues for.
+        ``state`` can be either ``open`` or ``closed``.
+        """
+        return self.get_values("search", project, state, term, filter="issues",
+                               datatype=Issue)
+
     def list(self, project, state="open"):
         """Get all issues for project' with state'.
 
