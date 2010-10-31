@@ -1,4 +1,4 @@
-import sys, time, datetime, math
+import sys, time, datetime
 import httplib
 try:
     import json as simplejson # For Python 2.6
