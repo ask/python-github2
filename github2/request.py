@@ -21,7 +21,8 @@ class GithubRequest(object):
     GithubError = GithubError
 
     def __init__(self, username=None, api_token=None, url_prefix=None, 
-            debug=False, requests_per_second=None, access_token=None):
+            debug=False, requests_per_second=None, access_token=None,
+            cache=None):
         """
         Make an API request.
         """
@@ -41,7 +42,7 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
-        self._http = httplib2.Http()
+        self._http = httplib2.Http(cache=cache)
 
     def encode_authentication_data(self, extra_post_data):
         if self.access_token:
