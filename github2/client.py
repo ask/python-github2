@@ -8,7 +8,7 @@ from github2.commits import Commits
 class Github(object):
 
     def __init__(self, username=None, api_token=None, debug=False,
-        requests_per_second=None, access_token=None):
+        requests_per_second=None, access_token=None, cache=None):
         """
         An interface to GitHub's API:
             http://develop.github.com/
@@ -28,13 +28,15 @@ class Github(object):
                 or None to disable delays.
 
                 The default is to disable delays (for backwards compatibility).
+
+            `cache` is a directory for caching GitHub responses.
         """
         
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
                                      debug=self.debug,
                                      requests_per_second=requests_per_second,
-                                     access_token=access_token)
+                                     access_token=access_token, cache=cache)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)
