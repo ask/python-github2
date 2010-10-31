@@ -100,8 +100,9 @@ class Repositories(GithubCommand):
         return self.make_request("show", project, "network", filter="network")
 
     def languages(self, project):
-        return self.make_request("show", project, "languages", filter="languages")
-    
+        return self.make_request("show", project, "languages",
+                                 filter="languages")
+
     def tags(self, project):
         return self.make_request("show", project, "tags", filter="tags")
 
@@ -110,8 +111,8 @@ class Repositories(GithubCommand):
                                  filter="branches")
 
     def watchers(self, project):
-        return self.make_request("show", project, "watchers", 
-                                filter="watchers")
+        return self.make_request("show", project, "watchers",
+                                 filter="watchers")
 
     def watching(self, for_user=None):
         """Lists all the repos a user is watching."""

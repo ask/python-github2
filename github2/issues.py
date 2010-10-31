@@ -2,6 +2,7 @@ import urllib
 
 from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
 
+
 class Issue(BaseData):
     position = Attribute("The position of this issue in a list.")
     number = Attribute("The issue number (unique for project).")
