@@ -1,14 +1,9 @@
 import sys, time, datetime
-import httplib
+import httplib2
 try:
     import json as simplejson # For Python 2.6
 except ImportError:
     import simplejson
-from urlparse import urlparse, urlunparse
-try:
-    from urlparse import parse_qs
-except ImportError:
-    from cgi import parse_qs
 from urllib import urlencode
 
 GITHUB_URL = "https://github.com"
@@ -24,11 +19,6 @@ class GithubRequest(object):
     api_version = "v2"
     api_format = "json"
     GithubError = GithubError
-
-    connector_for_scheme = {
-        "http": httplib.HTTPConnection,
-        "https": httplib.HTTPSConnection,
-    }
 
     def __init__(self, username=None, api_token=None, url_prefix=None, 
             debug=False, requests_per_second=None, access_token=None):
@@ -51,6 +41,7 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
+        self._http = httplib2.Http()
 
     def encode_authentication_data(self, extra_post_data):
         if self.access_token:
@@ -91,8 +82,6 @@ class GithubRequest(object):
         return result
 
     def raw_request(self, url, extra_post_data, method="GET"):
-        scheme, netloc, path, params, query, fragment = urlparse(url)
-        hostname = netloc.split(':')[0]
         post_data = None
         headers = self.http_headers
         headers["Accept"] = "text/html"
@@ -100,22 +89,14 @@ class GithubRequest(object):
         if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
             headers["Content-Length"] = str(len(post_data))
-        else:
-            path = urlunparse((scheme, netloc, path, params,
-                self.encode_authentication_data(parse_qs(query)),
-                fragment))
-        connector = self.connector_for_scheme[scheme]
-        connection = connector(hostname)
-        connection.request(method, path, post_data, headers)
-        response = connection.getresponse()
-        response_text = response.read()
+        response, content = self._http.request(url, method, post_data, headers)
         if self.debug:
             sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
-                                path, post_data, response_text))
+                             url, post_data, content))
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
-                               response.status, response_text))
-        json = simplejson.loads(response_text)
+                               response.status, content))
+        json = simplejson.loads(content)
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])
 
