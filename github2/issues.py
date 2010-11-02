@@ -71,6 +71,12 @@ class Issues(GithubCommand):
         return self.get_value("reopen", project, str(number), filter="issue",
                               datatype=Issue)
 
+    def edit(self, project, number, title, body):
+        issue_data = {"title": title, "body": body}
+        return self.get_value("edit", project, str(number),
+                              post_data=issue_data, filter="issue",
+                              datatype=Issue)
+
     def add_label(self, project, number, label):
         return self.make_request("label/add", project, label, str(number),
                                  filter="labels")
