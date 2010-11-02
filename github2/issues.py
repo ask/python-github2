@@ -67,6 +67,10 @@ class Issues(GithubCommand):
         return self.get_value("close", project, str(number), filter="issue",
                               datatype=Issue)
 
+    def reopen(self, project, number):
+        return self.get_value("reopen", project, str(number), filter="issue",
+                              datatype=Issue)
+
     def add_label(self, project, number, label):
         return self.make_request("label/add", project, label, str(number),
                                  filter="labels")
