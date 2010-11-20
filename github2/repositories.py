@@ -1,6 +1,5 @@
 from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
-
 class Repository(BaseData):
     name = Attribute("Name of repository.")
     description = Attribute("Repository description.")
@@ -18,8 +17,12 @@ class Repository(BaseData):
     has_wiki = Attribute("If True, this repository has a wiki.")
     has_issues = Attribute("If True, this repository has an issue tracker.")
 
+    def _project(self):
+        return self.owner + "/" + self.name
+    project = property(_project)
+
     def __repr__(self):
-        return "<Repository: %s/%s>" % (self.owner, self.name)
+        return "<Repository: %s>" % (self._project())
 
 
 class Repositories(GithubCommand):
