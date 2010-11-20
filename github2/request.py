@@ -72,7 +72,7 @@ class GithubRequest(object):
     def make_request(self, path, extra_post_data=None, method="GET"):
         if self.delay:
             since_last = (datetime.datetime.now() - self.last_request)
-            since_last_in_seconds = since_last.days * 24 * 60 * 60 + since_last.seconds
+            since_last_in_seconds = (since_last.days * 24 * 60 * 60) + since_last.seconds + (since_last.microseconds/1000000.0)
             if since_last_in_seconds < self.delay:
                 duration = self.delay - since_last_in_seconds
                 if self.debug:
