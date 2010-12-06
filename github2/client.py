@@ -7,7 +7,7 @@ from github2.commits import Commits
 class Github(object):
 
     def __init__(self, username=None, api_token=None, debug=False,
-        requests_per_second=None):
+        requests_per_second=None, access_token=None):
         """
         An interface to GitHub's API:
             http://develop.github.com/
@@ -17,6 +17,10 @@ class Github(object):
     
             `api_token` can be found here (while logged in as that user):
                 https://github.com/account
+
+            `access_token` can be used when no ``username`` and/or ``api_token``
+                is used.  The ``access_token`` is the OAuth access token that is
+                received after successful OAuth authentication.
     
             `requests_per_second` is a float indicating the API rate limit
                 you're operating under (1 per second per GitHub at the moment),
@@ -28,7 +32,8 @@ class Github(object):
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
                                      debug=self.debug, 
-                                     requests_per_second=requests_per_second)
+                                     requests_per_second=requests_per_second,
+                                     access_token=access_token)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

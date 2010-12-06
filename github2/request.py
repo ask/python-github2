@@ -31,12 +31,13 @@ class GithubRequest(object):
     }
 
     def __init__(self, username=None, api_token=None, url_prefix=None, 
-            debug=False, requests_per_second=None):
+            debug=False, requests_per_second=None, access_token=None):
         """
         Make an API request.
         """
         self.username = username
         self.api_token = api_token
+        self.access_token = access_token
         self.url_prefix = url_prefix
         self.debug = debug
         if requests_per_second is None:
@@ -52,7 +53,9 @@ class GithubRequest(object):
             }
 
     def encode_authentication_data(self, extra_post_data):
-        if self.username and self.api_token:
+        if self.access_token:
+            post_data = {"access_token": self.access_token}
+        elif self.username and self.api_token:
             post_data = {"login": self.username,
                          "token": self.api_token}
         else:
