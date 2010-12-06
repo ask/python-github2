@@ -1,4 +1,4 @@
-import sys, time, datetime, math
+import sys, time, datetime
 import httplib
 try:
     import json as simplejson # For Python 2.6
@@ -88,7 +88,6 @@ class GithubRequest(object):
         return result
 
     def raw_request(self, url, extra_post_data, method="GET"):
-        resource = urlparse(url)
         scheme, netloc, path, params, query, fragment = urlparse(url)
         hostname = netloc.split(':')[0]
         post_data = None
