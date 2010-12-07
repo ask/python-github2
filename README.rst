@@ -40,9 +40,14 @@ by doing the following,::
 
 Creating a client
 ------------------
+There are three ways to authenticate to the GitHub API.  If you want to use your username and API token, use:
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
+
+If you authenticated to GitHub using their OAuth service, pass in the OAuth access token:
+
+    >>> github = Github(access_token="........")
 
 Or for an unauthenticated connection:
 
