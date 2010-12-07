@@ -1,17 +1,29 @@
 from datetime import datetime
 
 GITHUB_TIMEZONE = "-0700"
-API_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
+GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
+#2009-03-21T18:01:48-07:00
+COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
 
-def ghdate_to_datetime(commit_date):
-    date_without_tz = commit_date[:-6]
-    return datetime.strptime(date_without_tz, API_DATE_FORMAT)
+def ghdate_to_datetime(github_date):
+    date_without_tz = " ".join(github_date.strip().split()[:2])
+    return datetime.strptime(date_without_tz, GITHUB_DATE_FORMAT)
 
 
 def datetime_to_ghdate(datetime_):
-    date_without_tz = datetime_.strftime(API_DATE_FORMAT)
+    date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
+    return " ".join([date_without_tz, GITHUB_TIMEZONE])
+
+
+def commitdate_to_datetime(commit_date):
+    date_without_tz = commit_date[:-6]
+    return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
+
+
+def datetime_to_commitdate(datetime_):
+    date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     return "".join([date_without_tz, GITHUB_TIMEZONE])
 
 
@@ -81,11 +93,15 @@ class Attribute(object):
 
 
 class DateAttribute(Attribute):
-    format = "normal"
+    format = "github"
     converter_for_format = {
-        "normal": {
+        "github": {
             "to": ghdate_to_datetime,
             "from": datetime_to_ghdate,
+        },
+        "commit": {
+            "to": commitdate_to_datetime,
+            "from": datetime_to_commitdate,
         },
     }
 
