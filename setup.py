@@ -20,7 +20,7 @@ setup(
     url=github2.__homepage__,
     license='BSD',
     platforms=["any"],
-    packages=find_packages(exclude=['ez_setup']),
+    packages=find_packages(exclude=['ez_setup', 'tests']),
     scripts=['github2/bin/github_manage_collaborators'],
     install_requires=[
     ],
