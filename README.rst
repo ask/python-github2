@@ -204,6 +204,11 @@ Repository Visibility
 
     >>> github.repos.set_public("ask/chishop")
 
+Pushable repositories
+---------------------
+
+    >>> pushables = github.repos.pushable()
+
 Collaborators
 -------------
 
