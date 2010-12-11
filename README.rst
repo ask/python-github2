@@ -138,7 +138,7 @@ Open and Close Issues
     2
 
     >>> github.issues.close("ask/chishop", new_issue.number)
-
+    >>> github.issues.reopen("ask/chishop", new_issue.number)
 
 Add and Remove Labels
 ---------------------
