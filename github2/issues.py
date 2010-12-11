@@ -1,3 +1,5 @@
+import urllib
+
 from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
 
 class Issue(BaseData):
@@ -39,7 +41,8 @@ class Issues(GithubCommand):
         ``term`` is a string to search issues for.
         ``state`` can be either ``open`` or ``closed``.
         """
-        return self.get_values("search", project, state, term, filter="issues",
+        return self.get_values("search", project, state,
+                               urllib.quote_plus(term), filter="issues",
                                datatype=Issue)
 
     def list(self, project, state="open"):
