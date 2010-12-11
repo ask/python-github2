@@ -1,6 +1,6 @@
-==================================================================================
+================================================================================
 python-github2 - Github API v2 library for Python.
-==================================================================================
+================================================================================
 
 :Authors:
     Ask Solem (askh@opera.com)
@@ -9,7 +9,8 @@ python-github2 - Github API v2 library for Python.
 This is an experimental python library implementing all of the features
 available in version 2 of the `Github API`_.
 
-*Note* This software is not finished. And is likely to change in the near future.
+*Note* This software is not finished. And is likely to change in the near
+future.
 
 .. _`Github API`: http://develop.github.com/
 
@@ -40,12 +41,15 @@ by doing the following,::
 
 Creating a client
 ------------------
-There are three ways to authenticate to the GitHub API.  If you want to use your username and API token, use:
+
+There are three ways to authenticate to the GitHub API.  If you want to use your
+username and API token, use:
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
-If you authenticated to GitHub using their OAuth service, pass in the OAuth access token:
+If you authenticated to GitHub using their OAuth service, pass in the OAuth
+access token:
 
     >>> github = Github(access_token="........")
 
@@ -53,10 +57,13 @@ Or for an unauthenticated connection:
 
     >>> github = Github()
 
-API calls are limited by github.com to 1 per second by default.  To have the Github client enforce this and avoid rate limit errors, pass requests_per_second in:
+API calls are limited by github.com to 1 per second by default.  To have the
+Github client enforce this and avoid rate limit errors, pass requests_per_second
+in:
 
-  >>> from github2.client import Github
-  >>> github = Github(username="ask", api_token=".......", requests_per_second=1)
+    >>> from github2.client import Github
+    >>> github = Github(username="ask", api_token=".......",
+    ...                 requests_per_second=1)
 
 Users
 =====
