@@ -147,6 +147,11 @@ Add and Remove Labels
 
     >>> github.issues.remove_label("ask/chishop", 2, "important")
 
+Edit an Issue
+-------------
+
+    >>> github.issues.edit("ask/chishop", 3, title="New title",
+    ...                    body="New body")
 
 Network
 =======
