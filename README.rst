@@ -106,6 +106,16 @@ List a Projects Issues
     >>> github.issues.list("ask/chishop", state="open")
     >>> github.issues.list("ask/chishop", state="closed")
 
+Search a Projects Issues
+------------------------
+
+    >>> issues = github.issues.search("ask/chishop", "version twice")
+    >>> issues[0].title
+    'Upload hangs on attempted second file.'
+
+    >>> github.issues.search("ask/chishop", term="authorization",
+    ...                      state="closed")
+
 View an Issue
 -------------
 
