@@ -3,6 +3,7 @@ from github2.issues import Issues
 from github2.repositories import Repositories
 from github2.users import Users
 from github2.commits import Commits
+from github2.pull_requests import PullRequests
 
 class Github(object):
 
@@ -38,6 +39,7 @@ class Github(object):
         self.users = Users(self.request)
         self.repos = Repositories(self.request)
         self.commits = Commits(self.request)
+        self.pull_requests = PullRequests(self.request)
 
     def project_for_user_repo(self, user, repo):
         return "/".join([user, repo])
