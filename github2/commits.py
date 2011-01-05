@@ -1,3 +1,4 @@
+import pagerator
 from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
 
@@ -33,6 +34,16 @@ class Commits(GithubCommand):
         return self.get_values("list", project, branch, file,
                                filter="commits", datatype=Commit,
                                post_data=post_data)
+
+    def iter(self, project, branch="master", file=None):
+        return pagerator.IterableQuery(
+            lambda page: self.get_values(
+                "list", project, branch, file,
+                filter="commits", datatype=Commit,
+                post_data=dict(page=page+1)
+            ),
+            35 # page_size hardcoded in the GitHub
+        )
 
     def show(self, project, sha):
         return self.get_value("show", project, sha,
