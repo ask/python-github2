@@ -1,5 +1,6 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import BaseData, GithubCommand, Attribute
 import urllib
+
 
 class User(BaseData):
     id = Attribute("The user id")
@@ -34,7 +35,8 @@ class Users(GithubCommand):
     domain = "user"
 
     def search(self, query):
-        return self.get_values("search", urllib.quote_plus(query), filter="users", datatype=User)
+        return self.get_values("search", urllib.quote_plus(query),
+                               filter="users", datatype=User)
 
     def search_by_email(self, query):
         return self.get_value("email", query, filter="user", datatype=User)

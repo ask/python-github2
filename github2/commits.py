@@ -33,5 +33,3 @@ class Commits(GithubCommand):
     def show(self, project, sha):
         return self.get_value("show", project, sha,
                               filter="commit", datatype=Commit)
-
-

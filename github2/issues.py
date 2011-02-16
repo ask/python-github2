@@ -2,6 +2,7 @@ import urllib
 
 from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
 
+
 class Issue(BaseData):
     position = Attribute("The position of this issue in a list.")
     number = Attribute("The issue number (unique for project).")
@@ -82,11 +83,11 @@ class Issues(GithubCommand):
 
     def add_label(self, project, number, label):
         return self.make_request("label/add", project, label, str(number),
-                                 filter="labels")
+                                 filter="labels", method="POST")
 
     def remove_label(self, project, number, label):
         return self.make_request("label/remove", project, label, str(number),
-                                 filter="labels")
+                                 filter="labels", method="POST")
 
     def comment(self, project, number, comment):
         """Comment on an issue."""

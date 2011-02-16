@@ -4,6 +4,7 @@ from github2.repositories import Repositories
 from github2.users import Users
 from github2.commits import Commits
 
+
 class Github(object):
 
     def __init__(self, username=None, api_token=None, debug=False,
@@ -24,7 +25,7 @@ class Github(object):
     
             `requests_per_second` is a float indicating the API rate limit
                 you're operating under (1 per second per GitHub at the moment),
-                or None to disable delays. 
+                or None to disable delays.
 
                 The default is to disable delays (for backwards compatibility).
 
@@ -33,7 +34,7 @@ class Github(object):
         
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
-                                     debug=self.debug, 
+                                     debug=self.debug,
                                      requests_per_second=requests_per_second,
                                      access_token=access_token, cache=cache)
         self.issues = Issues(self.request)
@@ -55,7 +56,7 @@ class Github(object):
     def get_network_meta(self, project):
         return self.request.raw_request("/".join([self.request.github_url,
                                                   project,
-                                                  "network_meta"] ), {})
+                                                  "network_meta"]), {})
 
     def get_network_data(self, project, nethash, start=None, end=None):
         return self.request.raw_request("/".join([self.request.github_url,

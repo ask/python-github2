@@ -6,7 +6,6 @@ GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
-
 def ghdate_to_datetime(github_date):
     date_without_tz = " ".join(github_date.strip().split()[:2])
     return datetime.strptime(date_without_tz, GITHUB_DATE_FORMAT)
@@ -52,7 +51,7 @@ class GithubCommand(object):
             # unicode keys are not accepted as kwargs by python, see:
             #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
             # So we make a local dict with the same keys but as strings:
-            return datatype(**dict((str(k), v) for (k,v) in value.iteritems()))
+            return datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
         return value
 
     def get_values(self, *args, **kwargs):
@@ -61,14 +60,15 @@ class GithubCommand(object):
         if datatype:
             # Same as above, unicode keys will blow up in **args, so we need to
             # create a new 'values' dict with string keys
-            return [ datatype(**dict((str(k), v) for (k,v) in value.iteritems()))
-                     for value in values ]
+            return [datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
+                    for value in values]
         else:
             return values
 
 
 def doc_generator(docstring, attributes):
     docstring = docstring or ""
+
     def section(title):
         return "\n".join([title, "-" * len(title)])
 
@@ -157,7 +157,7 @@ class BaseDataType(type):
         #_contribute_method("__dict__", to_dict)
 
         def iterate(self):
-            not_empty = lambda e: e[1] is not None #AS I *think* this is what was intended.
+            not_empty = lambda e: e[1] is not None  # AS I *think* this is what was intended.
             return iter(filter(not_empty, vars(self).items()))
         _contribute_method("__iter__", iterate)
 

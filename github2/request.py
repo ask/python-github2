@@ -1,7 +1,9 @@
-import sys, time, datetime
+import datetime
+import sys
+import time
 import httplib2
 try:
-    import json as simplejson # For Python 2.6
+    import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
 from urllib import urlencode
@@ -10,8 +12,10 @@ GITHUB_URL = "https://github.com"
 
 URL_PREFIX = "https://github.com/api/v2/json"
 
+
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""
+
 
 class GithubRequest(object):
     github_url = GITHUB_URL
@@ -35,7 +39,7 @@ class GithubRequest(object):
             self.delay = 0
         else:
             self.delay = 1.0 / requests_per_second
-        self.last_request = datetime.datetime(1900,1,1)
+        self.last_request = datetime.datetime(1900, 1, 1)
         if not self.url_prefix:
             self.url_prefix = self.url_format % {
                 "github_url": self.github_url,
@@ -52,7 +56,7 @@ class GithubRequest(object):
                          "token": self.api_token}
         else:
             post_data = {}
-        post_data.update(extra_post_data) 
+        post_data.update(extra_post_data)
         return urlencode(post_data)
 
     def get(self, *path_components):
@@ -73,7 +77,7 @@ class GithubRequest(object):
                 if self.debug:
                     sys.stderr.write("delaying API call %s\n" % duration)
                 time.sleep(duration)
-                
+
         extra_post_data = extra_post_data or {}
         url = "/".join([self.url_prefix, path])
         result = self.raw_request(url, extra_post_data, method=method)

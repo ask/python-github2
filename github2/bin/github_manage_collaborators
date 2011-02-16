@@ -22,16 +22,18 @@ def parse_commandline():
     parser = OptionParser()
     parser.description = __doc__
 
-    parser.set_usage('usage: %prog [options] (list|add|remove) [collaborator]. Try %prog --help for details.')
+    parser.set_usage('usage: %prog [options] (list|add|remove) [collaborator].'
+                     'Try %prog --help for details.')
     parser.add_option('-d', '--debug', action='store_true',
                       help='Enables debugging mode')
     parser.add_option('-l', '--login',
                       help='Username to login with')
     parser.add_option('-a', '--account',
-                      help='User owning the repositories to be changed [default: same as --login]')
+                      help='User owning the repositories to be changed ' \
+                           '[default: same as --login]')
     parser.add_option('-t', '--apitoken',
-                      help='API Token - can be found on the lower right of https://github.com/account')
-                      
+                      help='API Token - can be found on the lower right of ' \
+                           'https://github.com/account')
 
     options, args = parser.parse_args()
     if len(args) not in [1, 2]:
@@ -50,19 +52,19 @@ def parse_commandline():
 
 def main(options, args):
     """This implements the actual program functionality"""
-    
+
     if not options.account:
         options.account = options.login
-        
+
     github = github2.client.Github(username=options.login,
                                    api_token=options.apitoken,
                                    debug=options.debug)
-    
+
     if len(args) == 1:
         for repos in github.repos.list(options.account):
             fullreposname = github.project_for_user_repo(options.account, repos.name)
             print "%s: %s" % (repos.name, ' '.join(github.repos.list_collaborators(fullreposname)))
-            time.sleep(0.5) # to keep github from overloading
+            time.sleep(0.5)  # to keep github from overloading
     elif len(args) == 2:
         command, collaborator = args
         for repos in github.repos.list(options.account):
@@ -75,7 +77,7 @@ def main(options, args):
                 if command == 'add':
                     github.repos.add_collaborator(repos.name, collaborator)
                     print "added %r to %r" % (collaborator, repos.name)
-            time.sleep(0.5) # to keep github from overloading
+            time.sleep(0.5)  # to keep github from overloading
 
 
 if __name__ == '__main__':
