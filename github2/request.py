@@ -6,7 +6,7 @@ try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
-from urllib import urlencode
+from urllib import urlencode, quote
 
 GITHUB_URL = "https://github.com"
 
@@ -79,7 +79,7 @@ class GithubRequest(object):
                 time.sleep(duration)
 
         extra_post_data = extra_post_data or {}
-        url = "/".join([self.url_prefix, path])
+        url = "/".join([self.url_prefix, quote(path)])
         result = self.raw_request(url, extra_post_data, method=method)
 
         if self.delay:
