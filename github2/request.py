@@ -11,7 +11,7 @@ try:
     from urlparse import parse_qs
 except ImportError:
     from cgi import parse_qs
-from urllib import urlencode
+from urllib import urlencode, quote
 
 GITHUB_URL = "https://github.com"
 
@@ -87,7 +87,7 @@ class GithubRequest(object):
                 time.sleep(duration)
 
         extra_post_data = extra_post_data or {}
-        url = "/".join([self.url_prefix, path])
+        url = "/".join([self.url_prefix, quote(path)])
         result = self.raw_request(url, extra_post_data, method=method)
 
         if self.delay:
