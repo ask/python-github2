@@ -14,30 +14,30 @@ class Teams(GithubCommand):
     domain = "teams"
 
     def show(self, team_id):
-        return self.get_value(team_id, filter="team", datatype=Team)
+        return self.get_value(str(team_id), filter="team", datatype=Team)
 
     def members(self, team_id):
         """Return a list of all team members.
         """
-        return self.get_values(team_id, "members", filter="users",
+        return self.get_values(str(team_id), "members", filter="users",
                                datatype=User)
 
     def repositories(self, team_id):
         """Return a list of all team members.
         """
-        return self.get_values(team_id, "repositories", filter="repositories",
-                               datatype=Repository)
+        return self.get_values(str(team_id), "repositories",
+                               filter="repositories", datatype=Repository)
 
     def add_repository(self, team_id, repository):
         if isinstance(repository, Repository):
             repository = repository.project
-        return self.make_request(team_id, "repositories", method="POST",
+        return self.make_request(str(team_id), "repositories", method="POST",
                                  post_data={'name': repository},
                                  filter="repositories", datatype=Repository)
 
     def remove_repository(self, team_id, repository):
         if isinstance(repository, Repository):
             repository = repository.project
-        return self.make_request(team_id, "repositories", method="DELETE",
+        return self.make_request(str(team_id), "repositories", method="DELETE",
                                  post_data={'name': repository},
                                  filter="repositories", datatype=Repository)
