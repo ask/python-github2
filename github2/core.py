@@ -51,9 +51,15 @@ class GithubCommand(object):
         filter = kwargs.get("filter")
         post_data = kwargs.get("post_data") or {}
         method = kwargs.get("method", "GET")
-        if post_data or method.upper() == "POST":
+        if method.upper() == "POST" or method.upper() == "GET" and post_data:
             response = self.request.post(self.domain, command, *args,
                                          **post_data)
+        elif method.upper() == "PUT":
+            response = self.request.put(self.domain, command, *args,
+                                        **post_data)
+        elif method.upper() == "DELETE":
+            response = self.request.delete(self.domain, command, *args,
+                                           **post_data)
         else:
             response = self.request.get(self.domain, command, *args)
         if filter:

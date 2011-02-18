@@ -74,6 +74,16 @@ class GithubRequest(object):
         return self.make_request("/".join(path_components), extra_post_data,
             method="POST")
 
+    def put(self, *path_components, **extra_post_data):
+        path_components = filter(None, path_components)
+        return self.make_request("/".join(path_components), extra_post_data,
+            method="PUT")
+
+    def delete(self, *path_components, **extra_post_data):
+        path_components = filter(None, path_components)
+        return self.make_request("/".join(path_components), extra_post_data,
+            method="DELETE")
+
     def make_request(self, path, extra_post_data=None, method="GET"):
         if self.delay:
             since_last = (datetime.datetime.now() - self.last_request)
