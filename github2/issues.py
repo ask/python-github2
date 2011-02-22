@@ -69,11 +69,11 @@ class Issues(GithubCommand):
 
     def close(self, project, number):
         return self.get_value("close", project, str(number), filter="issue",
-                              datatype=Issue)
+                              datatype=Issue, method="POST")
 
     def reopen(self, project, number):
         return self.get_value("reopen", project, str(number), filter="issue",
-                              datatype=Issue)
+                              datatype=Issue, method="POST")
 
     def edit(self, project, number, title, body):
         issue_data = {"title": title, "body": body}
