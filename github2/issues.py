@@ -15,6 +15,9 @@ class Issue(BaseData):
     created_at = DateAttribute("The date this issue was created.")
     closed_at = DateAttribute("The date this issue was closed.")
     updated_at = DateAttribute("The date when this issue was last updated.")
+    diff_url = Attribute("URL for diff output associated with this issue.")
+    patch_url = Attribute("URL for format-patch associated with this issue.")
+    pull_request_url = Attribute("URL for the issue's related pull request.")
 
     def __repr__(self):
         return "<Issue: %s>" % self.title.encode('utf-8')
