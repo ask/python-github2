@@ -59,6 +59,24 @@ class Issues(GithubCommand):
         return self.get_values("list", project, state, filter="issues",
                                datatype=Issue)
 
+    def list_by_label(self, project, label):
+        """Get all issues for project' with label'.
+
+        ``project`` is a string with the project owner username and repository
+        name separated by ``/`` (e.g. ``ask/pygithub2``).
+        ``label`` is a string representing a label (e.g., ``bug``).
+        """
+        return self.get_values("list", project, "label", label, filter="issues",
+                               datatype=Issue)
+
+    def list_labels(self, project):
+        """Get all labels for project'.
+
+        ``project`` is a string with the project owner username and repository
+        name separated by ``/`` (e.g. ``ask/pygithub2``).
+        """
+        return self.get_values("labels", project, filter="labels")
+
     def show(self, project, number):
         """Get all the data for issue by issue-number."""
         return self.get_value("show", project, str(number),
