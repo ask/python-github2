@@ -147,6 +147,14 @@ Open and Close Issues
     >>> github.issues.close("ask/chishop", new_issue.number)
     >>> github.issues.reopen("ask/chishop", new_issue.number)
 
+List Labels
+-----------
+
+    >>> github.issues.list_labels("ask/chisop")
+    [u'TODO', u'ask']
+    >>> github.issues.list_by_label("ask/chishop", "TODO")
+    [<Issue: Should not be able to upload same version twice.>]
+
 Add and Remove Labels
 ---------------------
 
