@@ -25,16 +25,16 @@ Installation
 You can install ``python-github2`` either via the Python Package Index (PyPI)
 or from source.
 
-To install using ``pip``,::
+To install using ``pip``::
 
     $ pip install github2
 
-To install using ``easy_install``,::
+To install using ``easy_install``::
 
     $ easy_install github2
 
 If you have downloaded a source tarball you can install it
-by doing the following,::
+by doing the following::
 
     $ python setup.py build
     # python setup.py install # as root
@@ -43,23 +43,23 @@ Creating a client
 ------------------
 
 There are three ways to authenticate to the GitHub API.  If you want to use your
-username and API token, use:
+username and API token, use::
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
 If you authenticated to GitHub using their OAuth service, pass in the OAuth
-access token:
+access token::
 
     >>> github = Github(access_token="........")
 
-Or for an unauthenticated connection:
+Or for an unauthenticated connection::
 
     >>> github = Github()
 
 API calls are limited by github.com to 1 per second by default.  To have the
 Github client enforce this and avoid rate limit errors, pass requests_per_second
-in:
+in::
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......",
@@ -245,7 +245,7 @@ Collaborators
     >>> collabs = github.repos.list_collaborators("ask/chishop")
 
     >>> github.repos.add_collaborator("ask/chishop", "schacon")
-    
+
     >>> github.repos.remove_collaborator("ask/chishop", "schacon")
 
 Watchers
@@ -268,7 +268,7 @@ Repository Refs
 
     Get a list of remote branches
 
-    >>> branches = github.repos.branches("ask/chishop") 
+    >>> branches = github.repos.branches("ask/chishop")
 
 
 Commit
@@ -291,7 +291,7 @@ Showing a Specific Commit
 
     >>> commit = github.commits.show("mojombo/grit",
     ...             sha="5071bf9fbfb81778c456d62e111440fdc776f76c")
-    
+
 
 Object
 ======
