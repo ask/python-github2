@@ -45,12 +45,16 @@ class ReprTests(unittest.TestCase):
 
 
 class RateLimits(unittest.TestCase):
-    """
-    How should we handle actual API calls such that tests can run?
-    Perhaps the library should support a ~/.python_github2.conf from which to
-    get the auth?
-    """
+    """Test API rate-limitting"""
+    def setUp(self):
+        self.old_httplib2 = httplib2.Http
+        httplib2.Http = HttpMock
+
+    def tearDown(self):
+        httplib2.Http = self.old_httplib2
+
     def test_delays(self):
+        """Test call delay is at least one second"""
         import datetime
         USERNAME = ''
         API_KEY = ''

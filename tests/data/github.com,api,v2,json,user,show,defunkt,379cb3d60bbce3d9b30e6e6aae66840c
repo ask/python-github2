@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 59
+content-location: https://github.com/api/v2/json/user/show/defunkt
+x-runtime: 233ms
+content-length: 390
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "53961f440447e2770b1386199b7a6ef3"
+cache-control: private, max-age=0, must-revalidate
+date: Mon, 11 Apr 2011 14:45:49 GMT
+content-type: application/json; charset=utf-8
+
+{"user":{"gravatar_id":"b8dbb1987e8e5318584865f880036796","company":"GitHub","name":"Chris Wanstrath","created_at":"2007/10/19 22:24:19 -0700","location":"San Francisco, CA","public_repo_count":92,"public_gist_count":277,"blog":"http://chriswanstrath.com/","following_count":212,"id":2,"type":"User","permission":null,"followers_count":2244,"login":"defunkt","email":"chris@wanstrath.com"}}
