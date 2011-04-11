@@ -30,6 +30,10 @@ class RateLimits(unittest.TestCase):
         start = datetime.datetime.now()
         client.users.show('mojombo')
         end = datetime.datetime.now()
-        self.assertGreaterEqual((end - start).total_seconds(), 2.0,
+
+        delta = end - start
+        delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
+
+        self.assertTrue(delta_seconds >= 2,
             "Expected .5 reqs per second to require a 2 second delay between "
             "calls.")
