@@ -42,6 +42,10 @@ class Github(object):
 
     def project_for_user_repo(self, user, repo):
         return "/".join([user, repo])
+    
+    def get_all_blobs(self, project, tree_sha):
+        blobs = self.request.get("blob/all", project, tree_sha)
+        return blobs.get("blobs")
 
     def get_blob_info(self, project, tree_sha, path):
         blob = self.request.get("blob/show", project, tree_sha, path)
