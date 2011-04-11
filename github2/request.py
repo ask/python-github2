@@ -8,6 +8,8 @@ except ImportError:
     import simplejson
 from urllib import urlencode, quote
 
+
+#: Hostname for API access
 GITHUB_URL = "https://github.com"
 
 URL_PREFIX = "https://github.com/api/v2/json"
@@ -27,8 +29,9 @@ class GithubRequest(object):
     def __init__(self, username=None, api_token=None, url_prefix=None,
             debug=False, requests_per_second=None, access_token=None,
             cache=None):
-        """
-        Make an API request.
+        """Make an API request.
+
+        :see: :py:class:`github2.client.Github`
         """
         self.username = username
         self.api_token = api_token
