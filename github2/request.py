@@ -10,8 +10,6 @@ from urllib import urlencode, quote
 
 GITHUB_URL = "https://github.com"
 
-URL_PREFIX = "https://github.com/api/v2/json"
-
 
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""
