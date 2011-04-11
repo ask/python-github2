@@ -33,9 +33,17 @@ setup(
     install_requires=install_requires,
     classifiers=[
         "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "License :: OSI Approved :: BSD License",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.4",
+        "Programming Language :: Python :: 2.5",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries",
     ],
     long_description=codecs.open('README.rst', "r", "utf-8").read(),
 )
