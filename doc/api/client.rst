@@ -1,6 +1,12 @@
 Creating a client
 =================
 
+.. autoclass:: github2.client.Github
+   :members:
+
+Examples
+--------
+
 There are three ways to authenticate to the GitHub API.  If you want to use your
 username and API token, use::
 

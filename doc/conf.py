@@ -215,3 +215,5 @@ man_pages = [
     ('index', 'python-github2', u'python-github2 Documentation',
      [u'Ask Solem'], 1)
 ]
+
+autoclass_content = "init"
