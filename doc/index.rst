@@ -3,13 +3,28 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to python-github2's documentation!
-==========================================
+:mod:`python-github2` - Github API v2 library for Python
+========================================================
 
-Contents:
+This is an experimental python library implementing all of the features
+available in version 2 of the `Github API`_.
+
+You should read the developer documentation for the `Github API`_ first.
+
+.. Note::
+   This software is not finished. And is likely to change in the near future.
+
+.. _Github API: http://develop.github.com/
+
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
+
+   install
+   api/index
+   license
 
 Indices and tables
 ==================
