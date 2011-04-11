@@ -90,16 +90,12 @@ def doc_generator(docstring, attributes):
     """
     docstring = docstring or ""
 
-    def section(title):
-        return "\n".join([title, "-" * len(title)])
-
     def bullet(title, text):
-        return """    *``%s``*\n      %s\n""" % (title, text)
+        return """.. py:attribute:: %s\n\n   %s\n""" % (title, text)
 
-    a = section("Attributes")
     b = "\n".join([bullet(attr_name, attr.help)
-                    for attr_name, attr in attributes.items()])
-    return "\n".join([docstring, a, b])
+                   for attr_name, attr in attributes.items()])
+    return "\n\n".join([docstring, b])
 
 
 class Attribute(object):
