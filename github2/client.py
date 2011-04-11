@@ -37,26 +37,58 @@ class Github(object):
         self.commits = Commits(self.request)
 
     def project_for_user_repo(self, user, repo):
+        """Return Github identifier for a user's repository
+
+        :param str user: repository owner
+        :param str repo: repository name
+        """
         return "/".join([user, repo])
-    
+
     def get_all_blobs(self, project, tree_sha):
+        """Get a list of all blobs for a specific tree
+
+        :param str project: GitHub project
+        :param str tree_sha: object ID of tree
+        """
         blobs = self.request.get("blob/all", project, tree_sha)
         return blobs.get("blobs")
 
     def get_blob_info(self, project, tree_sha, path):
+        """Get the blob for a file within a specific tree
+
+        :param str project: GitHub project
+        :param str tree_sha: object ID of tree
+        :param str path: path within tree to fetch blob for
+        """
         blob = self.request.get("blob/show", project, tree_sha, path)
         return blob.get("blob")
 
     def get_tree(self, project, tree_sha):
+        """Get tree information for a specifc tree
+
+        :param str project: GitHub project
+        :param str tree_sha: object ID of tree
+        """
         tree = self.request.get("tree/show", project, tree_sha)
         return tree.get("tree", [])
 
     def get_network_meta(self, project):
+        """Get Github metadata associated with a project
+
+        :param str project: GitHub project
+        """
         return self.request.raw_request("/".join([self.request.github_url,
                                                   project,
                                                   "network_meta"]), {})
 
     def get_network_data(self, project, nethash, start=None, end=None):
+        """Get chunk of Github network data
+
+        :param str project: GitHub project
+        :param str nethash: identifier provided by ``get_network_meta``
+        :param int start: optional start point for data
+        :param int stop: optional end point for data
+        """
         return self.request.raw_request("/".join([self.request.github_url,
                                                   project,
                                                   "network_data_chunk"]),
