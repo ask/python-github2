@@ -63,9 +63,13 @@ class Github(object):
                                                   "network_meta"]), {})
 
     def get_network_data(self, project, nethash, start=None, end=None):
+        data = {"nethash": nethash}
+        if start:
+            data["start"] = start
+        if end:
+            data["end"] = end
+
         return self.request.raw_request("/".join([self.request.github_url,
                                                   project,
                                                   "network_data_chunk"]),
-                                                  {"nethash": nethash,
-                                                   "start": start,
-                                                   "end": end})
+                                                  data)
