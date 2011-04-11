@@ -23,6 +23,7 @@ setup(
     packages=find_packages(exclude=['ez_setup', 'tests']),
     scripts=['github2/bin/github_manage_collaborators'],
     install_requires=[
+        "httplib2",
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

@@ -57,6 +57,11 @@ Or for an unauthenticated connection::
 
     >>> github = Github()
 
+The package supports caching of GitHub responses by adding a ``cache`` keyword
+during setup::
+
+    >>> github = Github(username="ask", api_token=".......", cache="cache_dir")
+
 API calls are limited by github.com to 1 per second by default.  To have the
 Github client enforce this and avoid rate limit errors, pass requests_per_second
 in::
