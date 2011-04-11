@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import codecs
+import sys
 
 try:
     from setuptools import setup, find_packages
@@ -10,6 +11,13 @@ except ImportError:
     from setuptools import setup, find_packages
 
 import github2
+
+
+install_requires = ['httplib2', ]
+# simplejson is included in the standard library since Python 2.6 as json.
+if sys.version_info[:2] < (2, 6):
+    install_requires.append('simplejson >= 2.0.9')
+
 
 setup(
     name='github2',
@@ -22,9 +30,7 @@ setup(
     platforms=["any"],
     packages=find_packages(exclude=['ez_setup', 'tests']),
     scripts=['github2/bin/github_manage_collaborators'],
-    install_requires=[
-        "httplib2",
-    ],
+    install_requires=install_requires,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
