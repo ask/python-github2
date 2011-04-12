@@ -3,6 +3,7 @@ Creating a client
 
 .. autoclass:: github2.client.Github
    :members:
+   :exclude-members: get_all_blobs, get_blob_info, get_tree
 
 Examples
 --------
