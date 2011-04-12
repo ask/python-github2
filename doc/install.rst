@@ -16,7 +16,8 @@ If you have downloaded a source tarball you can install it by doing the
 following::
 
     $ python setup.py build
-    # python setup.py install # as root
+    $ python setup.py install --user  # to install for a single user
+    # python setup.py install  # to install in Python's site-packages
 
 ``python-github2`` depends on httplib2_, an excellent package by Joe Gregorio
 for handling HTTP sessions.  simplejson_ is also required when using
