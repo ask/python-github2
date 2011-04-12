@@ -88,10 +88,10 @@ Network
 Repository Refs
 '''''''''''''''
 
-    Get a list of tags
+Get a list of tags
 
     >>> tags = github.repos.tags("ask/chishop")
 
-    Get a list of remote branches
+Get a list of remote branches
 
     >>> branches = github.repos.branches("ask/chishop")
