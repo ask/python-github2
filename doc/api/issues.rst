@@ -1,14 +1,28 @@
 Issues
 ======
 
+.. py:currentmodule:: github2.issues
+
+.. autoclass:: Issue(type)
+   :members:
+
+.. autoclass:: Comment(type)
+   :members:
+
+.. autoclass:: Issues(type)
+   :members:
+
+Examples
+--------
+
 List a Projects Issues
-----------------------
+''''''''''''''''''''''
 
     >>> github.issues.list("ask/chishop", state="open")
     >>> github.issues.list("ask/chishop", state="closed")
 
 Search a Projects Issues
-------------------------
+''''''''''''''''''''''''
 
     >>> issues = github.issues.search("ask/chishop", "version twice")
     >>> issues[0].title
@@ -18,20 +32,21 @@ Search a Projects Issues
     ...                      state="closed")
 
 View an Issue
--------------
+'''''''''''''
 
     >>> issue = github.issues.show("ask/chishop", 1)
     >>> issue.title
     'Should not be able to upload same version twice.'
 
 View Comments on an Issue
--------------------------
+'''''''''''''''''''''''''
+
     >>> comments = github.issues.comments("ask/chishop", 5)
     >>> comments[0].body
     'Fix merged into /ask branch.'
 
 Open and Close Issues
----------------------
+'''''''''''''''''''''
 
     >>> new_issue = github.issues.open("ask/chishop", title="New bug",
     ...                                body="This is a test bug")
@@ -42,7 +57,7 @@ Open and Close Issues
     >>> github.issues.reopen("ask/chishop", new_issue.number)
 
 List Labels
------------
+'''''''''''
 
     >>> github.issues.list_labels("ask/chisop")
     [u'TODO', u'ask']
@@ -50,14 +65,14 @@ List Labels
     [<Issue: Should not be able to upload same version twice.>]
 
 Add and Remove Labels
----------------------
+'''''''''''''''''''''
 
     >>> github.issues.add_label("ask/chishop", 2, "important")
 
     >>> github.issues.remove_label("ask/chishop", 2, "important")
 
 Edit an Issue
--------------
+'''''''''''''
 
     >>> github.issues.edit("ask/chishop", 3, title="New title",
     ...                    body="New body")

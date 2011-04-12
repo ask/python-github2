@@ -1,20 +1,31 @@
 Users
 =====
 
+.. py:currentmodule:: github2.users
+
+.. autoclass:: User(type)
+   :members:
+
+.. autoclass:: Users(type)
+   :members:
+
+Examples
+--------
+
 Searching
----------
+'''''''''
 
     >>> results = github.users.search("foo")
 
 Getting User Information
-------------------------
+''''''''''''''''''''''''
 
     >>> user = github.users.show("ask")
     >>> user.name
     "Ask Solem"
 
 Getting User Network
----------------------
+''''''''''''''''''''
 
     >>> github.users.followers("ask")
     ['greut', 'howiworkdaily', 'emanchado', 'webiest']
@@ -31,7 +42,7 @@ Getting User Network
     'russell']
 
 Following Network
-------------------
+'''''''''''''''''
 
     >>> github.users.follow("jezdez")
 
