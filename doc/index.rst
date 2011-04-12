@@ -23,6 +23,7 @@ Contents
    :maxdepth: 2
 
    install
+   quickstart
    api/index
    license
 
@@ -32,4 +33,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
