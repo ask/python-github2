@@ -4,10 +4,8 @@ Repository
 .. py:currentmodule:: github2.repositories
 
 .. autoclass:: Repository(type)
-   :members:
 
 .. autoclass:: Repositories(type)
-   :members:
 
 Examples
 --------

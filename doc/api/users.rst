@@ -4,10 +4,8 @@ Users
 .. py:currentmodule:: github2.users
 
 .. autoclass:: User(type)
-   :members:
 
 .. autoclass:: Users(type)
-   :members:
 
 Examples
 --------

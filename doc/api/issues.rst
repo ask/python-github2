@@ -4,13 +4,10 @@ Issues
 .. py:currentmodule:: github2.issues
 
 .. autoclass:: Issue(type)
-   :members:
 
 .. autoclass:: Comment(type)
-   :members:
 
 .. autoclass:: Issues(type)
-   :members:
 
 Examples
 --------

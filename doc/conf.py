@@ -217,3 +217,4 @@ man_pages = [
 ]
 
 autoclass_content = "init"
+autodoc_default_flags = ['members', ]

@@ -4,10 +4,8 @@ Commit
 .. py:currentmodule:: github2.commits
 
 .. autoclass:: Commit(type)
-   :members:
 
 .. autoclass:: Commits(type)
-   :members:
 
 Examples
 --------
