@@ -11,3 +11,12 @@ API documentation
    repos
    commit
    object
+
+Additionally the following documentation may be useful to ``python-github2``
+contributors:
+
+.. toctree::
+   :maxdepth: 2
+
+   core
+   request
