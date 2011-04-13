@@ -10,6 +10,8 @@ class Repository(BaseData):
     fork = Attribute("If True, this is a fork of another repository.")
     owner = Attribute("Username of the user owning this repository.")
     homepage = Attribute("Homepage for this project.")
+    master_branch  = Attribute("Default branch, if set.")
+    integration_branch = Attribute("Integration branch, if set.")
     open_issues = Attribute("List of open issues for this repository.")
     created_at = DateAttribute("Datetime the repository was created.")
     pushed_at = DateAttribute("Datetime of the last push to this repository")
