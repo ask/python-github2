@@ -1,4 +1,5 @@
 recursive-include examples *
+include NEWS.rst
 include README.rst
 include AUTHORS
 include LICENSE
