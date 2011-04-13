@@ -11,7 +11,7 @@ local_settings.py
 .*.sw[po]
 dist/
 *.egg-info
-doc/__build/*
+doc/.build/
 build/
 locale/
 pip-log.txt

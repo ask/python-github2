@@ -27,9 +27,20 @@ class Commits(GithubCommand):
     domain = "commits"
 
     def list(self, project, branch="master", file=None):
+        """List commits on a project
+
+        :param str project: project name
+        :param str branch: branch name
+        :param str file: optional file filter
+        """
         return self.get_values("list", project, branch, file,
                                filter="commits", datatype=Commit)
 
     def show(self, project, sha):
+        """Get a specific commit
+
+        :param str project: project name
+        :param str sha: commit id
+        """
         return self.get_value("show", project, sha,
                               filter="commit", datatype=Commit)

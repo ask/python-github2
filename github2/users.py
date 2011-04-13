@@ -25,6 +25,9 @@ class User(BaseData):
     plan = Attribute("Current active github plan")
 
     def is_authenticated(self):
+        """Test for user auththenication
+
+        :return bool: ``True`` if user is authenticated"""
         return self.plan is not None
 
     def __repr__(self):
@@ -35,23 +38,51 @@ class Users(GithubCommand):
     domain = "user"
 
     def search(self, query):
+        """Search for users
+
+        :param str query: term to search for
+        """
         return self.get_values("search", urllib.quote_plus(query),
                                filter="users", datatype=User)
 
     def search_by_email(self, query):
+        """Search for users by email address
+
+        :param str query: email to search for
+        """
         return self.get_value("email", query, filter="user", datatype=User)
 
     def show(self, username):
+        """Get information on Github user
+
+        :param str username: Github user name
+        """
         return self.get_value("show", username, filter="user", datatype=User)
 
     def followers(self, username):
+        """Get list of Github user's followers
+
+        :param str username: Github user name
+        """
         return self.make_request("show", username, "followers", filter="users")
 
     def following(self, username):
+        """Get list of users a Github user is following
+
+        :param str username: Github user name
+        """
         return self.make_request("show", username, "following", filter="users")
 
     def follow(self, other_user):
+        """Follow a Github user
+
+        :param str other_user: Github user name
+        """
         return self.make_request("follow", other_user)
 
     def unfollow(self, other_user):
+        """Unfollow a Github user
+
+        :param str other_user: Github user name
+        """
         return self.make_request("unfollow", other_user)

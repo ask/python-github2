@@ -7,21 +7,37 @@ COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
 def ghdate_to_datetime(github_date):
+    """Convert Github date string to Python datetime
+
+    :param str github_date: date string to parse
+    """
     date_without_tz = " ".join(github_date.strip().split()[:2])
     return datetime.strptime(date_without_tz, GITHUB_DATE_FORMAT)
 
 
 def datetime_to_ghdate(datetime_):
+    """Convert Python datetime to Github date string
+
+    :param str datetime_: datetime object to convert
+    """
     date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
     return " ".join([date_without_tz, GITHUB_TIMEZONE])
 
 
 def commitdate_to_datetime(commit_date):
+    """Convert commit date string to Python datetime
+
+    :param str github_date: date string to parse
+    """
     date_without_tz = commit_date[:-6]
     return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
 
 
 def datetime_to_commitdate(datetime_):
+    """Convert Python datetime to Github date string
+
+    :param str datetime_: datetime object to convert
+    """
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     return "".join([date_without_tz, GITHUB_TIMEZONE])
 
@@ -67,18 +83,19 @@ class GithubCommand(object):
 
 
 def doc_generator(docstring, attributes):
+    """Utility function to augment BaseDataType docstring
+
+    :param str docstring: docstring to augment
+    :param dict attributes: attributes to add to docstring
+    """
     docstring = docstring or ""
 
-    def section(title):
-        return "\n".join([title, "-" * len(title)])
-
     def bullet(title, text):
-        return """    *``%s``*\n      %s\n""" % (title, text)
+        return """.. py:attribute:: %s\n\n   %s\n""" % (title, text)
 
-    a = section("Attributes")
     b = "\n".join([bullet(attr_name, attr.help)
-                    for attr_name, attr in attributes.items()])
-    return "\n".join([docstring, a, b])
+                   for attr_name, attr in attributes.items()])
+    return "\n\n".join([docstring, b])
 
 
 class Attribute(object):
