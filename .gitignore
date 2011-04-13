@@ -1,6 +1,7 @@
 .DS_Store
 .noseids
 .ropeproject/
+.tox/
 *.pyc
 *~
 *.sqlite
