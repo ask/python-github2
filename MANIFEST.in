@@ -2,3 +2,9 @@ recursive-include examples *
 include README.rst
 include AUTHORS
 include LICENSE
+
+recursive-include doc *.rst
+include doc/conf.py
+include doc/Makefile
+include doc/.templates/layout.html
+prune doc/.build/
