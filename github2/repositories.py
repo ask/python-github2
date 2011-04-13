@@ -61,39 +61,33 @@ class Repositories(GithubCommand):
         return self.get_value("fork", project, filter="repository",
                               datatype=Repository)
 
-    def create(self, name, description=None, homepage=None, public=True):
-        repo_data = {"name": name, "description": description,
+    def create(self, project, description=None, homepage=None, public=True):
+        repo_data = {"name": project, "description": description,
                      "homepage": homepage, "public": str(int(public))}
         return self.get_value("create", post_data=repo_data,
                               filter="repository", datatype=Repository)
 
-    def delete(self, name):
-        return self.make_request("delete", name)
+    def delete(self, project):
+        return self.make_request("delete", project)
 
-    def set_private(self, repo_name):
-        return self.make_request("set/private", repo_name)
+    def set_private(self, project):
+        return self.make_request("set/private", project)
 
-    def set_public(self, repo_name):
-        return self.make_request("set/public", repo_name)
+    def set_public(self, project):
+        return self.make_request("set/public", project)
 
     def list_collaborators(self, project):
         """Lists all the collaborators in a project (user/repro)."""
         return self.make_request("show", project, "collaborators",
                                  filter="collaborators")
 
-    def add_collaborator(self, repo_name, username):
-        """Adds an add_collaborator to a repro.
+    def add_collaborator(self, project, username):
+        """Adds an add_collaborator to a repo."""
+        return self.make_request("collaborators", project, "add", username)
 
-        Do not prefix repro_name with the user owning the repro like you
-        do in list_collaborators()"""
-        return self.make_request("collaborators", repo_name, "add", username)
-
-    def remove_collaborator(self, repo_name, username):
-        """Removes an add_collaborator from a repro.
-
-        Do not prefix repro_name with the user owning the repro like you
-        do in list_collaborators()"""
-        return self.make_request("collaborators", repo_name, "remove",
+    def remove_collaborator(self, project, username):
+        """Removes an add_collaborator from a repo."""
+        return self.make_request("collaborators", project, "remove",
                                  username, method="POST")
 
     def network(self, project):
