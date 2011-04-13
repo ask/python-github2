@@ -68,7 +68,10 @@ class Repositories(GithubCommand):
                               filter="repository", datatype=Repository)
 
     def delete(self, project):
-        return self.make_request("delete", project)
+        # Two-step delete mechanism.  We must echo the delete_token value back
+        # to GitHub to actually delete a repository
+        result = self.make_request("delete", project, method="POST")
+        self.make_request("delete", project, post_data=result)
 
     def set_private(self, project):
         return self.make_request("set/private", project)
