@@ -26,21 +26,23 @@ class Commit(BaseData):
 class Commits(GithubCommand):
     domain = "commits"
 
-    def list(self, project, branch="master", file=None):
+    def list(self, user_id, project, branch="master", file=None):
         """List commits on a project
-
+        
+        :param str user_id: username
         :param str project: project name
         :param str branch: branch name
         :param str file: optional file filter
         """
-        return self.get_values("list", project, branch, file,
+        return self.get_values("list", user_id, project, branch, file,
                                filter="commits", datatype=Commit)
 
-    def show(self, project, sha):
+    def show(self, user_id, project, sha):
         """Get a specific commit
-
+        
+        :param str user_id: username
         :param str project: project name
         :param str sha: commit id
         """
-        return self.get_value("show", project, sha,
+        return self.get_value("show", user_id, project, sha,
                               filter="commit", datatype=Commit)
