@@ -131,9 +131,6 @@ class Repositories(GithubCommand):
     def add_collaborator(self, project, username):
         """Adds an add_collaborator to a repo
 
-        Do not prefix repo_name with the user owning the repo like you do in
-        list_collaborators()
-
         :param str project: Github project
         :param str username: Github user to add as collaborator
         """
@@ -141,9 +138,6 @@ class Repositories(GithubCommand):
 
     def remove_collaborator(self, project, username):
         """Removes an add_collaborator from a repo
-
-        Do not prefix repo_name with the user owning the repo like you do in
-        list_collaborators()
 
         :param str project: Github project
         :param str username: Github user to add as collaborator
