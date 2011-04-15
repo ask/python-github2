@@ -25,7 +25,6 @@ class HttpMock(object):
     def request(self, uri, method='GET', body=None, headers=None,
                 redirections=5, connection_type=None):
         file = os.path.join(HTTP_DATA_DIR, httplib2.safename(uri))
-        print file
         if os.path.exists(file):
             response = message_from_file(open(file))
             body = response.get_payload()
