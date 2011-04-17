@@ -6,6 +6,11 @@ try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
+from urlparse import (urlsplit, urlunsplit)
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from cgi import parse_qs
 from urllib import urlencode, quote
 
 
@@ -88,6 +93,7 @@ class GithubRequest(object):
         return result
 
     def raw_request(self, url, extra_post_data, method="GET"):
+        scheme, netloc, path, query, fragment = urlsplit(url)
         post_data = None
         headers = self.http_headers
         headers["Accept"] = "text/html"
@@ -95,6 +101,9 @@ class GithubRequest(object):
         if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
             headers["Content-Length"] = str(len(post_data))
+        else:
+            query = self.encode_authentication_data(parse_qs(query))
+        url = urlunsplit((scheme, netloc, path, query, fragment))
         response, content = self._http.request(url, method, post_data, headers)
         if self.debug:
             sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
