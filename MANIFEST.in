@@ -8,7 +8,7 @@ recursive-include doc *.rst
 include doc/conf.py
 include doc/Makefile
 include doc/.templates/layout.html
-prune doc/.build/
+prune doc/.build
 
 include tests/*.py
 recursive-include tests/data *
