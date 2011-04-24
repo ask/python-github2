@@ -71,3 +71,6 @@ class RateLimits(unittest.TestCase):
         self.assertTrue(delta_seconds >= 2,
             "Expected .5 reqs per second to require a 2 second delay between "
             "calls.")
+
+if __name__ == '__main__':
+    unittest.main()
