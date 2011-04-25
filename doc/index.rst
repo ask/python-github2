@@ -25,6 +25,7 @@ Contents
    install
    quickstart
    api/index
+   bugs
    license
 
 Indices and tables
