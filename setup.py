@@ -30,6 +30,7 @@ setup(
     author_email=github2.__contact__,
     url=github2.__homepage__,
     license='BSD',
+    keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['ez_setup', 'tests']),
     scripts=['github2/bin/github_manage_collaborators'],
