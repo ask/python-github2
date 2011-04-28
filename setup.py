@@ -30,6 +30,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     scripts=['github2/bin/github_manage_collaborators'],
     install_requires=install_requires,
+    zip_safe=True,
     test_suite="tests",
     classifiers=[
         "Development Status :: 3 - Alpha",
