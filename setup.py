@@ -18,11 +18,14 @@ install_requires = ['httplib2', ]
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
+long_description = (codecs.open('README.rst', "r", "utf-8").read()
+    + "\n" + codecs.open('NEWS.rst', "r", "utf-8").read())
 
 setup(
     name='github2',
     version=github2.__version__,
     description=github2.__doc__,
+    long_description=long_description,
     author=github2.__author__,
     author_email=github2.__contact__,
     url=github2.__homepage__,
@@ -45,5 +48,4 @@ setup(
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
     ],
-    long_description=codecs.open('README.rst', "r", "utf-8").read(),
 )
