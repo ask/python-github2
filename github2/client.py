@@ -13,6 +13,11 @@ class Github(object):
         An interface to GitHub's API:
             http://develop.github.com/
 
+        .. versionadded:: 0.2.0
+           The ``requests_per_second`` parameter
+        .. versionadded:: 0.3.0
+           The ``cache`` and ``access_token`` parameters
+
         :param str username: your own GitHub username.
         :param str api_token: can be found at https://github.com/account
             (while logged in as that user):
@@ -46,6 +51,8 @@ class Github(object):
 
     def get_all_blobs(self, project, tree_sha):
         """Get a list of all blobs for a specific tree
+
+        .. versionadded:: 0.3.0
 
         :param str project: GitHub project
         :param str tree_sha: object ID of tree

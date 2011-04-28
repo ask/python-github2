@@ -40,6 +40,8 @@ class Issues(GithubCommand):
     def search(self, project, term, state="open"):
         """Get all issues for project that match term with given state.
 
+        .. versionadded:: 0.3.0
+
         :param str project: GitHub project
         :param str term: term to search issues for
         :param str state: can be either ``open`` or ``closed``.
@@ -60,6 +62,8 @@ class Issues(GithubCommand):
     def list_by_label(self, project, label):
         """Get all issues for project with label.
 
+        .. versionadded:: 0.3.0
+
         :param str project: GitHub project
         :param str label:  a string representing a label (e.g., ``bug``).
         """
@@ -68,6 +72,8 @@ class Issues(GithubCommand):
 
     def list_labels(self, project):
         """Get all labels for project.
+
+        .. versionadded:: 0.3.0
 
         :param str project: GitHub project
         """
@@ -105,6 +111,8 @@ class Issues(GithubCommand):
     def reopen(self, project, number):
         """Reopen a closed issue
 
+        .. versionadded:: 0.3.0
+
         :param str project: GitHub project
         :param int number: issue number in the Github database
         """
@@ -113,6 +121,8 @@ class Issues(GithubCommand):
 
     def edit(self, project, number, title, body):
         """Edit an existing issue
+
+        .. versionadded:: 0.3.0
 
         :param str project: GitHub project
         :param int number: issue number in the Github database
