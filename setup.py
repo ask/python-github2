@@ -3,12 +3,7 @@
 import codecs
 import sys
 
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
+from setuptools import setup, find_packages
 
 import github2
 
@@ -32,7 +27,7 @@ setup(
     license='BSD',
     keywords="git github api",
     platforms=["any"],
-    packages=find_packages(exclude=['ez_setup', 'tests']),
+    packages=find_packages(exclude=['tests']),
     scripts=['github2/bin/github_manage_collaborators'],
     install_requires=install_requires,
     test_suite="tests",
