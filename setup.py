@@ -34,6 +34,7 @@ setup(
     packages=find_packages(exclude=['ez_setup', 'tests']),
     scripts=['github2/bin/github_manage_collaborators'],
     install_requires=install_requires,
+    test_suite="tests",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
