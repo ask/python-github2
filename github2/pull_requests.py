@@ -1,5 +1,6 @@
 from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
+
 class PullRequest(BaseData):
     state = Attribute("The pull request state")
     base = Attribute("The base repo")
