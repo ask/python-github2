@@ -31,7 +31,7 @@ class PullRequest(BaseData):
     mergeable = Attribute("Whether the pull request can be merge cleanly")
 
     def __repr__(self):
-        return "<PullRequest: %s>" % self.html_url
+        return "<PullRequest: %s>" % self.title.encode('utf-8')
 
 
 class PullRequests(GithubCommand):
