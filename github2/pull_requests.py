@@ -36,8 +36,22 @@ class PullRequest(BaseData):
 class PullRequests(GithubCommand):
     domain = "pulls"
 
-    def new(self, project, base, head, title=None, body=None, issue=None):
-        """ Create a new pull request """
+    def create(self, project, base, head, title=None, body=None, issue=None):
+        """Create a new pull request
+
+        Pull requests can be created from scratch, or attached to an existing
+        issue.  If an ``issue`` parameter is supplied the pull request is
+        attached to that issue, else a new pull request is created.
+
+        .. versionadded:: 0.4.0
+
+        :param str project: Github project
+        :param str base: branch changes should be pulled into
+        :param str head: branch of the changes to be pulled
+        :param str title: title for pull request
+        :param str body: optional body for pull request
+        :param str issue: existing issue to attach pull request to
+        """
         post_data = {"base": base, "head": head}
         if issue:
             post_data["issue"] = issue
@@ -50,12 +64,19 @@ class PullRequests(GithubCommand):
             filter="pull", datatype=PullRequest)
 
     def show(self, project, number):
-        """ Show a single pull request """
+        """Show a single pull request
+
+        :param str project: Github project
+        :param int number: pull request number in the Github database
+        """
         return self.get_value(project, str(number), filter="pull",
                               datatype=PullRequest)
 
     def list(self, project, state="open"):
-        """ List all pull requests for a project """
+        """List all pull requests for a project
 
+        :param str project: Github project
+        :param str state: can be either ``open`` or ``closed``
+        """
         return self.get_values(project, state, filter="pulls",
                                datatype=PullRequest)
