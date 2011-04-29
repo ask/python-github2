@@ -19,6 +19,10 @@ access token::
 
     >>> github = Github(access_token="........")
 
+.. note::
+   You can retrieve the user data for an OAuth authenticated user with
+   ``github.users.show("")``.
+
 Or for an unauthenticated connection::
 
     >>> github = Github()
