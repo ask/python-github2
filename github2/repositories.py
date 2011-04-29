@@ -53,16 +53,18 @@ class Repositories(GithubCommand):
         return self.get_values("pushable", filter="repositories", datatype=Repository)
 
 
-    def list(self, for_user=None):
+    def list(self, user=None):
         """Return a list of all repositories for a user.
 
-        If no user is given, repositoris for the currently logged in user are
-        returned.
+        .. deprecated: 0.4.0
+           Previous releases would attempt to display repositories for the
+           logged-in user when ``user`` wasn't supplied.  This functionality is
+           brittle and will be removed in a future release!
 
-        :param str for_user: optional Github user name to list repositories for
+        :param str user: Github user name to list repositories for
         """
-        for_user = for_user or self.request.username
-        return self.get_values("show", for_user, filter="repositories",
+        user = user or self.request.username
+        return self.get_values("show", user, filter="repositories",
                                datatype=Repository)
 
     def watch(self, project):
