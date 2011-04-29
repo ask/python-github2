@@ -16,10 +16,16 @@ class PullRequest(BaseData):
     patch_url = Attribute("The URL to the downloadable patch.")
     labels = Attribute("A list of labels attached to the pull request.")
     html_url = Attribute("The URL to the pull request.")
-    issue_created_at = DateAttribute("The date the issue for this pull request was opened.", format='commit')
-    issue_updated_at = DateAttribute("The date the issue for this pull request was last updated.", format='commit')
-    created_at = DateAttribute("The date when this pull request was created.", format='commit')
-    updated_at = DateAttribute("The date when this pull request was last updated.", format='commit')
+    issue_created_at = DateAttribute("The date the issue for this pull request was opened.",
+                                     format='iso')
+    issue_updated_at = DateAttribute("The date the issue for this pull request was last updated.",
+                                     format='iso')
+    created_at = DateAttribute("The date when this pull request was created.",
+                               format='iso')
+    updated_at = DateAttribute("The date when this pull request was last updated.",
+                               format='iso')
+    closed_at = DateAttribute("The date when this pull request was closed",
+                              format='iso')
 
     def __repr__(self):
         return "<PullRequest: %s>" % self.html_url
