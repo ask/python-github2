@@ -7,6 +7,7 @@ API documentation
    client
    users
    issues
+   pull_requests
    network
    repos
    commit
