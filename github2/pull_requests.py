@@ -2,6 +2,10 @@ from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
 
 class PullRequest(BaseData):
+    """Pull request encapsulation
+
+    .. versionadded:: 0.4.0
+    """
     state = Attribute("The pull request state")
     base = Attribute("The base repo")
     head = Attribute("The head of the pull request")
@@ -35,6 +39,10 @@ class PullRequest(BaseData):
 
 
 class PullRequests(GithubCommand):
+    """Operations on pull requests
+
+    .. versionadded:: 0.4.0
+    """
     domain = "pulls"
 
     def create(self, project, base, head, title=None, body=None, issue=None):
@@ -43,8 +51,6 @@ class PullRequests(GithubCommand):
         Pull requests can be created from scratch, or attached to an existing
         issue.  If an ``issue`` parameter is supplied the pull request is
         attached to that issue, else a new pull request is created.
-
-        .. versionadded:: 0.4.0
 
         :param str project: Github project
         :param str base: branch changes should be pulled into
