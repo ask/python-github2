@@ -11,7 +11,7 @@ class PullRequest(BaseData):
     position = Attribute("Floating point position of the pull request.")
     number = Attribute("Number of this request.")
     votes = Attribute("Number of votes for this request.")
-    comments = Attribute("Any comments made on this request.")
+    comments = Attribute("Number of comments made on this request.")
     diff_url = Attribute("The URL to the unified diff.")
     patch_url = Attribute("The URL to the downloadable patch.")
     labels = Attribute("A list of labels attached to the pull request.")
@@ -26,6 +26,7 @@ class PullRequest(BaseData):
                                format='iso')
     closed_at = DateAttribute("The date when this pull request was closed",
                               format='iso')
+    discussion = Attribute("Discussion thread for the pull request.")
 
     def __repr__(self):
         return "<PullRequest: %s>" % self.html_url
