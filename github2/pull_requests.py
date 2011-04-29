@@ -40,9 +40,10 @@ class PullRequests(GithubCommand):
         post_data = {"base": base, "head": head}
         if issue:
             post_data["issue"] = issue
-        elif title and body:
+        elif title:
             post_data["title"] = title
-            post_data["body"] = body
+            if body:
+                post_data["body"] = body
         pull_request_data = [("pull[%s]" % k, v) for k, v in post_data.items()]
         return self.get_value(project, post_data=dict(pull_request_data),
             filter="pull", datatype=PullRequest)
