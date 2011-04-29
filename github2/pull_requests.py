@@ -35,7 +35,7 @@ class PullRequest(BaseData):
 class PullRequests(GithubCommand):
     domain = "pulls"
 
-    def new(self, repo, base, head, title=None, body=None, issue=None):
+    def new(self, project, base, head, title=None, body=None, issue=None):
         """ Create a new pull request """
         post_data = {"base": base, "head": head}
         if issue:
@@ -44,13 +44,16 @@ class PullRequests(GithubCommand):
             post_data["title"] = title
             post_data["body"] = body
         pull_request_data = [("pull[%s]" % k, v) for k, v in post_data.items()]
-        return self.get_value(repo, post_data=dict(pull_request_data),
+        return self.get_value(project, post_data=dict(pull_request_data),
             filter="pull", datatype=PullRequest)
 
-    def show(self, repo, number):
+    def show(self, project, number):
         """ Show a single pull request """
-        return self.get_value(repo, str(number), filter="pull", datatype=PullRequest)
+        return self.get_value(project, str(number), filter="pull",
+                              datatype=PullRequest)
 
-    def list(self, repo, state=None):
-        """ List all pull requests for a repo """
-        return self.get_values(repo, state, filter="pulls", datatype=PullRequest)
+    def list(self, project, state="open"):
+        """ List all pull requests for a project """
+
+        return self.get_values(project, state, filter="pulls",
+                               datatype=PullRequest)
