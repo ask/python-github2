@@ -27,6 +27,7 @@ class PullRequest(BaseData):
     closed_at = DateAttribute("The date when this pull request was closed",
                               format='iso')
     discussion = Attribute("Discussion thread for the pull request.")
+    mergeable = Attribute("Whether the pull request can be merge cleanly")
 
     def __repr__(self):
         return "<PullRequest: %s>" % self.html_url
