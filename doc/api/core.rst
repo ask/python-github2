@@ -8,6 +8,10 @@ Core
    of the :mod:`github2` package, but it is documented to aid contributors
    to the package.
 
+.. autodata:: NAIVE(bool)
+
+   Set to ``False`` for timezone-aware :class:`datetime.datetime` objects
+
 .. autofunction:: ghdate_to_datetime
 .. autofunction:: datetime_to_ghdate
 

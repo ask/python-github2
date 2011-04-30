@@ -13,8 +13,8 @@ GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 GITHUB_TZ = tz.gettz("America/Los_Angeles")
 
-# Operate on naive datetime objects, this is the default for backwards
-# compatibility
+#: Operate on naive :class:`datetime.datetime` objects, this is the default
+#: for backwards compatibility
 NAIVE = True
 
 
