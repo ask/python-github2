@@ -8,14 +8,17 @@ from setuptools import setup, find_packages
 import github2
 
 
-install_requires = ['httplib2', 'python-dateutil']
+install_requires = ['httplib2', ]
 # simplejson is included in the standard library since Python 2.6 as json.
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
 extra = {}
 if sys.version_info >= (3,):
+    install_requires.append('python-dateutil >= 2.0')
     extra['use_2to3'] = True
+else:
+    install_requires.append('python-dateutil < 2.0')
 
 long_description = (codecs.open('README.rst', "r", "utf-8").read()
     + "\n" + codecs.open('NEWS.rst', "r", "utf-8").read())
