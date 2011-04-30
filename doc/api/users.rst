@@ -1,7 +1,7 @@
+.. module:: github2.users
+
 Users
 =====
-
-.. py:currentmodule:: github2.users
 
 .. autoclass:: User(type)
 

@@ -1,7 +1,7 @@
+.. module:: github2.issues
+
 Issues
 ======
-
-.. py:currentmodule:: github2.issues
 
 .. autoclass:: Issue(type)
 

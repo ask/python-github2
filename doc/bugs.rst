@@ -1,7 +1,7 @@
 Reporting bugs
 ==============
 
-If you think you've found a bug, or inconsistency, in ``python-github`` please
+If you think you've found a bug, or inconsistency, in :mod:`github2` please
 `report an issue`_.
 
 .. note::

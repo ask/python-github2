@@ -1,8 +1,8 @@
 Quickstart
 ==========
 
-Once ``python-github2`` is installed we can open an interactive Python session,
-and perform some basic tasks to familiarise ourselves with the package.
+Once :mod:`github2` is installed we can open an interactive Python session, and
+perform some basic tasks to familiarise ourselves with the package.
 
 Create an unauthenticated client object::
 
@@ -12,7 +12,7 @@ Create an unauthenticated client object::
    Creating an unauthenticated client object means we can play with the API
    without fear of creating or deleting data on our account.
 
-See how many followers the ``python-github2`` project has::
+See how many followers the :mod:`github2` project has::
 
     >>> len(github.repos.watchers("ask/python-github2"))
     129

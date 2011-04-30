@@ -1,11 +1,11 @@
+.. module:: github2.core
+
 Core
 ====
 
-.. py:currentmodule:: github2.core
-
 .. note::
    This module contains functionality that isn't useful to general users
-   of the ``python-github2`` package, but it is documented to aid contributors
+   of the :mod:`github2` package, but it is documented to aid contributors
    to the package.
 
 .. autofunction:: ghdate_to_datetime

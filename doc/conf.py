@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'python-github2'
+project = u'github2'
 copyright = u'2011, Ask Solem'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -170,7 +170,7 @@ html_static_path = ['.static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'python-github2doc'
+htmlhelp_basename = 'github2doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -184,7 +184,7 @@ htmlhelp_basename = 'python-github2doc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'python-github2.tex', u'python-github2 Documentation',
+  ('index', 'github2.tex', u'github2 Documentation',
    u'Ask Solem', 'manual'),
 ]
 
@@ -217,7 +217,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'python-github2', u'python-github2 Documentation',
+    ('index', 'github2', u'github2 Documentation',
      [u'Ask Solem'], 1)
 ]
 

@@ -1,7 +1,7 @@
+.. module:: github2.commits
+
 Commit
 ======
-
-.. py:currentmodule:: github2.commits
 
 .. autoclass:: Commit(type)
 

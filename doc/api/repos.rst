@@ -1,7 +1,7 @@
+.. module:: github2.repositories
+
 Repository
 ==========
-
-.. py:currentmodule:: github2.repositories
 
 .. autoclass:: Repository(type)
 

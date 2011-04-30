@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:mod:`python-github2` - Github API v2 library for Python
-========================================================
+.. module:: github2
+   :synopsis: GitHub API v2 library for Python
+
+``github2`` - Github API v2 library for Python
+==============================================
 
 .. pypi-release:: github2
    :prefix: Download

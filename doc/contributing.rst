@@ -1,7 +1,7 @@
 Contributing
 ============
 
-Patches for ``python-github2`` are most welcome!
+Patches for :mod:`github2` are most welcome!
 
 Forks on GitHub_ and patches attached to issues are both great ways to
 contribute.  If you're comfortable with ``git`` using a fork hosted on GitHub is

@@ -1,7 +1,7 @@
 Installation
 ------------
 
-You can install ``python-github2`` either via the Python Package Index (PyPI) or
+You can install :mod:`github2` either via the Python Package Index (PyPI) or
 from source.
 
 To install using ``pip``::
@@ -19,7 +19,7 @@ following::
     $ python setup.py install --user  # to install for a single user
     # python setup.py install  # to install in Python's site-packages
 
-``python-github2`` depends on :pypi:`httplib2`, an excellent package by Joe
+:mod:`github2` depends on :pypi:`httplib2`, an excellent package by Joe
 Gregorio for handling HTTP sessions.  :pypi:`simplejson` is also required when
-using ``python-github2`` with Python 2.4 or 2.5.  If you install via ``pip`` or
+using :mod:`github2` with Python 2.4 or 2.5.  If you install via ``pip`` or
 ``easy_install`` the dependencies should be installed automatically for you.

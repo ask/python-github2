@@ -12,7 +12,7 @@ API documentation
    commit
    object
 
-Additionally the following documentation may be useful to ``python-github2``
+Additionally the following documentation may be useful to :mod:`github2`
 contributors:
 
 .. toctree::

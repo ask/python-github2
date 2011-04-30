@@ -1,3 +1,5 @@
+.. module:: github2.client
+
 Creating a client
 =================
 
