@@ -1,31 +1,17 @@
 import sys
-import time
 
 from datetime import datetime
+from dateutil import (parser, tz)
+
 
 #: Running under Python 3
 PY3K = sys.version_info[0] == 3 and True or False
 
-
-GITHUB_TIMEZONE = "-0700"
-GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
-#2009-03-21T18:01:48-07:00
+GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
+# We need to manually mangle the timezone for commit date formatting because it
+# uses -xx:xx format
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
-COMMIT_TIMEZONE = "-07:00"
-
-
-def strptime(string, format):
-    """Parse date strings according to specified format
-
-    We have to create our :obj:`~datetime.datetime` objects indirectly to remain
-    compatible with Python 2.4, where the :class:`~datetime.datetime` class has
-    no :meth:`~datetime.datetime.strptime` method.
-
-    :param str string: String to parse
-    :param str format: Datetime format
-    :return datetime: Parsed datetime
-    """
-    return datetime(*(time.strptime(string, format)[:6]))
+GITHUB_TZ = tz.gettz("America/Los_Angeles")
 
 
 def ghdate_to_datetime(github_date):
@@ -33,8 +19,7 @@ def ghdate_to_datetime(github_date):
 
     :param str github_date: date string to parse
     """
-    date_without_tz = " ".join(github_date.strip().split()[:2])
-    return strptime(date_without_tz, GITHUB_DATE_FORMAT)
+    return parser.parse(github_date).replace(tzinfo=None)
 
 
 def datetime_to_ghdate(datetime_):
@@ -42,8 +27,8 @@ def datetime_to_ghdate(datetime_):
 
     :param datetime datetime_: datetime object to convert
     """
-    date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
-    return " ".join([date_without_tz, GITHUB_TIMEZONE])
+    datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+    return datetime_.strftime(GITHUB_DATE_FORMAT)
 
 
 def commitdate_to_datetime(commit_date):
@@ -51,8 +36,7 @@ def commitdate_to_datetime(commit_date):
 
     :param str github_date: date string to parse
     """
-    date_without_tz = commit_date[:-6]
-    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
+    return parser.parse(commit_date).replace(tzinfo=None)
 
 
 def datetime_to_commitdate(datetime_):
@@ -60,8 +44,13 @@ def datetime_to_commitdate(datetime_):
 
     :param datetime datetime_: datetime object to convert
     """
+    datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
-    return "".join([date_without_tz, COMMIT_TIMEZONE])
+    utcoffset = GITHUB_TZ.utcoffset(datetime_)
+    hours, minutes = divmod(utcoffset.days * 86400 + utcoffset.seconds, 3600)
+
+    return "".join([date_without_tz, "%+03d:%02d" % (hours, minutes)])
+
 
 
 def userdate_to_datetime(user_date):
@@ -73,10 +62,7 @@ def userdate_to_datetime(user_date):
 
     :param str user_date: date string to parse
     """
-    try:
-        return ghdate_to_datetime(user_date)
-    except ValueError:
-        return strptime(user_date, '%Y-%m-%dT%H:%M:%SZ')
+    return parser.parse(user_date).replace(tzinfo=None)
 
 
 def isodate_to_datetime(iso_date):
@@ -84,8 +70,7 @@ def isodate_to_datetime(iso_date):
 
     :param str github_date: date string to parse
     """
-    date_without_tz = iso_date[:-1]
-    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
+    return parser.parse(iso_date).replace(tzinfo=None)
 
 
 def datetime_to_isodate(datetime_):
