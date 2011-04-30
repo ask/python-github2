@@ -13,13 +13,20 @@ GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 GITHUB_TZ = tz.gettz("America/Los_Angeles")
 
+# Operate on naive datetime objects, this is the default for backwards
+# compatibility
+NAIVE = True
+
 
 def ghdate_to_datetime(github_date):
     """Convert Github date string to Python datetime
 
     :param str github_date: date string to parse
     """
-    return parser.parse(github_date).replace(tzinfo=None)
+    parsed = parser.parse(github_date)
+    if NAIVE:
+        parsed = parsed.replace(tzinfo=None)
+    return parsed
 
 
 def datetime_to_ghdate(datetime_):
@@ -27,7 +34,10 @@ def datetime_to_ghdate(datetime_):
 
     :param datetime datetime_: datetime object to convert
     """
-    datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+    if not datetime_.tzinfo:
+        datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+    else:
+        datetime_ = datetime_.astimezone(GITHUB_TZ)
     return datetime_.strftime(GITHUB_DATE_FORMAT)
 
 
@@ -36,7 +46,10 @@ def commitdate_to_datetime(commit_date):
 
     :param str github_date: date string to parse
     """
-    return parser.parse(commit_date).replace(tzinfo=None)
+    parsed = parser.parse(commit_date)
+    if NAIVE:
+        parsed = parsed.replace(tzinfo=None)
+    return parsed
 
 
 def datetime_to_commitdate(datetime_):
@@ -44,7 +57,10 @@ def datetime_to_commitdate(datetime_):
 
     :param datetime datetime_: datetime object to convert
     """
-    datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+    if not datetime_.tzinfo:
+        datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+    else:
+        datetime_ = datetime_.astimezone(GITHUB_TZ)
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     utcoffset = GITHUB_TZ.utcoffset(datetime_)
     hours, minutes = divmod(utcoffset.days * 86400 + utcoffset.seconds, 3600)
@@ -62,7 +78,10 @@ def userdate_to_datetime(user_date):
 
     :param str user_date: date string to parse
     """
-    return parser.parse(user_date).replace(tzinfo=None)
+    parsed = parser.parse(user_date)
+    if NAIVE:
+        parsed = parsed.replace(tzinfo=None)
+    return parsed
 
 
 def isodate_to_datetime(iso_date):
@@ -70,7 +89,11 @@ def isodate_to_datetime(iso_date):
 
     :param str github_date: date string to parse
     """
-    return parser.parse(iso_date).replace(tzinfo=None)
+    parsed = parser.parse(iso_date)
+    if NAIVE:
+        parsed = parsed.replace(tzinfo=None)
+    return parsed
+
 
 
 def datetime_to_isodate(datetime_):
@@ -78,7 +101,11 @@ def datetime_to_isodate(datetime_):
 
     :param str datetime_: datetime object to convert
     """
-    return "%sZ" % datetime_.isoformat()
+    if not datetime_.tzinfo:
+        datetime_ = datetime_.replace(tzinfo=tz.tzutc())
+    else:
+        datetime_ = datetime_.astimezone(tz.tzutc())
+    return "%sZ" % datetime_.isoformat()[:-6]
 
 
 class AuthError(Exception):
