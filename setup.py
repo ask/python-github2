@@ -29,6 +29,7 @@ setup(
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
     scripts=['github2/bin/github_manage_collaborators'],
+    setup_requires=["sphinxcontrib-cheeseshop"],
     install_requires=install_requires,
     zip_safe=True,
     test_suite="tests",

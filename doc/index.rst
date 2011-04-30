@@ -6,6 +6,10 @@
 :mod:`python-github2` - Github API v2 library for Python
 ========================================================
 
+.. pypi-release:: github2
+   :prefix: Download
+   :class: sidebar
+
 This is an experimental python library implementing all of the features
 available in version 2 of the `Github API`_.
 

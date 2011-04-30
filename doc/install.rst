@@ -19,10 +19,7 @@ following::
     $ python setup.py install --user  # to install for a single user
     # python setup.py install  # to install in Python's site-packages
 
-``python-github2`` depends on httplib2_, an excellent package by Joe Gregorio
-for handling HTTP sessions.  simplejson_ is also required when using
-``python-github2`` with Python 2.4 or 2.5.  If you install via ``pip`` or
+``python-github2`` depends on :pypi:`httplib2`, an excellent package by Joe
+Gregorio for handling HTTP sessions.  :pypi:`simplejson` is also required when
+using ``python-github2`` with Python 2.4 or 2.5.  If you install via ``pip`` or
 ``easy_install`` the dependencies should be installed automatically for you.
-
-.. _httplib2: http://code.google.com/p/httplib2/
-.. _simplejson: http://pypi.python.org/pypi/simplejson/
