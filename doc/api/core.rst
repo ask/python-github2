@@ -15,6 +15,7 @@ Core
 .. autofunction:: datetime_to_commitdate
 
 .. autofunction:: requires_auth
+.. autofunction:: enhanced_by_auth
 
 .. autofunction:: doc_generator
 

@@ -68,6 +68,19 @@ def requires_auth(f):
     return wrapped
 
 
+def enhanced_by_auth(f):
+    """Decorator to mark a function as enhanced by authentication
+
+    Sets a ``enhanced_by_auth`` attribute on functions, for use in
+    introspection.
+
+    :param func f: Function to wrap
+    """
+    f.enhanced_by_auth = True
+    f.__doc__ += """\n.. note:: This call is enhanced with authentication"""
+    return f
+
+
 class GithubCommand(object):
 
     def __init__(self, request):
