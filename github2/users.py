@@ -1,5 +1,5 @@
 from github2.core import BaseData, GithubCommand, Attribute
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 
 class User(BaseData):
@@ -42,7 +42,7 @@ class Users(GithubCommand):
 
         :param str query: term to search for
         """
-        return self.get_values("search", urllib.quote_plus(query),
+        return self.get_values("search", urllib.parse.quote_plus(query),
                                filter="users", datatype=User)
 
     def search_by_email(self, query):

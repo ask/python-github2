@@ -6,12 +6,12 @@ try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
-from urlparse import (urlsplit, urlunsplit)
+from urllib.parse import (urlsplit, urlunsplit)
 try:
-    from urlparse import parse_qs
+    from urllib.parse import parse_qs
 except ImportError:
     from cgi import parse_qs
-from urllib import urlencode, quote
+from urllib.parse import urlencode, quote
 
 
 #: Hostname for API access
@@ -66,11 +66,11 @@ class GithubRequest(object):
         return urlencode(post_data)
 
     def get(self, *path_components):
-        path_components = filter(None, path_components)
+        path_components = [_f for _f in path_components if _f]
         return self.make_request("/".join(path_components))
 
     def post(self, *path_components, **extra_post_data):
-        path_components = filter(None, path_components)
+        path_components = [_f for _f in path_components if _f]
         return self.make_request("/".join(path_components), extra_post_data,
             method="POST")
 
@@ -111,7 +111,7 @@ class GithubRequest(object):
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))
-        json = simplejson.loads(content)
+        json = simplejson.loads(content.decode())
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])
 

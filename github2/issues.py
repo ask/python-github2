@@ -1,4 +1,4 @@
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
 
@@ -47,7 +47,7 @@ class Issues(GithubCommand):
         :param str state: can be either ``open`` or ``closed``.
         """
         return self.get_values("search", project, state,
-                               urllib.quote_plus(term), filter="issues",
+                               urllib.parse.quote_plus(term), filter="issues",
                                datatype=Issue)
 
     def list(self, project, state="open"):
