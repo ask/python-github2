@@ -31,7 +31,8 @@ class HttpMock(object):
             headers = httplib2.Response(response)
             return (headers, body)
         else:
-            return (httplib2.Response({"status": "404"}), "")
+            return (httplib2.Response({"status": "404"}),
+                    "Resource unavailable from test data store")
 
 
 class ReprTests(unittest.TestCase):
