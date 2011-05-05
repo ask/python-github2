@@ -32,7 +32,8 @@ setup(
     setup_requires=["sphinxcontrib-cheeseshop"],
     install_requires=install_requires,
     zip_safe=True,
-    test_suite="tests",
+    test_suite="nose.collector",
+    tests_require=['nose'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
