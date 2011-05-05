@@ -1,6 +1,7 @@
 import urllib
 
-from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
+from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
+                          requires_auth)
 
 
 class Issue(BaseData):
@@ -88,6 +89,7 @@ class Issues(GithubCommand):
         return self.get_value("show", project, str(number),
                               filter="issue", datatype=Issue)
 
+    @requires_auth
     def open(self, project, title, body):
         """Open up a new issue.
 
@@ -99,6 +101,7 @@ class Issues(GithubCommand):
         return self.get_value("open", project, post_data=issue_data,
                               filter="issue", datatype=Issue)
 
+    @requires_auth
     def close(self, project, number):
         """Close an issue
 
@@ -108,6 +111,7 @@ class Issues(GithubCommand):
         return self.get_value("close", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
 
+    @requires_auth
     def reopen(self, project, number):
         """Reopen a closed issue
 
@@ -119,6 +123,7 @@ class Issues(GithubCommand):
         return self.get_value("reopen", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
 
+    @requires_auth
     def edit(self, project, number, title, body):
         """Edit an existing issue
 
@@ -134,6 +139,7 @@ class Issues(GithubCommand):
                               post_data=issue_data, filter="issue",
                               datatype=Issue)
 
+    @requires_auth
     def add_label(self, project, number, label):
         """Add a label to an issue
 
@@ -144,6 +150,7 @@ class Issues(GithubCommand):
         return self.make_request("label/add", project, label, str(number),
                                  filter="labels", method="POST")
 
+    @requires_auth
     def remove_label(self, project, number, label):
         """Remove an existing label from an issue
 
@@ -154,6 +161,7 @@ class Issues(GithubCommand):
         return self.make_request("label/remove", project, label, str(number),
                                  filter="labels", method="POST")
 
+    @requires_auth
     def comment(self, project, number, comment):
         """Comment on an issue.
 

@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import (BaseData, GithubCommand, Attribute, requires_auth)
 import urllib
 
 
@@ -73,6 +73,7 @@ class Users(GithubCommand):
         """
         return self.make_request("show", username, "following", filter="users")
 
+    @requires_auth
     def follow(self, other_user):
         """Follow a Github user
 
@@ -80,6 +81,7 @@ class Users(GithubCommand):
         """
         return self.make_request("follow", other_user)
 
+    @requires_auth
     def unfollow(self, other_user):
         """Unfollow a Github user
 
