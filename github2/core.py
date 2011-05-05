@@ -42,6 +42,32 @@ def datetime_to_commitdate(datetime_):
     return "".join([date_without_tz, GITHUB_TIMEZONE])
 
 
+class AuthError(Exception):
+    """Requires authentication"""
+
+
+def requires_auth(f):
+    """Decorate to check a function call for authentication
+
+    Sets a ``requires_auth`` attribute on functions, for use in introspection.
+
+    :param func f: Function to wrap
+    :raises AuthError: If function called without an authenticated session
+    """
+    # When Python 2.4 support is dropped move straight to functools.wraps, don't
+    # pass go and don't collect $200.
+    def wrapper(self, *args, **kwargs):
+        if not self.request.access_token and not self.request.api_token:
+            raise AuthError("%r requires an authenticated session"
+                            % f.__name__)
+        return f(self, *args, **kwargs)
+    wrapped = wrapper
+    wrapped.__name__ = f.__name__
+    wrapped.__doc__ = f.__doc__ + """\n.. warning:: Requires authentication"""
+    wrapped.requires_auth = True
+    return wrapped
+
+
 class GithubCommand(object):
 
     def __init__(self, request):
