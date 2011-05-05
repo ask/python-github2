@@ -104,11 +104,11 @@ class GithubRequest(object):
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))
-        json = json.loads(content.decode())
-        if json.get("error"):
-            raise self.GithubError(json["error"][0]["error"])
+        json_content = json.loads(content.decode())
+        if json_content.get("error"):
+            raise self.GithubError(json_content["error"][0]["error"])
 
-        return json
+        return json_content
 
     @property
     def http_headers(self):
