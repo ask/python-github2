@@ -2,16 +2,9 @@ import datetime
 import sys
 import time
 import httplib2
-try:
-    import json as simplejson  # For Python 2.6
-except ImportError:
-    import simplejson
-from urllib.parse import (urlsplit, urlunsplit)
-try:
-    from urllib.parse import parse_qs
-except ImportError:
-    from cgi import parse_qs
-from urllib.parse import urlencode, quote
+import json
+from urllib.parse import (urlsplit, urlunsplit, pasrse_qa,
+        urlencode, quote)
 
 
 #: Hostname for API access
@@ -111,7 +104,7 @@ class GithubRequest(object):
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))
-        json = simplejson.loads(content.decode())
+        json = json.loads(content.decode())
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])
 
