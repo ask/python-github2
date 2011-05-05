@@ -3,7 +3,7 @@ import sys
 import time
 import httplib2
 import json
-from urllib.parse import (urlsplit, urlunsplit, pasrse_qa,
+from urllib.parse import (urlsplit, urlunsplit, parse_qa,
         urlencode, quote)
 
 
