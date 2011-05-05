@@ -1,4 +1,5 @@
-from github2.core import (BaseData, GithubCommand, Attribute, requires_auth)
+from github2.core import (BaseData, GithubCommand, Attribute, enhanced_by_auth,
+                          requires_auth)
 import urllib
 
 
@@ -52,6 +53,7 @@ class Users(GithubCommand):
         """
         return self.get_value("email", query, filter="user", datatype=User)
 
+    @enhanced_by_auth
     def show(self, username):
         """Get information on Github user
 
