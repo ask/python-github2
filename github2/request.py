@@ -2,16 +2,9 @@ import datetime
 import sys
 import time
 import httplib2
-try:
-    import json as simplejson  # For Python 2.6
-except ImportError:
-    import simplejson
-from urlparse import (urlsplit, urlunsplit)
-try:
-    from urlparse import parse_qs
-except ImportError:
-    from cgi import parse_qs
-from urllib import urlencode, quote
+import json
+from urllib.parse import (urlsplit, urlunsplit, parse_qs,
+        urlencode, quote)
 
 
 #: Hostname for API access
@@ -66,11 +59,11 @@ class GithubRequest(object):
         return urlencode(post_data)
 
     def get(self, *path_components):
-        path_components = filter(None, path_components)
+        path_components = [_f for _f in path_components if _f]
         return self.make_request("/".join(path_components))
 
     def post(self, *path_components, **extra_post_data):
-        path_components = filter(None, path_components)
+        path_components = [_f for _f in path_components if _f]
         return self.make_request("/".join(path_components), extra_post_data,
             method="POST")
 
@@ -111,11 +104,11 @@ class GithubRequest(object):
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))
-        json = simplejson.loads(content)
-        if json.get("error"):
-            raise self.GithubError(json["error"][0]["error"])
+        json_content = json.loads(content.decode())
+        if json_content.get("error"):
+            raise self.GithubError(json_content["error"][0]["error"])
 
-        return json
+        return json_content
 
     @property
     def http_headers(self):

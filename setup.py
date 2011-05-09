@@ -9,9 +9,6 @@ import github2
 
 
 install_requires = ['httplib2', ]
-# simplejson is included in the standard library since Python 2.6 as json.
-if sys.version_info[:2] < (2, 6):
-    install_requires.append('simplejson >= 2.0.9')
 
 long_description = (codecs.open('README.rst', "r", "utf-8").read()
     + "\n" + codecs.open('NEWS.rst', "r", "utf-8").read())
@@ -28,8 +25,8 @@ setup(
     keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
-    scripts=['github2/bin/github_manage_collaborators'],
-    setup_requires=["sphinxcontrib-cheeseshop"],
+#    scripts=['github2/bin/github_manage_collaborators'],
+#    setup_requires=["sphinxcontrib-cheeseshop"],
     install_requires=install_requires,
     zip_safe=True,
     test_suite="nose.collector",
@@ -40,11 +37,9 @@ setup(
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.4",
-        "Programming Language :: Python :: 2.5",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.0",
+        "Programming Language :: Python :: 3.1",
+        "Programming Language :: Python :: 3.2",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
     ],
