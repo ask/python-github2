@@ -20,6 +20,7 @@ class Organization(BaseData):
     public_gist_count = Attribute("Organization's number of active public gists.")
     public_repo_count = Attribute("Organization's number of active repositories.")
     permission = Attribute("Permissions within this organization.")
+    plan = Attribute("GitHub plan for this organization.")
 
     def is_authenticated(self):
         return self.plan is not None
