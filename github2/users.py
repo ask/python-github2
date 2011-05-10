@@ -55,6 +55,9 @@ class Users(GithubCommand):
     def show(self, username):
         """Get information on Github user
 
+        if ``username`` is ``None`` or an empty string information for the
+        currently authenticated user is returned.
+
         :param str username: Github user name
         """
         return self.get_value("show", username, filter="user", datatype=User)
