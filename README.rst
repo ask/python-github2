@@ -13,8 +13,10 @@ available in version 2 of the `Github API`_.
 future.
 
 See the ``doc/`` directory for installation instructions and usage information.
+If you prefer you can also read the `documentation online`_.
 
 .. _Github API: http://develop.github.com/
+.. _documentation online: http://packages.python.org/github2
 
 License
 =======
