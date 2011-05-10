@@ -32,7 +32,9 @@ setup(
     keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
-    scripts=['github2/bin/github_manage_collaborators'],
+    entry_points={
+        'console_scripts': ['github_manage_collaborators = github2.bin.manage_collaborators:main', ]
+    },
     install_requires=install_requires,
     zip_safe=True,
     test_suite="nose.collector",

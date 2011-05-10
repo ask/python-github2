@@ -49,8 +49,10 @@ def parse_commandline():
     return options, args
 
 
-def main(options, args):
+def main():
     """This implements the actual program functionality"""
+
+    options, args = parse_commandline()
 
     if not options.account:
         options.account = options.login
@@ -78,4 +80,4 @@ def main(options, args):
 
 
 if __name__ == '__main__':
-    main(*parse_commandline())
+    main()
