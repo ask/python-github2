@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 from github2.repositories import Repository
 from github2.teams import Team
 from github2.users import User
@@ -6,13 +6,21 @@ import urllib
 
 
 class Organization(BaseData):
-    id = Attribute("The team id")
-    name = Attribute("The full name of the organization")
-    blog = Attribute("The users blog")
-    location = Attribute("Location of the user")
-    gravatar_id = Attribute("Gravatar ID")
-    login = Attribute("The login username")
-    email = Attribute("The users e-mail address")
+    id = Attribute("The organization id.")
+    name = Attribute("The full name of the organization.")
+    blog = Attribute("The organization's blog.")
+    location = Attribute("Location of the organization.")
+    gravatar_id = Attribute("Gravatar ID.")
+    login = Attribute("The login username.")
+    email = Attribute("The organization's e-mail address.")
+    company = Attribute("The organization's company name.")
+    created_at = DateAttribute("The date the organization was created.",
+                               format="commit")
+    following_count = Attribute("Number of users the organization is following.")
+    followers_count = Attribute("Number of users following this organization.")
+    public_gist_count = Attribute("Organization's number of active public gists.")
+    public_repo_count = Attribute("Organization's number of active repositories.")
+    permission = Attribute("Permissions within this organization.")
 
     def is_authenticated(self):
         return self.plan is not None
