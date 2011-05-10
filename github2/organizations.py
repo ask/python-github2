@@ -2,7 +2,6 @@ from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 from github2.repositories import Repository
 from github2.teams import Team
 from github2.users import User
-import urllib
 
 
 class Organization(BaseData):
@@ -63,13 +62,13 @@ class Organizations(GithubCommand):
 
         :param str organization: organization to list members for
         """
-        return self.get_values(organization, 'public_members',
-                               filter="users", datatype=User)
+        return self.get_values(organization, 'public_members', filter="users",
+                               datatype=User)
 
     def teams(self, organization):
         """Get list of teams in an organization
 
         :param str organization: organization to list teams for
         """
-        return self.get_values(organization, 'teams',
-                               filter="teams", datatype=Team)
+        return self.get_values(organization, 'teams', filter="teams",
+                               datatype=Team)

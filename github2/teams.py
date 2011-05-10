@@ -1,6 +1,7 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import BaseData, GithubCommand, Attribute
 from github2.repositories import Repository
 from github2.users import User
+
 
 class Team(BaseData):
     id = Attribute("The team id")
@@ -9,6 +10,7 @@ class Team(BaseData):
 
     def __repr__(self):
         return "<Team: %s>" % self.name
+
 
 class Teams(GithubCommand):
     domain = "teams"
