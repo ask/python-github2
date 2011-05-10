@@ -6,6 +6,8 @@ API documentation
 
    client
    users
+   organizations
+   teams
    issues
    network
    repos
