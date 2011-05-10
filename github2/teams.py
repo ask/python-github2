@@ -36,26 +36,26 @@ class Teams(GithubCommand):
         return self.get_values(str(team_id), "repositories",
                                filter="repositories", datatype=Repository)
 
-    def add_repository(self, team_id, repository):
-        """Add a repository to a team
+    def add_project(self, team_id, project):
+        """Add a project to a team
 
         :param int team_id: team to add repository to
-        :param str repository: GitHub project
+        :param str project: GitHub project
         """
-        if isinstance(repository, Repository):
-            repository = repository.project
+        if isinstance(project, Repository):
+            project = project.project
         return self.make_request(str(team_id), "repositories", method="POST",
-                                 post_data={'name': repository},
+                                 post_data={'name': project},
                                  filter="repositories", datatype=Repository)
 
-    def remove_repository(self, team_id, repository):
-        """Remove a repository to a team
+    def remove_project(self, team_id, project):
+        """Remove a project to a team
 
         :param int team_id: team to remove project from
-        :param str repository: GitHub project
+        :param str project: GitHub project
         """
-        if isinstance(repository, Repository):
-            repository = repository.project
+        if isinstance(project, Repository):
+            project = project.project
         return self.make_request(str(team_id), "repositories", method="DELETE",
-                                 post_data={'name': repository},
+                                 post_data={'name': project},
                                  filter="repositories", datatype=Repository)
