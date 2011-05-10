@@ -21,9 +21,6 @@ class Organization(BaseData):
     public_repo_count = Attribute("Organization's number of active repositories.")
     permission = Attribute("Permissions within this organization.")
 
-    def is_authenticated(self):
-        return self.plan is not None
-
     def __repr__(self):
         return "<Organization: %s>" % (self.login)
 
