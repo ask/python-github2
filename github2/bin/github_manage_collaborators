@@ -22,7 +22,7 @@ def parse_commandline():
     parser.description = __doc__
 
     parser.set_usage('usage: %prog [options] (list|add|remove) [collaborator].'
-                     'Try %prog --help for details.')
+                     '\nTry %prog --help for details.')
     parser.add_option('-d', '--debug', action='store_true',
                       help='Enables debugging mode')
     parser.add_option('-l', '--login',
