@@ -2,6 +2,7 @@ import datetime
 import sys
 import time
 import httplib2
+import socks
 try:
     import json as simplejson  # For Python 2.6
 except ImportError:
