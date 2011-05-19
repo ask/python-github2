@@ -2,11 +2,14 @@ import datetime
 import sys
 import time
 import httplib2
-import socks
 try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
+try:
+    import socks # SOCKS support may not be installed
+except ImportError:
+    socks = None
 from urlparse import (urlsplit, urlunsplit)
 try:
     from urlparse import parse_qs
@@ -55,6 +58,8 @@ class GithubRequest(object):
             }
         if proxy_host is None:
             self._http = httplib2.Http(cache=cache)
+        elif proxy_host and socks is None:
+            raise GithubError('Proxy support missing. Install a python SOCKS library.')
         else:
             self._http = httplib2.Http(proxy_info=httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP, 
                                                                      proxy_host, proxy_port), 
