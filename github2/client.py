@@ -42,7 +42,8 @@ class Github(object):
                                      debug=self.debug,
                                      requests_per_second=requests_per_second,
                                      access_token=access_token, cache=cache,
-                                     proxy_host=proxy_host, proxy_port=proxy_port)
+                                     proxy_host=proxy_host,
+                                     proxy_port=proxy_port)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

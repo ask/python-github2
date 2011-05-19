@@ -7,7 +7,7 @@ try:
 except ImportError:
     import simplejson
 try:
-    import socks # SOCKS support may not be installed
+    import socks  # SOCKS support may not be installed
 except ImportError:
     socks = None
 from urlparse import (urlsplit, urlunsplit)
@@ -59,11 +59,12 @@ class GithubRequest(object):
         if proxy_host is None:
             self._http = httplib2.Http(cache=cache)
         elif proxy_host and socks is None:
-            raise GithubError('Proxy support missing. Install a python SOCKS library.')
+            raise GithubError('Proxy support missing.  '
+                              'Install a Python SOCKS library.')
         else:
-            self._http = httplib2.Http(proxy_info=httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP, 
-                                                                     proxy_host, proxy_port), 
-                                       cache=cache)
+            proxy_info = httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP,
+                                            proxy_host, proxy_port),
+            self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
 
     def encode_authentication_data(self, extra_post_data):
         if self.access_token:
