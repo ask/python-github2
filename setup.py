@@ -13,6 +13,10 @@ install_requires = ['httplib2', ]
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
+extra = {}
+if sys.version_info >= (3,):
+    extra['use_2to3'] = True
+
 long_description = (codecs.open('README.rst', "r", "utf-8").read()
     + "\n" + codecs.open('NEWS.rst', "r", "utf-8").read())
 
@@ -28,7 +32,9 @@ setup(
     keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
-    scripts=['github2/bin/github_manage_collaborators'],
+    entry_points={
+        'console_scripts': ['github_manage_collaborators = github2.bin.manage_collaborators:main', ]
+    },
     install_requires=install_requires,
     zip_safe=True,
     test_suite="nose.collector",
@@ -47,7 +53,11 @@ setup(
         "Programming Language :: Python :: 2.5",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.1",
+        "Programming Language :: Python :: 3.2",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
     ],
+    **extra
 )

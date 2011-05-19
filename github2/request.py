@@ -1,4 +1,5 @@
 import datetime
+import re
 import sys
 import time
 import httplib2
@@ -20,6 +21,20 @@ from urllib import urlencode, quote
 
 #: Hostname for API access
 GITHUB_URL = "https://github.com"
+
+
+def charset_from_headers(headers):
+    """Parse charset from headers
+
+    :param httplib2.Response headers: Request headers
+    :return: Defined encoding, or default to ASCII
+    """
+    match = re.search("charset=([^ ;]+)", headers.get('content-type', ""))
+    if match:
+        charset = match.groups()[0]
+    else:
+        charset = "ascii"
+    return charset
 
 
 class GithubError(Exception):
@@ -133,7 +148,7 @@ class GithubRequest(object):
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))
-        json = simplejson.loads(content)
+        json = simplejson.loads(content.decode(charset_from_headers(response)))
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])
 
