@@ -1,6 +1,11 @@
 # -*- coding: latin-1 -*-
 import os
+import sys
 import unittest
+
+# Forcibly insert path for `setup.py build` output, so that we import from the
+# ``2to3`` converted sources
+sys.path.insert(0, 'build/lib')
 
 from email import message_from_file
 
