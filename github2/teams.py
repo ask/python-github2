@@ -4,6 +4,7 @@ from github2.users import User
 
 
 class Team(BaseData):
+    """.. versionadded:: 0.4.0"""
     id = Attribute("The team id")
     name = Attribute("Name of the team")
     permission = Attribute("Permissions of the team")
@@ -13,6 +14,7 @@ class Team(BaseData):
 
 
 class Teams(GithubCommand):
+    """.. versionadded:: 0.4.0"""
     domain = "teams"
 
     def show(self, team_id):
