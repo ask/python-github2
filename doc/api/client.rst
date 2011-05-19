@@ -42,7 +42,7 @@ in::
     >>> github = Github(username="ask", api_token=".......",
     ...                 requests_per_second=1)
 
-If you are usign the application from behind a HTTP proxy, SOCKS proxy support
+If you are using the application from behind a HTTP proxy, SOCKS proxy support
 is optional. You should have some python SOCKS support installed or else it will
 fail with a useful error message. ::pypi::``SocksiPy-branch`` is what the optional
 support was tested against. Pass in the proxy_host and proxy_port settings to 
