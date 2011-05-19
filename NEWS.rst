@@ -3,6 +3,19 @@ User-visible changes
 
 .. contents::
 
+``master`` branch
+-----------------
+
+* Python 3 compatibility
+* The ``github_manage_collaborators`` script will be installed using
+  ``entry_points``, which means there is now a run-time dependency on
+  distribute_
+* Support for managing `teams and organisations`_
+* HTTP proxy support
+
+.. _teams and organisations: http://develop.github.com/p/orgs.html
+.. _distribute: http://pypi.python.org/pypi/distribute
+
 0.3.0 - 2011-04-13
 ------------------
 
