@@ -24,3 +24,4 @@ following::
 Gregorio for handling HTTP sessions.  :pypi:`simplejson` is also required when
 using :mod:`github2` with Python 2.4 or 2.5.  If you install via ``pip`` or
 ``easy_install`` the dependencies should be installed automatically for you.
+:pypi:`SocksiPy-branch` is an optional dependency if proxy support is needed.
