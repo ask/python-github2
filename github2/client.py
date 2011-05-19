@@ -10,7 +10,8 @@ from github2.teams import Teams
 class Github(object):
 
     def __init__(self, username=None, api_token=None, debug=False,
-        requests_per_second=None, access_token=None, cache=None):
+        requests_per_second=None, access_token=None, cache=None,
+        proxy_host=None, proxy_port=8080):
         """
         An interface to GitHub's API:
             http://develop.github.com/
@@ -31,13 +32,17 @@ class Github(object):
             or None to disable delays.  The default is to disable delays (for
             backwards compatibility).
         :param str cache: a directory for caching GitHub responses.
+        :param str proxy_host: the hostname for the HTTP proxy, if needed.
+        :param str proxy_port: the hostname for the HTTP proxy, if needed (will
+            default to 8080 if a proxy_host is set and no port is set.
         """
 
         self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
                                      debug=self.debug,
                                      requests_per_second=requests_per_second,
-                                     access_token=access_token, cache=cache)
+                                     access_token=access_token, cache=cache,
+                                     proxy_host=proxy_host, proxy_port=proxy_port)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

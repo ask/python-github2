@@ -6,6 +6,10 @@ try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
+try:
+    import socks # SOCKS support may not be installed
+except ImportError:
+    socks = None
 from urlparse import (urlsplit, urlunsplit)
 try:
     from urlparse import parse_qs
@@ -31,7 +35,7 @@ class GithubRequest(object):
 
     def __init__(self, username=None, api_token=None, url_prefix=None,
             debug=False, requests_per_second=None, access_token=None,
-            cache=None):
+            cache=None, proxy_host=None, proxy_port=None):
         """Make an API request.
 
         :see: :py:class:`github2.client.Github`
@@ -52,7 +56,14 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
-        self._http = httplib2.Http(cache=cache)
+        if proxy_host is None:
+            self._http = httplib2.Http(cache=cache)
+        elif proxy_host and socks is None:
+            raise GithubError('Proxy support missing. Install a python SOCKS library.')
+        else:
+            self._http = httplib2.Http(proxy_info=httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP, 
+                                                                     proxy_host, proxy_port), 
+                                       cache=cache)
 
     def encode_authentication_data(self, extra_post_data):
         if self.access_token:
