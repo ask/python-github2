@@ -13,6 +13,7 @@ import httplib2
 
 from github2.issues import Issue
 from github2.client import Github
+from github2.request import charset_from_headers
 
 
 HTTP_DATA_DIR = "tests/data/"
@@ -32,8 +33,8 @@ class HttpMock(object):
         file = os.path.join(HTTP_DATA_DIR, httplib2.safename(uri))
         if os.path.exists(file):
             response = message_from_file(open(file))
-            body = response.get_payload()
             headers = httplib2.Response(response)
+            body = response.get_payload().encode(charset_from_headers(headers))
             return (headers, body)
         else:
             return (httplib2.Response({"status": "404"}),
@@ -45,7 +46,10 @@ class ReprTests(unittest.TestCase):
 
     def test_issue(self):
         """Issues can have non-ASCII characters in the title."""
-        i = Issue(title=u'abcdé')
+        title = 'abcdé'
+        if sys.version_info[0] == 2:
+            title = title.decode("utf-8")
+        i = Issue(title=title)
         self.assertEqual(str, type(repr(i)))
 
 
