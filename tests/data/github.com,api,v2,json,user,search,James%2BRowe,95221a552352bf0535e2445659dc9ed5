@@ -1,0 +1,14 @@
+status: 304
+x-ratelimit-remaining: 59
+content-location: https://github.com/api/v2/json/user/search/James%2BRowe
+content-length: 847
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "f4b69010d01df911cd62a2c2eef3d71f"
+cache-control: private, max-age=0, must-revalidate
+date: Sun, 22 May 2011 04:42:12 GMT
+content-type: application/json; charset=utf-8
+x-runtime: 10ms
+
+{"users":[{"gravatar_id":"e40de1eb6e8a74cb96b3f07f3994f155","name":"James Rowe","created_at":"2009-03-08T21:53:38Z","location":"Cambridge, UK","public_repo_count":38,"followers":6,"fullname":"James Rowe","username":"JNRowe","language":"Python","id":"user-61381","repos":38,"type":"user","followers_count":6,"pushed":"2011-05-21T06:15:08.703Z","login":"JNRowe","score":4.247995,"record":null,"created":"2009-03-08T21:53:38Z"},{"gravatar_id":"e70f90f2a6985553d18fa39b90d9db6f","name":"James Rowe","created_at":"2008-11-18T10:39:10Z","location":"Guernsey, Channel Islands","public_repo_count":2,"followers":1,"fullname":"James Rowe","language":"Ruby","username":"wooki","id":"user-35166","repos":2,"type":"user","followers_count":1,"pushed":"2011-05-13T19:15:09.524Z","login":"wooki","score":4.247995,"record":null,"created":"2008-11-18T10:39:10Z"}]}

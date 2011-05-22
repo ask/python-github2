@@ -45,3 +45,21 @@ class UserProperties(unittest.TestCase):
 
     def test_following(self):
         assert_equals(len(self.client.users.following('defunkt')), 212)
+
+
+class UserQueries(unittest.TestCase):
+    """Test user querying """
+    def setUp(self):
+        utils.set_http_mock()
+        self.client = Github()
+
+    def tearDown(self):
+        utils.unset_http_mock()
+
+    def test_search(self):
+        assert_equals(repr(self.client.users.search('James Rowe')),
+                      '[<User: JNRowe>, <User: wooki>]')
+
+    def test_search_by_email(self):
+        user = self.client.users.search_by_email('jnrowe@gmail.com')
+        assert_equals(repr(user), '<User: JNRowe>')
