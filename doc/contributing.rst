@@ -11,7 +11,7 @@ contributor.
 Following the simple guidelines below makes it easier to review and integrate
 your changes:
 
-* `PEP 8`_, the Python style guide, should be followed where possible
+* :pep:`8`, the Python style guide, should be followed where possible
 * Adding documentation for new methods and classes is very important
 * Testing your changes with multiple Python versions is fantastically useful, it
   is all too easy to use functionality that exists in only specific Python
@@ -33,8 +33,9 @@ Tests
    patches to increase test coverage are greatly appreciated
 
 The preferred way to run the package's tests is with :pypi:`nose`.
-``nosetests`` provides excellent reporting options and its additional features
-make it invaluable, see the nose_ documentation for usage information.
+``nosetests``, nose's command-line test runner, provides excellent reporting
+options and its additional features make it invaluable, see the nose_
+documentation for usage information.
 
 There is a :pypi:`tox` configuration file included in the repository, you can
 use it to run the tests against multiple Python versions with a single command.
@@ -79,7 +80,6 @@ unfortunately can't be used.
    likely to be comfortable with these already
 
 .. _GitHub: https://github.com/ask/python-github2/
-.. _PEP 8: http://www.python.org/dev/peps/pep-0008/
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _autodoc: http://sphinx.pocoo.org/ext/autodoc.html#module-sphinx.ext.autodoc
 .. _nose: http://somethingaboutorange.com/mrl/projects/nose/

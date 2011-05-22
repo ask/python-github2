@@ -17,7 +17,7 @@
    :prefix: Download
    :class: sidebar
 
-This is an experimental python library implementing all of the features
+This is an experimental Python library implementing all of the features
 available in version 2 of the `Github API`_.
 
 You should read the developer documentation for the `Github API`_ first.

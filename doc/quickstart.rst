@@ -2,7 +2,7 @@ Quickstart
 ==========
 
 Once :mod:`github2` is :doc:`installed <install>` we can open an interactive
-Python session, and perform some basic tasks to familiarise ourselves with the
+Python session and perform some basic tasks to familiarise ourselves with the
 package.
 
 Create an unauthenticated client object::
