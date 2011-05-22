@@ -20,10 +20,10 @@ Core
 
 .. autofunction:: doc_generator
 
-.. autoclass:: GithubCommand
+.. autoclass:: GithubCommand(type)
 
-.. autoclass:: Attribute
+.. autoclass:: Attribute(type)
 
-.. autoclass:: DateAttribute
+.. autoclass:: DateAttribute(type)
 
-.. autoclass:: BaseDataType
+.. autoclass:: BaseDataType(type)
