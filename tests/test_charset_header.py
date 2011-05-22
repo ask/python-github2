@@ -1,10 +1,6 @@
-import sys
+import _setup
 
 from nose.tools import assert_equals
-
-# Forcibly insert path for `setup.py build` output, so that we import from the
-# ``2to3`` converted sources
-sys.path.insert(0, 'build/lib')
 
 from github2.request import charset_from_headers
 
