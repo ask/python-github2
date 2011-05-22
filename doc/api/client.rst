@@ -16,7 +16,7 @@ username and API token, use::
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......")
 
-If you authenticated to GitHub using their OAuth service, pass in the OAuth
+If you authenticated to GitHub using their `OAuth service`_, pass in the OAuth
 access token::
 
     >>> github = Github(access_token="........")
@@ -51,3 +51,5 @@ given, is 8080::
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......",
     ...                 proxy_host="my.proxy.com", proxy_port=9000)
+
+.. _OAuth service: http://develop.github.com/p/oauth.html
