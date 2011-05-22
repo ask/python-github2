@@ -42,6 +42,21 @@ The configuration file also includes targets for testing the documentation.  The
 tox_ documentation includes a fantastic number of examples on how to use it, and
 advice on adding new testing targets.
 
+Notes
+-----
+
+:mod:`github2` supports Python 2.4-3.2, so some attention to compatibility
+between Python releases needs to be made when writing code.
+
+The official Python docs provide a fantastically useful `index of changes`_
+between versions.
+
+.. note::
+   If you don't have access to multiple releases of Python it is still possible
+   to contribute.  However, it may take a little longer to merge your pull
+   request if additional work needs to be done to make the code compatible with
+   all the supported Python releases.
+
 .. todo::
    Add topic branches and pull request usage examples, but most git users are
    likely to be comfortable with these already
@@ -52,3 +67,4 @@ advice on adding new testing targets.
 .. _autodoc: http://sphinx.pocoo.org/ext/autodoc.html#module-sphinx.ext.autodoc
 .. _nose: http://somethingaboutorange.com/mrl/projects/nose/
 .. _tox: http://pypi.python.org/pypi/tox/
+.. _index of changes: http://docs.python.org/whatsnew/index.html
