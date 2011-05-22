@@ -1,0 +1,14 @@
+status: 304
+x-ratelimit-remaining: 58
+content-location: https://github.com/api/v2/json/user/show/defunkt/following
+connection: keep-alive
+content-length: 2286
+server: nginx/0.7.67
+x-runtime: 26ms
+x-ratelimit-limit: 60
+etag: "f2fb743e37fd58a65bd0b1eb2f4125ab"
+cache-control: private, max-age=0, must-revalidate
+date: Sun, 22 May 2011 04:32:09 GMT
+content-type: application/json; charset=utf-8
+
+{"users":["pjhyett","mojombo","francois","topfunky","alexcharlie","atmos","automatthew","jnunemaker","sco","jimweirich","parabuzzle","choonkeat","technoweenie","timburks","guitsaru","jeresig","pieter","3n","ryanking","boboroshi","eventualbuddha","freels","mattly","kballard","seaofclouds","nakajima","dustym","therealadam","hoverbird","monde","cnix","ryanb","josh","willcodeforfoo","rsanheim","jnewland","bmizerany","KirinDave","hornbeck","Caged","takeo","vanpelt","drnic","gpbmike","JackDanger","kvnsmth","rubyist","eschulte","jbarnette","smtlaissezfaire","foca","tekkub","jacobian","thwarted","leah","joestump","kastner","marcel","bs","m","BenWard","sstephenson","ericflo","digg","binarylogic","CodeOfficer","mtodd","karnowski","atebits","tmm1","mmalone","stephencelis","mschrag","verbal","qrush","jmhodges","tomaw","maddox","cliffmoon","jonforums","besquared","antirez","miyagawa","jquery","facebook","brianmario","simonw","rtomayko","kneath","jamis","brosner","chrisdrackett","jchris","jezdez","alex","gregnewman","mdirolf","tuaw","harperreed","threedaymonk","technomancy","rackspace","37signals","Sutto","brianjlandau","slact","pauldix","brynary","joshknowles","sd","trotter","fhwang","robhudson","ericholscher","idangazit","justinlilly","quirkey","rcrowley","bitprophet","mitsuhiko","malcolmt","djangrrl","markpasc","adamwiggins","peterc","al3x","mnot","adoy","fredreichbier","juvenn","jtauber","stevedekorte","davglass","trustthevote","ice799","DrewDouglass","andreasronge","dbr","bry4n","ushahidi","jpf","trek","jrk","mcarter","toastdriven","eric","palewire","thedaniel","ry","jessegrosjean","ultrasaurus","sarahmei","palm","notahat","tinymce","schacon","blackwinter","merlinmann","joehewitt","CaptainSqually","Jaymon","square","techcrunch","yahoo","sixapart","LukasRos","adamstac","pengwynn","brandonaaron","holman","evaryont","Tim-Smart","mkhl","mustache","chneukirchen","sr","leafychat","penny-arcade","adamsanderson","joericioppo","rupa","kennethreitz","raycmorgan","jed","consti","ericdwhite","ianb","eston","rojotek","eddit","tapajos","funkatron","joshaber","rentzsch","adamv","nedap","bryanveloso","rodjek","peff","luckiestmonkey","amiridis","frogandcode","karmi","jashkenas","igrigorik","bokowski","marijnh","judofyr","zbrock","quentinberder","kevinsawicki","bleikamp"]}

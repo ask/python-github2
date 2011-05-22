@@ -2,7 +2,7 @@ import _setup
 
 import unittest
 
-from nose.tools import assert_equals
+from nose.tools import (assert_equals, assert_true)
 
 import utils
 
@@ -39,3 +39,9 @@ class UserProperties(unittest.TestCase):
         assert_equals(user.id, 2)
         assert_equals(user.public_gist_count, 277)
         assert_equals(user.public_repo_count, 90)
+
+    def test_followers(self):
+        assert_equals(len(self.client.users.followers('defunkt')), 2593)
+
+    def test_following(self):
+        assert_equals(len(self.client.users.following('defunkt')), 212)
