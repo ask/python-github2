@@ -1,0 +1,12 @@
+status: 404
+content-location: https://github.com/api/v2/json/commits/list/kennethreitz/osxpython.org/master
+x-runtime: 24ms
+content-length: 21
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+cache-control: no-cache
+date: Sun, 22 May 2011 20:40:50 GMT
+content-type: application/json; charset=utf-8
+
+{"error":"Not Found"}

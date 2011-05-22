@@ -2,7 +2,7 @@ import _setup
 
 import sys
 
-from nose.tools import assert_equals
+from nose.tools import (assert_equals, assert_false)
 
 import utils
 
@@ -34,3 +34,21 @@ class CommitsQueries(utils.HttpMockTestCase):
         assert_equals(len(commits), 35)
         assert_equals(commits[0].id,
                 '482f657443df4b701137a3025ae08476cddd2b7d')
+
+    def test_list_repo_with_dot(self):
+        """GitHub returns error listing commits in repos containing '.'
+
+        The purpose of this test is to tell us when this issue is fixed
+        upstream.
+        """
+        try:
+            commits = self.client.commits.list('kennethreitz/osxpython.org')
+        except RuntimeError:
+            # The hoop jumping here is for Python 2 & 3 compatibility, it is
+            # also good a sign it may be time to use 2to3 on the tests.
+            e = sys.exc_info()[1]
+            if """'{"error":"Not Found"}'""" not in e.args[0]:
+                raise
+            commits = None
+        assert_false(commits,
+                     "Listing commits with '.' in name is fixed upstream!")
