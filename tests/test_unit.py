@@ -1,42 +1,14 @@
 # -*- coding: latin-1 -*-
-import os
-import sys
-import unittest
 
 import _setup
 
-from email import message_from_file
-
-import httplib2
+import sys
+import unittest
 
 from github2.issues import Issue
 from github2.client import Github
-from github2.request import charset_from_headers
 
-
-HTTP_DATA_DIR = "tests/data/"
-
-
-class HttpMock(object):
-    """Simple Http mock that returns saved entries
-
-    Implementation tests should never span network boundaries
-    """
-
-    def __init__(self, cache=None, timeout=None, proxy_info=None):
-        pass
-
-    def request(self, uri, method='GET', body=None, headers=None,
-                redirections=5, connection_type=None):
-        file = os.path.join(HTTP_DATA_DIR, httplib2.safename(uri))
-        if os.path.exists(file):
-            response = message_from_file(open(file))
-            headers = httplib2.Response(response)
-            body = response.get_payload().encode(charset_from_headers(headers))
-            return (headers, body)
-        else:
-            return (httplib2.Response({"status": "404"}),
-                    "Resource unavailable from test data store")
+import utils
 
 
 class ReprTests(unittest.TestCase):
@@ -54,11 +26,10 @@ class ReprTests(unittest.TestCase):
 class RateLimits(unittest.TestCase):
     """Test API rate-limitting"""
     def setUp(self):
-        self.old_httplib2 = httplib2.Http
-        httplib2.Http = HttpMock
+        utils.set_http_mock()
 
     def tearDown(self):
-        httplib2.Http = self.old_httplib2
+        utils.unset_http_mock()
 
     def test_delays(self):
         """Test call delay is at least one second"""
