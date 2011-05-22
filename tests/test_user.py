@@ -2,7 +2,7 @@ import _setup
 
 import unittest
 
-from nose.tools import (assert_equals, assert_true)
+from nose.tools import (assert_equals, assert_false, assert_true)
 
 import utils
 
@@ -69,3 +69,20 @@ class UserQueries(unittest.TestCase):
     def test_search_by_email(self):
         user = self.client.users.search_by_email('jnrowe@gmail.com')
         assert_equals(repr(user), '<User: JNRowe>')
+
+
+class UserMethods(unittest.TestCase):
+    def setUp(self):
+        utils.set_http_mock()
+        self.client = Github()
+
+    def tearDown(self):
+        utils.unset_http_mock()
+
+    def test_follow(self):
+        result = self.client.users.follow('defunkt')
+        assert_true('defunkt' in result['users'])
+
+    def test_unfollow(self):
+        result = self.client.users.unfollow('defunkt')
+        assert_false('defunkt' in result['users'])

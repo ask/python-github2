@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 58
+content-location: http://github.com/api/v2/json/user/unfollow/defunkt
+x-runtime: 23ms
+content-length: 53
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "45a6fa1730ba70b40ccd595130b2390e"
+cache-control: private, max-age=0, must-revalidate
+date: Mon, 11 Apr 2011 14:46:22 GMT
+content-type: application/json; charset=utf-8
+
+{"users":["c9s","mitsuhiko","seemant","ask","tpope"]}
