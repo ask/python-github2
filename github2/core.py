@@ -35,7 +35,7 @@ def ghdate_to_datetime(github_date):
 def datetime_to_ghdate(datetime_):
     """Convert Python datetime to Github date string
 
-    :param str datetime_: datetime object to convert
+    :param datetime datetime_: datetime object to convert
     """
     date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
     return " ".join([date_without_tz, GITHUB_TIMEZONE])
@@ -53,7 +53,7 @@ def commitdate_to_datetime(commit_date):
 def datetime_to_commitdate(datetime_):
     """Convert Python datetime to Github date string
 
-    :param str datetime_: datetime object to convert
+    :param datetime datetime_: datetime object to convert
     """
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     return "".join([date_without_tz, COMMIT_TIMEZONE])
