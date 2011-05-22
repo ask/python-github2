@@ -1,23 +1,12 @@
 import _setup
 
-import unittest
-
 from nose.tools import (assert_equals, assert_false, assert_true)
 
 import utils
 
-from github2.client import Github
 
-
-class UserProperties(unittest.TestCase):
+class UserProperties(utils.HttpMockTestCase):
     """Test user property handling"""
-    def setUp(self):
-        utils.set_http_mock()
-        self.client = Github()
-
-    def tearDown(self):
-        utils.unset_http_mock()
-
     def test_user(self):
         user = self.client.users.show('defunkt')
         assert_equals(user.blog, 'http://chriswanstrath.com/')
@@ -53,15 +42,8 @@ class UserProperties(unittest.TestCase):
         assert_true(user.is_authenticated() is True)
 
 
-class UserQueries(unittest.TestCase):
+class UserQueries(utils.HttpMockTestCase):
     """Test user querying """
-    def setUp(self):
-        utils.set_http_mock()
-        self.client = Github()
-
-    def tearDown(self):
-        utils.unset_http_mock()
-
     def test_search(self):
         assert_equals(repr(self.client.users.search('James Rowe')),
                       '[<User: JNRowe>, <User: wooki>]')
@@ -71,14 +53,7 @@ class UserQueries(unittest.TestCase):
         assert_equals(repr(user), '<User: JNRowe>')
 
 
-class UserMethods(unittest.TestCase):
-    def setUp(self):
-        utils.set_http_mock()
-        self.client = Github()
-
-    def tearDown(self):
-        utils.unset_http_mock()
-
+class UserMethods(utils.HttpMockTestCase):
     def test_follow(self):
         result = self.client.users.follow('defunkt')
         assert_true('defunkt' in result['users'])

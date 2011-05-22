@@ -26,14 +26,8 @@ class ReprTests(unittest.TestCase):
         assert_equals(str, type(repr(i)))
 
 
-class RateLimits(unittest.TestCase):
+class RateLimits(utils.HttpMockTestCase):
     """Test API rate-limitting"""
-    def setUp(self):
-        utils.set_http_mock()
-
-    def tearDown(self):
-        utils.unset_http_mock()
-
     def test_delays(self):
         """Test call delay is at least one second"""
         client = Github(requests_per_second=.5)
