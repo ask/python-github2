@@ -5,6 +5,8 @@ import _setup
 import sys
 import unittest
 
+from nose.tools import assert_equals
+
 from github2.issues import Issue
 from github2.client import Github
 
@@ -49,3 +51,9 @@ class RateLimits(unittest.TestCase):
         self.assertTrue(delta_seconds >= 2,
             "Expected .5 reqs per second to require a 2 second delay between "
             "calls.")
+
+
+def test_project_for_user_repo():
+    client = Github()
+    assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),
+                  'JNRowe/misc-overlay')
