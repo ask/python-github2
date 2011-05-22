@@ -1,7 +1,7 @@
 Organizations
 =============
 
-.. py:currentmodule:: github2.organizations
+.. currentmodule:: github2.organizations
 
 .. autoclass:: Organization(type)
 

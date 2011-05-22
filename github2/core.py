@@ -129,7 +129,7 @@ def doc_generator(docstring, attributes):
     docstring = docstring or ""
 
     def bullet(title, text):
-        return """.. py:attribute:: %s\n\n   %s\n""" % (title, text)
+        return """.. attribute:: %s\n\n   %s\n""" % (title, text)
 
     b = "\n".join([bullet(attr_name, attr.help)
                    for attr_name, attr in attributes.items()])

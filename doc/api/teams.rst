@@ -1,7 +1,7 @@
 Teams
 =====
 
-.. py:currentmodule:: github2.teams
+.. currentmodule:: github2.teams
 
 .. autoclass:: Team(type)
 

@@ -23,7 +23,7 @@ Read the description of the ``python-github2`` project::
     >>> repo = github.repos.show("ask/python-github2")
     >>> repo.description
 
-We can take advantage of Python's :py:func:`dir` to explore the package a
+We can take advantage of Python's :func:`dir` to explore the package a
 little more::
 
     >>> filter(lambda s: not s.startswith("_"), dir(github.users))

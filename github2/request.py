@@ -53,7 +53,7 @@ class GithubRequest(object):
             cache=None, proxy_host=None, proxy_port=None):
         """Make an API request.
 
-        :see: :py:class:`github2.client.Github`
+        :see: :class:`github2.client.Github`
         """
         self.username = username
         self.api_token = api_token

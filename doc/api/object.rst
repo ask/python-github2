@@ -1,7 +1,7 @@
 Object
 ======
 
-.. py:currentmodule:: github2.client
+.. currentmodule:: github2.client
 
 .. automethod:: Github.get_all_blobs
 
