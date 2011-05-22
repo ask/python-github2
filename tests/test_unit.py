@@ -5,7 +5,7 @@ import _setup
 import sys
 import unittest
 
-from nose.tools import assert_equals
+from nose.tools import (assert_equals, assert_true)
 
 from github2.issues import Issue
 from github2.client import Github
@@ -22,7 +22,7 @@ class ReprTests(unittest.TestCase):
         if sys.version_info[0] == 2:
             title = title.decode("utf-8")
         i = Issue(title=title)
-        self.assertEqual(str, type(repr(i)))
+        assert_equals(str, type(repr(i)))
 
 
 class RateLimits(unittest.TestCase):
@@ -48,9 +48,9 @@ class RateLimits(unittest.TestCase):
         delta = end - start
         delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
 
-        self.assertTrue(delta_seconds >= 2,
-            "Expected .5 reqs per second to require a 2 second delay between "
-            "calls.")
+        assert_true(delta_seconds >= 2,
+                    "Expected .5 reqs per second to require a 2 second delay "
+                    "between calls.")
 
 
 def test_project_for_user_repo():
