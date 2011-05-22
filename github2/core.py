@@ -1,3 +1,5 @@
+import time
+
 from datetime import datetime
 
 GITHUB_TIMEZONE = "-0700"
@@ -6,13 +8,27 @@ GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
+def strptime(string, format):
+    """Parse date strings according to specified format
+
+    We have to create our :obj:`~datetime.datetime` objects indirectly to remain
+    compatible with Python 2.4, where the :class:`~datetime.datetime` class has
+    no :meth:`~datetime.datetime.strptime` method.
+
+    :param str string: String to parse
+    :param str format: Datetime format
+    :return datetime: Parsed datetime
+    """
+    return datetime(*(time.strptime(string, format)[:6]))
+
+
 def ghdate_to_datetime(github_date):
     """Convert Github date string to Python datetime
 
     :param str github_date: date string to parse
     """
     date_without_tz = " ".join(github_date.strip().split()[:2])
-    return datetime.strptime(date_without_tz, GITHUB_DATE_FORMAT)
+    return strptime(date_without_tz, GITHUB_DATE_FORMAT)
 
 
 def datetime_to_ghdate(datetime_):
@@ -30,7 +46,7 @@ def commitdate_to_datetime(commit_date):
     :param str github_date: date string to parse
     """
     date_without_tz = commit_date[:-6]
-    return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
+    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
 
 
 def datetime_to_commitdate(datetime_):

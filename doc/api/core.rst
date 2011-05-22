@@ -8,6 +8,8 @@ Core
    of the :mod:`github2` package, but it is documented to aid contributors
    to the package.
 
+.. autofunction:: strptime
+
 .. autofunction:: ghdate_to_datetime
 .. autofunction:: datetime_to_ghdate
 
