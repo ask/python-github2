@@ -2,6 +2,7 @@
 
 import _setup
 
+import datetime
 import sys
 import unittest
 
@@ -35,11 +36,7 @@ class RateLimits(unittest.TestCase):
 
     def test_delays(self):
         """Test call delay is at least one second"""
-        import datetime
-        USERNAME = ''
-        API_KEY = ''
-        client = Github(username=USERNAME, api_token=API_KEY,
-            requests_per_second=.5)
+        client = Github(requests_per_second=.5)
         client.users.show('defunkt')
         start = datetime.datetime.now()
         client.users.show('mojombo')
