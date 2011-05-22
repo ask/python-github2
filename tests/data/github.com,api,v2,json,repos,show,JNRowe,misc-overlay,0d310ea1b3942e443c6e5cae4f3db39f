@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 59
+content-location: https://github.com/api/v2/json/repos/show/JNRowe/misc-overlay
+x-runtime: 11ms
+content-length: 447
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "977c6513db34b26e6084b833b45c7754"
+cache-control: private, max-age=0, must-revalidate
+date: Sun, 22 May 2011 07:50:08 GMT
+content-type: application/json; charset=utf-8
+
+{"repository":{"homepage":"http://jnrowe.github.com/misc-overlay/","forks":0,"pushed_at":"2011/05/22 00:24:15 -0700","url":"https://github.com/JNRowe/misc-overlay","has_wiki":true,"watchers":5,"open_issues":6,"fork":false,"created_at":"2009/05/02 07:32:50 -0700","has_issues":true,"description":"Gentoo overlay -- miscellaneous packages","size":8449,"private":false,"name":"misc-overlay","owner":"JNRowe","language":"Python","has_downloads":true}}
