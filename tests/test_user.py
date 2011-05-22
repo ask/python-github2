@@ -46,6 +46,12 @@ class UserProperties(unittest.TestCase):
     def test_following(self):
         assert_equals(len(self.client.users.following('defunkt')), 212)
 
+    def test_is_authenticated(self):
+        user = self.client.users.show('defunkt')
+        assert_true(user.is_authenticated() is False)
+        user = self.client.users.show('fake_jnrowe_with_auth')
+        assert_true(user.is_authenticated() is True)
+
 
 class UserQueries(unittest.TestCase):
     """Test user querying """
