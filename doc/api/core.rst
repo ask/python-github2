@@ -16,6 +16,8 @@ Core
 .. autofunction:: commitdate_to_datetime
 .. autofunction:: datetime_to_commitdate
 
+.. autofunction:: userdate_to_datetime
+
 .. autofunction:: doc_generator
 
 .. autoclass:: GithubCommand

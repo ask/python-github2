@@ -59,6 +59,21 @@ def datetime_to_commitdate(datetime_):
     return "".join([date_without_tz, COMMIT_TIMEZONE])
 
 
+def userdate_to_datetime(user_date):
+    """Convert user date string to Python datetime
+
+    Unfortunately this needs a special case because :meth:`~Github.users.show`
+    and :meth:`~Github.users.search` return a different formats for the
+    `created_at` attributes.
+
+    :param str user_date: date string to parse
+    """
+    try:
+        return ghdate_to_datetime(user_date)
+    except ValueError:
+        return strptime(user_date, '%Y-%m-%dT%H:%M:%SZ')
+
+
 class GithubCommand(object):
 
     def __init__(self, request):
@@ -143,6 +158,10 @@ class DateAttribute(Attribute):
             "to": commitdate_to_datetime,
             "from": datetime_to_commitdate,
         },
+        "user": {
+            "to" : userdate_to_datetime,
+            "from": datetime_to_ghdate,
+        }
     }
 
     def __init__(self, *args, **kwargs):

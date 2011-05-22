@@ -1,5 +1,7 @@
 import _setup
 
+import datetime
+
 from nose.tools import (assert_equals, assert_false, assert_true)
 
 import utils
@@ -18,10 +20,8 @@ class UserProperties(utils.HttpMockTestCase):
 
     def test_meta(self):
         user = self.client.users.show('defunkt')
-        # Difficult to handle created_at attribute as its content varies
-        # depending on API path.
-        #assert_equals(user.created_at,
-        #              datetime.datetime(2007, 10, 19, 22, 24, 19))
+        assert_equals(user.created_at,
+                      datetime.datetime(2007, 10, 19, 22, 24, 19))
         assert_equals(user.followers_count, 2593)
         assert_equals(user.following_count, 212)
         assert_equals(user.gravatar_id, 'b8dbb1987e8e5318584865f880036796')

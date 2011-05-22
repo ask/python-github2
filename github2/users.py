@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import BaseData, GithubCommand, DateAttribute, Attribute
 import urllib
 
 
@@ -23,6 +23,8 @@ class User(BaseData):
     private_gist_count = Attribute(
         "Number of private gists owned by the user")
     plan = Attribute("Current active github plan")
+    created_at = DateAttribute("The date this user was registered",
+                               format="user")
 
     def is_authenticated(self):
         """Test for user auththenication
