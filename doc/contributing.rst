@@ -39,8 +39,8 @@ invaluable, see the nose_ documentation for usage information.
 There is a tox_ configuration file included in the repository, you can use it to
 run the tests against multiple Python versions with a single command.  The
 configuration file also includes targets for testing the documentation.  The
-tox_ documentation includes a fantastic number of examples on how to use it, or
-add new testing targets.
+tox_ documentation includes a fantastic number of examples on how to use it, and
+advice on adding new testing targets.
 
 .. todo::
    Add topic branches and pull request usage examples, but most git users are
