@@ -32,13 +32,13 @@ Tests
    Unfortunately there aren't many tests for ``python-github`` at the moment,
    any patches to increase test coverage are greatly appreciated
 
-The preferred way to run the package's tests is with nose_.  ``nosetests``
-provides excellent reporting options and its additional features make it
-invaluable, see the nose_ documentation for usage information.
+The preferred way to run the package's tests is with :pypi:`nose`.
+``nosetests`` provides excellent reporting options and its additional features
+make it invaluable, see the nose_ documentation for usage information.
 
-There is a tox_ configuration file included in the repository, you can use it to
-run the tests against multiple Python versions with a single command.  The
-configuration file also includes targets for testing the documentation.  The
+There is a :pypi:`tox` configuration file included in the repository, you can
+use it to run the tests against multiple Python versions with a single command.
+The configuration file also includes targets for testing the documentation.  The
 tox_ documentation includes a fantastic number of examples on how to use it, and
 advice on adding new testing targets.
 
