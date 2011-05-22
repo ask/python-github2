@@ -29,8 +29,8 @@ Tests
 -----
 
 .. note::
-   Unfortunately there aren't many tests for ``github2`` at the moment, any
-   patches to increase test coverage are greatly appreciated
+   Unfortunately test coverage isn't as high as one would hope, patches to
+   increase test coverage are greatly appreciated!
 
 The preferred way to run the package's tests is with :pypi:`nose`.
 ``nosetests``, nose's command-line test runner, provides excellent reporting
