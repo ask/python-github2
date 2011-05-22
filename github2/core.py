@@ -6,6 +6,7 @@ GITHUB_TIMEZONE = "-0700"
 GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
 #2009-03-21T18:01:48-07:00
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
+COMMIT_TIMEZONE = "-07:00"
 
 
 def strptime(string, format):
@@ -55,7 +56,7 @@ def datetime_to_commitdate(datetime_):
     :param str datetime_: datetime object to convert
     """
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
-    return "".join([date_without_tz, GITHUB_TIMEZONE])
+    return "".join([date_without_tz, COMMIT_TIMEZONE])
 
 
 class GithubCommand(object):
