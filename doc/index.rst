@@ -25,6 +25,10 @@ You should read the developer documentation for the `Github API`_ first.
 .. Note::
    This software is not finished. And is likely to change in the near future.
 
+:Git repository:  https://github.com/ask/python-github2/
+:Issue tracker:  https://github.com/ask/python-github2/issues/
+:Contributors:  https://github.com/ask/python-github2/contributors/
+
 .. _Github API: http://develop.github.com/
 
 Contents
