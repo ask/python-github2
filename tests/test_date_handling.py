@@ -6,7 +6,8 @@ from datetime import datetime as dt
 
 from nose.tools import assert_equals
 
-from github2.core import (ghdate_to_datetime, datetime_to_ghdate)
+from github2.core import (ghdate_to_datetime, datetime_to_ghdate,
+                          commitdate_to_datetime, datetime_to_commitdate)
 
 
 # Commented test cases are in PST, and aren't correctly handled with the
@@ -62,3 +63,55 @@ def test_datetime_to_ghdate():
                   '2010/07/28 19:56:51 -0700')
     assert_equals(datetime_to_ghdate(dt(2010, 9, 21, 4, 32, 49)),
                   '2010/09/21 04:32:49 -0700')
+
+
+def test_commitdate_to_datetime():
+    assert_equals(commitdate_to_datetime('2011-05-22T00:24:15-07:00'),
+                  dt(2011, 5, 22, 0, 24, 15))
+
+    assert_equals(commitdate_to_datetime('2011-04-09T10:07:30-07:00'),
+                  dt(2011, 4, 9, 10, 7, 30))
+    #assert_equals(commitdate_to_datetime('2011-02-19T07:16:11-08:00'),
+    #              dt(2011, 2, 19, 7, 16, 11))
+    #assert_equals(commitdate_to_datetime('2010-12-21T12:34:27-08:00'),
+    #              dt(2010, 12, 21, 12, 34, 27))
+    assert_equals(commitdate_to_datetime('2011-04-09T10:20:05-07:00'),
+                  dt(2011, 4, 9, 10, 20, 5))
+    assert_equals(commitdate_to_datetime('2011-04-09T10:05:58-07:00'),
+                  dt(2011, 4, 9, 10, 5, 58))
+    assert_equals(commitdate_to_datetime('2011-04-09T09:53:00-07:00'),
+                  dt(2011, 4, 9, 9, 53, 0))
+    assert_equals(commitdate_to_datetime('2011-04-09T10:00:21-07:00'),
+                  dt(2011, 4, 9, 10, 0, 21))
+    #assert_equals(commitdate_to_datetime('2010-12-16T15:10:59-08:00'),
+    #              dt(2010, 12, 16, 15, 10, 59))
+    assert_equals(commitdate_to_datetime('2011-04-09T09:53:00-07:00'),
+                  dt(2011, 4, 9, 9, 53, 0))
+    assert_equals(commitdate_to_datetime('2011-04-09T09:53:00-07:00'),
+                  dt(2011, 4, 9, 9, 53, 0))
+
+
+def test_datetime_to_commitdate():
+    assert_equals(datetime_to_commitdate(dt(2011, 5, 22, 0, 24, 15)),
+                  '2011-05-22T00:24:15-07:00')
+
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 10, 7, 30)),
+                  '2011-04-09T10:07:30-07:00')
+    #assert_equals(datetime_to_commitdate(dt(2011, 2, 19, 7, 16, 11)),
+    #              '2011-02-19T07:16:11-08:00')
+    #assert_equals(datetime_to_commitdate(dt(2010, 12, 21, 12, 34, 27)),
+    #              '2010-12-21T12:34:27-08:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 10, 20, 5)),
+                  '2011-04-09T10:20:05-07:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 10, 5, 58)),
+                  '2011-04-09T10:05:58-07:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00-07:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 10, 0, 21)),
+                  '2011-04-09T10:00:21-07:00')
+    #assert_equals(datetime_to_commitdate(dt(2010, 12, 16, 15, 10, 59)),
+    #              '2010-12-16T15:10:59-08:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00-07:00')
+    assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00-07:00')
