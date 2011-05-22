@@ -3,6 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+..
+  If you prefer you can also read the pre-built documentation at
+  http://packages.python.org/github2
+
 .. module:: github2
    :synopsis: GitHub API v2 library for Python
 
