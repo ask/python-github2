@@ -18,6 +18,7 @@ class Repository(BaseData):
     has_downloads = Attribute("If True, this repository has downloads.")
     has_wiki = Attribute("If True, this repository has a wiki.")
     has_issues = Attribute("If True, this repository has an issue tracker.")
+    language = Attribute("Primary language for the repository.")
 
     def _project(self):
         return self.owner + "/" + self.name
