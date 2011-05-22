@@ -57,6 +57,23 @@ between versions.
    request if additional work needs to be done to make the code compatible with
    all the supported Python releases.
 
+Test specific concerns
+''''''''''''''''''''''
+
+The :mod:`unittest` module received a massive upgrade in Python 2.7, including
+some very useful new functionality.  However, retaining compatibility with older
+Python versions is very important, so this new functionality can't be used.
+Some specific issues to bear in mind are listed below.
+
+Many assertions, such as :meth:`~unittest.TestCase.assertIn` and
+:meth:`~unittest.TestCase.assertGreater`, only exist from 2.7, and can't be used.
+The simple workaround is to evaluate an expression to test with
+:meth:`~unittest.TestCase.assertTrue`
+
+The incredibly functions for skipping tests(:func:`~unittest.skip`) and marking
+expected failures(:func:`~unittest.expectedFailure`) were only added in 2.7, and
+unfortunately can't be used.
+
 .. todo::
    Add topic branches and pull request usage examples, but most git users are
    likely to be comfortable with these already
