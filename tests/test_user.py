@@ -41,6 +41,14 @@ class UserProperties(utils.HttpMockTestCase):
         user = self.client.users.show('fake_jnrowe_with_auth')
         assert_true(user.is_authenticated() is True)
 
+    def test_private_data(self):
+        user = self.client.users.show('fake_jnrowe_with_auth')
+        assert_equals(user.total_private_repo_count, 0)
+        assert_equals(user.collaborators, 0)
+        assert_equals(user.disk_usage, 66069)
+        assert_equals(user.owned_private_repo_count, 0)
+        assert_equals(user.private_gist_count, 7)
+
 
 class UserQueries(utils.HttpMockTestCase):
     """Test user querying """
