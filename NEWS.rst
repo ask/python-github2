@@ -3,8 +3,8 @@ User-visible changes
 
 .. contents::
 
-``master`` branch
------------------
+0.4.0 - 2011-05-23
+------------------
 
 * Python 3 compatibility
 * The ``github_manage_collaborators`` script will be installed using
