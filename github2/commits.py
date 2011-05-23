@@ -24,15 +24,16 @@ class Commit(BaseData):
 
 
 class Commits(GithubCommand):
+    """
+    .. warning::
+        Unfortunately, commits from repositories containing certain characters
+        such as '.' will fail.  This is an issue with the GitHub API, and can't
+        currently be worked around in this library.
+    """
     domain = "commits"
 
     def list(self, project, branch="master", file=None):
         """List commits on a project
-
-        .. warning::
-           Unfortunately, listing the commits from repositories containing
-           certain characters such as '.' will fail.  This is an issue with the
-           GitHub API, and can't currently be worked around in this library.
 
         :param str project: project name
         :param str branch: branch name
