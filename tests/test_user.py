@@ -49,6 +49,13 @@ class UserProperties(utils.HttpMockTestCase):
         assert_equals(user.owned_private_repo_count, 0)
         assert_equals(user.private_gist_count, 7)
 
+    def test_plan_data(self):
+        user = self.client.users.show('fake_jnrowe_with_auth')
+        assert_equals(user.plan['name'], "free")
+        assert_equals(user.plan['collaborators'], 0)
+        assert_equals(user.plan['space'], 307200)
+        assert_equals(user.plan['private_repos'], 0)
+
 
 class UserQueries(utils.HttpMockTestCase):
     """Test user querying """
