@@ -42,6 +42,7 @@ Contents
    api/index
    bugs
    contributing
+   wild
    license
 
 Indices and tables
