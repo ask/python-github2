@@ -78,7 +78,7 @@ class GithubRequest(object):
                               'Install a Python SOCKS library.')
         else:
             proxy_info = httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP,
-                                            proxy_host, proxy_port),
+                                            proxy_host, proxy_port)
             self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
 
     def encode_authentication_data(self, extra_post_data):
