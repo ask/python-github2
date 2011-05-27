@@ -24,6 +24,14 @@ listed on this page.
 
 :PyPI page: :pypi:`forkfeed`
 
+``ghmiles``
+'''''''''''
+
+    ``ghmiles`` is a Python library that generates a milestone model from the
+    issues in a GitHub repository.
+
+:PyPI page: :pypi:`ghmiles`
+
 ``roundabout``
 ''''''''''''''
 
