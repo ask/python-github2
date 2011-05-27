@@ -24,19 +24,18 @@ class Commit(BaseData):
 
 
 class Commits(GithubCommand):
-    """
-    .. warning::
-        Unfortunately, commits from repositories containing certain characters
-        such as '.' will fail.  This is an issue with the GitHub API, and can't
-        currently be worked around in this library.
-    """
     domain = "commits"
 
     def list(self, project, branch="master", file=None):
         """List commits on a project
 
+        .. warning::
+           Not all projects use ``master`` as their default branch, you can
+           check the value of the ``Repo(project).master_branch`` attribute to
+           determine the default branch of a given repository.
+
         :param str project: project name
-        :param str branch: branch name
+        :param str branch: branch name, or ``master`` if not given
         :param str file: optional file filter
         """
         return self.get_values("list", project, branch, file,
