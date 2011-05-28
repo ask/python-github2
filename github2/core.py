@@ -63,8 +63,8 @@ def userdate_to_datetime(user_date):
     """Convert user date string to Python datetime
 
     Unfortunately this needs a special case because :meth:`~Github.users.show`
-    and :meth:`~Github.users.search` return a different formats for the
-    `created_at` attributes.
+    and :meth:`~Github.users.search` return different formats for the
+    ``created_at`` attributes.
 
     :param str user_date: date string to parse
     """
