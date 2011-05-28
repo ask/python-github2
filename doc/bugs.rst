@@ -41,11 +41,16 @@ A good bug report will have the following:
 
 * A descriptive title
 * A full Python traceback of the error, if there is one
+* The version of :mod:`github2` you are using [#]_
 * A minimal test-case to reproduce the error
 * A list of solutions you've already tried
 
 Simon Tatham has an excellent essay titled `How to Report Bugs Effectively`_,
 with some excellent tips on filing good bug reports.
+
+.. [#] The content of :data:`github2.__version__` if you're using an official
+   release, or the output of :command:`git describe` if you're using the git
+   repository directly.
 
 .. _report an issue: https://github.com/ask/python-github2/issues/
 .. _API support forum: http://support.github.com/discussions/api
