@@ -40,6 +40,7 @@ Contents
    install
    quickstart
    api/index
+   problems
    bugs
    contributing
    wild

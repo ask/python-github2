@@ -22,8 +22,9 @@ hard to track down the actual cause of a bug.  The first step when you've found
 a bug should be to test it directly, to rule out a temporary problem with GitHub
 or a deficiency in the API.
 
-The official `GitHub API`_ documentation contains many examples on how to access
-the API directly with curl_.
+You can check which URLs your code is requesting using the ``debug`` argument
+when you create your :class:`~github2.client.Github` object.  See
+:doc:`problems` for information on using the ``debug`` support.
 
 If the bug you've found is outside the reach of this project an issue should be
 opened in GitHub's `API support forum`_.  It doesn't hurt to `report an issue`_
@@ -47,7 +48,5 @@ Simon Tatham has an excellent essay titled `How to Report Bugs Effectively`_,
 with some excellent tips on filing good bug reports.
 
 .. _report an issue: https://github.com/ask/python-github2/issues/
-.. _GitHub API: http://develop.github.com/
-.. _curl: http://curl.haxx.se/
 .. _API support forum: http://support.github.com/discussions/api
 .. _How to Report Bugs Effectively: http://www.chiark.greenend.org.uk/~sgtatham/bugs.html
