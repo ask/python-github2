@@ -26,6 +26,7 @@ class Github(object):
         :param str username: your own GitHub username.
         :param str api_token: can be found at https://github.com/account
             (while logged in as that user):
+        :param bool debug: enable debugging information.
         :param str access_token: can be used when no ``username`` and/or
             ``api_token`` is used.  The ``access_token`` is the OAuth access
             token that is received after successful OAuth authentication.
