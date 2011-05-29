@@ -3,6 +3,7 @@ include NEWS.rst
 include README.rst
 include AUTHORS
 include LICENSE
+include tox.ini
 
 recursive-include doc *.rst
 include doc/conf.py
