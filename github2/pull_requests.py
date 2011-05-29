@@ -4,7 +4,7 @@ from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 class PullRequest(BaseData):
     """Pull request encapsulation
 
-    .. versionadded:: 0.4.0
+    .. versionadded:: 0.5.0
     """
     state = Attribute("The pull request state")
     base = Attribute("The base repo")
@@ -41,7 +41,7 @@ class PullRequest(BaseData):
 class PullRequests(GithubCommand):
     """Operations on pull requests
 
-    .. versionadded:: 0.4.0
+    .. versionadded:: 0.5.0
     """
     domain = "pulls"
 
