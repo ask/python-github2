@@ -74,6 +74,23 @@ def userdate_to_datetime(user_date):
         return strptime(user_date, '%Y-%m-%dT%H:%M:%SZ')
 
 
+def isodate_to_datetime(iso_date):
+    """Convert commit date string to Python datetime
+
+    :param str github_date: date string to parse
+    """
+    date_without_tz = iso_date[:-1]
+    return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
+
+
+def datetime_to_isodate(datetime_):
+    """Convert Python datetime to Github date string
+
+    :param str datetime_: datetime object to convert
+    """
+    return "%s%z" % datetime_.isoformat()
+
+
 class GithubCommand(object):
 
     def __init__(self, request):
@@ -161,6 +178,10 @@ class DateAttribute(Attribute):
         "user": {
             "to" : userdate_to_datetime,
             "from": datetime_to_ghdate,
+	},
+        "iso": {
+            "to": isodate_to_datetime,
+            "from": datetime_to_isodate,
         }
     }
 

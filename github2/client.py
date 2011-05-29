@@ -5,6 +5,7 @@ from github2.users import Users
 from github2.commits import Commits
 from github2.organizations import Organizations
 from github2.teams import Teams
+from github2.pull_requests import PullRequests
 
 
 class Github(object):
@@ -53,6 +54,7 @@ class Github(object):
         self.commits = Commits(self.request)
         self.organizations = Organizations(self.request)
         self.teams = Teams(self.request)
+        self.pull_requests = PullRequests(self.request)
 
     def project_for_user_repo(self, user, repo):
         """Return Github identifier for a user's repository

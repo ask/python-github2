@@ -9,6 +9,7 @@ API documentation
    organizations
    teams
    issues
+   pull_requests
    network
    repos
    commit
