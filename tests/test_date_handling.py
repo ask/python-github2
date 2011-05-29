@@ -7,7 +7,8 @@ from datetime import datetime as dt
 from nose.tools import assert_equals
 
 from github2.core import (ghdate_to_datetime, datetime_to_ghdate,
-                          commitdate_to_datetime, datetime_to_commitdate)
+                          commitdate_to_datetime, datetime_to_commitdate,
+                          isodate_to_datetime, datetime_to_isodate)
 
 
 # Commented test cases are in PST, and aren't correctly handled with the
@@ -115,3 +116,52 @@ def test_datetime_to_commitdate():
                   '2011-04-09T09:53:00-07:00')
     assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 9, 53, 0)),
                   '2011-04-09T09:53:00-07:00')
+
+def test_isodate_to_datetime():
+    assert_equals(isodate_to_datetime('2011-05-22T00:24:15Z'),
+                  dt(2011, 5, 22, 0, 24, 15))
+    assert_equals(isodate_to_datetime('2011-04-09T10:07:30Z'),
+                  dt(2011, 4, 9, 10, 7, 30))
+    assert_equals(isodate_to_datetime('2011-02-19T07:16:11Z'),
+                  dt(2011, 2, 19, 7, 16, 11))
+    assert_equals(isodate_to_datetime('2010-12-21T12:34:27Z'),
+                  dt(2010, 12, 21, 12, 34, 27))
+    assert_equals(isodate_to_datetime('2011-04-09T10:20:05Z'),
+                  dt(2011, 4, 9, 10, 20, 5))
+    assert_equals(isodate_to_datetime('2011-04-09T10:05:58Z'),
+                  dt(2011, 4, 9, 10, 5, 58))
+    assert_equals(isodate_to_datetime('2011-04-09T09:53:00Z'),
+                  dt(2011, 4, 9, 9, 53, 0))
+    assert_equals(isodate_to_datetime('2011-04-09T10:00:21Z'),
+                  dt(2011, 4, 9, 10, 0, 21))
+    assert_equals(isodate_to_datetime('2010-12-16T15:10:59Z'),
+                  dt(2010, 12, 16, 15, 10, 59))
+    assert_equals(isodate_to_datetime('2011-04-09T09:53:00Z'),
+                  dt(2011, 4, 9, 9, 53, 0))
+    assert_equals(isodate_to_datetime('2011-04-09T09:53:00Z'),
+                  dt(2011, 4, 9, 9, 53, 0))
+
+
+def test_datetime_to_isodate():
+    assert_equals(datetime_to_isodate(dt(2011, 5, 22, 0, 24, 15)),
+                  '2011-05-22T00:24:15Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 10, 7, 30)),
+                  '2011-04-09T10:07:30Z')
+    assert_equals(datetime_to_isodate(dt(2011, 2, 19, 7, 16, 11)),
+                  '2011-02-19T07:16:11Z')
+    assert_equals(datetime_to_isodate(dt(2010, 12, 21, 12, 34, 27)),
+                  '2010-12-21T12:34:27Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 10, 20, 5)),
+                  '2011-04-09T10:20:05Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 10, 5, 58)),
+                  '2011-04-09T10:05:58Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 10, 0, 21)),
+                  '2011-04-09T10:00:21Z')
+    assert_equals(datetime_to_isodate(dt(2010, 12, 16, 15, 10, 59)),
+                  '2010-12-16T15:10:59Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00Z')
+    assert_equals(datetime_to_isodate(dt(2011, 4, 9, 9, 53, 0)),
+                  '2011-04-09T09:53:00Z')
