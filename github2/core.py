@@ -88,7 +88,7 @@ def datetime_to_isodate(datetime_):
 
     :param str datetime_: datetime object to convert
     """
-    return "%s%z" % datetime_.isoformat()
+    return "%sZ" % datetime_.isoformat()
 
 
 class GithubCommand(object):
