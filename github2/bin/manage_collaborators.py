@@ -11,6 +11,7 @@ R/W access to all private repositories of the company account.
 # Copyright (c) 2009 HUDORA. All rights reserved.
 # BSD licensed
 
+import logging
 from optparse import OptionParser
 import github2.client
 
@@ -58,9 +59,13 @@ def main():
         options.account = options.login
 
     github = github2.client.Github(username=options.login,
-                                   api_token=options.apitoken,
-                                   debug=options.debug)
+                                   api_token=options.apitoken)
 
+    # PEP-308 conditional expressions are much better, but we're keeping Py2.4
+    # compatibility elsewhere.
+    logging.basicConfig(level=options.debug and logging.DEBUG or logging.WARN,
+                        format="%(asctime)s - %(message)s",
+                        datefmt="%Y-%m-%dT%H:%M:%S")
     if len(args) == 1:
         for repos in github.repos.list(options.account):
             fullreposname = github.project_for_user_repo(options.account, repos.name)
@@ -77,6 +82,8 @@ def main():
                 if command == 'add':
                     github.repos.add_collaborator(repos.name, collaborator)
                     print "added %r to %r" % (collaborator, repos.name)
+
+    logging.shutdown()
 
 
 if __name__ == '__main__':
