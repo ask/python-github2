@@ -25,6 +25,8 @@ def parse_commandline():
                      '\nTry %prog --help for details.')
     parser.add_option('-d', '--debug', action='store_true',
                       help='Enables debugging mode')
+    parser.add_option('-c', '--cache', default=None,
+                      help='Location for network cache [default: None]')
     parser.add_option('-l', '--login',
                       help='Username to login with')
     parser.add_option('-a', '--account',
@@ -59,7 +61,7 @@ def main():
 
     github = github2.client.Github(username=options.login,
                                    api_token=options.apitoken,
-                                   debug=options.debug)
+                                   debug=options.debug, cache=options.cache)
 
     if len(args) == 1:
         for repos in github.repos.list(options.account):
