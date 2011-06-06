@@ -1,4 +1,5 @@
 import datetime
+import logging
 import re
 import sys
 import time
@@ -21,6 +22,9 @@ from urllib import urlencode, quote
 
 #: Hostname for API access
 GITHUB_URL = "https://github.com"
+
+#: Logger for requests module
+LOGGER = logging.getLogger('github2.request')
 
 
 def charset_from_headers(headers):
@@ -49,8 +53,8 @@ class GithubRequest(object):
     GithubError = GithubError
 
     def __init__(self, username=None, api_token=None, url_prefix=None,
-            debug=False, requests_per_second=None, access_token=None,
-            cache=None, proxy_host=None, proxy_port=None):
+                 requests_per_second=None, access_token=None,
+                 cache=None, proxy_host=None, proxy_port=None):
         """Make an API request.
 
         :see: :class:`github2.client.Github`
@@ -59,7 +63,6 @@ class GithubRequest(object):
         self.api_token = api_token
         self.access_token = access_token
         self.url_prefix = url_prefix
-        self.debug = debug
         if requests_per_second is None:
             self.delay = 0
         else:
@@ -117,8 +120,7 @@ class GithubRequest(object):
             since_last_in_seconds = (since_last.days * 24 * 60 * 60) + since_last.seconds + (since_last.microseconds/1000000.0)
             if since_last_in_seconds < self.delay:
                 duration = self.delay - since_last_in_seconds
-                if self.debug:
-                    sys.stderr.write("delaying API call %s\n" % duration)
+                LOGGER.warning("delaying API call %s second(s)", duration)
                 time.sleep(duration)
 
         extra_post_data = extra_post_data or {}
@@ -142,9 +144,9 @@ class GithubRequest(object):
             query = self.encode_authentication_data(parse_qs(query))
         url = urlunsplit((scheme, netloc, path, query, fragment))
         response, content = self._http.request(url, method, post_data, headers)
-        if self.debug:
-            sys.stderr.write("URL:[%s] POST_DATA:%s RESPONSE_TEXT: [%s]\n" % (
-                             url, post_data, content))
+        if LOGGER.isEnabledFor(logging.DEBUG):
+            logging.debug("URL: %r POST_DATA: %r RESPONSE_TEXT: %r", url,
+                          post_data, content)
         if response.status >= 400:
             raise RuntimeError("unexpected response from github.com %d: %r" % (
                                response.status, content))

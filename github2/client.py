@@ -10,9 +10,9 @@ from github2.pull_requests import PullRequests
 
 class Github(object):
 
-    def __init__(self, username=None, api_token=None, debug=False,
-        requests_per_second=None, access_token=None, cache=None,
-        proxy_host=None, proxy_port=8080):
+    def __init__(self, username=None, api_token=None, requests_per_second=None,
+                 access_token=None, cache=None, proxy_host=None,
+                 proxy_port=8080):
         """
         An interface to GitHub's API:
             http://develop.github.com/
@@ -27,7 +27,6 @@ class Github(object):
         :param str username: your own GitHub username.
         :param str api_token: can be found at https://github.com/account
             (while logged in as that user):
-        :param bool debug: enable debugging information.
         :param str access_token: can be used when no ``username`` and/or
             ``api_token`` is used.  The ``access_token`` is the OAuth access
             token that is received after successful OAuth authentication.
@@ -41,9 +40,7 @@ class Github(object):
             default to 8080 if a proxy_host is set and no port is set).
         """
 
-        self.debug = debug
         self.request = GithubRequest(username=username, api_token=api_token,
-                                     debug=self.debug,
                                      requests_per_second=requests_per_second,
                                      access_token=access_token, cache=cache,
                                      proxy_host=proxy_host,
