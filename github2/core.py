@@ -268,14 +268,7 @@ class BaseDataType(type):
                     setattr(self, attr_name, attr.to_python(attr_value))
                 else:
                     setattr(self, attr_name, attr_value)
-
         _contribute_method("__init__", constructor)
-
-        def to_dict(self):
-            _meta = self._meta
-            dict_ = vars(self)
-            return dict([(attr_name, _meta[attr_name].from_python(attr_value))
-                            for attr_name, attr_value in dict_.items()])
 
         def iterate(self):
             not_empty = lambda e: e[1] is not None
