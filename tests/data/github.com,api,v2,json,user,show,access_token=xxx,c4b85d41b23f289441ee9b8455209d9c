@@ -1,6 +1,6 @@
 status: 304
 x-ratelimit-remaining: 58
-content-location: https://github.com/api/v2/json/user/show
+content-location: https://github.com/api/v2/json/user/show?access_token=xxx
 connection: keep-alive
 content-length: 562
 server: nginx/0.7.67

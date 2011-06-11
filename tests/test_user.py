@@ -37,26 +37,9 @@ class UserProperties(utils.HttpMockTestCase):
     def test_following(self):
         assert_equals(len(self.client.users.following('defunkt')), 212)
 
-    def test_is_authenticated(self):
+    def test_is_not_authenticated(self):
         user = self.client.users.show('defunkt')
         assert_true(user.is_authenticated() is False)
-        user = self.client.users.show('fake_jnrowe_with_auth')
-        assert_true(user.is_authenticated() is True)
-
-    def test_private_data(self):
-        user = self.client.users.show('fake_jnrowe_with_auth')
-        assert_equals(user.total_private_repo_count, 0)
-        assert_equals(user.collaborators, 0)
-        assert_equals(user.disk_usage, 66069)
-        assert_equals(user.owned_private_repo_count, 0)
-        assert_equals(user.private_gist_count, 7)
-
-    def test_plan_data(self):
-        user = self.client.users.show('fake_jnrowe_with_auth')
-        assert_equals(user.plan['name'], "free")
-        assert_equals(user.plan['collaborators'], 0)
-        assert_equals(user.plan['space'], 307200)
-        assert_equals(user.plan['private_repos'], 0)
 
 
 class UserQueries(utils.HttpMockTestCase):
@@ -82,3 +65,28 @@ class AuthenticatedUserMethods(utils.HttpMockTestCase):
     def test_unfollow(self):
         result = self.client.users.unfollow('defunkt')
         assert_false('defunkt' in result['users'])
+
+    def test_is_authenticated(self):
+        user = self.client.users.show('')
+        assert_true(user.is_authenticated() is True)
+
+
+class AuthenticatedUserProperties(utils.HttpMockTestCase):
+    def setUp(self):
+        super(AuthenticatedUserProperties, self).setUp()
+        self.client = Github(access_token='xxx')
+
+    def test_private_data(self):
+        user = self.client.users.show('')
+        assert_equals(user.total_private_repo_count, 0)
+        assert_equals(user.collaborators, 0)
+        assert_equals(user.disk_usage, 66069)
+        assert_equals(user.owned_private_repo_count, 0)
+        assert_equals(user.private_gist_count, 7)
+
+    def test_plan_data(self):
+        user = self.client.users.show('')
+        assert_equals(user.plan['name'], "free")
+        assert_equals(user.plan['collaborators'], 0)
+        assert_equals(user.plan['space'], 307200)
+        assert_equals(user.plan['private_repos'], 0)
