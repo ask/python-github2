@@ -80,7 +80,7 @@ def isodate_to_datetime(iso_date):
     :param str github_date: date string to parse
     """
     date_without_tz = iso_date[:-1]
-    return datetime.strptime(date_without_tz, COMMIT_DATE_FORMAT)
+    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
 
 
 def datetime_to_isodate(datetime_):
