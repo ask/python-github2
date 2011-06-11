@@ -1,4 +1,5 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
+                          repr_string)
 
 
 class PullRequest(BaseData):
@@ -35,7 +36,7 @@ class PullRequest(BaseData):
     mergeable = Attribute("Whether the pull request can be merge cleanly")
 
     def __repr__(self):
-        return "<PullRequest: %s>" % self.title.encode('utf-8')
+        return "<PullRequest: %s>" % repr_string(self.title)
 
 
 class PullRequests(GithubCommand):

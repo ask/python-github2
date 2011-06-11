@@ -245,3 +245,14 @@ class BaseDataType(type):
 
 class BaseData(object):
     __metaclass__ = BaseDataType
+
+
+def repr_string(string):
+    """Shorten string for use in repr() output
+
+    :param str string: string to operate on
+    :return: string, with maximum length of 20 characters
+    """
+    if len(string) > 20:
+        string = string[:17] + '...'
+    return string.encode('utf-8')
