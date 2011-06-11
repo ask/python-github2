@@ -91,6 +91,45 @@ def datetime_to_isodate(datetime_):
     return "%sZ" % datetime_.isoformat()
 
 
+class AuthError(Exception):
+    """Requires authentication"""
+
+
+def requires_auth(f):
+    """Decorate to check a function call for authentication
+
+    Sets a ``requires_auth`` attribute on functions, for use in introspection.
+
+    :param func f: Function to wrap
+    :raises AuthError: If function called without an authenticated session
+    """
+    # When Python 2.4 support is dropped move straight to functools.wraps, don't
+    # pass go and don't collect $200.
+    def wrapper(self, *args, **kwargs):
+        if not self.request.access_token and not self.request.api_token:
+            raise AuthError("%r requires an authenticated session"
+                            % f.__name__)
+        return f(self, *args, **kwargs)
+    wrapped = wrapper
+    wrapped.__name__ = f.__name__
+    wrapped.__doc__ = f.__doc__ + """\n.. warning:: Requires authentication"""
+    wrapped.requires_auth = True
+    return wrapped
+
+
+def enhanced_by_auth(f):
+    """Decorator to mark a function as enhanced by authentication
+
+    Sets a ``enhanced_by_auth`` attribute on functions, for use in
+    introspection.
+
+    :param func f: Function to wrap
+    """
+    f.enhanced_by_auth = True
+    f.__doc__ += """\n.. note:: This call is enhanced with authentication"""
+    return f
+
+
 class GithubCommand(object):
 
     def __init__(self, request):

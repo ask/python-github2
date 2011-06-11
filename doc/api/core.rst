@@ -18,6 +18,9 @@ Core
 
 .. autofunction:: userdate_to_datetime
 
+.. autofunction:: requires_auth
+.. autofunction:: enhanced_by_auth
+
 .. autofunction:: doc_generator
 
 .. autofunction:: repr_string

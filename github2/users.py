@@ -1,4 +1,5 @@
-from github2.core import BaseData, GithubCommand, DateAttribute, Attribute
+from github2.core import (BaseData, GithubCommand, DateAttribute, Attribute,
+                          enhanced_by_auth, requires_auth)
 import urllib
 
 
@@ -54,6 +55,7 @@ class Users(GithubCommand):
         """
         return self.get_value("email", query, filter="user", datatype=User)
 
+    @enhanced_by_auth
     def show(self, username):
         """Get information on Github user
 
@@ -78,6 +80,7 @@ class Users(GithubCommand):
         """
         return self.make_request("show", username, "following", filter="users")
 
+    @requires_auth
     def follow(self, other_user):
         """Follow a Github user
 
@@ -85,6 +88,7 @@ class Users(GithubCommand):
         """
         return self.make_request("follow", other_user)
 
+    @requires_auth
     def unfollow(self, other_user):
         """Unfollow a Github user
 

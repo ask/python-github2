@@ -1,4 +1,5 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
+                          requires_auth)
 
 from github2.users import User
 
@@ -50,6 +51,7 @@ class Repositories(GithubCommand):
         return self.get_value("show", project, filter="repository",
                               datatype=Repository)
 
+    @requires_auth
     def pushable(self):
         """Return a list of repos you can push to that are not your own.
 
@@ -72,6 +74,7 @@ class Repositories(GithubCommand):
         return self.get_values("show", user, filter="repositories",
                                datatype=Repository)
 
+    @requires_auth
     def watch(self, project):
         """Watch a project
 
@@ -79,6 +82,7 @@ class Repositories(GithubCommand):
         """
         return self.make_request("watch", project)
 
+    @requires_auth
     def unwatch(self, project):
         """Unwatch a project
 
@@ -86,6 +90,7 @@ class Repositories(GithubCommand):
         """
         return self.make_request("unwatch", project)
 
+    @requires_auth
     def fork(self, project):
         """Fork a project
 
@@ -94,6 +99,7 @@ class Repositories(GithubCommand):
         return self.get_value("fork", project, filter="repository",
                               datatype=Repository)
 
+    @requires_auth
     def create(self, project, description=None, homepage=None, public=True):
         """Create a repository
 
@@ -107,6 +113,7 @@ class Repositories(GithubCommand):
         return self.get_value("create", post_data=repo_data,
                               filter="repository", datatype=Repository)
 
+    @requires_auth
     def delete(self, project):
         """Delete a repository
 
@@ -117,6 +124,7 @@ class Repositories(GithubCommand):
         result = self.make_request("delete", project, method="POST")
         self.make_request("delete", project, post_data=result)
 
+    @requires_auth
     def set_private(self, project):
         """Mark repository as private
 
@@ -124,6 +132,7 @@ class Repositories(GithubCommand):
         """
         return self.make_request("set/private", project)
 
+    @requires_auth
     def set_public(self, project):
         """Mark repository as public
 
@@ -139,6 +148,7 @@ class Repositories(GithubCommand):
         return self.make_request("show", project, "collaborators",
                                  filter="collaborators")
 
+    @requires_auth
     def add_collaborator(self, project, username):
         """Adds an add_collaborator to a repo
 
@@ -147,6 +157,7 @@ class Repositories(GithubCommand):
         """
         return self.make_request("collaborators", project, "add", username)
 
+    @requires_auth
     def remove_collaborator(self, project, username):
         """Removes an add_collaborator from a repo
 
