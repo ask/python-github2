@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 59
+content-location: https://github.com/api/v2/json/repos/show/JNRowe/misc-overlay/languages
+x-runtime: 93ms
+content-length: 40
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "584c4c914a780c9338d00d146803076b"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:38:58 GMT
+content-type: application/json; charset=utf-8
+
+{"languages":{"VimL":82,"Python":11194}}

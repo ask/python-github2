@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 57
+content-location: https://github.com/api/v2/json/repos/show/ask/python-github2/collaborators?access_token=xxx
+x-runtime: 15ms
+content-length: 50
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "03a973e8cc6d6cc0a8f05f2ef767a175"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:38:17 GMT
+content-type: application/json; charset=utf-8
+
+{"collaborators":["ask","jdunck","JNRowe","nvie"]}

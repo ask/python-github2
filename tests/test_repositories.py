@@ -69,6 +69,31 @@ class RepoQueries(utils.HttpMockTestCase):
         assert_equals(len(contributors), 27)
         assert_equals(contributors[1].name, 'Ask Solem Hoel')
 
+    def test_list_collaborators(self):
+        collaborators = self.client.repos.list_collaborators('ask/python-github2')
+        assert_equals(len(collaborators), 4)
+        assert_equals(collaborators[2], 'JNRowe')
+
+    def test_languages(self):
+        languages = self.client.repos.languages('JNRowe/misc-overlay')
+        assert_equals(len(languages), 2)
+        assert_equals(languages['Python'], 11194)
+
+    def test_tags(self):
+        tags = self.client.repos.tags('ask/python-github2')
+        assert_equals(len(tags), 7)
+        assert_equals(tags['0.4.1'], '96b0a41dd249c521323700bc11a0a721a7c9e642')
+
+    def test_branches(self):
+        branches = self.client.repos.branches('ask/python-github2')
+        assert_equals(len(branches), 1)
+        assert_equals(branches['master'], '1c83cde9b5a7c396a01af1007fb7b88765b9ae45')
+
+    def test_watchers(self):
+        watchers = self.client.repos.watchers('ask/python-github2')
+        assert_equals(len(watchers), 143)
+        assert_equals(watchers[0], 'ask')
+
 
 class AuthenticatedRepoQueries(utils.HttpMockAuthenticatedTestCase):
     def test_pushable(self):

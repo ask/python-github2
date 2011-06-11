@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 56
+content-location: https://github.com/api/v2/json/repos/show/ask/python-github2/watchers
+x-runtime: 54ms
+content-length: 1625
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "b358d3db0f531bd5a4942821a7b2c207"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:39:31 GMT
+content-type: application/json; charset=utf-8
+
+{"watchers":["ask","bartTC","gregnewman","sneeu","playpauseandstop","bradjasper","tav","joestump","montylounge","justquick","annoma","mrevilme","matagus","stefanfoulis","paulproteus","mattdennewitz","mrolafsson","mlaprise","notesandvolts","idangazit","defunkt","ericholscher","travisjeffery","mnaberez","mikexstudios","robertpfeiffer","diox","mmalone","rconradharris","codysoyland","fperez","koenbollen","mager","eokyere","leegao","nvie","storborg","thoas","Taomio","junckritter","eklitzke","claudiob","yyliuliang","hemanth","dinoboff","hoffmann","Kuze","sixthgear","wasabi1809","CMB","dcolish","tomdyson","miyamuko","stevejalim","grauwoelfchen","pydanny","mgrouchy","kennethreitz","mrtazz","durden","tkaemming","rnelson","jbochi","cloudartisan","jdunck","mattoufoutu","MtvnGames","salsakran","jrabbit","ojii","shabda","JNRowe","zsiciarz","rnagle","imp","rdegges","travlr","johl","gregory80","markuso","meantheory","idorosen","svetlyak40wt","adamv","dforsyth","bleepbloop","ChristopherMacGown","dreynolds","TaurusOlson","rstrobl","johndagostino","droot","pierre-roux","sanjayprabhu","pquerna","iki","mt3","RaiMan","pinoystartup","adamdoupe","RafeKettler","glensc","wermut","switchyard","sammyt","patrys","blackspiraldev","fkling","rokstrnisa","myusuf3","xen-git","bassdread","pmuilu","pombredanne","sigurdga","surajram","loganlinn","k7d","throughnothing","Amper","nikescar","deeGraYve","broderboy","aculich","AntonioMeireles","pikhovkin","atkinson","sc68cal","ralphbean","goosemo","ergelo","gazoombo","zikey","hub-cap","jamesadney","EnTeQuAk","albertz","ryansb","misfire","lxneng","jean-philippe","deniszgonjanin","Irazmus"]}

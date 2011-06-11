@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 57
+content-location: https://github.com/api/v2/json/repos/show/ask/python-github2/branches
+x-runtime: 8ms
+content-length: 66
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "9f005bc97eb5ab622f01f1810790a947"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:39:24 GMT
+content-type: application/json; charset=utf-8
+
+{"branches":{"master":"1c83cde9b5a7c396a01af1007fb7b88765b9ae45"}}
