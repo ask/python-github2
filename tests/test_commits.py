@@ -5,6 +5,14 @@ from nose.tools import assert_equals
 import utils
 
 
+class Commit(utils.HttpMockTestCase):
+    def test_repr(self):
+        commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
+        commit = self.client.commits.show('ask/python-github2', commit_id)
+        assert_equals(repr(commit),
+                      '<Commit: %s Added cache support to manage_collaborators.>' % commit_id)
+
+
 class CommitsQueries(utils.HttpMockTestCase):
     """Test commit querying"""
     def test_list(self):

@@ -7,6 +7,12 @@ from nose.tools import assert_equals
 import utils
 
 
+class Repo(utils.HttpMockTestCase):
+    def test_repr(self):
+        repo = self.client.repos.show('JNRowe/misc-overlay')
+        assert_equals(repr(repo), '<Repository: JNRowe/misc-overlay>')
+
+
 class RepoProperties(utils.HttpMockTestCase):
     """Test repository property handling"""
     def test_repo(self):

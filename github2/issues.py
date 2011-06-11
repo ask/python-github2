@@ -31,7 +31,7 @@ class Comment(BaseData):
     user = Attribute("The username of the user that created this comment.")
 
     def __repr__(self):
-        return "<Comment: %s>" % self.body
+        return "<Comment: %s>" % self.body[:64]
 
 
 class Issues(GithubCommand):
