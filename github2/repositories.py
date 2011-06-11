@@ -1,5 +1,8 @@
 from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
 
+from github2.users import User
+
+
 class Repository(BaseData):
     name = Attribute("Name of repository.")
     description = Attribute("Repository description.")
@@ -204,5 +207,5 @@ class Repositories(GithubCommand):
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "contributors",
-                           filter="contributors")
+        return self.get_values("show", project, "contributors",
+                               filter="contributors", datatype=User)
