@@ -10,7 +10,7 @@ class Commit(utils.HttpMockTestCase):
         commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
         commit = self.client.commits.show('ask/python-github2', commit_id)
         assert_equals(repr(commit),
-                      '<Commit: %s Added cache support to manage_collaborators.>' % commit_id)
+                      '<Commit: %s Added cache suppo...>' % commit_id[:8])
 
 
 class CommitsQueries(utils.HttpMockTestCase):
