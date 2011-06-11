@@ -1,6 +1,7 @@
 import urllib
 
-from github2.core import GithubCommand, BaseData, Attribute, DateAttribute
+from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
+                          repr_string)
 
 
 class Issue(BaseData):
@@ -20,7 +21,7 @@ class Issue(BaseData):
     pull_request_url = Attribute("URL for the issue's related pull request.")
 
     def __repr__(self):
-        return "<Issue: %s>" % self.title.encode('utf-8')
+        return "<Issue: %s>" % repr_string(self.title)
 
 
 class Comment(BaseData):
@@ -31,7 +32,7 @@ class Comment(BaseData):
     user = Attribute("The username of the user that created this comment.")
 
     def __repr__(self):
-        return "<Comment: %s>" % self.body
+        return "<Comment: %s>" % repr_string(self.body)
 
 
 class Issues(GithubCommand):

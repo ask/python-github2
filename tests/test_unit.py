@@ -8,6 +8,7 @@ import unittest
 
 from nose.tools import (assert_equals, assert_true)
 
+from github2.core import repr_string
 from github2.issues import Issue
 from github2.client import Github
 
@@ -48,3 +49,8 @@ def test_project_for_user_repo():
     client = Github()
     assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),
                   'JNRowe/misc-overlay')
+
+def test_repr_string():
+    assert_equals(repr_string('test'), 'test')
+    assert_equals(repr_string('abcdefghijklmnopqrst'), 'abcdefghijklmnopqrst')
+    assert_equals(repr_string('abcdefghijklmnopqrstu'), 'abcdefghijklmnopq...')

@@ -1,4 +1,5 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
+                          repr_string)
 
 
 class Commit(BaseData):
@@ -20,7 +21,7 @@ class Commit(BaseData):
                          "been modified since last commit.")
 
     def __repr__(self):
-        return "<Commit: %s %s>" % (self.id[:8], self.message[:64])
+        return "<Commit: %s %s>" % (self.id[:8], repr_string(self.message))
 
 
 class Commits(GithubCommand):
