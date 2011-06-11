@@ -39,7 +39,8 @@ class Repositories(GithubCommand):
 
         :param str query: term to search issues for
         """
-        return self.make_request("search", query, filter="repositories")
+        return self.get_values("search", query, filter="repositories",
+                               datatype=Repository)
 
     def show(self, project):
         """Get repository object for project.
