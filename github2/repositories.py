@@ -28,7 +28,7 @@ class Repository(BaseData):
     project = property(_project)
 
     def __repr__(self):
-        return "<Repository: %s>" % (self._project())
+        return "<Repository: %s>" % self.project
 
 
 class Repositories(GithubCommand):

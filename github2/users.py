@@ -33,7 +33,7 @@ class User(BaseData):
         return self.plan is not None
 
     def __repr__(self):
-        return "<User: %s>" % (self.login)
+        return "<User: %s>" % self.login
 
 
 class Users(GithubCommand):

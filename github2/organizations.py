@@ -27,7 +27,7 @@ class Organization(BaseData):
         return self.plan is not None
 
     def __repr__(self):
-        return "<Organization: %s>" % (self.login)
+        return "<Organization: %s>" % self.login
 
 
 class Organizations(GithubCommand):
