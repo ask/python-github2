@@ -18,6 +18,9 @@ Core
 
 .. autofunction:: userdate_to_datetime
 
+.. autofunction:: isodate_to_datetime
+.. autofunction:: datetime_to_isodate
+
 .. autofunction:: requires_auth
 .. autofunction:: enhanced_by_auth
 
