@@ -1,8 +1,16 @@
 import _setup
 
-from nose.tools import assert_equals
+from nose.tools import (assert_equals, assert_true)
 
 import utils
+
+
+class OrganizationProperties(utils.HttpMockTestCase):
+    def test_is_authenticated(self):
+        organization = self.client.organizations.show('github')
+        assert_true(organization.is_authenticated() is False)
+        organization = self.client.organizations.show('fake_org_with_auth')
+        assert_true(organization.is_authenticated() is True)
 
 
 class Organization(utils.HttpMockTestCase):
