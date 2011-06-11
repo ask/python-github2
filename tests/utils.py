@@ -1,6 +1,7 @@
 import _setup
 
 import os
+import sys
 import unittest
 
 from email import message_from_file
@@ -9,6 +10,10 @@ import httplib2
 
 from github2.client import Github
 from github2.request import charset_from_headers
+
+
+if sys.version_info[0] == 2:
+    bytes = lambda x, enc: x
 
 
 HTTP_DATA_DIR = "tests/data/"
@@ -37,7 +42,7 @@ class HttpMock(object):
         if os.path.exists(file):
             response = message_from_file(open(file))
             headers = httplib2.Response(response)
-            body = response.get_payload().encode(charset_from_headers(headers))
+            body = bytes(response.get_payload(), charset_from_headers(headers))
             return (headers, body)
         else:
             return (httplib2.Response({"status": "404"}),
