@@ -1,6 +1,11 @@
+import sys
 import time
 
 from datetime import datetime
+
+#: Running under Python 3
+PY3K = sys.version_info[0] == 3 and True or False
+
 
 GITHUB_TIMEZONE = "-0700"
 GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
@@ -294,4 +299,6 @@ def repr_string(string):
     """
     if len(string) > 20:
         string = string[:17] + '...'
-    return string.encode('utf-8')
+    if not PY3K:
+        string.decode('utf-8')
+    return string

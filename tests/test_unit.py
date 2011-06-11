@@ -3,7 +3,6 @@
 import _setup
 
 import datetime
-import sys
 import unittest
 
 from nose.tools import (assert_equals, assert_true)
@@ -21,8 +20,6 @@ class ReprTests(unittest.TestCase):
     def test_issue(self):
         """Issues can have non-ASCII characters in the title."""
         title = 'abcdé'
-        if sys.version_info[0] == 2:
-            title = title.decode("utf-8")
         i = Issue(title=title)
         assert_equals(str, type(repr(i)))
 
