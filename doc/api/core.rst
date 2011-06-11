@@ -20,6 +20,8 @@ Core
 
 .. autofunction:: doc_generator
 
+.. autofunction:: repr_string
+
 .. autoclass:: GithubCommand(type)
 
 .. autoclass:: Attribute(type)
