@@ -44,6 +44,14 @@ class RateLimits(utils.HttpMockTestCase):
                     "between calls.")
 
 
+class BaseDataIter(utils.HttpMockTestCase):
+    """Test iter availability of objects"""
+    def test_iter(self):
+        commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
+        commit = self.client.commits.show('ask/python-github2', commit_id)
+        assert_true('__iter__' in dir(commit))
+
+
 def test_project_for_user_repo():
     client = Github()
     assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),
