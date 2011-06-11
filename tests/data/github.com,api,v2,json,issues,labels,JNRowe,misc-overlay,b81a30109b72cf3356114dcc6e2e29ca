@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 58
+content-location: https://github.com/api/v2/json/issues/labels/JNRowe/misc-overlay
+x-runtime: 10ms
+content-length: 35
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "a97c4b6aaa3d373f86315a8577170b10"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:42:11 GMT
+content-type: application/json; charset=utf-8
+
+{"labels":["feature","bug","task"]}
