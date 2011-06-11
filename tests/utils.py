@@ -70,6 +70,19 @@ class HttpMockTestCase(unittest.TestCase):
         httplib2.Http = ORIG_HTTP_OBJECT
 
 
+class HttpMockAuthenticatedTestCase(HttpMockTestCase):
+    def setUp(self):
+        """Prepare test fixtures
+
+        :see: ``HttpMockTestCase``
+
+        :attr:`client` is an authenticated :obj:`Github` object for easy use
+        in tests.
+        """
+        httplib2.Http = HttpMock
+        self.client = Github(access_token='xxx')
+
+
 def set_http_mock():
     """Function to enable ``Http`` mock
 

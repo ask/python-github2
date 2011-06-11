@@ -70,11 +70,7 @@ class RepoQueries(utils.HttpMockTestCase):
         assert_equals(contributors[1].name, 'Ask Solem Hoel')
 
 
-class AuthenticatedRepoQueries(utils.HttpMockTestCase):
-    def setUp(self):
-        super(AuthenticatedRepoQueries, self).setUp()
-        self.client = Github(access_token='xxx')
-
+class AuthenticatedRepoQueries(utils.HttpMockAuthenticatedTestCase):
     def test_pushable(self):
         repos = self.client.repos.pushable()
         assert_equals(len(repos), 1)

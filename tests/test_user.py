@@ -53,11 +53,7 @@ class UserQueries(utils.HttpMockTestCase):
         assert_equals(repr(user), '<User: JNRowe>')
 
 
-class AuthenticatedUserMethods(utils.HttpMockTestCase):
-    def setUp(self):
-        super(AuthenticatedUserMethods, self).setUp()
-        self.client = Github(access_token='xxx')
-
+class AuthenticatedUserMethods(utils.HttpMockAuthenticatedTestCase):
     def test_follow(self):
         result = self.client.users.follow('defunkt')
         assert_true('defunkt' in result['users'])
@@ -71,11 +67,7 @@ class AuthenticatedUserMethods(utils.HttpMockTestCase):
         assert_true(user.is_authenticated() is True)
 
 
-class AuthenticatedUserProperties(utils.HttpMockTestCase):
-    def setUp(self):
-        super(AuthenticatedUserProperties, self).setUp()
-        self.client = Github(access_token='xxx')
-
+class AuthenticatedUserProperties(utils.HttpMockAuthenticatedTestCase):
     def test_private_data(self):
         user = self.client.users.show('')
         assert_equals(user.total_private_repo_count, 0)
