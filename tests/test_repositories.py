@@ -2,7 +2,7 @@ import _setup
 
 import datetime
 
-from nose.tools import (assert_equals, assert_false, assert_true)
+from nose.tools import assert_equals
 
 import utils
 
