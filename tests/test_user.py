@@ -4,6 +4,8 @@ import datetime
 
 from nose.tools import (assert_equals, assert_false, assert_true)
 
+from github2.client import Github
+
 import utils
 
 
@@ -68,7 +70,11 @@ class UserQueries(utils.HttpMockTestCase):
         assert_equals(repr(user), '<User: JNRowe>')
 
 
-class UserMethods(utils.HttpMockTestCase):
+class AuthenticatedUserMethods(utils.HttpMockTestCase):
+    def setUp(self):
+        super(AuthenticatedUserMethods, self).setUp()
+        self.client = Github(access_token='xxx')
+
     def test_follow(self):
         result = self.client.users.follow('defunkt')
         assert_true('defunkt' in result['users'])
