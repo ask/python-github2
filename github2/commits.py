@@ -20,7 +20,7 @@ class Commit(BaseData):
                          "been modified since last commit.")
 
     def __repr__(self):
-        return "<Commit: %s %s>" % (self.id, self.message[:64])
+        return "<Commit: %s %s>" % (self.id[:8], self.message[:64])
 
 
 class Commits(GithubCommand):
