@@ -12,6 +12,11 @@ Core
 
    Set to ``False`` for timezone-aware :class:`datetime.datetime` objects
 
+.. autodata:: GITHUB_TZ(datetime.tzinfo)
+
+   Timezone used in output from GitHub API, currently defined as
+   ``America/Los_Angeles`` in the Olson database
+
 .. autofunction:: string_to_datetime
 
 .. autofunction:: datetime_to_ghdate
