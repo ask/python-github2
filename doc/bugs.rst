@@ -22,9 +22,9 @@ hard to track down the actual cause of a bug.  The first step when you've found
 a bug should be to test it directly, to rule out a temporary problem with GitHub
 or a deficiency in the API.
 
-You can check which URLs your code is requesting using the ``debug`` argument
-when you create your :class:`~github2.client.Github` object.  See
-:doc:`problems` for information on using the ``debug`` support.
+You can check which URLs your code is requesting by enabling
+:data:`~logging.DEBUG` level output in your logger, see the
+:mod:`python:logging` for more information.
 
 If the bug you've found is outside the reach of this project an issue should be
 opened in GitHub's `API support forum`_.  It doesn't hurt to `report an issue`_

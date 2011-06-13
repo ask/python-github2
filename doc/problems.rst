@@ -1,17 +1,25 @@
 Solving problems
 ================
 
-The client object, :class:`~github2.client.Github`, supports a ``debug`` keyword
-argument that is invaluable for troubleshooting.  Enabling the ``debug``
-functionality will produce output on :data:`sys.stderr` in certain situations.
+:mod:`github2` uses :mod:`logging` to report warnings, errors and debug messages
+to the library's user.  The Python documentation includes thorough documentation
+for the :mod:`logging` module, and a :ref:`wonderful tutorial
+<python:logging-basic-tutorial>`.
+
+.. note::
+
+   If there is more data you'd like the library to exposed then open an issue_,
+   or even better a pull request!
+
+.. _issue: https://github.com/ask/python-github2/issues/
 
 Request data
 ''''''''''''
 
-With ``debug`` enabled a message will be produced every time an API request is
-made.
+With the ``DEBUG`` logging level enabled a message will be produced every time
+an API request is made.
 
-    >>> github = Github(debug=True)
+    >>> github = Github()
     >>> user = github.users.show("JNRowe")
     URL:[https://github.com/api/v2/json/user/show/JNRowe]
     POST_DATA:None
@@ -22,16 +30,14 @@ made.
 In the message you can see the URL that was accessed, here
 ``https://github.com/api/v2/json/user/show/JNRowe``.  You'll also see any HTTP
 ``post`` method data that was sent, in this case there was none.  And the full
-response from GitHub, here the user data of JNRowe.
-
-It has no other affect on the code.
+response from GitHub, here the user data of ``JNRowe``.
 
 Rate limiting
 '''''''''''''
 
 If rate limiting is enabled, with the ``requests_per_second`` when creating a
-:class:`~github2.client.Github` object, then you'll see a message when a request
-has been delayed.
+:class:`~github2.client.Github` object, then you'll see a ``WARNING`` level
+message when a request has been delayed.
 
     >>> github = Github(requests_per_second=0.2, debug=True)
     >>> user = github.users.show("JNRowe")
