@@ -29,27 +29,41 @@ def string_to_datetime(string):
     return parsed
 
 
+def _handle_naive_datetimes(f):
+    """Decorator to make datetime arguments use GitHub timezone
+
+    :param func f: Function to wrap
+    """
+    def wrapper(datetime_):
+        if not datetime_.tzinfo:
+            datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+        else:
+            datetime_ = datetime_.astimezone(GITHUB_TZ)
+        return f(datetime_)
+    wrapped = wrapper
+    wrapped.__name__ = f.__name__
+    wrapped.__doc__ = (
+        f.__doc__
+        + """\n    .. note:: Supports naive and timezone-aware datetimes"""
+    )
+    return wrapped
+
+
+@_handle_naive_datetimes
 def datetime_to_ghdate(datetime_):
     """Convert Python datetime to Github date string
 
     :param datetime datetime_: datetime object to convert
     """
-    if not datetime_.tzinfo:
-        datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
-    else:
-        datetime_ = datetime_.astimezone(GITHUB_TZ)
     return datetime_.strftime(GITHUB_DATE_FORMAT)
 
 
+@_handle_naive_datetimes
 def datetime_to_commitdate(datetime_):
     """Convert Python datetime to Github date string
 
     :param datetime datetime_: datetime object to convert
     """
-    if not datetime_.tzinfo:
-        datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
-    else:
-        datetime_ = datetime_.astimezone(GITHUB_TZ)
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     utcoffset = GITHUB_TZ.utcoffset(datetime_)
     hours, minutes = divmod(utcoffset.days * 86400 + utcoffset.seconds, 3600)
@@ -61,6 +75,8 @@ def datetime_to_isodate(datetime_):
     """Convert Python datetime to Github date string
 
     :param str datetime_: datetime object to convert
+
+    .. note:: Supports naive and timezone-aware datetimes
     """
     if not datetime_.tzinfo:
         datetime_ = datetime_.replace(tzinfo=tz.tzutc())
