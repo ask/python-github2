@@ -18,12 +18,12 @@ GITHUB_TZ = tz.gettz("America/Los_Angeles")
 NAIVE = True
 
 
-def ghdate_to_datetime(github_date):
-    """Convert Github date string to Python datetime
+def string_to_datetime(string):
+    """Convert a string to Python datetime
 
     :param str github_date: date string to parse
     """
-    parsed = parser.parse(github_date)
+    parsed = parser.parse(string)
     if NAIVE:
         parsed = parsed.replace(tzinfo=None)
     return parsed
@@ -41,17 +41,6 @@ def datetime_to_ghdate(datetime_):
     return datetime_.strftime(GITHUB_DATE_FORMAT)
 
 
-def commitdate_to_datetime(commit_date):
-    """Convert commit date string to Python datetime
-
-    :param str github_date: date string to parse
-    """
-    parsed = parser.parse(commit_date)
-    if NAIVE:
-        parsed = parsed.replace(tzinfo=None)
-    return parsed
-
-
 def datetime_to_commitdate(datetime_):
     """Convert Python datetime to Github date string
 
@@ -66,34 +55,6 @@ def datetime_to_commitdate(datetime_):
     hours, minutes = divmod(utcoffset.days * 86400 + utcoffset.seconds, 3600)
 
     return "".join([date_without_tz, "%+03d:%02d" % (hours, minutes)])
-
-
-
-def userdate_to_datetime(user_date):
-    """Convert user date string to Python datetime
-
-    Unfortunately this needs a special case because :meth:`~Github.users.show`
-    and :meth:`~Github.users.search` return different formats for the
-    ``created_at`` attributes.
-
-    :param str user_date: date string to parse
-    """
-    parsed = parser.parse(user_date)
-    if NAIVE:
-        parsed = parsed.replace(tzinfo=None)
-    return parsed
-
-
-def isodate_to_datetime(iso_date):
-    """Convert commit date string to Python datetime
-
-    :param str github_date: date string to parse
-    """
-    parsed = parser.parse(iso_date)
-    if NAIVE:
-        parsed = parsed.replace(tzinfo=None)
-    return parsed
-
 
 
 def datetime_to_isodate(datetime_):
@@ -223,22 +184,10 @@ class Attribute(object):
 class DateAttribute(Attribute):
     format = "github"
     converter_for_format = {
-        "github": {
-            "to": ghdate_to_datetime,
-            "from": datetime_to_ghdate,
-        },
-        "commit": {
-            "to": commitdate_to_datetime,
-            "from": datetime_to_commitdate,
-        },
-        "user": {
-            "to" : userdate_to_datetime,
-            "from": datetime_to_ghdate,
-	},
-        "iso": {
-            "to": isodate_to_datetime,
-            "from": datetime_to_isodate,
-        }
+        "github": datetime_to_ghdate,
+        "commit": datetime_to_commitdate,
+        "user": datetime_to_ghdate,
+        "iso": datetime_to_isodate,
     }
 
     def __init__(self, *args, **kwargs):
@@ -247,12 +196,12 @@ class DateAttribute(Attribute):
 
     def to_python(self, value):
         if value and not isinstance(value, datetime):
-            return self.converter_for_format[self.format]["to"](value)
+            return string_to_datetime(value)
         return value
 
     def from_python(self, value):
         if value and isinstance(value, datetime):
-            return self.converter_for_format[self.format]["from"](value)
+            return self.converter_for_format[self.format](value)
         return value
 
 

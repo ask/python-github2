@@ -12,15 +12,10 @@ Core
 
    Set to ``False`` for timezone-aware :class:`datetime.datetime` objects
 
-.. autofunction:: ghdate_to_datetime
+.. autofunction:: string_to_datetime
+
 .. autofunction:: datetime_to_ghdate
-
-.. autofunction:: commitdate_to_datetime
 .. autofunction:: datetime_to_commitdate
-
-.. autofunction:: userdate_to_datetime
-
-.. autofunction:: isodate_to_datetime
 .. autofunction:: datetime_to_isodate
 
 .. autofunction:: requires_auth
