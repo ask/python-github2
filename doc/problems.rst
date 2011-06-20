@@ -3,8 +3,7 @@ Solving problems
 
 :mod:`github2` uses :mod:`logging` to report warnings, errors and debug messages
 to the library's user.  The Python documentation includes thorough documentation
-for the :mod:`logging` module, and a :ref:`wonderful tutorial
-<python:logging-basic-tutorial>`.
+for the :mod:`logging` module, and a `wonderful tutorial`_.
 
 .. note::
 
@@ -12,6 +11,7 @@ for the :mod:`logging` module, and a :ref:`wonderful tutorial
    or even better a pull request!
 
 .. _issue: https://github.com/ask/python-github2/issues/
+.. _wonderful tutorial: http://docs.python.org/howto/logging.html
 
 Request data
 ''''''''''''
