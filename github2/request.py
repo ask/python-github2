@@ -1,7 +1,6 @@
 import datetime
 import logging
 import re
-import sys
 import time
 import httplib2
 try:
