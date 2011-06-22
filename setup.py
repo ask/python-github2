@@ -33,7 +33,10 @@ setup(
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
     entry_points={
-        'console_scripts': ['github_manage_collaborators = github2.bin.manage_collaborators:main', ]
+        'console_scripts': [
+            'github_manage_collaborators = github2.bin.manage_collaborators:main',
+            'github_search_repos = github2.bin.search_repos:main',
+        ],
     },
     install_requires=install_requires,
     zip_safe=True,
