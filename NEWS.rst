@@ -3,6 +3,17 @@ User-visible changes
 
 .. contents::
 
+``master`` branch
+-----------------
+
+* Support for `pull requests`_
+* Simple logging_ based messages for event tracking and debugging
+* Requires python-dateutil_
+
+.. _pull requests: http://develop.github.com/p/pulls.html
+.. _logging: http://docs.python.org/library/logging.html
+.. _python-dateutil: http://pypi.python.org/pypi/python-dateutil
+
 0.4.0 - 2011-05-23
 ------------------
 
