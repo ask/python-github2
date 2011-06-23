@@ -1,99 +1,89 @@
 import sys
-import time
 
 from datetime import datetime
+from dateutil import (parser, tz)
+
 
 #: Running under Python 3
 PY3K = sys.version_info[0] == 3 and True or False
 
-
-GITHUB_TIMEZONE = "-0700"
-GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S"
-#2009-03-21T18:01:48-07:00
+GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
+# We need to manually mangle the timezone for commit date formatting because it
+# uses -xx:xx format
 COMMIT_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
-COMMIT_TIMEZONE = "-07:00"
+#: GitHub timezone used in API output
+GITHUB_TZ = tz.gettz("America/Los_Angeles")
+
+#: Operate on naive :class:`datetime.datetime` objects, this is the default
+#: for backwards compatibility
+NAIVE = True
 
 
-def strptime(string, format):
-    """Parse date strings according to specified format
-
-    We have to create our :obj:`~datetime.datetime` objects indirectly to remain
-    compatible with Python 2.4, where the :class:`~datetime.datetime` class has
-    no :meth:`~datetime.datetime.strptime` method.
-
-    :param str string: String to parse
-    :param str format: Datetime format
-    :return datetime: Parsed datetime
-    """
-    return datetime(*(time.strptime(string, format)[:6]))
-
-
-def ghdate_to_datetime(github_date):
-    """Convert Github date string to Python datetime
+def string_to_datetime(string):
+    """Convert a string to Python datetime
 
     :param str github_date: date string to parse
     """
-    date_without_tz = " ".join(github_date.strip().split()[:2])
-    return strptime(date_without_tz, GITHUB_DATE_FORMAT)
+    parsed = parser.parse(string)
+    if NAIVE:
+        parsed = parsed.replace(tzinfo=None)
+    return parsed
 
 
+def _handle_naive_datetimes(f):
+    """Decorator to make datetime arguments use GitHub timezone
+
+    :param func f: Function to wrap
+    """
+    def wrapper(datetime_):
+        if not datetime_.tzinfo:
+            datetime_ = datetime_.replace(tzinfo=GITHUB_TZ)
+        else:
+            datetime_ = datetime_.astimezone(GITHUB_TZ)
+        return f(datetime_)
+    wrapped = wrapper
+    wrapped.__name__ = f.__name__
+    wrapped.__doc__ = (
+        f.__doc__
+        + """\n    .. note:: Supports naive and timezone-aware datetimes"""
+    )
+    return wrapped
+
+
+@_handle_naive_datetimes
 def datetime_to_ghdate(datetime_):
     """Convert Python datetime to Github date string
 
     :param datetime datetime_: datetime object to convert
     """
-    date_without_tz = datetime_.strftime(GITHUB_DATE_FORMAT)
-    return " ".join([date_without_tz, GITHUB_TIMEZONE])
+    return datetime_.strftime(GITHUB_DATE_FORMAT)
 
 
-def commitdate_to_datetime(commit_date):
-    """Convert commit date string to Python datetime
-
-    :param str github_date: date string to parse
-    """
-    date_without_tz = commit_date[:-6]
-    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
-
-
+@_handle_naive_datetimes
 def datetime_to_commitdate(datetime_):
     """Convert Python datetime to Github date string
 
     :param datetime datetime_: datetime object to convert
     """
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
-    return "".join([date_without_tz, COMMIT_TIMEZONE])
+    utcoffset = GITHUB_TZ.utcoffset(datetime_)
+    hours, minutes = divmod(utcoffset.days * 86400 + utcoffset.seconds, 3600)
 
-
-def userdate_to_datetime(user_date):
-    """Convert user date string to Python datetime
-
-    Unfortunately this needs a special case because :meth:`~Github.users.show`
-    and :meth:`~Github.users.search` return different formats for the
-    ``created_at`` attributes.
-
-    :param str user_date: date string to parse
-    """
-    try:
-        return ghdate_to_datetime(user_date)
-    except ValueError:
-        return strptime(user_date, '%Y-%m-%dT%H:%M:%SZ')
-
-
-def isodate_to_datetime(iso_date):
-    """Convert commit date string to Python datetime
-
-    :param str github_date: date string to parse
-    """
-    date_without_tz = iso_date[:-1]
-    return strptime(date_without_tz, COMMIT_DATE_FORMAT)
+    return "".join([date_without_tz, "%+03d:%02d" % (hours, minutes)])
 
 
 def datetime_to_isodate(datetime_):
     """Convert Python datetime to Github date string
 
     :param str datetime_: datetime object to convert
+
+    .. note:: Supports naive and timezone-aware datetimes
     """
-    return "%sZ" % datetime_.isoformat()
+    if not datetime_.tzinfo:
+        datetime_ = datetime_.replace(tzinfo=tz.tzutc())
+    else:
+        datetime_ = datetime_.astimezone(tz.tzutc())
+    return "%sZ" % datetime_.isoformat()[:-6]
 
 
 class AuthError(Exception):
@@ -211,22 +201,10 @@ class Attribute(object):
 class DateAttribute(Attribute):
     format = "github"
     converter_for_format = {
-        "github": {
-            "to": ghdate_to_datetime,
-            "from": datetime_to_ghdate,
-        },
-        "commit": {
-            "to": commitdate_to_datetime,
-            "from": datetime_to_commitdate,
-        },
-        "user": {
-            "to" : userdate_to_datetime,
-            "from": datetime_to_ghdate,
-	},
-        "iso": {
-            "to": isodate_to_datetime,
-            "from": datetime_to_isodate,
-        }
+        "github": datetime_to_ghdate,
+        "commit": datetime_to_commitdate,
+        "user": datetime_to_ghdate,
+        "iso": datetime_to_isodate,
     }
 
     def __init__(self, *args, **kwargs):
@@ -235,12 +213,12 @@ class DateAttribute(Attribute):
 
     def to_python(self, value):
         if value and not isinstance(value, datetime):
-            return self.converter_for_format[self.format]["to"](value)
+            return string_to_datetime(value)
         return value
 
     def from_python(self, value):
         if value and isinstance(value, datetime):
-            return self.converter_for_format[self.format]["from"](value)
+            return self.converter_for_format[self.format](value)
         return value
 
 

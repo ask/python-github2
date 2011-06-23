@@ -8,17 +8,19 @@ Core
    of the :mod:`github2` package, but it is documented to aid contributors
    to the package.
 
-.. autofunction:: strptime
+.. autodata:: NAIVE(bool)
 
-.. autofunction:: ghdate_to_datetime
+   Set to ``False`` for timezone-aware :class:`datetime.datetime` objects
+
+.. autodata:: GITHUB_TZ(datetime.tzinfo)
+
+   Timezone used in output from GitHub API, currently defined as
+   ``America/Los_Angeles`` in the Olson database
+
+.. autofunction:: string_to_datetime
+
 .. autofunction:: datetime_to_ghdate
-
-.. autofunction:: commitdate_to_datetime
 .. autofunction:: datetime_to_commitdate
-
-.. autofunction:: userdate_to_datetime
-
-.. autofunction:: isodate_to_datetime
 .. autofunction:: datetime_to_isodate
 
 .. autofunction:: requires_auth
