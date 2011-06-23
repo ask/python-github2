@@ -17,13 +17,10 @@
    :prefix: Download
    :class: sidebar
 
-This is an experimental Python library implementing all of the features
-available in version 2 of the `Github API`_.
+This is a Python library implementing all of the features available in version 2
+of the `Github API`_.
 
 You should read the developer documentation for the `Github API`_ first.
-
-.. Note::
-   This software is not finished. And is likely to change in the near future.
 
 :Git repository:  https://github.com/ask/python-github2/
 :Issue tracker:  https://github.com/ask/python-github2/issues/

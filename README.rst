@@ -6,11 +6,8 @@ github2 - Github API v2 library for Python.
     Ask Solem (askh@opera.com)
 :Version: 0.4.1
 
-This is an experimental python library implementing all of the features
-available in version 2 of the `Github API`_.
-
-*Note* This software is not finished. And is likely to change in the near
-future.
+This is a Python library implementing all of the features available in version 2
+of the `Github API`_.
 
 See the ``doc/`` directory for installation instructions and usage information.
 If you prefer you can also read the `documentation online`_.
