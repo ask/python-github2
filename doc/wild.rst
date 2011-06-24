@@ -32,6 +32,16 @@ listed on this page.
 
 :PyPI page: :pypi:`ghmiles`
 
+``hubugs``
+''''''''''
+
+    ``hubugs`` is a very simple client for working with `GitHub's issue
+    tracker`_.
+
+:PyPI page: :pypi:`hubugs`
+
+.. _GitHub's issue tracker: http://github.com/blog/411-github-issue-tracker
+
 ``roundabout``
 ''''''''''''''
 
