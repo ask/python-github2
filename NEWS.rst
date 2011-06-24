@@ -3,8 +3,8 @@ User-visible changes
 
 .. contents::
 
-``master`` branch
------------------
+0.5.0 - 2011-05-24
+------------------
 
 * Support for `pull requests`_
 * Simple logging_ based messages for event tracking and debugging
