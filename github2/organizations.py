@@ -47,15 +47,21 @@ class Organizations(GithubCommand):
         return self.get_values('', filter="organizations",
                                datatype=Organization)
 
-    def repositories(self):
-        """Get list of all repositories in organizations you are member of"""
-        return self.get_values('repositories', filter="repositories",
-                               datatype=Repository)
+    def repositories(self, organization=''):
+        """Get list of all repositories in an organization
+
+        If organization is not given, or is empty, then this will list
+        repositories for all organizations the authenticated user belongs to.
+
+        :param: str organization: organization to list repositories for
+        """
+        return self.get_values(organization, 'repositories',
+                               filter="repositories", datatype=Repository)
 
     def public_repositories(self, organization):
         """Get list of public repositories in an organization
 
-        :param str organization: organization to list repositories for
+        :param str organization: organization to list public repositories for
         """
         return self.get_values(organization, 'public_repositories',
                                filter="repositories", datatype=Repository)
