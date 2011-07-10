@@ -11,5 +11,7 @@ include doc/Makefile
 include doc/.templates/layout.html
 prune doc/.build
 
+include github2/*.crt
+
 include tests/*.py
 recursive-include tests/data *
