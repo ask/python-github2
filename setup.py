@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 import github2
 
 
-install_requires = ['httplib2', ]
+install_requires = ['httplib2 >= 0.7.0', ]
 # simplejson is included in the standard library since Python 2.6 as json.
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
@@ -35,6 +35,8 @@ setup(
     keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
+    include_package_data=True,
+    package_data={'': ['*.crt', ], },
     entry_points={
         'console_scripts': [
             'github_manage_collaborators = github2.bin.manage_collaborators:main',
@@ -45,9 +47,6 @@ setup(
     zip_safe=True,
     test_suite="nose.collector",
     tests_require=['nose'],
-    extras_require={
-        'SOCKS': ['SocksiPy-branch==1.01'],
-    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

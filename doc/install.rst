@@ -25,7 +25,6 @@ for handling HTTP sessions.  :pypi:`python-dateutil` is used for its date
 handling [#]_.  :pypi:`simplejson` is also required when using :mod:`github2`
 with Python 2.4 or 2.5.  If you install via :pypi:`pip` or :pypi:`easy_install
 <setuptools>` the dependencies should be installed automatically for you.
-:pypi:`SocksiPy-branch` is an optional dependency if proxy support is needed.
 
 .. [#] You must use :pypi:`python-dateutil` 1.x when working with Python 2.x,
        the latest 2.x releases are for Python 3.x installations only.

@@ -7,10 +7,7 @@ try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
-try:
-    import socks  # SOCKS support may not be installed
-except ImportError:
-    socks = None
+from os import path
 from urlparse import (urlsplit, urlunsplit)
 try:
     from urlparse import parse_qs
@@ -73,15 +70,15 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
+        digicert_ha_cert = path.join(path.dirname(path.abspath(__file__ )),
+                                     "DigiCert_High_Assurance_EV_Root_CA.crt")
         if proxy_host is None:
-            self._http = httplib2.Http(cache=cache)
-        elif proxy_host and socks is None:
-            raise GithubError('Proxy support missing.  '
-                              'Install a Python SOCKS library.')
+            self._http = httplib2.Http(cache=cache, ca_certs=digicert_ha_cert)
         else:
-            proxy_info = httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP,
+            proxy_info = httplib2.ProxyInfo(httplib2.socks.PROXY_TYPE_HTTP,
                                             proxy_host, proxy_port)
-            self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
+            self._http = httplib2.Http(proxy_info=proxy_info, cache=cache,
+                                       ca_certs=digicert_ha_cert)
 
     def encode_authentication_data(self, extra_post_data):
         if self.access_token:

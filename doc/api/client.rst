@@ -42,9 +42,7 @@ API calls are limited by github.com to 1 per second by default.  To have the
     >>> github = Github(username="ask", api_token=".......",
     ...                 requests_per_second=1)
 
-If you wish to use the library with a HTTP proxy, you will require a Python
-SOCKS module installed.  :pypi:`SocksiPy-branch` is the module we test with, but
-various forks are available.  Pass in the ``proxy_host`` and optionally
+If you wish to use a HTTP proxy you can pass in the ``proxy_host`` and
 ``proxy_port`` settings to enable it.  The default for ``proxy_port``, if not
 given, is 8080::
 
