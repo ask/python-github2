@@ -47,9 +47,6 @@ setup(
     zip_safe=True,
     test_suite="nose.collector",
     tests_require=['nose'],
-    extras_require={
-        'SOCKS': ['SocksiPy-branch==1.01'],
-    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
