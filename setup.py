@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 import github2
 
 
-install_requires = ['httplib2', ]
+install_requires = ['httplib2 >= 0.7.0', ]
 # simplejson is included in the standard library since Python 2.6 as json.
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
