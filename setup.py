@@ -35,6 +35,8 @@ setup(
     keywords="git github api",
     platforms=["any"],
     packages=find_packages(exclude=['tests']),
+    include_package_data=True,
+    package_data={'': ['*.crt', ], },
     entry_points={
         'console_scripts': [
             'github_manage_collaborators = github2.bin.manage_collaborators:main',

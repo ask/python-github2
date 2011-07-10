@@ -27,7 +27,7 @@ class HttpMock(object):
     Implementation tests should never span network boundaries
     """
 
-    def __init__(self, cache=None, timeout=None, proxy_info=None):
+    def __init__(self, cache=None, timeout=None, proxy_info=None, ca_certs=None):
         """Create a mock httplib.Http object
 
         .. attribute: called_with
