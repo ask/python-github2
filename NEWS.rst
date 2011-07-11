@@ -3,6 +3,12 @@ User-visible changes
 
 .. contents::
 
+0.5.1 - 2011-06-11
+------------------
+
+* This is a bugfix release for compatibility with the latest httplib2_ release
+* httplib2_ v0.7.0, or higher, is required
+
 0.5.0 - 2011-05-24
 ------------------
 
