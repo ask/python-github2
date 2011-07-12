@@ -45,3 +45,8 @@ To attach code to an existing issue and make it a pull request::
     >>> pull = github.pull_requests.create("ask/python-github2", "master",
     ...                                    "JNRowe:my_new_branch",
     ...                                    issue=4)
+
+.. note::
+
+   You can use any ``tree-ish`` for the ``head`` argument, you are not
+   restricted to symbolic references.
