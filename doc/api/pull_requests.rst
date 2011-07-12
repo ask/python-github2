@@ -1,7 +1,11 @@
+.. module:: github2.pull_requests
+
 Pull requests
 =============
 
-.. py:currentmodule:: github2.pull_requests
+See the official GitHub API v2 documentation for `pull requests`_.
+
+.. _pull_requests: http://develop.github.com/p/pulls.html
 
 .. autoclass:: PullRequest(type)
 

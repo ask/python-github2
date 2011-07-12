@@ -3,6 +3,12 @@
 Users
 =====
 
+.. note::
+
+   See the official GitHub API v2 documentation for users_.
+
+.. _users: http://develop.github.com/p/teams.html
+
 .. autoclass:: User(type)
 
 .. autoclass:: Users(type)

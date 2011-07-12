@@ -3,6 +3,12 @@
 Issues
 ======
 
+.. note::
+
+   See the official GitHub API v2 documentation for issues_.
+
+.. _issues: http://develop.github.com/p/issues.html
+
 .. autoclass:: Issue(type)
 
 .. autoclass:: Comment(type)

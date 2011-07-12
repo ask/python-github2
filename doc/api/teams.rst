@@ -1,7 +1,13 @@
+.. module:: github2.teams
+
 Teams
 =====
 
-.. currentmodule:: github2.teams
+.. note::
+
+   See the official GitHub API v2 documentation for `organizations and teams`_.
+
+.. _organizations and teams: http://develop.github.com/p/teams.html
 
 .. autoclass:: Team(type)
 

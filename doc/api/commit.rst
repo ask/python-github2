@@ -3,6 +3,12 @@
 Commit
 ======
 
+.. note::
+
+   See the official GitHub API v2 documentation for commits_.
+
+.. _commits: http://develop.github.com/p/commits.html
+
 .. autoclass:: Commit(type)
 
 .. autoclass:: Commits(type)

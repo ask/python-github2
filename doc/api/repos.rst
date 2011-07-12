@@ -3,6 +3,12 @@
 Repository
 ==========
 
+.. note::
+
+   See the official GitHub API v2 documentation for `repositories`_.
+
+.. _repositories: http://develop.github.com/p/repo.html
+
 .. autoclass:: Repository(type)
 
 .. autoclass:: Repositories(type)

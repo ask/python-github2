@@ -1,7 +1,13 @@
+.. module:: github2.organizations
+
 Organizations
 =============
 
-.. currentmodule:: github2.organizations
+.. note::
+
+   See the official GitHub API v2 documentation for `organizations and teams`_.
+
+.. _organizations and teams: http://develop.github.com/p/orgs.html
 
 .. autoclass:: Organization(type)
 

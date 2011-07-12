@@ -1,7 +1,11 @@
+.. currentmodule:: github2.client
+
 Object
 ======
 
-.. currentmodule:: github2.client
+See the official GitHub API v2 documentation for objects_.
+
+.. _objects: http://develop.github.com/p/object.html
 
 .. automethod:: Github.get_all_blobs
 

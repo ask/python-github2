@@ -1,7 +1,7 @@
+.. currentmodule:: github2.client
+
 Network
 =======
-
-.. currentmodule:: github2.client
 
 .. automethod:: Github.get_network_meta
 
