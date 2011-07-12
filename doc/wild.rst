@@ -5,6 +5,7 @@ In the wild
 listed on this page.
 
 .. note::
+
    Have an interesting Open Source project or public website using
    :mod:`github2`?  Add it to this list!  Just `open an issue`_ or click the
    ``Fork and edit this file`` button on the `project website`_
