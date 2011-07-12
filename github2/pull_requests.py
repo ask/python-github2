@@ -53,7 +53,7 @@ class PullRequests(GithubCommand):
         issue.  If an ``issue`` parameter is supplied the pull request is
         attached to that issue, else a new pull request is created.
 
-        :param str project: Github project
+        :param str project: the Github project to send the pull request to
         :param str base: branch changes should be pulled into
         :param str head: branch of the changes to be pulled
         :param str title: title for pull request
