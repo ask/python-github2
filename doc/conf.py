@@ -225,4 +225,6 @@ man_pages = [
 autoclass_content = "init"
 autodoc_default_flags = ['members', ]
 
-intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/', os.getenv('SPHINX_PYTHON_OBJECTS'))
+}
