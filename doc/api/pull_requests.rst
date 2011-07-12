@@ -25,7 +25,7 @@ View a pull request
 Open pull request
 '''''''''''''''''
 
-To open a new pull request::
+To open a new pull request against the ``ask/python-github2`` project::
 
     >>> pull = github.pull_requests.create("ask/python-github2", "master",
     ...                                    "JNRowe:my_new_branch",
@@ -33,7 +33,10 @@ To open a new pull request::
     >>> pull.number
     4
 
-To attach code to an existing issue::
+This creates a pull request for changes in ``JNRowe``'s ``my_new_branch`` and
+asks for it to be merged to ``ask``'s ``master`` branch.
+
+To attach code to an existing issue and make it a pull request::
 
     >>> pull = github.pull_requests.create("ask/python-github2", "master",
     ...                                    "JNRowe:my_new_branch",
