@@ -67,6 +67,10 @@ class PullRequests(GithubCommand):
             post_data["title"] = title
             if body:
                 post_data["body"] = body
+        else:
+            raise TypeError("You must either specify a title for the "
+                            "pull request or an issue number to which the "
+                            "pull request should be attached.")
         pull_request_data = [("pull[%s]" % k, v) for k, v in post_data.items()]
         return self.get_value(project, post_data=dict(pull_request_data),
             filter="pull", datatype=PullRequest)
