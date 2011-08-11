@@ -131,7 +131,7 @@ class GithubRequest(object):
         scheme, netloc, path, query, fragment = urlsplit(url)
         post_data = None
         headers = self.http_headers
-        headers["Accept"] = "text/html"
+        headers["Accept"] = "application/json"
         method = method.upper()
         if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
