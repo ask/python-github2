@@ -131,7 +131,6 @@ class GithubRequest(object):
         scheme, netloc, path, query, fragment = urlsplit(url)
         post_data = None
         headers = self.http_headers
-        headers["Accept"] = "text/html"
         method = method.upper()
         if extra_post_data or method == "POST":
             post_data = self.encode_authentication_data(extra_post_data)
@@ -154,5 +153,7 @@ class GithubRequest(object):
 
     @property
     def http_headers(self):
-        return {"User-Agent": "pygithub2 v1",
-                "Accept-Encoding": "application/json"}
+        return {
+            "User-Agent": "pygithub2 v1",
+            "Accept": "application/json",
+        }
