@@ -19,24 +19,24 @@ class CommitsQueries(utils.HttpMockTestCase):
         commits = self.client.commits.list('JNRowe/misc-overlay')
         assert_equals(len(commits), 35)
         assert_equals(commits[0].id,
-                '37233b357d1a3648434ffda8f569ce96b3bcbf53')
+                '4de0834d58b37ef3020c49df43c95649217a2def')
 
     def test_list_with_branch(self):
         commits = self.client.commits.list('JNRowe/misc-overlay', 'gh-pages')
         assert_equals(len(commits), 35)
         assert_equals(commits[0].id,
-                '482f657443df4b701137a3025ae08476cddd2b7d')
+                '025148bdaa6fb6bdac9c3522d481fadf1c0a456f')
 
     def test_list_with_file(self):
         commits = self.client.commits.list('JNRowe/misc-overlay',
                                            file='Makefile')
-        assert_equals(len(commits), 31)
+        assert_equals(len(commits), 35)
         assert_equals(commits[0].id,
-                '41bcd985139189763256a8c82b8f0fcbe150eb03')
+                'fc12b924d34dc38c8ce76d27a866221faa88cb72')
 
     def test_list_with_branch_and_file(self):
         commits = self.client.commits.list('JNRowe/misc-overlay', 'gh-pages',
                                            'packages/dev-python.html')
         assert_equals(len(commits), 35)
         assert_equals(commits[0].id,
-                '482f657443df4b701137a3025ae08476cddd2b7d')
+                '025148bdaa6fb6bdac9c3522d481fadf1c0a456f')

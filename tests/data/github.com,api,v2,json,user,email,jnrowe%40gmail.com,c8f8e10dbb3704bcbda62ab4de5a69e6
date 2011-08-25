@@ -1,14 +1,15 @@
-status: 304
-x-ratelimit-remaining: 58
+status: 200
+x-ratelimit-remaining: 59
 content-location: https://github.com/api/v2/json/user/email/jnrowe%40gmail.com
+-content-encoding: gzip
 connection: keep-alive
 content-length: 370
-server: nginx/0.7.67
-x-runtime: 11ms
+server: nginx/1.0.4
+x-runtime: 14ms
 x-ratelimit-limit: 60
-etag: "56cf9af8aa57da3ccc78fc91d6df4565"
+etag: "9732b2f0e3b43cd609879ca8ebc6d5db"
 cache-control: private, max-age=0, must-revalidate
-date: Sun, 22 May 2011 04:42:13 GMT
+date: Mon, 15 Aug 2011 19:53:32 GMT
 content-type: application/json; charset=utf-8
 
-{"user":{"gravatar_id":"e40de1eb6e8a74cb96b3f07f3994f155","company":null,"name":"James Rowe","created_at":"2009/03/08 14:53:38 -0700","location":"Cambridge, UK","public_repo_count":38,"public_gist_count":64,"blog":"http://jnrowe.github.com/","following_count":5,"id":61381,"type":"User","permission":null,"followers_count":6,"login":"JNRowe","email":"jnrowe@gmail.com"}}
+{"user":{"gravatar_id":"e40de1eb6e8a74cb96b3f07f3994f155","company":null,"name":"James Rowe","created_at":"2009/03/08 14:53:38 -0700","location":"Cambridge, UK","public_repo_count":48,"public_gist_count":64,"blog":"http://jnrowe.github.com/","following_count":5,"id":61381,"type":"User","permission":null,"followers_count":6,"login":"JNRowe","email":"jnrowe@gmail.com"}}

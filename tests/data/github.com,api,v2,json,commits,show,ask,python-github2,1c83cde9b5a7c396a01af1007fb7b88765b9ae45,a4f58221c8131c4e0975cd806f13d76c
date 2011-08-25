@@ -1,14 +1,17 @@
 status: 200
-content-length: 1578
+x-ratelimit-remaining: 59
 content-location: https://github.com/api/v2/json/commits/show/ask/python-github2/1c83cde9b5a7c396a01af1007fb7b88765b9ae45
+-content-encoding: gzip
 set-cookie: _gh_sess=BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA%3D%3D--ed7eadd474fd37850b68bd3c08a5c55ad0c3c833;
  path=/; expires=Fri, 01 Jan 2021 00:00:00 GMT; secure; HttpOnly
-x-runtime: 38ms
-server: nginx/0.7.67
 connection: keep-alive
-etag: "567523fc76cd6ee4352ee33b178781af"
+content-length: 1578
+server: nginx/1.0.4
+x-runtime: 32ms
+x-ratelimit-limit: 60
+etag: "848c200dc06e8b9b766294e99f795601"
 cache-control: private, max-age=0, must-revalidate
-date: Wed, 08 Jun 2011 13:43:09 GMT
+date: Mon, 15 Aug 2011 19:59:15 GMT
 content-type: application/json; charset=utf-8
 
 {"commit":{"modified":[{"diff":"--- a/github2/bin/manage_collaborators.py\n+++ b/github2/bin/manage_collaborators.py\n@@ -25,6 +25,8 @@ def parse_commandline():\n                      '\\nTry %prog --help for details.')\n     parser.add_option('-d', '--debug', action='store_true',\n                       help='Enables debugging mode')\n+    parser.add_option('-c', '--cache', default=None,\n+                      help='Location for network cache [default: None]')\n     parser.add_option('-l', '--login',\n                       help='Username to login with')\n     parser.add_option('-a', '--account',\n@@ -59,7 +61,7 @@ def main():\n \n     github = github2.client.Github(username=options.login,\n                                    api_token=options.apitoken,\n-                                   debug=options.debug)\n+                                   debug=options.debug, cache=options.cache)\n \n     if len(args) == 1:\n         for repos in github.repos.list(options.account):","filename":"github2/bin/manage_collaborators.py"}],"parents":[{"id":"7d1c855d2f44a55e4b90b40017be697cf70cb4a0"}],"author":{"name":"James Rowe","login":"JNRowe","email":"jnrowe@gmail.com"},"url":"/ask/python-github2/commit/1c83cde9b5a7c396a01af1007fb7b88765b9ae45","id":"1c83cde9b5a7c396a01af1007fb7b88765b9ae45","committed_date":"2011-06-06T16:13:50-07:00","authored_date":"2011-06-06T16:13:50-07:00","message":"Added cache support to manage_collaborators.","tree":"f48fcc1a0b8ea97f3147dc42cf7cdb6683493e94","committer":{"name":"James Rowe","login":"JNRowe","email":"jnrowe@gmail.com"}}}

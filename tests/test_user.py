@@ -24,15 +24,15 @@ class UserProperties(utils.HttpMockTestCase):
         user = self.client.users.show('defunkt')
         assert_equals(user.created_at,
                       datetime.datetime(2007, 10, 19, 22, 24, 19))
-        assert_equals(user.followers_count, 2593)
+        assert_equals(user.followers_count, 3402)
         assert_equals(user.following_count, 212)
         assert_equals(user.gravatar_id, 'b8dbb1987e8e5318584865f880036796')
         assert_equals(user.id, 2)
-        assert_equals(user.public_gist_count, 277)
-        assert_equals(user.public_repo_count, 90)
+        assert_equals(user.public_gist_count, 278)
+        assert_equals(user.public_repo_count, 93)
 
     def test_followers(self):
-        assert_equals(len(self.client.users.followers('defunkt')), 2593)
+        assert_equals(len(self.client.users.followers('defunkt')), 3402)
 
     def test_following(self):
         assert_equals(len(self.client.users.following('defunkt')), 212)

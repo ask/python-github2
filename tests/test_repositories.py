@@ -36,11 +36,11 @@ class RepoProperties(utils.HttpMockTestCase):
         assert_equals(repo.fork, False)
         assert_equals(repo.master_branch, None)
         assert_equals(repo.integration_branch, None)
-        assert_equals(repo.open_issues, 6)
+        assert_equals(repo.open_issues, 13)
         assert_equals(repo.created_at,
                       datetime.datetime(2009, 5, 2, 7, 32, 50))
         assert_equals(repo.pushed_at,
-                      datetime.datetime(2011, 5, 22, 0, 24, 15))
+                      datetime.datetime(2011, 8, 11, 11, 46, 23))
         assert_equals(repo.has_downloads, True)
         assert_equals(repo.has_wiki, True)
         assert_equals(repo.has_issues, True)
@@ -56,17 +56,17 @@ class RepoQueries(utils.HttpMockTestCase):
 
     def test_list(self):
         repos = self.client.repos.list('JNRowe')
-        assert_equals(len(repos), 44)
+        assert_equals(len(repos), 48)
         assert_equals(repos[0].name, 'bfm')
 
     def test_watching(self):
         repos = self.client.repos.watching('JNRowe')
-        assert_equals(len(repos), 89)
+        assert_equals(len(repos), 90)
         assert_equals(repos[0].name, 'nerdtree')
 
     def test_contributors(self):
         contributors = self.client.repos.list_contributors('ask/python-github2')
-        assert_equals(len(contributors), 27)
+        assert_equals(len(contributors), 29)
         assert_equals(contributors[1].name, 'Ask Solem Hoel')
 
 

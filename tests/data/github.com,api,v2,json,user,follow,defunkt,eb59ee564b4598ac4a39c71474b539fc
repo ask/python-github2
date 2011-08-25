@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 60
+content-location: https://github.com/api/v2/json/user/follow/defunkt?access_token=xxx
+x-runtime: 20ms
+content-length: 76
+server: nginx/1.0.4
+connection: keep-alive
+x-ratelimit-limit: 59
+etag: "051be0232ef98376d11462e632211b9d"
+cache-control: private, max-age=0, must-revalidate
+date: Thu, 25 Aug 2011 07:18:50 GMT
+content-type: application/json; charset=utf-8
+
+{"users":["c9s","mitsuhiko","seemant","ask","tpope","defunkt"]}
