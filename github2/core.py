@@ -134,7 +134,7 @@ class GithubCommand(object):
         filter = kwargs.get("filter")
         post_data = kwargs.get("post_data") or {}
         method = kwargs.get("method", "GET")
-        if method.upper() in ("POST", "GET") and post_data:
+        if method.upper() == "POST" or method.upper() == "GET" and post_data:
             response = self.request.post(self.domain, command, *args,
                                          **post_data)
         elif method.upper() == "PUT":
