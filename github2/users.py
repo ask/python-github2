@@ -86,7 +86,7 @@ class Users(GithubCommand):
 
         :param str other_user: Github user name
         """
-        return self.make_request("follow", other_user)
+        return self.make_request("follow", other_user, method="POST")
 
     @requires_auth
     def unfollow(self, other_user):
@@ -94,4 +94,4 @@ class Users(GithubCommand):
 
         :param str other_user: Github user name
         """
-        return self.make_request("unfollow", other_user)
+        return self.make_request("unfollow", other_user, method="POST")
