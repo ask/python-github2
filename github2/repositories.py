@@ -23,6 +23,7 @@ class Repository(BaseData):
     has_wiki = Attribute("If True, this repository has a wiki.")
     has_issues = Attribute("If True, this repository has an issue tracker.")
     language = Attribute("Primary language for the repository.")
+    parent = Attribute("The parent project of this fork.")
 
     def _project(self):
         return self.owner + "/" + self.name
