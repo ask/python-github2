@@ -23,6 +23,7 @@ class Repository(BaseData):
     has_wiki = Attribute("If True, this repository has a wiki.")
     has_issues = Attribute("If True, this repository has an issue tracker.")
     language = Attribute("Primary language for the repository.")
+    parent = Attribute("The parent project of this fork.")
 
     def _project(self):
         return self.owner + "/" + self.name
@@ -221,3 +222,11 @@ class Repositories(GithubCommand):
         """
         return self.get_values("show", project, "contributors",
                                filter="contributors", datatype=User)
+
+    def info(self, project):
+        """Return all information about a project, including parent
+
+        :param str project: Github project
+        """
+        return self.get_value("show", project, filter="repository",
+                                 datatype=Repository)
