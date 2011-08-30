@@ -147,8 +147,8 @@ class Issues(GithubCommand):
         :param int number: issue number in the Github database
         :param str label: label to attach to issue
         """
-        return self.make_request("label/add", project, label, str(number),
-                                 filter="labels", method="POST")
+        return self.get_values("label/add", project, label, str(number),
+                               filter="labels", method="POST")
 
     @requires_auth
     def remove_label(self, project, number, label):
@@ -158,8 +158,8 @@ class Issues(GithubCommand):
         :param int number: issue number in the Github database
         :param str label: label to remove from issue
         """
-        return self.make_request("label/remove", project, label, str(number),
-                                 filter="labels", method="POST")
+        return self.get_values("label/remove", project, label, str(number),
+                               filter="labels", method="POST")
 
     @requires_auth
     def comment(self, project, number, comment):
@@ -170,9 +170,9 @@ class Issues(GithubCommand):
         :param str comment: comment to attach to issue
         """
         comment_data = {'comment': comment}
-        return self.make_request("comment", project, str(number),
-                                 post_data=comment_data,
-                                 filter='comment')
+        return self.get_value("comment", project, str(number),
+                              post_data=comment_data, filter='comment',
+                              datatype=Comment)
 
     def comments(self, project, number):
         """View comments on an issue.

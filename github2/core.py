@@ -1,5 +1,7 @@
 import sys
 
+from warnings import warn
+
 from datetime import datetime
 from dateutil import (parser, tz)
 
@@ -260,6 +262,29 @@ class BaseDataType(type):
 
 class BaseData(object):
     __metaclass__ = BaseDataType
+
+    def __getitem__(self, key):
+        """Access objects's attribute using subscript notation
+
+        This is here purely to maintain compatibility when switching ``dict``
+        responses to ``BaseData`` derived objects.
+        """
+        warn("Subscript access on %r is deprecated, use object attributes"
+             % self.__class__.__name__, DeprecationWarning)
+        if not key in self._meta.keys():
+            raise KeyError(key)
+        return getattr(self, key)
+
+    def __setitem__(self, key, value):
+        """Update object's attribute using subscript notation
+
+        :see: ``BaseData.__getitem__``
+        """
+        warn("Subscript access on %r is deprecated, use object attributes"
+             % self.__class__.__name__, DeprecationWarning)
+        if not key in self._meta.keys():
+            raise KeyError(key)
+        setattr(self, key, value)
 
 
 def repr_string(string):

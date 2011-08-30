@@ -82,7 +82,8 @@ class Repositories(GithubCommand):
 
         :param str project: GitHub project
         """
-        return self.make_request("watch", project)
+        return self.get_value("watch", project, filter='repository',
+                              datatype=Repository)
 
     @requires_auth
     def unwatch(self, project):
@@ -90,7 +91,8 @@ class Repositories(GithubCommand):
 
         :param str project: GitHub project
         """
-        return self.make_request("unwatch", project)
+        return self.get_value("unwatch", project, filter='repository',
+                              datatype=Repository)
 
     @requires_auth
     def fork(self, project):
@@ -147,8 +149,8 @@ class Repositories(GithubCommand):
 
         :param str project: GitHub project
         """
-        return self.make_request("show", project, "collaborators",
-                                 filter="collaborators")
+        return self.get_values("show", project, "collaborators",
+                               filter="collaborators")
 
     @requires_auth
     def add_collaborator(self, project, username):
@@ -175,38 +177,36 @@ class Repositories(GithubCommand):
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "network", filter="network")
+        return self.get_values("show", project, "network", filter="network",
+                               datatype=Repository)
 
     def languages(self, project):
         """Get programming language data for project
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "languages",
-                                 filter="languages")
+        return self.get_values("show", project, "languages", filter="languages")
 
     def tags(self, project):
         """Get tags for project
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "tags", filter="tags")
+        return self.get_values("show", project, "tags", filter="tags")
 
     def branches(self, project):
         """Get branch names for project
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "branches",
-                                 filter="branches")
+        return self.get_values("show", project, "branches", filter="branches")
 
     def watchers(self, project):
         """Get list of watchers for project
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "watchers",
-                                 filter="watchers")
+        return self.get_values("show", project, "watchers", filter="watchers")
 
     def watching(self, for_user=None):
         """Lists all the repos a user is watching
