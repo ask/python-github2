@@ -170,9 +170,9 @@ class Issues(GithubCommand):
         :param str comment: comment to attach to issue
         """
         comment_data = {'comment': comment}
-        return self.make_request("comment", project, str(number),
-                                 post_data=comment_data,
-                                 filter='comment')
+        return self.get_value("comment", project, str(number),
+                              post_data=comment_data, filter='comment',
+                              datatype=Comment)
 
     def comments(self, project, number):
         """View comments on an issue.

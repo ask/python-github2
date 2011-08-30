@@ -48,9 +48,9 @@ class Teams(GithubCommand):
         """
         if isinstance(project, Repository):
             project = project.project
-        return self.make_request(str(team_id), "repositories", method="POST",
-                                 post_data={'name': project},
-                                 filter="repositories", datatype=Repository)
+        return self.get_values(str(team_id), "repositories", method="POST",
+                               post_data={'name': project},
+                               filter="repositories", datatype=Repository)
 
     def remove_project(self, team_id, project):
         """Remove a project to a team
@@ -60,6 +60,6 @@ class Teams(GithubCommand):
         """
         if isinstance(project, Repository):
             project = project.project
-        return self.make_request(str(team_id), "repositories", method="DELETE",
-                                 post_data={'name': project},
-                                 filter="repositories", datatype=Repository)
+        return self.get_values(str(team_id), "repositories", method="DELETE",
+                               post_data={'name': project},
+                               filter="repositories", datatype=Repository)

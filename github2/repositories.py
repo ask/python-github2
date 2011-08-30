@@ -81,7 +81,8 @@ class Repositories(GithubCommand):
 
         :param str project: GitHub project
         """
-        return self.make_request("watch", project)
+        return self.get_value("watch", project, filter='repository',
+                              datatype=Repository)
 
     @requires_auth
     def unwatch(self, project):
@@ -89,7 +90,8 @@ class Repositories(GithubCommand):
 
         :param str project: GitHub project
         """
-        return self.make_request("unwatch", project)
+        return self.get_value("unwatch", project, filter='repository',
+                              datatype=Repository)
 
     @requires_auth
     def fork(self, project):
@@ -173,7 +175,8 @@ class Repositories(GithubCommand):
 
         :param str project: Github project
         """
-        return self.make_request("show", project, "network", filter="network")
+        return self.get_values("show", project, "network", filter="network",
+                               datatype=Repository)
 
     def languages(self, project):
         """Get programming language data for project
