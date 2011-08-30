@@ -58,7 +58,8 @@ class Repositories(GithubCommand):
 
         .. versionadded:: 0.3.0
         """
-        return self.get_values("pushable", filter="repositories", datatype=Repository)
+        return self.get_values("pushable", filter="repositories",
+                               datatype=Repository)
 
 
     def list(self, user=None):

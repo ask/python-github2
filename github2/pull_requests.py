@@ -73,7 +73,7 @@ class PullRequests(GithubCommand):
                             "pull request should be attached.")
         pull_request_data = [("pull[%s]" % k, v) for k, v in post_data.items()]
         return self.get_value(project, post_data=dict(pull_request_data),
-            filter="pull", datatype=PullRequest)
+                              filter="pull", datatype=PullRequest)
 
     def show(self, project, number):
         """Show a single pull request
