@@ -157,7 +157,8 @@ class Repositories(GithubCommand):
         :param str project: Github project
         :param str username: Github user to add as collaborator
         """
-        return self.make_request("collaborators", project, "add", username)
+        return self.make_request("collaborators", project, "add", username,
+                                 method="POST")
 
     @requires_auth
     def remove_collaborator(self, project, username):
