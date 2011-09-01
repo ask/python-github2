@@ -71,14 +71,14 @@ class Users(GithubCommand):
 
         :param str username: Github user name
         """
-        return self.make_request("show", username, "followers", filter="users")
+        return self.get_values("show", username, "followers", filter="users")
 
     def following(self, username):
         """Get list of users a Github user is following
 
         :param str username: Github user name
         """
-        return self.make_request("show", username, "following", filter="users")
+        return self.get_values("show", username, "following", filter="users")
 
     @requires_auth
     def follow(self, other_user):
@@ -86,7 +86,7 @@ class Users(GithubCommand):
 
         :param str other_user: Github user name
         """
-        return self.make_request("follow", other_user, method="POST")
+        return self.get_values("follow", other_user, method="POST")
 
     @requires_auth
     def unfollow(self, other_user):
@@ -94,4 +94,4 @@ class Users(GithubCommand):
 
         :param str other_user: Github user name
         """
-        return self.make_request("unfollow", other_user, method="POST")
+        return self.get_values("unfollow", other_user, method="POST")

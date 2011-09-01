@@ -1,0 +1,15 @@
+status: 200
+x-ratelimit-remaining: 59
+content-location: https://github.com/api/v2/json/repos/show/JNRowe/python-github2
+-content-encoding: gzip
+connection: keep-alive
+content-length: 477
+server: nginx/1.0.4
+x-runtime: 14ms
+x-ratelimit-limit: 60
+etag: "33efaec4c2fd40a4dd0369470bc1ab23"
+cache-control: private, max-age=0, must-revalidate
+date: Tue, 30 Aug 2011 09:23:19 GMT
+content-type: application/json; charset=utf-8
+
+{"repository":{"parent":"ask/python-github2","owner":"JNRowe","has_downloads":true,"homepage":"","pushed_at":"2011/08/25 00:43:37 -0700","watchers":3,"forks":0,"has_wiki":true,"source":"ask/python-github2","url":"https://github.com/JNRowe/python-github2","open_issues":0,"created_at":"2010/10/31 01:03:09 -0700","fork":true,"size":280,"name":"python-github2","has_issues":false,"private":false,"language":"Python","description":"github client in python, with issues support."}}

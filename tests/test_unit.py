@@ -50,6 +50,18 @@ class BaseDataIter(utils.HttpMockTestCase):
         assert_true('__iter__' in dir(commit))
 
 
+class BaseDataDict(utils.HttpMockTestCase):
+    """Test __getitem__ availability on objects"""
+    def test_getitem(self):
+        user = self.client.users.show('defunkt')
+        assert_equals(user['blog'], user.blog)
+        assert_equals(user['company'], user.company)
+        assert_equals(user['email'], user.email)
+        assert_equals(user['location'], user.location)
+        assert_equals(user['login'], user.login)
+        assert_equals(user['name'], user.name)
+
+
 def test_project_for_user_repo():
     client = Github()
     assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),

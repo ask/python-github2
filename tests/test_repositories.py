@@ -46,6 +46,12 @@ class RepoProperties(utils.HttpMockTestCase):
         assert_equals(repo.has_issues, True)
         assert_equals(repo.language, 'Python')
 
+    def test_fork_properties(self):
+        repo = self.client.repos.show('JNRowe/python-github2')
+        assert_equals(repo.forks, 0)
+        assert_equals(repo.fork, True)
+        assert_equals(repo.parent, 'ask/python-github2')
+
 
 class RepoQueries(utils.HttpMockTestCase):
     """Test repository querying"""
