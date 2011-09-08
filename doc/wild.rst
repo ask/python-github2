@@ -43,14 +43,14 @@ listed on this page.
 
 .. _GitHub's issue tracker: http://github.com/blog/411-github-issue-tracker
 
-``OrganizeMyRepositories``
-''''''''''''''''''''''''''
+``Repos.io``
+''''''''''''
 
-    The source code of the [name to come] site, a site to help you manage all
-    your repositories (your own, and watched/liked/followed ones) hosted by
-    different providers (github, bitbucket)
+    The source code of the Repos.io site, a site to help you manage all your
+    repositories (your own, and watched/liked/followed ones) hosted by different
+    providers (github, bitbucket)
 
-:Git repository: https://github.com/twidi/OrganizeMyRepositories
+:Git repository: https://github.com/twidi/Repos.io
 
 ``roundabout``
 ''''''''''''''
