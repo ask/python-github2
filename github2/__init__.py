@@ -1,5 +1,5 @@
 "Github API v2 library for Python"
-VERSION = (0, 5, 1)
+VERSION = (0, 5, 2)
 
 __author__ = "Ask Solem"
 __contact__ = "askh@opera.com"

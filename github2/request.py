@@ -3,6 +3,7 @@ import logging
 import re
 import time
 import httplib2
+from httplib import responses
 try:
     import json as simplejson  # For Python 2.6
 except ImportError:
@@ -39,6 +40,25 @@ def charset_from_headers(headers):
 
 class GithubError(Exception):
     """An error occured when making a request to the Github API."""
+
+
+class HttpError(RuntimeError):
+    """A HTTP error occured when making a request to the Github API."""
+    def __init__(self, message, content, code):
+        """Create a HttpError exception
+
+        :param str message: Exception string
+        :param str content: Full content of HTTP request
+        :param int code: HTTP status code
+        """
+        self.args = (message, content, code)
+        self.message = message
+        self.content = content
+        self.code = code
+        if code:
+            self.code_reason = responses[code]
+        else:
+            self.code_reason = ""
 
 
 class GithubRequest(object):
@@ -143,8 +163,9 @@ class GithubRequest(object):
             logging.debug("URL: %r POST_DATA: %r RESPONSE_TEXT: %r", url,
                           post_data, content)
         if response.status >= 400:
-            raise RuntimeError("unexpected response from github.com %d: %r" % (
-                               response.status, content))
+            raise HttpError("Unexpected response from github.com %d: %r"
+                            % (response.status, content), content,
+                            response.status)
         json = simplejson.loads(content.decode(charset_from_headers(response)))
         if json.get("error"):
             raise self.GithubError(json["error"][0]["error"])

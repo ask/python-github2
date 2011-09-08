@@ -3,6 +3,14 @@ User-visible changes
 
 .. contents::
 
+0.5.2 - 2011-09-02
+------------------
+
+* Functions that returned `dict` objects have been deprecated, enable
+  DeprecationWarning_ support to see if you're affected
+
+.. _DeprecationWarning: http://docs.python.org/library/warnings.html
+
 0.5.1 - 2011-06-11
 ------------------
 
