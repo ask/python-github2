@@ -224,11 +224,3 @@ class Repositories(GithubCommand):
         """
         return self.get_values("show", project, "contributors",
                                filter="contributors", datatype=User)
-
-    def info(self, project):
-        """Return all information about a project, including parent
-
-        :param str project: Github project
-        """
-        return self.get_value("show", project, filter="repository",
-                                 datatype=Repository)
