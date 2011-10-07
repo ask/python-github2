@@ -10,6 +10,13 @@ listed on this page.
    :mod:`github2`?  Add it to this list!  Just `open an issue`_ or click the
    ``Fork and edit this file`` button on the `project website`_
 
+``applause``
+''''''''''''
+
+    Applause when a bug gets closed. Extra cheering for old bugs.
+
+:PyPI page: :pypi:`applause`
+
 ``bitbucket2github``
 ''''''''''''''''''''
 
