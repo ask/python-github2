@@ -39,6 +39,9 @@ class Repositories(GithubCommand):
     def search(self, query):
         """Get all repositories that match term.
 
+        .. warning:
+           Returns at most 100 repositories
+
         :param str query: term to search issues for
         """
         return self.get_values("search", query, filter="repositories",

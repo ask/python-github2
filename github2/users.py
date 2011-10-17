@@ -43,6 +43,9 @@ class Users(GithubCommand):
     def search(self, query):
         """Search for users
 
+        .. warning:
+           Returns at most 100 users
+
         :param str query: term to search for
         """
         return self.get_values("search", urllib.quote_plus(query),
