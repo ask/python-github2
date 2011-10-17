@@ -163,6 +163,11 @@ class GithubCommand(object):
 
     def get_values(self, *args, **kwargs):
         datatype = kwargs.pop("datatype", None)
+        page = kwargs.pop("page", None)
+        if page:
+            if "post_data" not in kwargs:
+                kwargs["post_data"] = {}
+            kwargs["post_data"].update({"page": page})
         values = self.make_request(*args, **kwargs)
         if datatype:
             # Same as above, unicode keys will blow up in **args, so we need to

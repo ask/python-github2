@@ -27,7 +27,7 @@ class Commit(BaseData):
 class Commits(GithubCommand):
     domain = "commits"
 
-    def list(self, project, branch="master", file=None):
+    def list(self, project, branch="master", file=None, page=None):
         """List commits on a project
 
         .. warning::
@@ -38,9 +38,10 @@ class Commits(GithubCommand):
         :param str project: project name
         :param str branch: branch name, or ``master`` if not given
         :param str file: optional file filter
+        :param int page: optional page number (page length=100, raise 404 if too high)
         """
         return self.get_values("list", project, branch, file,
-                               filter="commits", datatype=Commit)
+                               filter="commits", datatype=Commit, page=page)
 
     def show(self, project, sha):
         """Get a specific commit
