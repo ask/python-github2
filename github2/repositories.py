@@ -62,7 +62,7 @@ class Repositories(GithubCommand):
                                datatype=Repository)
 
 
-    def list(self, user=None):
+    def list(self, user=None, page=1):
         """Return a list of all repositories for a user.
 
         .. deprecated: 0.4.0
@@ -71,10 +71,11 @@ class Repositories(GithubCommand):
            brittle and will be removed in a future release!
 
         :param str user: Github user name to list repositories for
+        :param int page: optional page number
         """
         user = user or self.request.username
         return self.get_values("show", user, filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
     @requires_auth
     def watch(self, project):
@@ -208,14 +209,15 @@ class Repositories(GithubCommand):
         """
         return self.get_values("show", project, "watchers", filter="watchers")
 
-    def watching(self, for_user=None):
+    def watching(self, for_user=None, page=None):
         """Lists all the repos a user is watching
 
         :param str for_user: optional Github user name to list repositories for
+        :param int page: optional page number
         """
         for_user = for_user or self.request.username
         return self.get_values("watched", for_user, filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
     def list_contributors(self, project):
         """Lists all the contributors in a project

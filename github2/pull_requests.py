@@ -84,11 +84,12 @@ class PullRequests(GithubCommand):
         return self.get_value(project, str(number), filter="pull",
                               datatype=PullRequest)
 
-    def list(self, project, state="open"):
+    def list(self, project, state="open", page=1):
         """List all pull requests for a project
 
         :param str project: Github project
         :param str state: can be either ``open`` or ``closed``
+        :param int page: optional page number
         """
         return self.get_values(project, state, filter="pulls",
-                               datatype=PullRequest)
+                               datatype=PullRequest, page=page)
