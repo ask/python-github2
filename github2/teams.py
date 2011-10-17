@@ -24,21 +24,22 @@ class Teams(GithubCommand):
         """
         return self.get_value(str(team_id), filter="team", datatype=Team)
 
-    def members(self, team_id):
+    def members(self, team_id, page=None):
         """Get list of all team members
 
         :param int team_id: team to get information for
         """
         return self.get_values(str(team_id), "members", filter="users",
-                               datatype=User)
+                               datatype=User, page=page)
 
-    def repositories(self, team_id):
+    def repositories(self, team_id, page=None):
         """Get list of all team members
 
         :param int team_id: team to get information for
         """
         return self.get_values(str(team_id), "repositories",
-                               filter="repositories", datatype=Repository)
+                               filter="repositories", datatype=Repository,
+                               page=page)
 
     def add_project(self, team_id, project):
         """Add a project to a team

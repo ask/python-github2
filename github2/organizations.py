@@ -42,12 +42,12 @@ class Organizations(GithubCommand):
         return self.get_value(organization, filter="organization",
                               datatype=Organization)
 
-    def list(self):
+    def list(self, page=None):
         """Get list of all of your organizations"""
         return self.get_values('', filter="organizations",
-                               datatype=Organization)
+                               datatype=Organization, page=page)
 
-    def repositories(self, organization=''):
+    def repositories(self, organization='', page=None):
         """Get list of all repositories in an organization
 
         If organization is not given, or is empty, then this will list
@@ -56,28 +56,30 @@ class Organizations(GithubCommand):
         :param: str organization: organization to list repositories for
         """
         return self.get_values(organization, 'repositories',
-                               filter="repositories", datatype=Repository)
+                               filter="repositories", datatype=Repository,
+                               page=page)
 
-    def public_repositories(self, organization):
+    def public_repositories(self, organization, page=None):
         """Get list of public repositories in an organization
 
         :param str organization: organization to list public repositories for
         """
         return self.get_values(organization, 'public_repositories',
-                               filter="repositories", datatype=Repository)
+                               filter="repositories", datatype=Repository,
+                               page=page)
 
-    def public_members(self, organization):
+    def public_members(self, organization, page=None):
         """Get list of public members in an organization
 
         :param str organization: organization to list members for
         """
         return self.get_values(organization, 'public_members', filter="users",
-                               datatype=User)
+                               datatype=User, page=page)
 
-    def teams(self, organization):
+    def teams(self, organization, page=None):
         """Get list of teams in an organization
 
         :param str organization: organization to list teams for
         """
         return self.get_values(organization, 'teams', filter="teams",
-                               datatype=Team)
+                               datatype=Team, page=page)

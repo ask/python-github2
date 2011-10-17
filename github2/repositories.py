@@ -36,13 +36,13 @@ class Repository(BaseData):
 class Repositories(GithubCommand):
     domain = "repos"
 
-    def search(self, query):
+    def search(self, query, page=None):
         """Get all repositories that match term.
 
         :param str query: term to search issues for
         """
         return self.get_values("search", query, filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
     def show(self, project):
         """Get repository object for project.
@@ -53,16 +53,16 @@ class Repositories(GithubCommand):
                               datatype=Repository)
 
     @requires_auth
-    def pushable(self):
+    def pushable(self, page=None):
         """Return a list of repos you can push to that are not your own.
 
         .. versionadded:: 0.3.0
         """
         return self.get_values("pushable", filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
 
-    def list(self, user=None):
+    def list(self, user=None, page=None):
         """Return a list of all repositories for a user.
 
         .. deprecated: 0.4.0
@@ -74,7 +74,7 @@ class Repositories(GithubCommand):
         """
         user = user or self.request.username
         return self.get_values("show", user, filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
     @requires_auth
     def watch(self, project):
@@ -144,13 +144,13 @@ class Repositories(GithubCommand):
         """
         return self.make_request("set/public", project)
 
-    def list_collaborators(self, project):
+    def list_collaborators(self, project, page=None):
         """Lists all the collaborators in a project
 
         :param str project: GitHub project
         """
         return self.get_values("show", project, "collaborators",
-                               filter="collaborators")
+                               filter="collaborators", page=page)
 
     @requires_auth
     def add_collaborator(self, project, username):
@@ -172,55 +172,59 @@ class Repositories(GithubCommand):
         return self.make_request("collaborators", project, "remove",
                                  username, method="POST")
 
-    def network(self, project):
+    def network(self, project, page=None):
         """Get network data for project
 
         :param str project: Github project
         """
         return self.get_values("show", project, "network", filter="network",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
-    def languages(self, project):
+    def languages(self, project, page=None):
         """Get programming language data for project
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "languages", filter="languages")
+        return self.get_values("show", project, "languages",
+                               filter="languages", page=page)
 
-    def tags(self, project):
+    def tags(self, project, page=None):
         """Get tags for project
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "tags", filter="tags")
+        return self.get_values("show", project, "tags", filter="tags",
+                               page=page)
 
-    def branches(self, project):
+    def branches(self, project, page=None):
         """Get branch names for project
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "branches", filter="branches")
+        return self.get_values("show", project, "branches", filter="branches",
+                               page=page)
 
-    def watchers(self, project):
+    def watchers(self, project, page=None):
         """Get list of watchers for project
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "watchers", filter="watchers")
+        return self.get_values("show", project, "watchers", filter="watchers",
+                               page=page)
 
-    def watching(self, for_user=None):
+    def watching(self, for_user=None, page=None):
         """Lists all the repos a user is watching
 
         :param str for_user: optional Github user name to list repositories for
         """
         for_user = for_user or self.request.username
         return self.get_values("watched", for_user, filter="repositories",
-                               datatype=Repository)
+                               datatype=Repository, page=page)
 
-    def list_contributors(self, project):
+    def list_contributors(self, project, page=None):
         """Lists all the contributors in a project
 
         :param str project: Github project
         """
         return self.get_values("show", project, "contributors",
-                               filter="contributors", datatype=User)
+                               filter="contributors", datatype=User, page=page)

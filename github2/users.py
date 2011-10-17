@@ -40,13 +40,13 @@ class User(BaseData):
 class Users(GithubCommand):
     domain = "user"
 
-    def search(self, query):
+    def search(self, query, page=None):
         """Search for users
 
         :param str query: term to search for
         """
         return self.get_values("search", urllib.quote_plus(query),
-                               filter="users", datatype=User)
+                               filter="users", datatype=User, page=page)
 
     def search_by_email(self, query):
         """Search for users by email address
@@ -66,19 +66,21 @@ class Users(GithubCommand):
         """
         return self.get_value("show", username, filter="user", datatype=User)
 
-    def followers(self, username):
+    def followers(self, username, page=None):
         """Get list of Github user's followers
 
         :param str username: Github user name
         """
-        return self.get_values("show", username, "followers", filter="users")
+        return self.get_values("show", username, "followers", filter="users",
+                               page=page)
 
-    def following(self, username):
+    def following(self, username, page=None):
         """Get list of users a Github user is following
 
         :param str username: Github user name
         """
-        return self.get_values("show", username, "following", filter="users")
+        return self.get_values("show", username, "following", filter="users",
+                               page=page)
 
     @requires_auth
     def follow(self, other_user):
