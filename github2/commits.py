@@ -38,6 +38,7 @@ class Commits(GithubCommand):
         :param str project: project name
         :param str branch: branch name, or ``master`` if not given
         :param str file: optional file filter
+        :param int page: optional page number (page length=100, raise 404 if too high)
         """
         return self.get_values("list", project, branch, file,
                                filter="commits", datatype=Commit, page=page)

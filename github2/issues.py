@@ -38,7 +38,7 @@ class Comment(BaseData):
 class Issues(GithubCommand):
     domain = "issues"
 
-    def search(self, project, term, state="open", page=None):
+    def search(self, project, term, state="open"):
         """Get all issues for project that match term with given state.
 
         .. versionadded:: 0.3.0
@@ -49,18 +49,18 @@ class Issues(GithubCommand):
         """
         return self.get_values("search", project, state,
                                urllib.quote_plus(term), filter="issues",
-                               datatype=Issue, page=page)
+                               datatype=Issue)
 
-    def list(self, project, state="open", page=None):
+    def list(self, project, state="open"):
         """Get all issues for project with given state.
 
         :param str project: GitHub project
         :param str state: can be either ``open`` or ``closed``.
         """
         return self.get_values("list", project, state, filter="issues",
-                               datatype=Issue, page=page)
+                               datatype=Issue)
 
-    def list_by_label(self, project, label, page=None):
+    def list_by_label(self, project, label):
         """Get all issues for project with label.
 
         .. versionadded:: 0.3.0
@@ -69,16 +69,16 @@ class Issues(GithubCommand):
         :param str label:  a string representing a label (e.g., ``bug``).
         """
         return self.get_values("list", project, "label", label, filter="issues",
-                               datatype=Issue, page=page)
+                               datatype=Issue)
 
-    def list_labels(self, project, page=None):
+    def list_labels(self, project):
         """Get all labels for project.
 
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
         """
-        return self.get_values("labels", project, filter="labels", page=page)
+        return self.get_values("labels", project, filter="labels")
 
     def show(self, project, number):
         """Get all the data for issue by issue-number.
@@ -174,11 +174,11 @@ class Issues(GithubCommand):
                               post_data=comment_data, filter='comment',
                               datatype=Comment)
 
-    def comments(self, project, number, page=None):
+    def comments(self, project, number):
         """View comments on an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the Github database
         """
         return self.get_values("comments", project, str(number),
-                               filter="comments", datatype=Comment, page=page)
+                               filter="comments", datatype=Comment)

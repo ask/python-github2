@@ -89,6 +89,7 @@ class PullRequests(GithubCommand):
 
         :param str project: Github project
         :param str state: can be either ``open`` or ``closed``
+        :param int page: optional page number (page length=100, empty result list if too high
         """
         return self.get_values(project, state, filter="pulls",
                                datatype=PullRequest, page=page)
