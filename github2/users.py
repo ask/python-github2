@@ -44,7 +44,7 @@ class Users(GithubCommand):
         """Search for users
 
         .. warning:
-           Return at max 100 repositories
+           Return at max 100 users
 
         :param str query: term to search for
         """

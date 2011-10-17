@@ -189,8 +189,7 @@ class Repositories(GithubCommand):
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "languages",
-                               filter="languages")
+        return self.get_values("show", project, "languages", filter="languages")
 
     def tags(self, project):
         """Get tags for project
