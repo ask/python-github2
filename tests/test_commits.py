@@ -21,6 +21,12 @@ class CommitsQueries(utils.HttpMockTestCase):
         assert_equals(commits[0].id,
                 '4de0834d58b37ef3020c49df43c95649217a2def')
 
+    def test_list_with_page(self):
+        commits = self.client.commits.list('JNRowe/jnrowe-misc', page=2)
+        assert_equals(len(commits), 35)
+        assert_equals(commits[0].id,
+                '1f5ad2c3206bafc4aca9e6ce50f5c605befdb3d6')
+
     def test_list_with_branch(self):
         commits = self.client.commits.list('JNRowe/misc-overlay', 'gh-pages')
         assert_equals(len(commits), 35)
