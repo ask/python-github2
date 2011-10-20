@@ -32,10 +32,12 @@ Show Repo Info
 List All Repositories
 '''''''''''''''''''''
 
-    # By default lists all repos for the current user.
-    >>> repos = github.repos.list()
-
     >>> repos = github.repos.list("schacon")
+
+By default the first page of results is returned, you can return further results
+with the ``page`` parameter:
+
+    >>> repos = github.repos.list("schacon", page=2)
 
 Watching Repositories
 '''''''''''''''''''''

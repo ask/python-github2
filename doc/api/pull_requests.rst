@@ -19,6 +19,11 @@ Listing pull requests
 
     >>> results = github.pull_requests.list("ask/python-github2")
 
+By default the first page of results is returned, you can return further results
+with the ``page`` parameter:
+
+    >>> results = github.pull_requests.list("ask/python-github2", page=2)
+
 View a pull request
 '''''''''''''''''''
 

@@ -21,6 +21,10 @@ Listing Commits on a Branch
 
     >>> commits = github.commits.list("mojombo/grit", "master")
 
+By default the first page of results is returned, you can return further results
+with the ``page`` parameter:
+
+    >>> commits = github.commits.list("mojombo/grit", "master", page=2)
 
 Listing Commits for a File
 ''''''''''''''''''''''''''

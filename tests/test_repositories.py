@@ -65,10 +65,20 @@ class RepoQueries(utils.HttpMockTestCase):
         assert_equals(len(repos), 48)
         assert_equals(repos[0].name, 'bfm')
 
+    def test_list_with_page(self):
+        repos = self.client.repos.list('tekkub', page=2)
+        assert_equals(len(repos), 37)
+        assert_equals(repos[0].name, 'OhSnap')
+
     def test_watching(self):
         repos = self.client.repos.watching('JNRowe')
         assert_equals(len(repos), 90)
         assert_equals(repos[0].name, 'nerdtree')
+
+    def test_watching_with_page(self):
+        repos = self.client.repos.watching('tekkub', page=2)
+        assert_equals(len(repos), 39)
+        assert_equals(repos[0].name, 'Buffoon')
 
     def test_contributors(self):
         contributors = self.client.repos.list_contributors('ask/python-github2')

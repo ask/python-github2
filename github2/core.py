@@ -135,6 +135,9 @@ class GithubCommand(object):
     def make_request(self, command, *args, **kwargs):
         filter = kwargs.get("filter")
         post_data = kwargs.get("post_data") or {}
+        page = kwargs.pop("page", 1)
+        if page and not page == 1:
+            post_data["page"] = page
         method = kwargs.get("method", "GET")
         if method.upper() == "POST" or method.upper() == "GET" and post_data:
             response = self.request.post(self.domain, command, *args,
