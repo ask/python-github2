@@ -141,7 +141,9 @@ class GithubRequest(object):
 
         extra_post_data = extra_post_data or {}
         url = "/".join([self.url_prefix, quote(path)])
+#        print "url: %s" % url
         result = self.raw_request(url, extra_post_data, method=method)
+#        print "result: %s" % result
 
         if self.delay:
             self.last_request = datetime.datetime.now()

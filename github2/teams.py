@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import BaseData, GithubCommand, Attribute, requires_auth
 from github2.repositories import Repository
 from github2.users import User
 
@@ -31,6 +31,17 @@ class Teams(GithubCommand):
         """
         return self.get_values(str(team_id), "members", filter="users",
                                datatype=User)
+
+    @requires_auth
+    def add_member(self, team_id, username):
+        """Add a member to a team
+
+        :param int team_id: team to add new member
+        :param str username: username to add
+        """
+        member_data={"name": username}
+
+        return self.get_values(team_id, 'members', post_data=member_data, method='POST')
 
     def repositories(self, team_id):
         """Get list of all team members
