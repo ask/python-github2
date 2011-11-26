@@ -41,7 +41,7 @@ class Teams(GithubCommand):
         """
         member_data={"name": username}
 
-        return self.get_values(team_id, 'members', post_data=member_data, method='POST')
+        return self.get_values(str(team_id), 'members', post_data=member_data, method='POST')
 
     def repositories(self, team_id):
         """Get list of all team members
