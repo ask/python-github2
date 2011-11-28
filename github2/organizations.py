@@ -95,7 +95,8 @@ class Organizations(GithubCommand):
         team_data={"team[name]": name, "team[permission]":  permission}
 
         for repo in repos:
-            team_data["team[repo_names]"] = "%s/%s" % (organization, repo)
+            team_data["team[repo_names][]"] = "%s/%s" % (organization, repo)
 
         return self.get_values(organization, 'teams', post_data=team_data, method='POST')
+
 
