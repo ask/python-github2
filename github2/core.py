@@ -250,7 +250,7 @@ class BaseDataType(type):
                         for attr_name in attributes]))
 
         def _contribute_method(name, func):
-            func.func_name = name
+            func.__name__ = name
             attrs[name] = func
 
         def constructor(self, **kwargs):
