@@ -40,6 +40,14 @@ listed on this page.
 
 :PyPI page: :pypi:`ghmiles`
 
+``github-issues``
+'''''''''''''''''
+
+    github-issues allows you to create, close, show, list, and comment on
+    issues on your github project - that's it.
+
+:Git repository: https://github.com/kashifrazzaqui/github-issues
+
 ``github-plots``
 ''''''''''''''''
 
