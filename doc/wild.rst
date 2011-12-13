@@ -40,6 +40,13 @@ listed on this page.
 
 :PyPI page: :pypi:`ghmiles`
 
+``github-plots``
+''''''''''''''''
+
+    Alternative plots from GitHub stats.
+
+:PyPI page: :pypi:`github-plots`
+
 ``hubugs``
 ''''''''''
 
