@@ -2,7 +2,6 @@ status: 200
 x-ratelimit-remaining: 58
 content-location: https://github.com/api/v2/json/commits/list/JNRowe/misc-overlay/gh-pages/packages/dev-python.html
 -content-encoding: gzip
-set-cookie: _gh_sess=BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA%3D%3D--ed7eadd474fd37850b68bd3c08a5c55ad0c3c833;
  path=/; expires=Fri, 01 Jan 2021 00:00:00 GMT; secure; HttpOnly
 connection: keep-alive
 content-length: 19508
