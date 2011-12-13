@@ -12,8 +12,25 @@ R/W access to all private repositories of the company account.
 # BSD licensed
 
 import logging
+import sys
+
 from optparse import OptionParser
+
 import github2.client
+
+
+#: Running under Python 3
+PY3K = sys.version_info[0] == 3 and True or False
+
+
+def print_(text):
+    """Python 2 & 3 compatible print function
+
+    We support <2.6, so can't use __future__.print_function"""
+    if PY3K:
+        print(text)
+    else:
+        sys.stdout.write(text + '\n')
 
 
 def parse_commandline():
@@ -72,7 +89,7 @@ def main():
     if len(args) == 1:
         for repos in github.repos.list(options.account):
             fullreposname = github.project_for_user_repo(options.account, repos.name)
-            print "%s: %s" % (repos.name, ' '.join(github.repos.list_collaborators(fullreposname)))
+            print_("%s: %s" % (repos.name, ' '.join(github.repos.list_collaborators(fullreposname))))
     elif len(args) == 2:
         command, collaborator = args
         for repos in github.repos.list(options.account):
@@ -80,11 +97,11 @@ def main():
             if collaborator in github.repos.list_collaborators(fullreposname):
                 if command == 'remove':
                     github.repos.remove_collaborator(repos.name, collaborator)
-                    print "removed %r from %r" % (collaborator, repos.name)
+                    print_("removed %r from %r" % (collaborator, repos.name))
             else:
                 if command == 'add':
                     github.repos.add_collaborator(repos.name, collaborator)
-                    print "added %r to %r" % (collaborator, repos.name)
+                    print_("added %r to %r" % (collaborator, repos.name))
 
     logging.shutdown()
 
