@@ -263,9 +263,9 @@ class BaseDataType(type):
         return result_cls
 
 
-class BaseData(object):
-    __metaclass__ = BaseDataType
-
+# Ugly base class definition for Python 2 and 3 compatibility, where metaclass
+# syntax is incompatible
+class BaseData(BaseDataType('BaseData', (object, ), {})):
     def __getitem__(self, key):
         """Access objects's attribute using subscript notation
 
