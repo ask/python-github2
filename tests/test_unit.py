@@ -1,7 +1,5 @@
 # -*- coding: latin-1 -*-
 
-import _setup
-
 import datetime
 import unittest
 

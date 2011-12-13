@@ -1,5 +1,3 @@
-import _setup
-
 import unittest
 
 from nose.tools import (assert_equals, assert_true)

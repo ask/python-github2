@@ -12,6 +12,20 @@ from textwrap import wrap
 import github2.client
 
 
+#: Running under Python 3
+PY3K = sys.version_info[0] == 3 and True or False
+
+
+def print_(text):
+    """Python 2 & 3 compatible print function
+
+    We support <2.6, so can't use __future__.print_function"""
+    if PY3K:
+        print(text)
+    else:
+        sys.stderr.write(text + '\n')
+
+
 def parse_commandline():
     """Parse the comandline and return parsed options."""
 
@@ -47,14 +61,14 @@ def main():
 
     repos = github.repos.search(term)
     if not repos:
-        print 'No repos found!'
+        print_('No repos found!')
         return_value = 255
     else:
         for repo in repos:
-            print repo.project
+            print(repo.project)
             if repo.description:
-                print '\n'.join(wrap(repo.description, initial_indent='    ',
-                                     subsequent_indent='    '))
+                print_('\n'.join(wrap(repo.description, initial_indent='    ',
+                                     subsequent_indent='    ')))
 
     logging.shutdown()
     return return_value

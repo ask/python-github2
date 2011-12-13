@@ -3,18 +3,25 @@ import logging
 import re
 import time
 import httplib2
-from httplib import responses
+try:
+    from http.client import responses  # For Python 3
+except ImportError:
+    from httplib import responses
 try:
     import json as simplejson  # For Python 2.6
 except ImportError:
     import simplejson
 from os import path
-from urlparse import (urlsplit, urlunsplit)
 try:
-    from urlparse import parse_qs
+    # For Python 3
+    from urllib.parse import (parse_qs, quote, urlencode, urlsplit, urlunsplit)
 except ImportError:
-    from cgi import parse_qs
-from urllib import urlencode, quote
+    from urlparse import (urlsplit, urlunsplit)
+    try:
+        from urlparse import parse_qs
+    except ImportError:
+        from cgi import parse_qs
+    from urllib import urlencode, quote
 
 
 #: Hostname for API access

@@ -9,6 +9,9 @@ from dateutil import (parser, tz)
 #: Running under Python 3
 PY3K = sys.version_info[0] == 3 and True or False
 
+#: Running under Python 2.7, or newer
+PY27 = sys.version_info[:2] == 3 and True or False
+
 GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
 # We need to manually mangle the timezone for commit date formatting because it
 # uses -xx:xx format
@@ -158,20 +161,26 @@ class GithubCommand(object):
         datatype = kwargs.pop("datatype", None)
         value = self.make_request(*args, **kwargs)
         if datatype:
-            # unicode keys are not accepted as kwargs by python, see:
-            #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
-            # So we make a local dict with the same keys but as strings:
-            return datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
+            if not PY27:
+                # unicode keys are not accepted as kwargs by python, until 2.7:
+                # http://bugs.python.org/issue2646
+                # So we make a local dict with the same keys but as strings:
+                return datatype(**dict((str(k), v) for (k, v) in value.items()))
+            else:
+                return datatype(**value)
         return value
 
     def get_values(self, *args, **kwargs):
         datatype = kwargs.pop("datatype", None)
         values = self.make_request(*args, **kwargs)
         if datatype:
-            # Same as above, unicode keys will blow up in **args, so we need to
-            # create a new 'values' dict with string keys
-            return [datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
-                    for value in values]
+            if not PY27:
+                # Same as above, unicode keys will blow up in **args, so we need to
+                # create a new 'values' dict with string keys
+                return [datatype(**dict((str(k), v) for (k, v) in value.items()))
+                        for value in values]
+            else:
+                return [datatype(**value) for value in values]
         else:
             return values
 
@@ -241,7 +250,7 @@ class BaseDataType(type):
                         for attr_name in attributes]))
 
         def _contribute_method(name, func):
-            func.func_name = name
+            func.__name__ = name
             attrs[name] = func
 
         def constructor(self, **kwargs):
@@ -263,9 +272,9 @@ class BaseDataType(type):
         return result_cls
 
 
-class BaseData(object):
-    __metaclass__ = BaseDataType
-
+# Ugly base class definition for Python 2 and 3 compatibility, where metaclass
+# syntax is incompatible
+class BaseData(BaseDataType('BaseData', (object, ), {})):
     def __getitem__(self, key):
         """Access objects's attribute using subscript notation
 

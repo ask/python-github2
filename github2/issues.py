@@ -1,4 +1,7 @@
-import urllib
+try:
+    from urllib.parse import quote_plus  # For Python 3
+except ImportError:
+    from urllib import quote_plus
 
 from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
                           repr_string, requires_auth)
@@ -47,9 +50,8 @@ class Issues(GithubCommand):
         :param str term: term to search issues for
         :param str state: can be either ``open`` or ``closed``.
         """
-        return self.get_values("search", project, state,
-                               urllib.quote_plus(term), filter="issues",
-                               datatype=Issue)
+        return self.get_values("search", project, state, quote_plus(term),
+                               filter="issues", datatype=Issue)
 
     def list(self, project, state="open"):
         """Get all issues for project with given state.

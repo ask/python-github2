@@ -1,5 +1,3 @@
-import _setup
-
 from nose.tools import assert_equals
 
 from github2.request import charset_from_headers
