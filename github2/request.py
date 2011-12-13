@@ -3,7 +3,12 @@ import logging
 import re
 import time
 import httplib2
-from httplib import responses
+try:
+    from httplib import responses
+except ImportError:  # For Python 2.4
+    from BaseHTTPServer import BaseHTTPRequestHandler
+    responses = dict([(k, v[0])
+                      for k, v in BaseHTTPRequestHandler.responses.items()])
 try:
     import json as simplejson  # For Python 2.6
 except ImportError:
@@ -55,7 +60,7 @@ class HttpError(RuntimeError):
         self.message = message
         self.content = content
         self.code = code
-        if code:
+        if code and responses:
             self.code_reason = responses[code]
         else:
             self.code_reason = ""
