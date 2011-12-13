@@ -100,8 +100,8 @@ def requires_auth(f):
     :param func f: Function to wrap
     :raises AuthError: If function called without an authenticated session
     """
-    # When Python 2.4 support is dropped move straight to functools.wraps, don't
-    # pass go and don't collect $200.
+    # When Python 2.4 support is dropped move straight to functools.wraps,
+    # don't pass go and don't collect $200.
     def wrapper(self, *args, **kwargs):
         if not self.request.access_token and not self.request.api_token:
             raise AuthError("%r requires an authenticated session"
@@ -161,7 +161,8 @@ class GithubCommand(object):
             # unicode keys are not accepted as kwargs by python, see:
             #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
             # So we make a local dict with the same keys but as strings:
-            return datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
+            return datatype(**dict((str(k), v)
+                                   for (k, v) in value.iteritems()))
         return value
 
     def get_values(self, *args, **kwargs):
@@ -170,7 +171,8 @@ class GithubCommand(object):
         if datatype:
             # Same as above, unicode keys will blow up in **args, so we need to
             # create a new 'values' dict with string keys
-            return [datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
+            return [datatype(**dict((str(k), v)
+                                    for (k, v) in value.iteritems()))
                     for value in values]
         else:
             return values
@@ -273,7 +275,7 @@ class BaseData(object):
         responses to ``BaseData`` derived objects.
         """
         warn("Subscript access on %r is deprecated, use object attributes"
-             % self.__class__.__name__, DeprecationWarning)
+                % self.__class__.__name__, DeprecationWarning)
         if not key in self._meta.keys():
             raise KeyError(key)
         return getattr(self, key)
@@ -284,7 +286,7 @@ class BaseData(object):
         :see: ``BaseData.__getitem__``
         """
         warn("Subscript access on %r is deprecated, use object attributes"
-             % self.__class__.__name__, DeprecationWarning)
+                % self.__class__.__name__, DeprecationWarning)
         if not key in self._meta.keys():
             raise KeyError(key)
         setattr(self, key, value)

@@ -68,8 +68,8 @@ class Issues(GithubCommand):
         :param str project: GitHub project
         :param str label:  a string representing a label (e.g., ``bug``).
         """
-        return self.get_values("list", project, "label", label, filter="issues",
-                               datatype=Issue)
+        return self.get_values("list", project, "label", label,
+                               filter="issues", datatype=Issue)
 
     def list_labels(self, project):
         """Get all labels for project.

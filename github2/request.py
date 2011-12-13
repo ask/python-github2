@@ -90,7 +90,7 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
-        digicert_ha_cert = path.join(path.dirname(path.abspath(__file__ )),
+        digicert_ha_cert = path.join(path.dirname(path.abspath(__file__)),
                                      "DigiCert_High_Assurance_EV_Root_CA.crt")
         if proxy_host is None:
             self._http = httplib2.Http(cache=cache, ca_certs=digicert_ha_cert)

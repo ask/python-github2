@@ -14,7 +14,7 @@ class Repository(BaseData):
     fork = Attribute("If True, this is a fork of another repository.")
     owner = Attribute("Username of the user owning this repository.")
     homepage = Attribute("Homepage for this project.")
-    master_branch  = Attribute("Default branch, if set.")
+    master_branch = Attribute("Default branch, if set.")
     integration_branch = Attribute("Integration branch, if set.")
     open_issues = Attribute("List of open issues for this repository.")
     created_at = DateAttribute("Datetime the repository was created.")
@@ -63,7 +63,6 @@ class Repositories(GithubCommand):
         """
         return self.get_values("pushable", filter="repositories",
                                datatype=Repository)
-
 
     def list(self, user=None, page=1):
         """Return a list of all repositories for a user.
@@ -189,7 +188,8 @@ class Repositories(GithubCommand):
 
         :param str project: Github project
         """
-        return self.get_values("show", project, "languages", filter="languages")
+        return self.get_values("show", project, "languages",
+                               filter="languages")
 
     def tags(self, project):
         """Get tags for project
