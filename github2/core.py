@@ -158,20 +158,26 @@ class GithubCommand(object):
         datatype = kwargs.pop("datatype", None)
         value = self.make_request(*args, **kwargs)
         if datatype:
-            # unicode keys are not accepted as kwargs by python, see:
-            #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
-            # So we make a local dict with the same keys but as strings:
-            return datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
+            if not PY3K:
+                # unicode keys are not accepted as kwargs by python, see:
+                #http://mail-archives.apache.org/mod_mbox/qpid-dev/200609.mbox/%3C1159389941.4505.10.camel@localhost.localdomain%3E
+                # So we make a local dict with the same keys but as strings:
+                return datatype(**dict((str(k), v) for (k, v) in value.items()))
+            else:
+                return datatype(**value)
         return value
 
     def get_values(self, *args, **kwargs):
         datatype = kwargs.pop("datatype", None)
         values = self.make_request(*args, **kwargs)
         if datatype:
-            # Same as above, unicode keys will blow up in **args, so we need to
-            # create a new 'values' dict with string keys
-            return [datatype(**dict((str(k), v) for (k, v) in value.iteritems()))
-                    for value in values]
+            if not PY3K:
+                # Same as above, unicode keys will blow up in **args, so we need to
+                # create a new 'values' dict with string keys
+                return [datatype(**dict((str(k), v) for (k, v) in value.items()))
+                        for value in values]
+            else:
+                return [datatype(**value) for value in values]
         else:
             return values
 
