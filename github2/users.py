@@ -1,6 +1,10 @@
+try:
+    from urllib.parse import quote_plus  # For Python 3
+except ImportError:
+    from urllib import quote_plus
+
 from github2.core import (BaseData, GithubCommand, DateAttribute, Attribute,
                           enhanced_by_auth, requires_auth)
-import urllib
 
 
 class User(BaseData):
@@ -48,8 +52,8 @@ class Users(GithubCommand):
 
         :param str query: term to search for
         """
-        return self.get_values("search", urllib.quote_plus(query),
-                               filter="users", datatype=User)
+        return self.get_values("search", quote_plus(query), filter="users",
+                               datatype=User)
 
     def search_by_email(self, query):
         """Search for users by email address
