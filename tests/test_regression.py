@@ -1,5 +1,3 @@
-import _setup
-
 import httplib2
 
 from nose.tools import assert_equals
