@@ -24,6 +24,14 @@ listed on this page.
 
 :PyPI page: :pypi:`bitbucket2github`
 
+``bugwarrior``
+''''''''''''''
+
+    Pull tickets from github, bitbucket, and trac into `taskwarrior
+    <http://taskwarrior.org/>`__
+
+:PyPI page: :pypi:`bugwarrior`
+
 ``forkfeed``
 ''''''''''''
 
