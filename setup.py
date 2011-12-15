@@ -13,10 +13,8 @@ install_requires = ['httplib2 >= 0.7.0', ]
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
-extra = {}
 if sys.version_info >= (3,):
     install_requires.append('python-dateutil >= 2.0')
-    extra['use_2to3'] = True
 else:
     install_requires.append('python-dateutil < 2.0')
 
@@ -64,5 +62,4 @@ setup(
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
     ],
-    **extra
 )

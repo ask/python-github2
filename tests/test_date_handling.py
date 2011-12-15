@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import _setup
-
 from datetime import datetime as dt
 
 from nose.tools import assert_equals

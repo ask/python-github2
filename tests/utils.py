@@ -1,5 +1,3 @@
-import _setup
-
 import os
 import sys
 import unittest

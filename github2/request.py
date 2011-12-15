@@ -4,22 +4,29 @@ import re
 import time
 import httplib2
 try:
+    # For Python 3
+    from http.client import responses
+except ImportError:  # For Python 2.5-2.7
     from httplib import responses
 except ImportError:  # For Python 2.4
     from BaseHTTPServer import BaseHTTPRequestHandler
     responses = dict([(k, v[0])
                       for k, v in BaseHTTPRequestHandler.responses.items()])
 try:
-    import json as simplejson  # For Python 2.6
+    import json as simplejson  # For Python 2.6+
 except ImportError:
     import simplejson
 from os import path
-from urlparse import (urlsplit, urlunsplit)
 try:
-    from urlparse import parse_qs
+    # For Python 3
+    from urllib.parse import (parse_qs, quote, urlencode, urlsplit, urlunsplit)
 except ImportError:
-    from cgi import parse_qs
-from urllib import urlencode, quote
+    from urlparse import (urlsplit, urlunsplit)
+    try:
+        from urlparse import parse_qs
+    except ImportError:
+        from cgi import parse_qs
+    from urllib import urlencode, quote
 
 
 #: Hostname for API access
