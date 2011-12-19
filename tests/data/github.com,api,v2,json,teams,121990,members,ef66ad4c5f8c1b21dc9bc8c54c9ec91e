@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 60
+content-location: https://github.com/api/v2/json/teams/121990/members
+x-runtime: 20ms
+content-length: 202
+server: nginx/1.0.4
+connection: keep-alive
+x-ratelimit-limit: 58
+etag: "397a2fcea970a6391b74eabcb62ed265"
+cache-control: private, max-age=0, must-revalidate
+date: Thu, 19 Dec 2011 20:55:34 GMT
+content-type: application/json; charset=utf-8
+
+{"users":[{"name":"James Rowe","gravatar_id":"e40de1eb6e8a74cb96b3f07f3994f155","location":"Cambridge, UK","blog":"http://jnrowe.github.com/","type":"User","login":"JNRowe","email":"jnrowe@gmail.com"}]}
