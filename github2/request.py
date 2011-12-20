@@ -123,14 +123,15 @@ class GithubRequest(object):
                 "api_version": self.api_version,
                 "api_format": self.api_format,
             }
-        digicert_ha_cert = path.join(path.dirname(path.abspath(__file__)),
-                                     "DigiCert_High_Assurance_EV_Root_CA.crt")
         if proxy_host is None:
             self._http = httplib2.Http(cache=cache)
         else:
             proxy_info = httplib2.ProxyInfo(httplib2.socks.PROXY_TYPE_HTTP,
                                             proxy_host, proxy_port)
             self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
+        if not SYSTEM_CERTS:
+            self._http.ca_certs = path.join(path.dirname(path.abspath(__file__)),
+                                            "DigiCert_High_Assurance_EV_Root_CA.crt")
 
     def encode_authentication_data(self, extra_post_data):
         post_data = []
