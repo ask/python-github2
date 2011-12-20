@@ -7,10 +7,10 @@ from dateutil import (parser, tz)
 
 
 #: Running under Python 3
-PY3K = sys.version_info[0] == 3 and True or False
+PY3K = sys.version_info[0] == 3
 
 #: Running under Python 2.7, or newer
-PY27 = sys.version_info[:2] == 3 and True or False
+PY27 = sys.version_info[:2] >= (2, 7)
 
 GITHUB_DATE_FORMAT = "%Y/%m/%d %H:%M:%S %z"
 # We need to manually mangle the timezone for commit date formatting because it
