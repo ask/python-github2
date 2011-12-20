@@ -70,3 +70,8 @@ class IssueQueries(utils.HttpMockTestCase):
         labels = self.client.issues.list_labels('JNRowe/misc-overlay')
         assert_equals(len(labels), 4)
         assert_equals(labels[0], 'feature')
+
+    def test_list_by_label(self):
+        issues = self.client.issues.list_by_label('JNRowe/misc-overlay', 'bug')
+        assert_equals(len(issues), 30)
+        assert_equals(issues[-1].number, 328)

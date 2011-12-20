@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 58
+content-location: https://github.com/api/v2/json/repos/show/ask/python-github2/tags
+x-runtime: 7ms
+content-length: 372
+server: nginx/0.7.67
+connection: keep-alive
+x-ratelimit-limit: 60
+etag: "25b6801155cc07a688ae97ce708404aa"
+cache-control: private, max-age=0, must-revalidate
+date: Wed, 08 Jun 2011 13:39:16 GMT
+content-type: application/json; charset=utf-8
+
+{"tags":{"0.4.0":"6337009b8cefecaff3d5b73883d3da541cc25432","v0.2.0":"9c573faef38b14603c8bdca39c0b7a0140502da9","v0.3.0":"573da9892ddbe85272b7367bf2936d1a3d5d3868","v0.1.2":"03afc58f59b0023a0a9c880387b0487b9010ca98","0.4.1":"96b0a41dd249c521323700bc11a0a721a7c9e642","v0.3.1":"f4c0a1f94770dd087fe636ed98f3443db317ab8c","v0.1.3":"210b2ac7f9368e372d17b7c932e3ad08c23530d4"}}
