@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute, DateAttribute
+from github2.core import BaseData, GithubCommand, Attribute, DateAttribute, requires_auth
 from github2.repositories import Repository
 from github2.teams import Team
 from github2.users import User
@@ -81,3 +81,22 @@ class Organizations(GithubCommand):
         """
         return self.get_values(organization, 'teams', filter="teams",
                                datatype=Team)
+
+    @requires_auth
+    def add_team(self, organization, name, permission, repos=[]):
+        """Add a team to an organization
+
+        :param str organization: org to which team will belong
+        :param str team: team name to add
+        :param str permission: choose from push, pull, or admin
+        :param str repos (optional): GitHub projects for this team
+        """
+#        team_data={"teams":{"name": team, "permission": permission}}
+        team_data={"team[name]": name, "team[permission]":  permission}
+
+        for repo in repos:
+            team_data["team[repo_names][]"] = "%s/%s" % (organization, repo)
+
+        return self.get_values(organization, 'teams', post_data=team_data, method='POST')
+
+
