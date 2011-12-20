@@ -113,13 +113,12 @@ class GithubRequest(object):
                                        ca_certs=digicert_ha_cert)
 
     def encode_authentication_data(self, extra_post_data):
+        post_data = {}
         if self.access_token:
-            post_data = {"access_token": self.access_token}
+            post_data["access_token"] = self.access_token
         elif self.username and self.api_token:
-            post_data = {"login": self.username,
-                         "token": self.api_token}
-        else:
-            post_data = {}
+            post_data["login"] = self.username
+            post_data["token"] = self.api_token
         post_data.update(extra_post_data)
         return urlencode(post_data)
 
