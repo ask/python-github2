@@ -10,6 +10,8 @@ Requests
 
 .. autodata:: GITHUB_URL
 
+.. autodata:: SYSTEM_CERTS
+
 .. autoexception:: GithubError
 
 .. autoclass:: GithubRequest
