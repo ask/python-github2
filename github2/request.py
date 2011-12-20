@@ -133,13 +133,18 @@ class GithubRequest(object):
             self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
 
     def encode_authentication_data(self, extra_post_data):
-        post_data = {}
+        post_data = []
         if self.access_token:
-            post_data["access_token"] = self.access_token
+            post_data.append(("access_token", self.access_token))
         elif self.username and self.api_token:
-            post_data["login"] = self.username
-            post_data["token"] = self.api_token
-        post_data.update(extra_post_data)
+            post_data.append(("login", self.username))
+            post_data.append(("token", self.api_token))
+        for key, value in extra_post_data.items():
+            if isinstance(value, list):
+                for elem in value:
+                    post_data.append((key, elem))
+            else:
+                post_data.append((key, value))
         return urlencode(post_data)
 
     def get(self, *path_components):

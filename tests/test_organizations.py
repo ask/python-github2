@@ -51,3 +51,20 @@ class OrganizationQueries(utils.HttpMockTestCase):
         members = self.client.organizations.public_members('github')
         assert_equals(len(members), 35)
         assert_equals(members[2].name, 'Ben Burkert')
+
+
+class OrganizationsEdits(utils.HttpMockAuthenticatedTestCase):
+    def test_add_team(self):
+        team = self.client.organizations.add_team('JNRowe-test-org',
+                                                  'test_pull', 'pull')
+        assert_equals(team.name, 'team_pull')
+        assert_equals(team.permission, 'pull')
+
+    def test_add_team_with_repos(self):
+        projects = ['JNRowe-test-org/test1', 'JNRowe-test-org/test2']
+        team = self.client.organizations.add_team('JNRowe-test-org',
+                                                  'test_push', 'push', projects)
+
+        team_repos = self.client.teams.repositories(team.id)
+        assert_equals(['/'.join([x.organization, x.name]) for x in team_repos],
+                      projects)

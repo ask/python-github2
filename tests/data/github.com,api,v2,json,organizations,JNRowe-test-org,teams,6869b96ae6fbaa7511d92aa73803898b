@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 60
+content-location: https://github.com/api/v2/json/organizations/JNRowe-test-org/teams
+x-runtime: 20ms
+content-length: 61
+server: nginx/1.0.4
+connection: keep-alive
+x-ratelimit-limit: 58
+etag: "0ea8a446a00b4d7894676a34bd8d501f"
+cache-control: private, max-age=0, must-revalidate
+date: Mon, 19 Dec 2011 20:50:41 GMT
+content-type: application/json; charset=utf-8
+
+{"team":{"name":"team_pull","id":121678,"permission":"pull"}}

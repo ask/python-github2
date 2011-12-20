@@ -32,6 +32,17 @@ class Teams(GithubCommand):
         return self.get_values(str(team_id), "members", filter="users",
                                datatype=User)
 
+    @requires_auth
+    def add_member(self, team_id, username):
+        """Add a new member to a team
+
+        :param int team_id: team to add new member to
+        :param str username: GitHub username to add to team
+        """
+        return self.get_values(str(team_id), 'members', method='POST',
+                               post_data={'name': username}, filter='users',
+                               datatype=User)
+
     def repositories(self, team_id):
         """Get list of all team repositories
 

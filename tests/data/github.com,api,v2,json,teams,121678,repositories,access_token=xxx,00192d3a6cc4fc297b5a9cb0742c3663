@@ -1,0 +1,14 @@
+status: 200
+x-ratelimit-remaining: 60
+content-location: https://github.com/api/v2/json/organizations/JNRowe-test-org/teams
+x-runtime: 20ms
+content-length: 676
+server: nginx/1.0.4
+connection: keep-alive
+x-ratelimit-limit: 58
+etag: "397a2fcea970a6391b74eabcb62ed265"
+cache-control: private, max-age=0, must-revalidate
+date: Thu, 19 Dec 2011 20:50:41 GMT
+content-type: application/json; charset=utf-8
+
+{"repositories":[{"open_issues":0,"description":"","watchers":1,"forks":1,"has_issues":true,"has_downloads":true,"fork":false,"created_at":"2011/12/18 17:36:08 -0800","homepage":"","size":0,"private":false,"name":"test1","owner":"JNRowe-test-org","has_wiki":true,"url":"https://github.com/JNRowe-test-org/test1","organization":"JNRowe-test-org"},{"open_issues":0,"description":"","watchers":1,"forks":1,"has_issues":true,"has_downloads":true,"fork":false,"created_at":"2011/12/18 17:36:24 -0800","homepage":"","size":0,"private":false,"name":"test2","owner":"JNRowe-test-org","has_wiki":true,"url":"https://github.com/JNRowe-test-org/test2","organization":"JNRowe-test-org"}]}
