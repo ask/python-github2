@@ -141,14 +141,14 @@ class GithubCommand(object):
         page = kwargs.pop("page", 1)
         if page and not page == 1:
             post_data["page"] = page
-        method = kwargs.get("method", "GET")
-        if method.upper() == "POST" or method.upper() == "GET" and post_data:
+        method = kwargs.get("method", "GET").upper()
+        if method == "POST" or method == "GET" and post_data:
             response = self.request.post(self.domain, command, *args,
                                          **post_data)
-        elif method.upper() == "PUT":
+        elif method == "PUT":
             response = self.request.put(self.domain, command, *args,
                                         **post_data)
-        elif method.upper() == "DELETE":
+        elif method == "DELETE":
             response = self.request.delete(self.domain, command, *args,
                                            **post_data)
         else:
