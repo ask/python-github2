@@ -33,7 +33,7 @@ class Teams(GithubCommand):
                                datatype=User)
 
     def repositories(self, team_id):
-        """Get list of all team members
+        """Get list of all team repositories
 
         :param int team_id: team to get information for
         """
