@@ -1,4 +1,4 @@
-from github2.core import BaseData, GithubCommand, Attribute
+from github2.core import BaseData, GithubCommand, Attribute, requires_auth
 from github2.repositories import Repository
 from github2.users import User
 
@@ -40,6 +40,7 @@ class Teams(GithubCommand):
         return self.get_values(str(team_id), "repositories",
                                filter="repositories", datatype=Repository)
 
+    @requires_auth
     def add_project(self, team_id, project):
         """Add a project to a team
 
@@ -52,6 +53,7 @@ class Teams(GithubCommand):
                                post_data={'name': project},
                                filter="repositories", datatype=Repository)
 
+    @requires_auth
     def remove_project(self, team_id, project):
         """Remove a project to a team
 
