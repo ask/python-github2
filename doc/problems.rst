@@ -35,14 +35,14 @@ response from GitHub, here the user data of ``JNRowe``.
 Rate limiting
 '''''''''''''
 
-If rate limiting is enabled, with the ``requests_per_second`` when creating a
-:class:`~github2.client.Github` object, then you'll see a ``WARNING`` level
-message when a request has been delayed.
+If rate limiting is enabled, with the ``requests_per_second`` parameter when
+creating a :class:`~github2.client.Github` object, then you'll see a ``WARNING``
+level message when a request has been delayed.
 
-    >>> github = Github(requests_per_second=0.2, debug=True)
+    >>> github = Github(requests_per_second=0.2)
     >>> user = github.users.show("JNRowe")
     >>> user = github.users.show("JNRowe")
-    delaying API call 4.99773
+    WARNING:github2.request:delaying API call 4.997032 second(s)
 
 Here we have defined a rate limit of one call every five seconds, and doing so
 has imposed an almost 5 second delay before completing the second request.
