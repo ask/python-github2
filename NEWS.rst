@@ -8,6 +8,12 @@ look at the `git repository`_ for the full project history.
 
 .. contents::
 
+0.6.0 - 2011-12-21
+------------------
+
+* Now uses system certificates for SSL validation where possible
+* Python 3 is supported directly, without a separate ``2to3`` build step
+
 0.5.2 - 2011-09-02
 ------------------
 

@@ -1,7 +1,10 @@
 "Github API v2 library for Python"
-VERSION = (0, 5, 2)
+
+from github2 import _version
+
+VERSION = _version.tuple
 
 __author__ = "Ask Solem"
 __contact__ = "askh@opera.com"
 __homepage__ = "http://github.com/ask/python-github2"
-__version__ = ".".join(map(str, VERSION))
+__version__ = _version.dotted
