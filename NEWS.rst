@@ -1,6 +1,11 @@
 User-visible changes
 ====================
 
+This file lists only the most important changes that may be visible to users,
+look at the `git repository`_ for the full project history.
+
+.. _git repository: https://github.com/ask/python-github2/
+
 .. contents::
 
 0.5.2 - 2011-09-02
