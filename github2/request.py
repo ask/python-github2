@@ -8,11 +8,12 @@ try:
     # For Python 3
     from http.client import responses
 except ImportError:  # For Python 2.5-2.7
-    from httplib import responses
-except ImportError:  # For Python 2.4
-    from BaseHTTPServer import BaseHTTPRequestHandler
-    responses = dict([(k, v[0])
-                      for k, v in BaseHTTPRequestHandler.responses.items()])
+    try:
+        from httplib import responses
+    except ImportError:  # For Python 2.4
+        from BaseHTTPServer import BaseHTTPRequestHandler
+        responses = dict([(k, v[0])
+                          for k, v in BaseHTTPRequestHandler.responses.items()])
 try:
     import json as simplejson  # For Python 2.6+
 except ImportError:
