@@ -88,7 +88,7 @@ class HttpError(RuntimeError):
         self.message = message
         self.content = content
         self.code = code
-        if code and responses:
+        if responses and code in responses:
             self.code_reason = responses[code]
         else:
             self.code_reason = ""
