@@ -2,7 +2,6 @@ import datetime
 
 from nose.tools import assert_equals
 
-from github2.client import Github
 import utils
 
 

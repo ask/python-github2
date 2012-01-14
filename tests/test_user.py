@@ -2,8 +2,6 @@ import datetime
 
 from nose.tools import (assert_equals, assert_false, assert_true)
 
-from github2.client import Github
-
 import utils
 
 
