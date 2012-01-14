@@ -1,10 +1,12 @@
+import logging
 import sys
-
-from warnings import warn
 
 from datetime import datetime
 from dateutil import (parser, tz)
 
+
+#: Logger for core module
+LOGGER = logging.getLogger('github2.core')
 
 #: Running under Python 3
 PY3K = sys.version_info[0] == 3
@@ -281,8 +283,9 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
         This is here purely to maintain compatibility when switching ``dict``
         responses to ``BaseData`` derived objects.
         """
-        warn("Subscript access on %r is deprecated, use object attributes"
-                % self.__class__.__name__, DeprecationWarning)
+        LOGGER.warning("Subscript access on %r is deprecated, use object "
+                       "attributes" % self.__class__.__name__,
+                       DeprecationWarning)
         if not key in self._meta.keys():
             raise KeyError(key)
         return getattr(self, key)
@@ -292,8 +295,9 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
 
         :see: ``BaseData.__getitem__``
         """
-        warn("Subscript access on %r is deprecated, use object attributes"
-                % self.__class__.__name__, DeprecationWarning)
+        LOGGER.warning("Subscript access on %r is deprecated, use object "
+                       "attributes" % self.__class__.__name__,
+                       DeprecationWarning)
         if not key in self._meta.keys():
             raise KeyError(key)
         setattr(self, key, value)
