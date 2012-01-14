@@ -28,9 +28,9 @@ class RateLimits(utils.HttpMockTestCase):
         """Test call delay is at least one second"""
         client = Github(requests_per_second=.5)
         client.users.show('defunkt')
-        start = datetime.datetime.now()
+        start = datetime.datetime.utcnow()
         client.users.show('mojombo')
-        end = datetime.datetime.now()
+        end = datetime.datetime.utcnow()
 
         delta = end - start
         delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
