@@ -22,6 +22,16 @@ class ReprTests(unittest.TestCase):
         assert_equals(str, type(repr(i)))
 
 
+class HostSetting(unittest.TestCase):
+    def test_default_host(self):
+        client = Github()
+        assert_equals(client.request.github_url, 'https://github.com')
+
+    def test_non_standard_host(self):
+        client = Github(github_url="http://git.gree-dev.net/")
+        assert_equals(client.request.github_url, 'http://git.gree-dev.net/')
+
+
 class RateLimits(utils.HttpMockTestCase):
     """Test API rate-limitting"""
     def test_delays(self):
