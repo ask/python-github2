@@ -52,10 +52,7 @@ elif not SYSTEM_CERTS and sys.platform.startswith('freebsd'):
     if path.exists('/usr/local/share/certs/ca-root-nss.crt'):
         CA_CERTS = '/usr/local/share/certs/ca-root-nss.crt'
         SYSTEM_CERTS = True
-if SYSTEM_CERTS:
-    LOGGER.info('Using system certificates in %r', httplib2.CA_CERTS)
 else:
-    LOGGER.warning('Using bundled certificates for HTTPS connections')
     CA_CERTS = path.join(path.dirname(path.abspath(__file__)),
                          "DigiCert_High_Assurance_EV_Root_CA.crt")
 
@@ -142,7 +139,10 @@ class GithubRequest(object):
                                             proxy_host, proxy_port)
             self._http = httplib2.Http(proxy_info=proxy_info, cache=cache)
         self._http.ca_certs = CA_CERTS
-
+        if SYSTEM_CERTS:
+            LOGGER.info('Using system certificates in %r', CA_CERTS)
+        else:
+            LOGGER.warning('Using bundled certificate for HTTPS connections')
 
     def encode_authentication_data(self, extra_post_data):
         post_data = []
