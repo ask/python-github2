@@ -12,7 +12,7 @@ class Github(object):
 
     def __init__(self, username=None, api_token=None, requests_per_second=None,
                  access_token=None, cache=None, proxy_host=None,
-                 proxy_port=8080):
+                 proxy_port=8080, github_url=None):
         """
         An interface to GitHub's API:
             http://develop.github.com/
@@ -44,7 +44,8 @@ class Github(object):
                                      requests_per_second=requests_per_second,
                                      access_token=access_token, cache=cache,
                                      proxy_host=proxy_host,
-                                     proxy_port=proxy_port)
+                                     proxy_port=proxy_port,
+                                     github_url=github_url)
         self.issues = Issues(self.request)
         self.users = Users(self.request)
         self.repos = Repositories(self.request)

@@ -34,7 +34,7 @@ import httplib2
 
 
 #: Hostname for API access
-GITHUB_URL = "https://github.com"
+DEFAULT_GITHUB_URL = "https://github.com"
 
 #: Logger for requests module
 LOGGER = logging.getLogger('github2.request')
@@ -96,7 +96,6 @@ class HttpError(RuntimeError):
 
 
 class GithubRequest(object):
-    github_url = GITHUB_URL
     url_format = "%(github_url)s/api/%(api_version)s/%(api_format)s"
     api_version = "v2"
     api_format = "json"
@@ -104,7 +103,8 @@ class GithubRequest(object):
 
     def __init__(self, username=None, api_token=None, url_prefix=None,
                  requests_per_second=None, access_token=None,
-                 cache=None, proxy_host=None, proxy_port=None):
+                 cache=None, proxy_host=None, proxy_port=None,
+                 github_url=None):
         """Make an API request.
 
         :see: :class:`github2.client.Github`
@@ -113,6 +113,10 @@ class GithubRequest(object):
         self.api_token = api_token
         self.access_token = access_token
         self.url_prefix = url_prefix
+        if github_url is None:
+            self.github_url = DEFAULT_GITHUB_URL
+        else:
+            self.github_url = github_url
         if requests_per_second is None:
             self.delay = 0
         else:

@@ -50,4 +50,12 @@ given, is 8080::
     >>> github = Github(username="ask", api_token=".......",
     ...                 proxy_host="my.proxy.com", proxy_port=9000)
 
+You may specify a Github Enterprise URL by passing in the ``github_url``
+setting. If you do not specify ``github_url``, requests will be made
+to https://github.com.
+
+    >>> from github2.client import Github
+    >>> github = Github(username="modocache", api_token=".......",
+    ...                 github_url="http://git.gree-dev.net/")
+
 .. _OAuth service: http://develop.github.com/p/oauth.html
