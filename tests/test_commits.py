@@ -8,6 +8,7 @@ import utils
 class CommitProperties(utils.HttpMockTestCase):
     """Test commit property handling"""
     commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
+
     def test_commit(self):
         commit = self.client.commits.show('ask/python-github2', self.commit_id)
         assert_equals(commit.message,
@@ -25,8 +26,8 @@ class CommitProperties(utils.HttpMockTestCase):
         assert_equals(commit.committer['login'], 'JNRowe')
         assert_equals(commit.added, None)
         assert_equals(commit.removed, None)
-        assert_equals(commit.modified[0]['filename'], 'github2/bin/manage_collaborators.py')
-
+        assert_equals(commit.modified[0]['filename'],
+                      'github2/bin/manage_collaborators.py')
 
     def test_repr(self):
         commit = self.client.commits.show('ask/python-github2', self.commit_id)
@@ -36,6 +37,7 @@ class CommitProperties(utils.HttpMockTestCase):
 
 class CommitsQueries(utils.HttpMockTestCase):
     """Test commit querying"""
+
     def test_list(self):
         commits = self.client.commits.list('JNRowe/misc-overlay')
         assert_equals(len(commits), 35)

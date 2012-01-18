@@ -16,7 +16,7 @@ def setup_module():
 
 
 def teardown_module():
-    """Disable timezone-aware datetime handling when finished with this module"""
+    """Disable timezone-aware datetime handling when tests have completed"""
     core.NAIVE = True
 
 

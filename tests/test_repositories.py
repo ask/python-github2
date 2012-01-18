@@ -95,12 +95,14 @@ class RepoQueries(utils.HttpMockTestCase):
     def test_tags(self):
         tags = self.client.repos.tags('ask/python-github2')
         assert_equals(len(tags), 7)
-        assert_equals(tags['0.4.1'], '96b0a41dd249c521323700bc11a0a721a7c9e642')
+        assert_equals(tags['0.4.1'],
+                      '96b0a41dd249c521323700bc11a0a721a7c9e642')
 
     def test_branches(self):
         branches = self.client.repos.branches('ask/python-github2')
         assert_equals(len(branches), 1)
-        assert_equals(branches['master'], '1c83cde9b5a7c396a01af1007fb7b88765b9ae45')
+        assert_equals(branches['master'],
+                      '1c83cde9b5a7c396a01af1007fb7b88765b9ae45')
 
     def test_watchers(self):
         watchers = self.client.repos.watchers('ask/python-github2')

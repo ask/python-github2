@@ -114,6 +114,7 @@ def test_datetime_to_commitdate():
     assert_equals(datetime_to_commitdate(dt(2011, 4, 9, 9, 53, 0)),
                   '2011-04-09T09:53:00-07:00')
 
+
 def test_isodate_to_datetime():
     assert_equals(string_to_datetime('2011-05-22T00:24:15Z'),
                   dt(2011, 5, 22, 0, 24, 15))

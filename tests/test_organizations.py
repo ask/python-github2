@@ -63,7 +63,8 @@ class OrganizationsEdits(utils.HttpMockAuthenticatedTestCase):
     def test_add_team_with_repos(self):
         projects = ['JNRowe-test-org/test1', 'JNRowe-test-org/test2']
         team = self.client.organizations.add_team('JNRowe-test-org',
-                                                  'test_push', 'push', projects)
+                                                  'test_push', 'push',
+                                                  projects)
 
         team_repos = self.client.teams.repositories(team.id)
         assert_equals(['/'.join([x.organization, x.name]) for x in team_repos],

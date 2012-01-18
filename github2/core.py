@@ -167,7 +167,8 @@ class GithubCommand(object):
                 # unicode keys are not accepted as kwargs by python, until 2.7:
                 # http://bugs.python.org/issue2646
                 # So we make a local dict with the same keys but as strings:
-                return datatype(**dict((str(k), v) for (k, v) in value.items()))
+                return datatype(**dict((str(k), v)
+                                       for (k, v) in value.items()))
             else:
                 return datatype(**value)
         return value
@@ -177,9 +178,10 @@ class GithubCommand(object):
         values = self.make_request(*args, **kwargs)
         if datatype:
             if not PY27:
-                # Same as above, unicode keys will blow up in **args, so we need to
-                # create a new 'values' dict with string keys
-                return [datatype(**dict((str(k), v) for (k, v) in value.items()))
+                # Same as above, unicode keys will blow up in **args, so we
+                # need to create a new 'values' dict with string keys
+                return [datatype(**dict((str(k), v)
+                                        for (k, v) in value.items()))
                         for value in values]
             else:
                 return [datatype(**value) for value in values]

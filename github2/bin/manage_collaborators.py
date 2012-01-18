@@ -58,11 +58,14 @@ def parse_commandline():
     if len(args) not in [1, 2]:
         parser.error('wrong number of arguments')
     if (len(args) == 1 and args[0] in ['add', 'remove']):
-        parser.error('%r needs a collaborator name as second parameter\n' % args[0])
+        parser.error('%r needs a collaborator name as second parameter\n'
+                     % args[0])
     elif (len(args) == 1 and args[0] != 'list'):
-        parser.error('unknown command %r. Try "list", "add" or "remove"\n' % args[0])
+        parser.error('unknown command %r. Try "list", "add" or "remove"\n'
+                     % args[0])
     if (len(args) == 2 and args[0] not in ['add', 'remove']):
-        parser.error('unknown command %r. Try "list", "add" or "remove"\n' % args[0])
+        parser.error('unknown command %r. Try "list", "add" or "remove"\n'
+                     % args[0])
     if not options.login:
         parser.error('you must provide --login information\n')
 
@@ -88,12 +91,15 @@ def main():
                         datefmt="%Y-%m-%dT%H:%M:%S")
     if len(args) == 1:
         for repos in github.repos.list(options.account):
-            fullreposname = github.project_for_user_repo(options.account, repos.name)
-            print_("%s: %s" % (repos.name, ' '.join(github.repos.list_collaborators(fullreposname))))
+            fullreposname = github.project_for_user_repo(options.account,
+                                                         repos.name)
+            collabs = github.repos.list_collaborators(fullreposname)
+            print_("%s: %s" % (repos.name, ' '.join(collabs)))
     elif len(args) == 2:
         command, collaborator = args
         for repos in github.repos.list(options.account):
-            fullreposname = github.project_for_user_repo(options.account, repos.name)
+            fullreposname = github.project_for_user_repo(options.account,
+                                                         repos.name)
             if collaborator in github.repos.list_collaborators(fullreposname):
                 if command == 'remove':
                     github.repos.remove_collaborator(repos.name, collaborator)
