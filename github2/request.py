@@ -60,6 +60,11 @@ else:
                          "DigiCert_High_Assurance_EV_Root_CA.crt")
 
 
+# Common missing entries from the HTTP status code dict, basically anything
+# GitHub reports that isn't basic HTTP/1.1.
+responses[422] = 'Unprocessable Entity'
+
+
 def charset_from_headers(headers):
     """Parse charset from headers
 
