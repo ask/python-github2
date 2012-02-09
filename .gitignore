@@ -3,7 +3,7 @@
 .noseids
 .ropeproject/
 .tox/
-*.pyc
+*.py[co]
 *~
 *.sqlite
 *.sqlite-journal
