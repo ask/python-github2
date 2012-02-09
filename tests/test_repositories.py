@@ -48,6 +48,7 @@ class RepoProperties(utils.HttpMockTestCase):
         assert_equals(repo.forks, 0)
         assert_equals(repo.fork, True)
         assert_equals(repo.parent, 'ask/python-github2')
+        assert_equals(repo.source, 'ask/python-github2')
 
 
 class RepoQueries(utils.HttpMockTestCase):

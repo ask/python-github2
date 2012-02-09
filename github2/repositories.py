@@ -24,6 +24,7 @@ class Repository(BaseData):
     has_issues = Attribute("If True, this repository has an issue tracker.")
     language = Attribute("Primary language for the repository.")
     parent = Attribute("The parent project of this fork.")
+    source = Attribute("The root project of this fork")
 
     def _project(self):
         return self.owner + "/" + self.name
