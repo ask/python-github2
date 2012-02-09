@@ -77,7 +77,7 @@ def charset_from_headers(headers):
 
 
 class GithubError(Exception):
-    """An error occured when making a request to the Github API."""
+    """An error occurred when making a request to the Github API."""
 
 
 class HttpError(RuntimeError):
