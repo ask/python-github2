@@ -11,6 +11,7 @@ Requests
 .. autodata:: DEFAULT_GITHUB_URL
 
 .. autodata:: SYSTEM_CERTS
+.. autodata:: CURL_CERTS
 
 .. autoexception:: GithubError
 

@@ -18,7 +18,7 @@ try:
     import json as simplejson  # For Python 2.6+
 except ImportError:
     import simplejson
-from os import path
+from os import (getenv, path)
 try:
     # For Python 3
     from urllib.parse import (parse_qs, quote, urlencode, urlsplit, urlunsplit)
@@ -41,6 +41,8 @@ LOGGER = logging.getLogger('github2.request')
 
 #: Whether github2 is using the system's certificates for SSL connections
 SYSTEM_CERTS = not httplib2.CA_CERTS.startswith(path.dirname(httplib2.__file__))
+#: Whether github2 is using the cert's from the file given in $CURL_CA_BUNDLE
+CURL_CERTS = False
 if not SYSTEM_CERTS and sys.platform.startswith('linux'):
     for cert_file in ['/etc/ssl/certs/ca-certificates.crt',
                       '/etc/pki/tls/certs/ca-bundle.crt']:
@@ -52,6 +54,9 @@ elif not SYSTEM_CERTS and sys.platform.startswith('freebsd'):
     if path.exists('/usr/local/share/certs/ca-root-nss.crt'):
         CA_CERTS = '/usr/local/share/certs/ca-root-nss.crt'
         SYSTEM_CERTS = True
+elif path.exists(getenv('CURL_CA_BUNDLE', '')):
+    CA_CERTS = getenv('CURL_CA_BUNDLE')
+    CURL_CERTS = True
 else:
     CA_CERTS = path.join(path.dirname(path.abspath(__file__)),
                          "DigiCert_High_Assurance_EV_Root_CA.crt")
@@ -142,6 +147,8 @@ class GithubRequest(object):
         self._http.ca_certs = CA_CERTS
         if SYSTEM_CERTS:
             LOGGER.info('Using system certificates in %r', CA_CERTS)
+        elif CURL_CERTS:
+            LOGGER.info("Using cURL's certificates in %r", CA_CERTS)
         else:
             LOGGER.warning('Using bundled certificate for HTTPS connections')
 
