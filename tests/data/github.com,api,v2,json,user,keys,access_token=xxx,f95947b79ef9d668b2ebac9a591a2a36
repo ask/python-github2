@@ -1,0 +1,16 @@
+status: 200
+x-ratelimit-remaining: 60
+content-location: https://github.com/api/v2/json/user/keys?access_token=xxx
+-content-encoding: gzip
+connection: keep-alive
+content-length: 94
+server: nginx/1.0.4
+x-runtime: 7
+x-ratelimit-limit: 60
+etag: "1df3e8616495dcf01a4fb79fa450c544"
+cache-control: private, max-age=0, must-revalidate
+date: Fri, 10 Feb 2012 13:53:29 GMT
+x-frame-options: deny
+content-type: application/json; charset=utf-8
+
+{"public_keys":[{"title":"My sekret key","id":1337,"key":"ssh-rsa DoYouSee key@example.com"}]}

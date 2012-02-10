@@ -7,6 +7,15 @@ from github2.core import (BaseData, GithubCommand, DateAttribute, Attribute,
                           enhanced_by_auth, requires_auth)
 
 
+class Key(BaseData):
+    id = Attribute('The key id')
+    key = Attribute('The SSH key data')
+    title = Attribute('The title for the SSH key')
+
+    def __repr__(self):
+        return "<Key: %s>" % self.id
+
+
 class User(BaseData):
     id = Attribute("The user id")
     login = Attribute("The login username")
@@ -102,3 +111,29 @@ class Users(GithubCommand):
         :param str other_user: Github user name
         """
         return self.get_values("unfollow", other_user, method="POST")
+
+    @requires_auth
+    def list_keys(self):
+        """Get list of SSH keys for the authenticated user"""
+        return self.get_values('keys', filter='public_keys', datatype=Key)
+
+    @requires_auth
+    def add_key(self, key, title=''):
+        """Add a SSH key for the authenticated user
+
+        :param str key: SSH key identifier
+        :param str title: Optional title for the SSH key
+        """
+        return self.get_values("key/add",
+                               post_data={'key': key, 'title': title},
+                               method="POST", filter='public_keys',
+                               datatype=Key)
+
+    @requires_auth
+    def remove_key(self, key_id):
+        """Remove a SSH key for the authenticated user
+
+        :param int key_id: SSH key's GitHub identifier
+        """
+        return self.get_values('key/remove', post_data={'id': str(key_id)},
+                               filter='public_keys', datatype=Key)

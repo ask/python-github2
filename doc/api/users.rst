@@ -13,6 +13,8 @@ Users
 
 .. autoclass:: Users(type)
 
+.. autoclass:: Key(type)
+
 Examples
 --------
 

@@ -62,6 +62,10 @@ class AuthenticatedUserMethods(utils.HttpMockAuthenticatedTestCase):
         user = self.client.users.show('')
         assert_true(user.is_authenticated() is True)
 
+    def test_list_keys(self):
+        keys = self.client.users.list_keys()
+        assert_equals(keys[0].id, 1337)
+
 
 class AuthenticatedUserProperties(utils.HttpMockAuthenticatedTestCase):
     def test_private_data(self):
