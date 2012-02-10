@@ -41,7 +41,7 @@ class User(BaseData):
                                format="user")
 
     def is_authenticated(self):
-        """Test for user auththenication
+        """Test for user authentication
 
         :return bool: ``True`` if user is authenticated"""
         return self.plan is not None
