@@ -113,6 +113,7 @@ def requires_auth(f):
                             % f.__name__)
         return f(self, *args, **kwargs)
     wrapped = wrapper
+    wrapped.__orig_func__ = f
     wrapped.__name__ = f.__name__
     wrapped.__doc__ = f.__doc__ + """\n.. warning:: Requires authentication"""
     wrapped.requires_auth = True

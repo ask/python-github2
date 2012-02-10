@@ -13,6 +13,8 @@
 
 import sys, os
 
+from sphinx.util import inspect
+
 import cloud_sptheme as csp
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -229,3 +231,14 @@ autodoc_default_flags = ['members', ]
 intersphinx_mapping = {
     'python': ('http://docs.python.org/', os.getenv('SPHINX_PYTHON_OBJECTS'))
 }
+
+
+# Horrific nastiness to generate correct function signature for decorated
+# objects.  Close your eyes... Now!
+orig_getargspec = inspect.getargspec
+def getargspec(func):
+    if hasattr(func, '__orig_func__'):
+        return orig_getargspec(func.__orig_func__)
+    else:
+        return orig_getargspec(func)
+inspect.getargspec = getargspec
