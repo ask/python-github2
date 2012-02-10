@@ -8,7 +8,7 @@ Requests
    of the :mod:`github2` package, but it is documented to aid contributors
    to the package.
 
-.. autodata:: GITHUB_URL
+.. autodata:: DEFAULT_GITHUB_URL
 
 .. autodata:: SYSTEM_CERTS
 
