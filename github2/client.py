@@ -23,6 +23,8 @@ class Github(object):
            The ``cache`` and ``access_token`` parameters
         .. versionadded:: 0.4.0
            The ``proxy_host`` and ``proxy_port`` parameters
+        .. versionadded:: 0.7.0
+           The ``github_url`` parameter
 
         :param str username: your own GitHub username.
         :param str api_token: can be found at https://github.com/account
@@ -38,6 +40,8 @@ class Github(object):
         :param str proxy_host: the hostname for the HTTP proxy, if needed.
         :param str proxy_port: the hostname for the HTTP proxy, if needed (will
             default to 8080 if a proxy_host is set and no port is set).
+        :param str github_url: the hostname to connect to, for GitHub
+            Enterprise support
         """
 
         self.request = GithubRequest(username=username, api_token=api_token,
