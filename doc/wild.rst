@@ -56,6 +56,14 @@ listed on this page.
 
 :Git repository: https://github.com/kashifrazzaqui/github-issues
 
+``github-issues-export``
+''''''''''''''''''''''''
+
+    Script to liberate issues from github issues in case you would like to have
+    your data free.
+
+:Git repository: https://github.com/mcepl/github-issues-export
+
 ``github-plots``
 ''''''''''''''''
 
