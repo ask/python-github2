@@ -71,9 +71,9 @@ Many assertions, such as :meth:`~unittest.TestCase.assertIn` and
 The simple workaround is to evaluate an expression to test with
 :meth:`~unittest.TestCase.assertTrue`
 
-The incredibly functions for skipping tests(:func:`~unittest.skip`) and marking
-expected failures(:func:`~unittest.expectedFailure`) were only added in 2.7, and
-unfortunately can't be used.
+The incredibly useful functions for skipping tests(:func:`~unittest.skip`) and
+marking expected failures(:func:`~unittest.expectedFailure`) were only added in
+2.7, and unfortunately can't be used.
 
 .. todo::
    Add topic branches and pull request usage examples, but most git users are
