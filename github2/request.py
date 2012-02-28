@@ -9,26 +9,25 @@ try:
     from http.client import responses
 except ImportError:  # For Python 2.5-2.7
     try:
-        from httplib import responses
+        from httplib import responses  # NOQA
     except ImportError:  # For Python 2.4
-        from BaseHTTPServer import BaseHTTPRequestHandler
-        responses = dict([(k, v[0])
-                          for k, v in BaseHTTPRequestHandler.responses.items()])
+        from BaseHTTPServer import BaseHTTPRequestHandler as _BHRH
+        responses = dict([(k, v[0]) for k, v in _BHRH.responses.items()])  # NOQA
 try:
     import json as simplejson  # For Python 2.6+
 except ImportError:
-    import simplejson
+    import simplejson  # NOQA
 from os import (getenv, path)
 try:
     # For Python 3
     from urllib.parse import (parse_qs, quote, urlencode, urlsplit, urlunsplit)
 except ImportError:
-    from urlparse import (urlsplit, urlunsplit)
+    from urlparse import (urlsplit, urlunsplit)  # NOQA
     try:
-        from urlparse import parse_qs
+        from urlparse import parse_qs  # NOQA
     except ImportError:
-        from cgi import parse_qs
-    from urllib import urlencode, quote
+        from cgi import parse_qs  # NOQA
+    from urllib import urlencode, quote  # NOQA
 
 import httplib2
 

@@ -4,9 +4,9 @@ try:
     from urllib.parse import parse_qs  # For Python 3
 except ImportError:
     try:
-        from urlparse import parse_qs
+        from urlparse import parse_qs  # NOQA
     except ImportError:  # For Python <2.6
-        from cgi import parse_qs
+        from cgi import parse_qs  # NOQA
 
 try:
     from nose.tools import (assert_dict_contains_subset, assert_dict_equal)
@@ -14,8 +14,8 @@ except ImportError:  # for Python <2.7
     import unittest2
 
     _binding = unittest2.TestCase('run')
-    assert_dict_contains_subset = _binding.assertDictContainsSubset
-    assert_dict_equal = _binding.assertDictEqual
+    assert_dict_contains_subset = _binding.assertDictContainsSubset  # NOQA
+    assert_dict_equal = _binding.assertDictEqual  # NOQA
 
 
 from github2 import request

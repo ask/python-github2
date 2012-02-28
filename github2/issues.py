@@ -1,7 +1,7 @@
 try:
     from urllib.parse import quote_plus  # For Python 3
 except ImportError:
-    from urllib import quote_plus
+    from urllib import quote_plus  # NOQA
 
 from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
                           repr_string, requires_auth)
