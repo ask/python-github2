@@ -75,6 +75,7 @@ def test_project_for_user_repo():
     assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),
                   'JNRowe/misc-overlay')
 
+
 def test_repr_string():
     assert_equals(repr_string('test'), 'test')
     assert_equals(repr_string('abcdefghijklmnopqrst'), 'abcdefghijklmnopqrst')

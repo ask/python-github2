@@ -102,7 +102,8 @@ class HttpError(RuntimeError):
             self.code_reason = responses[code]
         else:
             self.code_reason = "<unknown status code>"
-            LOGGER.warning('Unknown HTTP status %r, please file an issue', code)
+            LOGGER.warning('Unknown HTTP status %r, please file an issue',
+                           code)
 
 
 class GithubRequest(object):

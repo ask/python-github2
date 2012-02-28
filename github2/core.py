@@ -248,12 +248,11 @@ class BaseDataType(type):
         super_new = super(BaseDataType, cls).__new__
 
         _meta = dict([(attr_name, attr_value)
-                        for attr_name, attr_value in attrs.items()
-                            if isinstance(attr_value, Attribute)])
+                      for attr_name, attr_value in attrs.items()
+                      if isinstance(attr_value, Attribute)])
         attrs["_meta"] = _meta
         attributes = _meta.keys()
-        attrs.update(dict([(attr_name, None)
-                        for attr_name in attributes]))
+        attrs.update(dict([(attr_name, None) for attr_name in attributes]))
 
         def _contribute_method(name, func):
             func.__name__ = name

@@ -17,10 +17,13 @@ class Organization(BaseData):
     company = Attribute("The organization's company name.")
     created_at = DateAttribute("The date the organization was created.",
                                format="commit")
-    following_count = Attribute("Number of users the organization is following.")
+    following_count = Attribute("Number of users the organization is "
+                                "following.")
     followers_count = Attribute("Number of users following this organization.")
-    public_gist_count = Attribute("Organization's number of active public gists.")
-    public_repo_count = Attribute("Organization's number of active repositories.")
+    public_gist_count = Attribute("Organization's number of active public "
+                                  "gists.")
+    public_repo_count = Attribute("Organization's number of active "
+                                  "repositories.")
     permission = Attribute("Permissions within this organization.")
     plan = Attribute("GitHub plan for this organization.")
 
