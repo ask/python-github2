@@ -48,6 +48,13 @@ listed on this page.
 
 :PyPI page: :pypi:`ghmiles`
 
+``ghsync``
+''''''''''
+
+    GitHub Syncer. Clones or Pulls all GitHub repos.
+
+:PyPI page: :pypi:`ghsync`
+
 ``github-issues``
 '''''''''''''''''
 
@@ -80,6 +87,13 @@ listed on this page.
 :PyPI page: :pypi:`hubugs`
 
 .. _GitHub's issue tracker: http://github.com/blog/411-github-issue-tracker
+
+``humble``
+''''''''''
+
+    Shows stats on a given GitHub user.
+
+:PyPI page: :pypi:`humble`
 
 ``Repos.io``
 ''''''''''''
