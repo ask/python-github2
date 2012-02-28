@@ -137,9 +137,24 @@ def enhanced_by_auth(f):
 class GithubCommand(object):
 
     def __init__(self, request):
+        """Main API binding interface
+
+        :param github2.request.GithubRequest request: HTTP request handler
+        """
         self.request = request
 
     def make_request(self, command, *args, **kwargs):
+        """Make an API request
+
+        Various options are supported if they exist in ``kwargs``:
+
+        * The value of a ``method`` argument will define the HTTP method
+          to perform for this request, the default is ``GET``
+        * The value of a ``filter`` argument will restrict the response to that
+          data
+        * The value of a ``page`` argument will be used to fetch a specific
+          page of results, default of 1 is assumed if not given
+        """
         filter = kwargs.get("filter")
         post_data = kwargs.get("post_data") or {}
         page = kwargs.pop("page", 1)
@@ -162,6 +177,11 @@ class GithubCommand(object):
         return response
 
     def get_value(self, *args, **kwargs):
+        """Process a single-value response from the API
+
+        If a ``datatype`` parameter is given it defines the
+        :class:`BaseData`-derived class we should build from the provided data
+        """
         datatype = kwargs.pop("datatype", None)
         value = self.make_request(*args, **kwargs)
         if datatype:
@@ -176,6 +196,10 @@ class GithubCommand(object):
         return value
 
     def get_values(self, *args, **kwargs):
+        """Process a multi-value response from the API
+
+        :see: :meth:`get_value`
+        """
         datatype = kwargs.pop("datatype", None)
         values = self.make_request(*args, **kwargs)
         if datatype:
@@ -208,8 +232,11 @@ def doc_generator(docstring, attributes):
 
 
 class Attribute(object):
-
     def __init__(self, help):
+        """Generic object attribute for use with :class:`BaseData`
+
+        :param str help: Attribute description
+        """
         self.help = help
 
     def to_python(self, value):
@@ -228,6 +255,11 @@ class DateAttribute(Attribute):
     }
 
     def __init__(self, *args, **kwargs):
+        """Date handling attribute for use with :class:`BaseData`
+
+        :param str format: The date format to support, see
+            :data:`convertor_for_format` for supported options
+        """
         self.format = kwargs.pop("format", self.format)
         super(DateAttribute, self).__init__(*args, **kwargs)
 
@@ -281,6 +313,12 @@ class BaseDataType(type):
 # Ugly base class definition for Python 2 and 3 compatibility, where metaclass
 # syntax is incompatible
 class BaseData(BaseDataType('BaseData', (object, ), {})):
+    """Wrapper for API responses
+
+    .. warning::
+       Supports subscript attribute access purely for backwards compatibility,
+       you shouldn't rely on that functionality in new code
+    """
     def __getitem__(self, key):
         """Access objects's attribute using subscript notation
 
@@ -297,7 +335,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
     def __setitem__(self, key, value):
         """Update object's attribute using subscript notation
 
-        :see: ``BaseData.__getitem__``
+        :see: :meth:`BaseData.__getitem__`
         """
         LOGGER.warning("Subscript access on %r is deprecated, use object "
                        "attributes" % self.__class__.__name__,

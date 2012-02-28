@@ -30,10 +30,10 @@ Core
 
 .. autofunction:: repr_string
 
-.. autoclass:: GithubCommand(type)
+.. autoclass:: GithubCommand
 
-.. autoclass:: Attribute(type)
+.. autoclass:: Attribute
 
-.. autoclass:: DateAttribute(type)
+.. autoclass:: DateAttribute(help, format)
 
-.. autoclass:: BaseDataType(type)
+.. autoclass:: BaseData()
