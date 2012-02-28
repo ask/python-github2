@@ -73,7 +73,7 @@ class HttpMockAuthenticatedTestCase(HttpMockTestCase):
     def setUp(self):
         """Prepare test fixtures
 
-        :see: ``HttpMockTestCase``
+        :see: :class:`HttpMockTestCase`
 
         :attr:`client` is an authenticated :obj:`Github` object for easy use
         in tests.
