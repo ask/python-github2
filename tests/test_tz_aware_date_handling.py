@@ -23,7 +23,7 @@ def teardown_module():
 def dt_utz(year, month, day, hour, minute, second):
     """Produce a UTC-anchored datetime object
 
-    :see: ``datetime.datetime``
+    :see: :class:`datetime.datetime`
     """
     return dt(year, month, day, hour, minute, second, tzinfo=tzutc())
 

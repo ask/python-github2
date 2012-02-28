@@ -41,6 +41,7 @@ Contents
    bugs
    contributing
    wild
+   release
    license
 
 Indices and tables
