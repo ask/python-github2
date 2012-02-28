@@ -1,9 +1,9 @@
-# This is github2 version 0.6.0 (2011-12-21)
+# This is github2 version 0.6.1 (2012-02-28)
 # pylint: disable=C0103, C0111, C0121, W0622
 
-dotted = "0.6.0"
-libtool = "6:20"
-hex = 0x000600
-date = "2011-12-21"
-tuple = (0, 6, 0)
-web = "github/0.6.0"
+dotted = "0.6.1"
+libtool = "6:21"
+hex = 0x000601
+date = "2012-02-28"
+tuple = (0, 6, 1)
+web = "github2/0.6.1"
