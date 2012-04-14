@@ -32,6 +32,13 @@ listed on this page.
 
 :PyPI page: :pypi:`bugwarrior`
 
+``cligh``
+'''''''''
+
+    A simple command-line interface to the facilities of GitHub.
+
+:Git repository: https://github.com/CMB/cligh
+
 ``forkfeed``
 ''''''''''''
 
