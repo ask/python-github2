@@ -15,14 +15,14 @@ listed on this page.
 
     Applause when a bug gets closed. Extra cheering for old bugs.
 
-:PyPI page: :pypi:`applause`
+:PyPI project: :pypi:`applause`
 
 ``bitbucket2github``
 ''''''''''''''''''''
 
     Mirrors all public repos of a BitBucket account to GitHub and vice versa.
 
-:PyPI page: :pypi:`bitbucket2github`
+:PyPI project: :pypi:`bitbucket2github`
 
 ``bugwarrior``
 ''''''''''''''
@@ -30,14 +30,14 @@ listed on this page.
     Pull tickets from github, bitbucket, and trac into `taskwarrior
     <http://taskwarrior.org/>`__
 
-:PyPI page: :pypi:`bugwarrior`
+:PyPI project: :pypi:`bugwarrior`
 
 ``cligh``
 '''''''''
 
     A simple command-line interface to the facilities of GitHub.
 
-:Git repository: https://github.com/CMB/cligh
+:GitHub project: https://github.com/CMB/cligh
 
 ``forkfeed``
 ''''''''''''
@@ -45,7 +45,7 @@ listed on this page.
     Utility to build atom feeds for all commits in all forks of your projects on
     GitHub.
 
-:PyPI page: :pypi:`forkfeed`
+:PyPI project: :pypi:`forkfeed`
 
 ``ghmiles``
 '''''''''''
@@ -53,14 +53,14 @@ listed on this page.
     ``ghmiles`` is a Python library that generates a milestone model from the
     issues in a GitHub repository.
 
-:PyPI page: :pypi:`ghmiles`
+:PyPI project: :pypi:`ghmiles`
 
 ``ghsync``
 ''''''''''
 
     GitHub Syncer. Clones or Pulls all GitHub repos.
 
-:PyPI page: :pypi:`ghsync`
+:PyPI project: :pypi:`ghsync`
 
 ``github-issues``
 '''''''''''''''''
@@ -68,7 +68,7 @@ listed on this page.
     github-issues allows you to create, close, show, list, and comment on
     issues on your github project - that's it.
 
-:Git repository: https://github.com/kashifrazzaqui/github-issues
+:GitHub project: https://github.com/kashifrazzaqui/github-issues
 
 ``github-issues-export``
 ''''''''''''''''''''''''
@@ -76,14 +76,14 @@ listed on this page.
     Script to liberate issues from github issues in case you would like to have
     your data free.
 
-:Git repository: https://github.com/mcepl/github-issues-export
+:GitHub project: https://github.com/mcepl/github-issues-export
 
 ``github-plots``
 ''''''''''''''''
 
     Alternative plots from GitHub stats.
 
-:PyPI page: :pypi:`github-plots`
+:PyPI project: :pypi:`github-plots`
 
 ``hubugs``
 ''''''''''
@@ -91,7 +91,7 @@ listed on this page.
     ``hubugs`` is a very simple client for working with `GitHub's issue
     tracker`_.
 
-:PyPI page: :pypi:`hubugs`
+:PyPI project: :pypi:`hubugs`
 
 .. _GitHub's issue tracker: http://github.com/blog/411-github-issue-tracker
 
@@ -100,7 +100,7 @@ listed on this page.
 
     Shows stats on a given GitHub user.
 
-:PyPI page: :pypi:`humble`
+:PyPI project: :pypi:`humble`
 
 ``Repos.io``
 ''''''''''''
@@ -109,7 +109,7 @@ listed on this page.
     repositories (your own, and watched/liked/followed ones) hosted by different
     providers (github, bitbucket)
 
-:Git repository: https://github.com/twidi/Repos.io
+:GitHub project: https://github.com/twidi/Repos.io
 
 ``roundabout``
 ''''''''''''''
@@ -117,7 +117,7 @@ listed on this page.
     ``Roundabout`` is a tool that automatically prevents code with failing tests
     from being merged into a github repository.
 
-:Git repository: https://github.com/ChristopherMacGown/roundabout
+:GitHub project: https://github.com/ChristopherMacGown/roundabout
 
 .. _open an issue: https://github.com/ask/python-github2/issues/
 .. _project website: https://github.com/ask/python-github2/blob/master/doc/wild.rst
