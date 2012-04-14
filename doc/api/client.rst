@@ -42,9 +42,14 @@ API calls are limited by github.com to 1 per second by default.  To have the
     >>> github = Github(username="ask", api_token=".......",
     ...                 requests_per_second=1)
 
-If you wish to use a HTTP proxy you can pass in the ``proxy_host`` and
-``proxy_port`` settings to enable it.  The default for ``proxy_port``, if not
-given, is 8080::
+By default, :pypi:`httplib2 (0.7.4)` will use the proxies set in the
+:envvar:`http_proxy` andr :envvar:`https_proxy` environment variables.  This
+means that well configured systems shouldn't need any manual configuration for
+proxy support.
+
+If you wish to manually configure a HTTP proxy you can pass in the
+``proxy_host`` and ``proxy_port`` settings to enable it.  The default for
+``proxy_port``, if not given, is 8080::
 
     >>> from github2.client import Github
     >>> github = Github(username="ask", api_token=".......",
