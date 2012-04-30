@@ -56,7 +56,7 @@ elif not SYSTEM_CERTS and sys.platform.startswith('freebsd'):
 elif path.exists(getenv('CURL_CA_BUNDLE', '')):
     CA_CERTS = getenv('CURL_CA_BUNDLE')
     CURL_CERTS = True
-else:
+if not SYSTEM_CERTS and not CURL_CERTS:
     CA_CERTS = path.join(path.dirname(path.abspath(__file__)),
                          "DigiCert_High_Assurance_EV_Root_CA.crt")
 
