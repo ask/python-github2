@@ -61,6 +61,6 @@ https://github.com/.
 
     >>> from github2.client import Github
     >>> github = Github(username="modocache", api_token=".......",
-    ...                 github_url="http://git.gree-dev.net/")
+    ...                 github_url="http://your-github-enterprise-url.com/")
 
 .. _OAuth service: http://develop.github.com/p/oauth.html
