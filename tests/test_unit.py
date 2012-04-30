@@ -28,8 +28,9 @@ class HostSetting(unittest.TestCase):
         assert_equals(client.request.github_url, 'https://github.com')
 
     def test_non_standard_host(self):
-        client = Github(github_url="http://git.gree-dev.net/")
-        assert_equals(client.request.github_url, 'http://git.gree-dev.net/')
+        client = Github(github_url="http://your-github-enterprise-url.com/")
+        assert_equals(client.request.github_url,
+                      'http://your-github-enterprise-url.com/')
 
 
 class RateLimits(utils.HttpMockTestCase):
