@@ -59,8 +59,12 @@ DEFAULT_GITHUB_URL = "https://github.com"
 #: Logger for requests module
 LOGGER = logging.getLogger('github2.request')
 
+# Fetch actual path for httplib2's default cert bundle, for distributions that
+# symlink their system certs
+_HTTPLIB2_BUNDLE = path.realpath(path.dirname(httplib2.CA_CERTS))
 #: Whether github2 is using the system's certificates for SSL connections
-SYSTEM_CERTS = not httplib2.CA_CERTS.startswith(path.dirname(httplib2.__file__))
+SYSTEM_CERTS = not _HTTPLIB2_BUNDLE.startswith(path.dirname(httplib2.__file__))
+CA_CERTS = None
 #: Whether github2 is using the cert's from the file given in $CURL_CA_BUNDLE
 CURL_CERTS = False
 if not SYSTEM_CERTS and sys.platform.startswith('linux'):
