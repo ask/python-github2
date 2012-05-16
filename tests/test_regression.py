@@ -5,7 +5,7 @@
 
 import httplib2
 
-from nose.tools import assert_equals
+from nose.tools import eq_
 
 from github2.client import Github
 
@@ -21,8 +21,8 @@ def test_issue_50():
 
     client = Github(proxy_host="my.proxy.com", proxy_port=9000)
     setup_args = client.request._http.called_with
-    assert_equals(type(setup_args['proxy_info']), httplib2.ProxyInfo)
-    assert_equals(setup_args['proxy_info'].proxy_host, 'my.proxy.com')
-    assert_equals(setup_args['proxy_info'].proxy_port, 9000)
+    eq_(type(setup_args['proxy_info']), httplib2.ProxyInfo)
+    eq_(setup_args['proxy_info'].proxy_host, 'my.proxy.com')
+    eq_(setup_args['proxy_info'].proxy_port, 9000)
 
     utils.unset_http_mock()

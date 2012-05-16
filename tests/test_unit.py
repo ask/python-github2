@@ -10,7 +10,7 @@
 import datetime
 import unittest
 
-from nose.tools import (assert_equals, assert_true)
+from nose.tools import (eq_, assert_true)
 
 from github2.core import repr_string
 from github2.issues import Issue
@@ -26,18 +26,18 @@ class ReprTests(unittest.TestCase):
         """Issues can have non-ASCII characters in the title."""
         title = 'abcdé'
         i = Issue(title=title)
-        assert_equals(str, type(repr(i)))
+        eq_(str, type(repr(i)))
 
 
 class HostSetting(unittest.TestCase):
     def test_default_host(self):
         client = Github()
-        assert_equals(client.request.github_url, 'https://github.com')
+        eq_(client.request.github_url, 'https://github.com')
 
     def test_non_standard_host(self):
         client = Github(github_url="http://your-github-enterprise-url.com/")
-        assert_equals(client.request.github_url,
-                      'http://your-github-enterprise-url.com/')
+        eq_(client.request.github_url,
+            'http://your-github-enterprise-url.com/')
 
 
 class RateLimits(utils.HttpMockTestCase):
@@ -70,21 +70,21 @@ class BaseDataDict(utils.HttpMockTestCase):
     """Test __getitem__ availability on objects"""
     def test_getitem(self):
         user = self.client.users.show('defunkt')
-        assert_equals(user['blog'], user.blog)
-        assert_equals(user['company'], user.company)
-        assert_equals(user['email'], user.email)
-        assert_equals(user['location'], user.location)
-        assert_equals(user['login'], user.login)
-        assert_equals(user['name'], user.name)
+        eq_(user['blog'], user.blog)
+        eq_(user['company'], user.company)
+        eq_(user['email'], user.email)
+        eq_(user['location'], user.location)
+        eq_(user['login'], user.login)
+        eq_(user['name'], user.name)
 
 
 def test_project_for_user_repo():
     client = Github()
-    assert_equals(client.project_for_user_repo('JNRowe', 'misc-overlay'),
+    eq_(client.project_for_user_repo('JNRowe', 'misc-overlay'),
                   'JNRowe/misc-overlay')
 
 
 def test_repr_string():
-    assert_equals(repr_string('test'), 'test')
-    assert_equals(repr_string('abcdefghijklmnopqrst'), 'abcdefghijklmnopqrst')
-    assert_equals(repr_string('abcdefghijklmnopqrstu'), 'abcdefghijklmnopq...')
+    eq_(repr_string('test'), 'test')
+    eq_(repr_string('abcdefghijklmnopqrst'), 'abcdefghijklmnopqrst')
+    eq_(repr_string('abcdefghijklmnopqrstu'), 'abcdefghijklmnopq...')
