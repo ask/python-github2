@@ -86,6 +86,11 @@ class BaseDataDict(utils.HttpMockTestCase):
         eq_(user['login'], user.login)
         eq_(user['name'], user.name)
 
+    @raises(KeyError)
+    def test_getitem_failure(self):
+        user = self.client.users.show('defunkt')
+        ok_(user['invalid_key'])
+
 
 def test_project_for_user_repo():
     client = Github()
