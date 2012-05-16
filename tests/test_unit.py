@@ -10,7 +10,7 @@
 import datetime
 import unittest
 
-from nose.tools import (eq_, assert_true)
+from nose.tools import (eq_, ok_)
 
 from github2.core import repr_string
 from github2.issues import Issue
@@ -53,9 +53,9 @@ class RateLimits(utils.HttpMockTestCase):
         delta = end - start
         delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
 
-        assert_true(delta_seconds >= 2,
-                    "Expected .5 reqs per second to require a 2 second delay "
-                    "between calls.")
+        ok_(delta_seconds >= 2,
+            "Expected .5 reqs per second to require a 2 second delay between "
+            "calls.")
 
 
 class BaseDataIter(utils.HttpMockTestCase):
@@ -63,7 +63,7 @@ class BaseDataIter(utils.HttpMockTestCase):
     def test_iter(self):
         commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
         commit = self.client.commits.show('ask/python-github2', commit_id)
-        assert_true('__iter__' in dir(commit))
+        ok_('__iter__' in dir(commit))
 
 
 class BaseDataDict(utils.HttpMockTestCase):

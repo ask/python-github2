@@ -5,7 +5,7 @@
 
 import datetime
 
-from nose.tools import (eq_, assert_false, assert_true)
+from nose.tools import (eq_, assert_false, ok_)
 
 import utils
 
@@ -39,7 +39,7 @@ class UserProperties(utils.HttpMockTestCase):
 
     def test_is_not_authenticated(self):
         user = self.client.users.show('defunkt')
-        assert_true(user.is_authenticated() is False)
+        ok_(user.is_authenticated() is False)
 
 
 class UserQueries(utils.HttpMockTestCase):
@@ -56,7 +56,7 @@ class UserQueries(utils.HttpMockTestCase):
 class AuthenticatedUserMethods(utils.HttpMockAuthenticatedTestCase):
     def test_follow(self):
         result = self.client.users.follow('defunkt')
-        assert_true('defunkt' in result['users'])
+        ok_('defunkt' in result['users'])
 
     def test_unfollow(self):
         result = self.client.users.unfollow('defunkt')
@@ -64,7 +64,7 @@ class AuthenticatedUserMethods(utils.HttpMockAuthenticatedTestCase):
 
     def test_is_authenticated(self):
         user = self.client.users.show('')
-        assert_true(user.is_authenticated() is True)
+        ok_(user.is_authenticated() is True)
 
     def test_list_keys(self):
         keys = self.client.users.list_keys()

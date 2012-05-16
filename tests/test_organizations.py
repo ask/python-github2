@@ -5,7 +5,7 @@
 
 from datetime import datetime
 
-from nose.tools import (eq_, assert_true)
+from nose.tools import (eq_, ok_)
 
 import utils
 
@@ -31,9 +31,9 @@ class OrganizationProperties(utils.HttpMockTestCase):
 
     def test_is_authenticated(self):
         organization = self.client.organizations.show('github')
-        assert_true(organization.is_authenticated() is False)
+        ok_(organization.is_authenticated() is False)
         organization = self.client.organizations.show('fake_org_with_auth')
-        assert_true(organization.is_authenticated() is True)
+        ok_(organization.is_authenticated() is True)
 
 
 class Organization(utils.HttpMockTestCase):
