@@ -10,10 +10,10 @@
 import datetime
 import unittest
 
-from nose.tools import (eq_, ok_)
+from nose.tools import (eq_, ok_, raises)
 from nose.plugins.attrib import attr
 
-from github2.core import repr_string
+from github2.core import (AuthError, repr_string, requires_auth)
 from github2.issues import Issue
 from github2.client import Github
 
@@ -97,3 +97,12 @@ def test_repr_string():
     eq_(repr_string('test'), 'test')
     eq_(repr_string('abcdefghijklmnopqrst'), 'abcdefghijklmnopqrst')
     eq_(repr_string('abcdefghijklmnopqrstu'), 'abcdefghijklmnopq...')
+
+
+class RequiresAuth(utils.HttpMockTestCase):
+    @raises(AuthError)
+    def test_no_auth(self):
+        f = lambda: None
+        f.__doc__ = 'test func'
+        wrapped = requires_auth(f)
+        wrapped(self.client)
