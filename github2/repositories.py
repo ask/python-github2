@@ -160,7 +160,7 @@ class Repositories(GithubCommand):
         return self.make_request("set/public", project)
 
     def list_collaborators(self, project):
-        """Lists all the collaborators in a project.
+        """List all the collaborators in a project.
 
         :param str project: GitHub project
 
@@ -170,7 +170,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def add_collaborator(self, project, username):
-        """Adds an add_collaborator to a repo.
+        """Add an add_collaborator to a repo.
 
         :param str project: Github project
         :param str username: Github user to add as collaborator
@@ -181,7 +181,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def remove_collaborator(self, project, username):
-        """Removes an add_collaborator from a repo.
+        """Remove a collaborator from a repo.
 
         :param str project: Github project
         :param str username: Github user to add as collaborator
@@ -233,7 +233,7 @@ class Repositories(GithubCommand):
         return self.get_values("show", project, "watchers", filter="watchers")
 
     def watching(self, for_user=None, page=None):
-        """Lists all the repos a user is watching.
+        """List all the repos a user is watching.
 
         :param str for_user: optional GitHub user name to list repositories for
         :param int page: optional page number
@@ -244,7 +244,7 @@ class Repositories(GithubCommand):
                                datatype=Repository, page=page)
 
     def list_contributors(self, project):
-        """Lists all the contributors in a project.
+        """List all the contributors in a project.
 
         :param str project: Github project
 
