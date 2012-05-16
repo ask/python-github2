@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2009-2012 Ask Solem <askh@modwheel.net>
+#                         Christopher MacGown <ignoti+github@gmail.com>
+#                         Evan Broder <broder@mit.edu>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Jeremy Dunck <jdunck@gmail.com>
+#                         Michael Basnight <mbasnight@gmail.com>
+#                         Patryk Zawadzki <patrys@pld-linux.org>
+#                         Surajram Kumaravel <root@surajram.com>
+#                         Vincent Driessen <vincent@datafox.nl>
+#                         modocache <modocache@gmail.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 from github2.request import GithubRequest
 from github2.issues import Issues
 from github2.repositories import Repositories

@@ -1,3 +1,24 @@
+# Copyright (C) 2009-2012 Adam Vandenberg <flangy@gmail.com>
+#                         Asheesh Laroia <asheesh@openhatch.org>
+#                         Ask Solem <askh@modwheel.net>
+#                         Chris Vale <crispywalrus@gmail.com>
+#                         Daniel Greenfeld <pydanny@gmail.com>
+#                         Evan Broder <broder@mit.edu>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Jeremy Dunck <jdunck@gmail.com>
+#                         Josh Weinberg <daemoncollector@gmail.com>
+#                         Mark Paschal <markpasc@markpasc.org>
+#                         Maximillian Dornseif <m.dornseif@hudora.de>
+#                         Michael Basnight <mbasnight@gmail.com>
+#                         Patryk Zawadzki <patrys@pld-linux.org>
+#                         Rick Harris <rick.harris@rackspace.com>
+#                         Sameer Al-Sakran <sameer@whitelabellabs.com>
+#                         Vincent Driessen <vincent@datafox.nl>
+#                         modocache <modocache@gmail.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 import datetime
 import logging
 import re

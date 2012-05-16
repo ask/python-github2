@@ -8,8 +8,11 @@ R/W access to all private repositories of the company account.
 """
 
 # Created by Maximillian Dornseif on 2009-12-31 for HUDORA.
-# Copyright (c) 2009 HUDORA. All rights reserved.
-# BSD licensed
+# Copyright (C) 2009-2012 James Rowe <jnrowe@gmail.com>
+#                         Maximillian Dornseif <m.dornseif@hudora.de>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
 
 import logging
 import sys

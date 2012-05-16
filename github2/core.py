@@ -1,3 +1,16 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2009-2012 Ask Solem <askh@modwheel.net>
+#                         Fernando Perez <Fernando.Perez@berkeley.edu>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Mark Paschal <markpasc@markpasc.org>
+#                         Patryk Zawadzki <patrys@pld-linux.org>
+#                         Sameer Al-Sakran <sameer@whitelabellabs.com>
+#                         Stéphane Angel <s.angel@twidi.com>
+#                         Vincent Driessen <vincent@datafox.nl>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 import logging
 import sys
 

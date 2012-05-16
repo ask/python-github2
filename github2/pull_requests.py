@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2010-2012 Christopher MacGown <ignoti+github@gmail.com>
+#                         Ionuț Arțăriși <mapleoin@lavabit.com>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Stéphane Angel <s.angel@twidi.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
                           repr_string)
 

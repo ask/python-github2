@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# Copyright (C) 2010-2012 Adam Vandenberg <flangy@gmail.com>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Jeremy Dunck <jdunck@gmail.com>
+#                         modocache <modocache@gmail.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
 
 import datetime
 import unittest

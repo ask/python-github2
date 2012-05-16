@@ -1,7 +1,8 @@
-.. python-github2 documentation master file, created by
-   sphinx-quickstart on Mon Apr 11 16:16:25 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Copyright (C) 2011-2012 James Rowe <jnrowe@gmail.com>
+
+   This file is part of python-github2, and is licensed under the 3-clause BSD
+   License.  See the LICENSE file in the top distribution directory for the full
+   license text.
 
 ..
   If you prefer you can also read the pre-built documentation at
