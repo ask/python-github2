@@ -67,7 +67,7 @@ responses[422] = 'Unprocessable Entity'
 
 
 def charset_from_headers(headers):
-    """Parse charset from headers
+    """Parse charset from headers.
 
     :param httplib2.Response headers: Request headers
     :return: Defined encoding, or default to ASCII
@@ -91,7 +91,7 @@ class HttpError(RuntimeError):
     """A HTTP error occured when making a request to the Github API."""
 
     def __init__(self, message, content, code):
-        """Create a HttpError exception
+        """Create a HttpError exception.
 
         :param str message: Exception string
         :param str content: Full content of HTTP request

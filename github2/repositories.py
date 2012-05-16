@@ -86,7 +86,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def watch(self, project):
-        """Watch a project
+        """Watch a project.
 
         :param str project: GitHub project
 
@@ -96,7 +96,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def unwatch(self, project):
-        """Unwatch a project
+        """Unwatch a project.
 
         :param str project: GitHub project
 
@@ -106,7 +106,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def fork(self, project):
-        """Fork a project
+        """Fork a project.
 
         :param str project: GitHub project
 
@@ -116,7 +116,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def create(self, project, description=None, homepage=None, public=True):
-        """Create a repository
+        """Create a repository.
 
         :param str project: new project name
         :param str description: optional project description
@@ -131,7 +131,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def delete(self, project):
-        """Delete a repository
+        """Delete a repository.
 
         :param str project: project name to delete
 
@@ -143,7 +143,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def set_private(self, project):
-        """Mark repository as private
+        """Mark repository as private.
 
         :param str project: project name to set as private
 
@@ -152,7 +152,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def set_public(self, project):
-        """Mark repository as public
+        """Mark repository as public.
 
         :param str project: project name to set as public
 
@@ -160,7 +160,7 @@ class Repositories(GithubCommand):
         return self.make_request("set/public", project)
 
     def list_collaborators(self, project):
-        """Lists all the collaborators in a project
+        """Lists all the collaborators in a project.
 
         :param str project: GitHub project
 
@@ -170,7 +170,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def add_collaborator(self, project, username):
-        """Adds an add_collaborator to a repo
+        """Adds an add_collaborator to a repo.
 
         :param str project: Github project
         :param str username: Github user to add as collaborator
@@ -181,7 +181,7 @@ class Repositories(GithubCommand):
 
     @requires_auth
     def remove_collaborator(self, project, username):
-        """Removes an add_collaborator from a repo
+        """Removes an add_collaborator from a repo.
 
         :param str project: Github project
         :param str username: Github user to add as collaborator
@@ -191,7 +191,7 @@ class Repositories(GithubCommand):
                                  username, method="POST")
 
     def network(self, project):
-        """Get network data for project
+        """Get network data for project.
 
         :param str project: Github project
 
@@ -200,7 +200,7 @@ class Repositories(GithubCommand):
                                datatype=Repository)
 
     def languages(self, project):
-        """Get programming language data for project
+        """Get programming language data for project.
 
         :param str project: Github project
 
@@ -209,7 +209,7 @@ class Repositories(GithubCommand):
                                filter="languages")
 
     def tags(self, project):
-        """Get tags for project
+        """Get tags for project.
 
         :param str project: Github project
 
@@ -217,7 +217,7 @@ class Repositories(GithubCommand):
         return self.get_values("show", project, "tags", filter="tags")
 
     def branches(self, project):
-        """Get branch names for project
+        """Get branch names for project.
 
         :param str project: Github project
 
@@ -225,7 +225,7 @@ class Repositories(GithubCommand):
         return self.get_values("show", project, "branches", filter="branches")
 
     def watchers(self, project):
-        """Get list of watchers for project
+        """Get list of watchers for project.
 
         :param str project: Github project
 
@@ -233,7 +233,7 @@ class Repositories(GithubCommand):
         return self.get_values("show", project, "watchers", filter="watchers")
 
     def watching(self, for_user=None, page=None):
-        """Lists all the repos a user is watching
+        """Lists all the repos a user is watching.
 
         :param str for_user: optional GitHub user name to list repositories for
         :param int page: optional page number
@@ -244,7 +244,7 @@ class Repositories(GithubCommand):
                                datatype=Repository, page=page)
 
     def list_contributors(self, project):
-        """Lists all the contributors in a project
+        """Lists all the contributors in a project.
 
         :param str project: Github project
 

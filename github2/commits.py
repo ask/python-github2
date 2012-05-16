@@ -28,7 +28,7 @@ class Commits(GithubCommand):
     domain = "commits"
 
     def list(self, project, branch="master", file=None, page=1):
-        """List commits on a project
+        """List commits on a project.
 
         .. warning::
            Not all projects use ``master`` as their default branch, you can
@@ -45,7 +45,7 @@ class Commits(GithubCommand):
                                datatype=Commit, page=page)
 
     def show(self, project, sha):
-        """Get a specific commit
+        """Get a specific commit.
 
         :param str project: project name
         :param str sha: commit id

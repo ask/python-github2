@@ -48,7 +48,7 @@ class Issues(GithubCommand):
 
         :param str project: GitHub project
         :param str term: term to search issues for
-        :param str state: can be either ``open`` or ``closed``.
+        :param str state: can be either ``open`` or ``closed``
 
         """
         return self.get_values("search", project, state, quote_plus(term),
@@ -58,7 +58,7 @@ class Issues(GithubCommand):
         """Get all issues for project with given state.
 
         :param str project: GitHub project
-        :param str state: can be either ``open`` or ``closed``.
+        :param str state: can be either ``open`` or ``closed``
 
         """
         return self.get_values("list", project, state, filter="issues",
@@ -70,7 +70,7 @@ class Issues(GithubCommand):
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
-        :param str label:  a string representing a label (e.g., ``bug``).
+        :param str label:  a string representing a label (e.g., ``bug``)
 
         """
         return self.get_values("list", project, "label", label,
@@ -111,7 +111,7 @@ class Issues(GithubCommand):
 
     @requires_auth
     def close(self, project, number):
-        """Close an issue
+        """Close an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the Github database
@@ -122,7 +122,7 @@ class Issues(GithubCommand):
 
     @requires_auth
     def reopen(self, project, number):
-        """Reopen a closed issue
+        """Reopen a closed issue.
 
         .. versionadded:: 0.3.0
 
@@ -135,7 +135,7 @@ class Issues(GithubCommand):
 
     @requires_auth
     def edit(self, project, number, title, body):
-        """Edit an existing issue
+        """Edit an existing issue.
 
         .. versionadded:: 0.3.0
 
@@ -152,7 +152,7 @@ class Issues(GithubCommand):
 
     @requires_auth
     def add_label(self, project, number, label):
-        """Add a label to an issue
+        """Add a label to an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
@@ -164,7 +164,7 @@ class Issues(GithubCommand):
 
     @requires_auth
     def remove_label(self, project, number, label):
-        """Remove an existing label from an issue
+        """Remove an existing label from an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database

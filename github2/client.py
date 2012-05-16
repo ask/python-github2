@@ -59,7 +59,7 @@ class Github(object):
         self.pull_requests = PullRequests(self.request)
 
     def project_for_user_repo(self, user, repo):
-        """Return GitHub identifier for a user's repository
+        """Return Github identifier for a user's repository.
 
         :param str user: repository owner
         :param str repo: repository name
@@ -68,7 +68,7 @@ class Github(object):
         return "/".join([user, repo])
 
     def get_all_blobs(self, project, tree_sha):
-        """Get a list of all blobs for a specific tree
+        """Get a list of all blobs for a specific tree.
 
         .. versionadded:: 0.3.0
 
@@ -80,7 +80,7 @@ class Github(object):
         return blobs.get("blobs")
 
     def get_blob_info(self, project, tree_sha, path):
-        """Get the blob for a file within a specific tree
+        """Get the blob for a file within a specific tree.
 
         :param str project: GitHub project
         :param str tree_sha: object ID of tree
@@ -91,7 +91,7 @@ class Github(object):
         return blob.get("blob")
 
     def get_tree(self, project, tree_sha):
-        """Get tree information for a specifc tree
+        """Get tree information for a specifc tree.
 
         :param str project: GitHub project
         :param str tree_sha: object ID of tree
@@ -101,7 +101,7 @@ class Github(object):
         return tree.get("tree", [])
 
     def get_network_meta(self, project):
-        """Get GitHub metadata associated with a project
+        """Get Github metadata associated with a project.
 
         :param str project: GitHub project
 
@@ -111,7 +111,7 @@ class Github(object):
                                                   "network_meta"]), {})
 
     def get_network_data(self, project, nethash, start=None, end=None):
-        """Get chunk of GitHub network data
+        """Get chunk of Github network data.
 
         :param str project: GitHub project
         :param str nethash: identifier provided by :meth:`get_network_meta`

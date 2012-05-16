@@ -27,7 +27,7 @@ NAIVE = True
 
 
 def string_to_datetime(string):
-    """Convert a string to Python datetime
+    """Convert a string to Python datetime.
 
     :param str github_date: date string to parse
 
@@ -39,7 +39,7 @@ def string_to_datetime(string):
 
 
 def _handle_naive_datetimes(f):
-    """Decorator to make datetime arguments use GitHub timezone
+    """Decorator to make datetime arguments use GitHub timezone.
 
     :param func f: Function to wrap
 
@@ -61,7 +61,7 @@ def _handle_naive_datetimes(f):
 
 @_handle_naive_datetimes
 def datetime_to_ghdate(datetime_):
-    """Convert Python datetime to GitHub date string
+    """Convert Python datetime to Github date string.
 
     :param datetime datetime_: datetime object to convert
 
@@ -71,7 +71,7 @@ def datetime_to_ghdate(datetime_):
 
 @_handle_naive_datetimes
 def datetime_to_commitdate(datetime_):
-    """Convert Python datetime to GitHub date string
+    """Convert Python datetime to Github date string.
 
     :param datetime datetime_: datetime object to convert
 
@@ -84,12 +84,11 @@ def datetime_to_commitdate(datetime_):
 
 
 def datetime_to_isodate(datetime_):
-    """Convert Python datetime to GitHub date string
-
-    .. note:: Supports naive and timezone-aware datetimes
+    """Convert Python datetime to Github date string.
 
     :param str datetime_: datetime object to convert
 
+    .. note:: Supports naive and timezone-aware datetimes
     """
     if not datetime_.tzinfo:
         datetime_ = datetime_.replace(tzinfo=tz.tzutc())
@@ -104,7 +103,7 @@ class AuthError(Exception):
 
 
 def requires_auth(f):
-    """Decorate to check a function call for authentication
+    """Decorate to check a function call for authentication.
 
     Sets a ``requires_auth`` attribute on functions, for use in introspection.
 
@@ -129,7 +128,7 @@ def requires_auth(f):
 
 
 def enhanced_by_auth(f):
-    """Decorator to mark a function as enhanced by authentication
+    """Decorator to mark a function as enhanced by authentication.
 
     Sets a ``enhanced_by_auth`` attribute on functions, for use in
     introspection.
@@ -145,7 +144,7 @@ def enhanced_by_auth(f):
 class GithubCommand(object):
 
     def __init__(self, request):
-        """Main API binding interface
+        """Main API binding interface.
 
         :param github2.request.GithubRequest request: HTTP request handler
 
@@ -153,7 +152,7 @@ class GithubCommand(object):
         self.request = request
 
     def make_request(self, command, *args, **kwargs):
-        """Make an API request
+        """Make an API request.
 
         Various options are supported if they exist in ``kwargs``:
 
@@ -187,7 +186,7 @@ class GithubCommand(object):
         return response
 
     def get_value(self, *args, **kwargs):
-        """Process a single-value response from the API
+        """Process a single-value response from the API.
 
         If a ``datatype`` parameter is given it defines the
         :class:`BaseData`-derived class we should build from the provided data
@@ -207,7 +206,7 @@ class GithubCommand(object):
         return value
 
     def get_values(self, *args, **kwargs):
-        """Process a multi-value response from the API
+        """Process a multi-value response from the API.
 
         :see: :meth:`get_value`
 
@@ -228,7 +227,7 @@ class GithubCommand(object):
 
 
 def doc_generator(docstring, attributes):
-    """Utility function to augment BaseDataType docstring
+    """Utility function to augment BaseDataType docstring.
 
     :param str docstring: docstring to augment
     :param dict attributes: attributes to add to docstring
@@ -246,7 +245,7 @@ def doc_generator(docstring, attributes):
 
 class Attribute(object):
     def __init__(self, help):
-        """Generic object attribute for use with :class:`BaseData`
+        """Generic object attribute for use with :class:`BaseData`.
 
         :param str help: Attribute description
 
@@ -269,7 +268,7 @@ class DateAttribute(Attribute):
     }
 
     def __init__(self, *args, **kwargs):
-        """Date handling attribute for use with :class:`BaseData`
+        """Date handling attribute for use with :class:`BaseData`.
 
         :param str format: The date format to support, see
             :data:`convertor_for_format` for supported options
@@ -327,7 +326,8 @@ class BaseDataType(type):
 # Ugly base class definition for Python 2 and 3 compatibility, where metaclass
 # syntax is incompatible
 class BaseData(BaseDataType('BaseData', (object, ), {})):
-    """Wrapper for API responses
+
+    """Wrapper for API responses.
 
     .. warning::
        Supports subscript attribute access purely for backwards compatibility,
@@ -336,7 +336,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
     """
 
     def __getitem__(self, key):
-        """Access objects's attribute using subscript notation
+        """Access objects's attribute using subscript notation.
 
         This is here purely to maintain compatibility when switching ``dict``
         responses to ``BaseData`` derived objects.
@@ -350,7 +350,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
         return getattr(self, key)
 
     def __setitem__(self, key, value):
-        """Update object's attribute using subscript notation
+        """Update object's attribute using subscript notation.
 
         :see: :meth:`BaseData.__getitem__`
 
@@ -364,7 +364,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
 
 
 def repr_string(string):
-    """Shorten string for use in repr() output
+    """Shorten string for use in repr() output.
 
     :param str string: string to operate on
     :return: string, with maximum length of 20 characters

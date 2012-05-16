@@ -41,7 +41,7 @@ class User(BaseData):
                                format="user")
 
     def is_authenticated(self):
-        """Test for user authentication
+        """Test for user authentication.
 
         :return bool: ``True`` if user is authenticated
 
@@ -56,7 +56,7 @@ class Users(GithubCommand):
     domain = "user"
 
     def search(self, query):
-        """Search for users
+        """Search for users.
 
         .. warning:
            Returns at most 100 users
@@ -68,7 +68,7 @@ class Users(GithubCommand):
                                datatype=User)
 
     def search_by_email(self, query):
-        """Search for users by email address
+        """Search for users by email address.
 
         :param str query: email to search for
 
@@ -77,7 +77,7 @@ class Users(GithubCommand):
 
     @enhanced_by_auth
     def show(self, username):
-        """Get information on GitHub user
+        """Get information on Github user.
 
         if ``username`` is ``None`` or an empty string information for the
         currently authenticated user is returned.
@@ -87,7 +87,7 @@ class Users(GithubCommand):
         return self.get_value("show", username, filter="user", datatype=User)
 
     def followers(self, username):
-        """Get list of GitHub user's followers
+        """Get list of Github user's followers.
 
         :param str username: Github user name
 
@@ -95,7 +95,7 @@ class Users(GithubCommand):
         return self.get_values("show", username, "followers", filter="users")
 
     def following(self, username):
-        """Get list of users a GitHub user is following
+        """Get list of users a Github user is following.
 
         :param str username: Github user name
 
@@ -104,7 +104,7 @@ class Users(GithubCommand):
 
     @requires_auth
     def follow(self, other_user):
-        """Follow a GitHub user
+        """Follow a Github user.
 
         :param str other_user: Github user name
 
@@ -113,7 +113,7 @@ class Users(GithubCommand):
 
     @requires_auth
     def unfollow(self, other_user):
-        """Unfollow a GitHub user
+        """Unfollow a Github user.
 
         :param str other_user: Github user name
 
@@ -122,12 +122,12 @@ class Users(GithubCommand):
 
     @requires_auth
     def list_keys(self):
-        """Get list of SSH keys for the authenticated user"""
+        """Get list of SSH keys for the authenticated user."""
         return self.get_values('keys', filter='public_keys', datatype=Key)
 
     @requires_auth
     def add_key(self, key, title=''):
-        """Add a SSH key for the authenticated user
+        """Add a SSH key for the authenticated user.
 
         :param str key: SSH key identifier
         :param str title: Optional title for the SSH key
@@ -140,7 +140,7 @@ class Users(GithubCommand):
 
     @requires_auth
     def remove_key(self, key_id):
-        """Remove a SSH key for the authenticated user
+        """Remove a SSH key for the authenticated user.
 
         :param int key_id: SSH key's GitHub identifier
 

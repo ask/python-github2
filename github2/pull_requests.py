@@ -3,7 +3,7 @@ from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
 
 
 class PullRequest(BaseData):
-    """Pull request encapsulation
+    """Pull request encapsulation.
 
     .. versionadded:: 0.5.0
 
@@ -42,7 +42,7 @@ class PullRequest(BaseData):
 
 
 class PullRequests(GithubCommand):
-    """Operations on pull requests
+    """Operations on pull requests.
 
     .. versionadded:: 0.5.0
 
@@ -51,7 +51,7 @@ class PullRequests(GithubCommand):
     domain = "pulls"
 
     def create(self, project, base, head, title=None, body=None, issue=None):
-        """Create a new pull request
+        """Create a new pull request.
 
         Pull requests can be created from scratch, or attached to an existing
         issue.  If an ``issue`` parameter is supplied the pull request is
@@ -81,7 +81,7 @@ class PullRequests(GithubCommand):
                               filter="pull", datatype=PullRequest)
 
     def show(self, project, number):
-        """Show a single pull request
+        """Show a single pull request.
 
         :param str project: Github project
         :param int number: pull request number in the Github database
@@ -91,7 +91,7 @@ class PullRequests(GithubCommand):
                               datatype=PullRequest)
 
     def list(self, project, state="open", page=1):
-        """List all pull requests for a project
+        """List all pull requests for a project.
 
         :param str project: GitHub project
         :param str state: can be either ``open`` or ``closed``

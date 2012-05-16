@@ -22,7 +22,7 @@ class Teams(GithubCommand):
     domain = "teams"
 
     def show(self, team_id):
-        """Get information on team_id
+        """Get information on team_id.
 
         :param int team_id: team to get information for
 
@@ -30,7 +30,7 @@ class Teams(GithubCommand):
         return self.get_value(str(team_id), filter="team", datatype=Team)
 
     def members(self, team_id):
-        """Get list of all team members
+        """Get list of all team members.
 
         :param int team_id: team to get information for
 
@@ -40,7 +40,7 @@ class Teams(GithubCommand):
 
     @requires_auth
     def add_member(self, team_id, username):
-        """Add a new member to a team
+        """Add a new member to a team.
 
         :param int team_id: team to add new member to
         :param str username: GitHub username to add to team
@@ -51,7 +51,7 @@ class Teams(GithubCommand):
                                datatype=User)
 
     def repositories(self, team_id):
-        """Get list of all team repositories
+        """Get list of all team repositories.
 
         :param int team_id: team to get information for
 
@@ -61,7 +61,7 @@ class Teams(GithubCommand):
 
     @requires_auth
     def add_project(self, team_id, project):
-        """Add a project to a team
+        """Add a project to a team.
 
         :param int team_id: team to add repository to
         :param str project: GitHub project
@@ -75,7 +75,7 @@ class Teams(GithubCommand):
 
     @requires_auth
     def remove_project(self, team_id, project):
-        """Remove a project to a team
+        """Remove a project to a team.
 
         :param int team_id: team to remove project from
         :param str project: GitHub project

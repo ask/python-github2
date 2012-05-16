@@ -39,7 +39,7 @@ class Organizations(GithubCommand):
     domain = "organizations"
 
     def show(self, organization):
-        """Get information on organization
+        """Get information on organization.
 
         :param str organization: organization to show
 
@@ -48,12 +48,12 @@ class Organizations(GithubCommand):
                               datatype=Organization)
 
     def list(self):
-        """Get list of all of your organizations"""
+        """Get list of all of your organizations."""
         return self.get_values('', filter="organizations",
                                datatype=Organization)
 
     def repositories(self, organization=''):
-        """Get list of all repositories in an organization
+        """Get list of all repositories in an organization.
 
         If organization is not given, or is empty, then this will list
         repositories for all organizations the authenticated user belongs to.
@@ -65,7 +65,7 @@ class Organizations(GithubCommand):
                                filter="repositories", datatype=Repository)
 
     def public_repositories(self, organization):
-        """Get list of public repositories in an organization
+        """Get list of public repositories in an organization.
 
         :param str organization: organization to list public repositories for
 
@@ -74,7 +74,7 @@ class Organizations(GithubCommand):
                                filter="repositories", datatype=Repository)
 
     def public_members(self, organization):
-        """Get list of public members in an organization
+        """Get list of public members in an organization.
 
         :param str organization: organization to list members for
 
@@ -83,7 +83,7 @@ class Organizations(GithubCommand):
                                datatype=User)
 
     def teams(self, organization):
-        """Get list of teams in an organization
+        """Get list of teams in an organization.
 
         :param str organization: organization to list teams for
 
@@ -93,7 +93,7 @@ class Organizations(GithubCommand):
 
     @requires_auth
     def add_team(self, organization, name, permission='pull', projects=None):
-        """Add a team to an organization
+        """Add a team to an organization.
 
         :param str organization: organization to add team to
         :param str team: name of team to add
