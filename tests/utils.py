@@ -25,9 +25,10 @@ ORIG_HTTP_OBJECT = httplib2.Http
 
 
 class HttpMock(object):
-    """Simple Http mock that returns saved entries
+    """Simple Http mock that returns saved entries.
 
-    Implementation tests should never span network boundaries
+    Implementation tests should never span network boundaries.
+
     """
 
     def __init__(self, cache=None, timeout=None, proxy_info=None,
@@ -55,33 +56,36 @@ class HttpMock(object):
 
 class HttpMockTestCase(unittest.TestCase):
     def setUp(self):
-        """Prepare test fixtures
+        """Prepare test fixtures.
 
         `httplib2.Http` is patched to return cached entries via
         :class:`HttpMock`.
 
         :attr:`client` is an unauthenticated :obj:`Github` object for easy use
         in tests.
+
         """
         httplib2.Http = HttpMock
         self.client = Github()
 
     def tearDown(self):
-        """Remove test fixtures
+        """Remove test fixtures.
 
         `httplib2.Http` is returned to its original state.
+
         """
         httplib2.Http = ORIG_HTTP_OBJECT
 
 
 class HttpMockAuthenticatedTestCase(HttpMockTestCase):
     def setUp(self):
-        """Prepare test fixtures
+        """Prepare test fixtures.
 
         :see: :class:`HttpMockTestCase`
 
         :attr:`client` is an authenticated :obj:`Github` object for easy use
         in tests.
+
         """
         httplib2.Http = HttpMock
         self.client = Github(access_token='xxx')

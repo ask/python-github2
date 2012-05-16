@@ -35,7 +35,9 @@ def assert_params_contain(first, second):
 
 
 class TestAuthEncode(unittest.TestCase):
-    """Test processing of authentication data"""
+
+    """Test processing of authentication data."""
+
     def setUp(self):
         self.r = request.GithubRequest()
 

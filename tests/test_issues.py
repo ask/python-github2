@@ -52,7 +52,9 @@ class Comment(utils.HttpMockTestCase):
 
 
 class IssueQueries(utils.HttpMockTestCase):
-    """Test issue querying"""
+
+    """Test issue querying."""
+
     def test_search(self):
         issues = self.client.issues.search('ask/python-github2', 'timezone',
                                            'closed')

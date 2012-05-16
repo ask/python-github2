@@ -13,7 +13,7 @@ import utils
 
 
 def test_issue_50():
-    """Erroneous init of ``Http`` with proxy setup
+    """Erroneous init of ``Http`` with proxy setup.
 
     See https://github.com/ask/python-github2/pull/50
     """

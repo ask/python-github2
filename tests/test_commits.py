@@ -11,7 +11,9 @@ import utils
 
 
 class CommitProperties(utils.HttpMockTestCase):
-    """Test commit property handling"""
+
+    """Test commit property handling."""
+
     commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
 
     def test_commit(self):
@@ -38,6 +40,7 @@ class CommitProperties(utils.HttpMockTestCase):
 
 
 class CommitsQueries(utils.HttpMockTestCase):
+
     """Test commit querying"""
 
     def test_list(self):

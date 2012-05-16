@@ -20,6 +20,7 @@ import utils
 
 
 class ReprTests(unittest.TestCase):
+
     """__repr__ must return strings, not unicode objects."""
 
     def test_issue(self):
@@ -41,9 +42,11 @@ class HostSetting(unittest.TestCase):
 
 
 class RateLimits(utils.HttpMockTestCase):
-    """Test API rate-limitting"""
+
+    """Test API rate-limitting."""
+
     def test_delays(self):
-        """Test call delay is at least one second"""
+        """Test call delay is at least one second."""
         client = Github(requests_per_second=.5)
         client.users.show('defunkt')
         start = datetime.datetime.utcnow()
@@ -59,7 +62,9 @@ class RateLimits(utils.HttpMockTestCase):
 
 
 class BaseDataIter(utils.HttpMockTestCase):
-    """Test iter availability of objects"""
+
+    """Test iter availability of objects."""
+
     def test_iter(self):
         commit_id = '1c83cde9b5a7c396a01af1007fb7b88765b9ae45'
         commit = self.client.commits.show('ask/python-github2', commit_id)
@@ -67,7 +72,9 @@ class BaseDataIter(utils.HttpMockTestCase):
 
 
 class BaseDataDict(utils.HttpMockTestCase):
-    """Test __getitem__ availability on objects"""
+
+    """Test __getitem__ availability on objects."""
+
     def test_getitem(self):
         user = self.client.users.show('defunkt')
         eq_(user['blog'], user.blog)

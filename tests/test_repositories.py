@@ -19,7 +19,9 @@ class Repo(utils.HttpMockTestCase):
 
 
 class RepoProperties(utils.HttpMockTestCase):
-    """Test repository property handling"""
+
+    """Test repository property handling."""
+
     def test_repo(self):
         repo = self.client.repos.show('JNRowe/misc-overlay')
 

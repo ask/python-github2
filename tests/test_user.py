@@ -11,7 +11,9 @@ import utils
 
 
 class UserProperties(utils.HttpMockTestCase):
-    """Test user property handling"""
+
+    """Test user property handling."""
+
     def test_user(self):
         user = self.client.users.show('defunkt')
         eq_(user.blog, 'http://chriswanstrath.com/')
@@ -43,7 +45,9 @@ class UserProperties(utils.HttpMockTestCase):
 
 
 class UserQueries(utils.HttpMockTestCase):
-    """Test user querying """
+
+    """Test user querying."""
+
     def test_search(self):
         eq_(repr(self.client.users.search('James Rowe')),
             '[<User: JNRowe>, <User: wooki>]')

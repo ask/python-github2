@@ -15,19 +15,20 @@ from github2.core import (datetime_to_ghdate, datetime_to_commitdate,
 
 
 def setup_module():
-    """Enable timezone-aware datetime handling for this module's tests"""
+    """Enable timezone-aware datetime handling for this module's tests."""
     core.NAIVE = False
 
 
 def teardown_module():
-    """Disable timezone-aware datetime handling when tests have completed"""
+    """Disable timezone-aware datetime handling when tests have completed."""
     core.NAIVE = True
 
 
 def dt_utz(year, month, day, hour, minute, second):
-    """Produce a UTC-anchored datetime object
+    """Produce a UTC-anchored datetime object.
 
     :see: :class:`datetime.datetime`
+
     """
     return dt(year, month, day, hour, minute, second, tzinfo=tzutc())
 
