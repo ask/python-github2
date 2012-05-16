@@ -30,6 +30,7 @@ def string_to_datetime(string):
     """Convert a string to Python datetime
 
     :param str github_date: date string to parse
+
     """
     parsed = parser.parse(string)
     if NAIVE:
@@ -41,6 +42,7 @@ def _handle_naive_datetimes(f):
     """Decorator to make datetime arguments use GitHub timezone
 
     :param func f: Function to wrap
+
     """
     def wrapper(datetime_):
         if not datetime_.tzinfo:
@@ -62,6 +64,7 @@ def datetime_to_ghdate(datetime_):
     """Convert Python datetime to GitHub date string
 
     :param datetime datetime_: datetime object to convert
+
     """
     return datetime_.strftime(GITHUB_DATE_FORMAT)
 
@@ -71,6 +74,7 @@ def datetime_to_commitdate(datetime_):
     """Convert Python datetime to GitHub date string
 
     :param datetime datetime_: datetime object to convert
+
     """
     date_without_tz = datetime_.strftime(COMMIT_DATE_FORMAT)
     utcoffset = GITHUB_TZ.utcoffset(datetime_)
@@ -95,7 +99,8 @@ def datetime_to_isodate(datetime_):
 
 
 class AuthError(Exception):
-    """Requires authentication"""
+
+    """Requires authentication."""
 
 
 def requires_auth(f):
@@ -105,6 +110,7 @@ def requires_auth(f):
 
     :param func f: Function to wrap
     :raises AuthError: If function called without an authenticated session
+
     """
     # When Python 2.4 support is dropped move straight to functools.wraps,
     # don't pass go and don't collect $200.
@@ -129,6 +135,7 @@ def enhanced_by_auth(f):
     introspection.
 
     :param func f: Function to wrap
+
     """
     f.enhanced_by_auth = True
     f.__doc__ += """\n.. note:: This call is enhanced with authentication"""
@@ -141,6 +148,7 @@ class GithubCommand(object):
         """Main API binding interface
 
         :param github2.request.GithubRequest request: HTTP request handler
+
         """
         self.request = request
 
@@ -155,6 +163,7 @@ class GithubCommand(object):
           data
         * The value of a ``page`` argument will be used to fetch a specific
           page of results, default of 1 is assumed if not given
+
         """
         filter = kwargs.get("filter")
         post_data = kwargs.get("post_data") or {}
@@ -182,6 +191,7 @@ class GithubCommand(object):
 
         If a ``datatype`` parameter is given it defines the
         :class:`BaseData`-derived class we should build from the provided data
+
         """
         datatype = kwargs.pop("datatype", None)
         value = self.make_request(*args, **kwargs)
@@ -200,6 +210,7 @@ class GithubCommand(object):
         """Process a multi-value response from the API
 
         :see: :meth:`get_value`
+
         """
         datatype = kwargs.pop("datatype", None)
         values = self.make_request(*args, **kwargs)
@@ -221,6 +232,7 @@ def doc_generator(docstring, attributes):
 
     :param str docstring: docstring to augment
     :param dict attributes: attributes to add to docstring
+
     """
     docstring = docstring or ""
 
@@ -237,6 +249,7 @@ class Attribute(object):
         """Generic object attribute for use with :class:`BaseData`
 
         :param str help: Attribute description
+
         """
         self.help = help
 
@@ -260,6 +273,7 @@ class DateAttribute(Attribute):
 
         :param str format: The date format to support, see
             :data:`convertor_for_format` for supported options
+
         """
         self.format = kwargs.pop("format", self.format)
         super(DateAttribute, self).__init__(*args, **kwargs)
@@ -318,12 +332,15 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
     .. warning::
        Supports subscript attribute access purely for backwards compatibility,
        you shouldn't rely on that functionality in new code
+
     """
+
     def __getitem__(self, key):
         """Access objects's attribute using subscript notation
 
         This is here purely to maintain compatibility when switching ``dict``
         responses to ``BaseData`` derived objects.
+
         """
         LOGGER.warning("Subscript access on %r is deprecated, use object "
                        "attributes" % self.__class__.__name__,
@@ -336,6 +353,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
         """Update object's attribute using subscript notation
 
         :see: :meth:`BaseData.__getitem__`
+
         """
         LOGGER.warning("Subscript access on %r is deprecated, use object "
                        "attributes" % self.__class__.__name__,
@@ -350,6 +368,7 @@ def repr_string(string):
 
     :param str string: string to operate on
     :return: string, with maximum length of 20 characters
+
     """
     if len(string) > 20:
         string = string[:17] + '...'

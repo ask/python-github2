@@ -42,6 +42,7 @@ class Organizations(GithubCommand):
         """Get information on organization
 
         :param str organization: organization to show
+
         """
         return self.get_value(organization, filter="organization",
                               datatype=Organization)
@@ -58,6 +59,7 @@ class Organizations(GithubCommand):
         repositories for all organizations the authenticated user belongs to.
 
         :param: str organization: organization to list repositories for
+
         """
         return self.get_values(organization, 'repositories',
                                filter="repositories", datatype=Repository)
@@ -66,6 +68,7 @@ class Organizations(GithubCommand):
         """Get list of public repositories in an organization
 
         :param str organization: organization to list public repositories for
+
         """
         return self.get_values(organization, 'public_repositories',
                                filter="repositories", datatype=Repository)
@@ -74,6 +77,7 @@ class Organizations(GithubCommand):
         """Get list of public members in an organization
 
         :param str organization: organization to list members for
+
         """
         return self.get_values(organization, 'public_members', filter="users",
                                datatype=User)
@@ -82,6 +86,7 @@ class Organizations(GithubCommand):
         """Get list of teams in an organization
 
         :param str organization: organization to list teams for
+
         """
         return self.get_values(organization, 'teams', filter="teams",
                                datatype=Team)
@@ -94,6 +99,7 @@ class Organizations(GithubCommand):
         :param str team: name of team to add
         :param str permission: permissions for team(push, pull or admin)
         :param list projects: optional GitHub projects for this team
+
         """
         team_data = {'team[name]': name, 'team[permission]': permission}
         if projects:

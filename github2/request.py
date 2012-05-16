@@ -71,6 +71,7 @@ def charset_from_headers(headers):
 
     :param httplib2.Response headers: Request headers
     :return: Defined encoding, or default to ASCII
+
     """
     match = re.search("charset=([^ ;]+)", headers.get('content-type', ""))
     if match:
@@ -81,17 +82,21 @@ def charset_from_headers(headers):
 
 
 class GithubError(Exception):
-    """An error occurred when making a request to the GitHub API."""
+
+    """An error occurred when making a request to the Github API."""
 
 
 class HttpError(RuntimeError):
-    """A HTTP error occured when making a request to the GitHub API."""
+
+    """A HTTP error occured when making a request to the Github API."""
+
     def __init__(self, message, content, code):
         """Create a HttpError exception
 
         :param str message: Exception string
         :param str content: Full content of HTTP request
         :param int code: HTTP status code
+
         """
         self.args = (message, content, code)
         self.message = message

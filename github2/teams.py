@@ -4,7 +4,9 @@ from github2.users import User
 
 
 class Team(BaseData):
+
     """.. versionadded:: 0.4.0"""
+
     id = Attribute("The team id")
     name = Attribute("Name of the team")
     permission = Attribute("Permissions of the team")
@@ -14,13 +16,16 @@ class Team(BaseData):
 
 
 class Teams(GithubCommand):
+
     """.. versionadded:: 0.4.0"""
+
     domain = "teams"
 
     def show(self, team_id):
         """Get information on team_id
 
         :param int team_id: team to get information for
+
         """
         return self.get_value(str(team_id), filter="team", datatype=Team)
 
@@ -28,6 +33,7 @@ class Teams(GithubCommand):
         """Get list of all team members
 
         :param int team_id: team to get information for
+
         """
         return self.get_values(str(team_id), "members", filter="users",
                                datatype=User)
@@ -38,6 +44,7 @@ class Teams(GithubCommand):
 
         :param int team_id: team to add new member to
         :param str username: GitHub username to add to team
+
         """
         return self.get_values(str(team_id), 'members', method='POST',
                                post_data={'name': username}, filter='users',
@@ -47,6 +54,7 @@ class Teams(GithubCommand):
         """Get list of all team repositories
 
         :param int team_id: team to get information for
+
         """
         return self.get_values(str(team_id), "repositories",
                                filter="repositories", datatype=Repository)
@@ -57,6 +65,7 @@ class Teams(GithubCommand):
 
         :param int team_id: team to add repository to
         :param str project: GitHub project
+
         """
         if isinstance(project, Repository):
             project = project.project
@@ -70,6 +79,7 @@ class Teams(GithubCommand):
 
         :param int team_id: team to remove project from
         :param str project: GitHub project
+
         """
         if isinstance(project, Repository):
             project = project.project

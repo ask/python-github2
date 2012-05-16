@@ -6,7 +6,9 @@ class PullRequest(BaseData):
     """Pull request encapsulation
 
     .. versionadded:: 0.5.0
+
     """
+
     state = Attribute("The pull request state")
     base = Attribute("The base repo")
     head = Attribute("The head of the pull request")
@@ -43,7 +45,9 @@ class PullRequests(GithubCommand):
     """Operations on pull requests
 
     .. versionadded:: 0.5.0
+
     """
+
     domain = "pulls"
 
     def create(self, project, base, head, title=None, body=None, issue=None):
@@ -59,6 +63,7 @@ class PullRequests(GithubCommand):
         :param str title: title for pull request
         :param str body: optional body for pull request
         :param str issue: existing issue to attach pull request to
+
         """
         post_data = {"base": base, "head": head}
         if issue:
@@ -78,8 +83,9 @@ class PullRequests(GithubCommand):
     def show(self, project, number):
         """Show a single pull request
 
-        :param str project: GitHub project
-        :param int number: pull request number in the GitHub database
+        :param str project: Github project
+        :param int number: pull request number in the Github database
+
         """
         return self.get_value(project, str(number), filter="pull",
                               datatype=PullRequest)
@@ -90,6 +96,7 @@ class PullRequests(GithubCommand):
         :param str project: GitHub project
         :param str state: can be either ``open`` or ``closed``
         :param int page: optional page number
+
         """
         return self.get_values(project, state, filter="pulls",
                                datatype=PullRequest, page=page)

@@ -39,6 +39,7 @@ class Commits(GithubCommand):
         :param str branch: branch name, or ``master`` if not given
         :param str file: optional file filter
         :param int page: optional page number
+
         """
         return self.get_values("list", project, branch, file, filter="commits",
                                datatype=Commit, page=page)
@@ -48,6 +49,7 @@ class Commits(GithubCommand):
 
         :param str project: project name
         :param str sha: commit id
+
         """
         return self.get_value("show", project, sha,
                               filter="commit", datatype=Commit)
