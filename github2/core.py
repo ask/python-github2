@@ -82,9 +82,10 @@ def datetime_to_commitdate(datetime_):
 def datetime_to_isodate(datetime_):
     """Convert Python datetime to GitHub date string
 
+    .. note:: Supports naive and timezone-aware datetimes
+
     :param str datetime_: datetime object to convert
 
-    .. note:: Supports naive and timezone-aware datetimes
     """
     if not datetime_.tzinfo:
         datetime_ = datetime_.replace(tzinfo=tz.tzutc())
