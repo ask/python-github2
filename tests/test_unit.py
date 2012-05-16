@@ -75,7 +75,7 @@ class BaseDataIter(utils.HttpMockTestCase):
 
 class BaseDataDict(utils.HttpMockTestCase):
 
-    """Test __getitem__ availability on objects."""
+    """Test dict compatibility on objects."""
 
     def test_getitem(self):
         user = self.client.users.show('defunkt')
@@ -90,6 +90,16 @@ class BaseDataDict(utils.HttpMockTestCase):
     def test_getitem_failure(self):
         user = self.client.users.show('defunkt')
         ok_(user['invalid_key'])
+
+    def test_setitem(self):
+        user = self.client.users.show('defunkt')
+        user['blog'] = 'http://example.com'
+        eq_(user['blog'], 'http://example.com')
+
+    @raises(KeyError)
+    def test_setitem_failure(self):
+        user = self.client.users.show('defunkt')
+        user['invalid_key'] = 'test'
 
 
 def test_project_for_user_repo():
