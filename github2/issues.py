@@ -86,7 +86,7 @@ class Issues(GithubCommand):
         """Get all the data for issue by issue-number.
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         """
         return self.get_value("show", project, str(number),
                               filter="issue", datatype=Issue)
@@ -108,7 +108,7 @@ class Issues(GithubCommand):
         """Close an issue
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         """
         return self.get_value("close", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
@@ -120,7 +120,7 @@ class Issues(GithubCommand):
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         """
         return self.get_value("reopen", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
@@ -132,7 +132,7 @@ class Issues(GithubCommand):
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         :param str title: title for issue
         :param str body: body for issue
         """
@@ -146,7 +146,7 @@ class Issues(GithubCommand):
         """Add a label to an issue
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         :param str label: label to attach to issue
         """
         return self.get_values("label/add", project, label, str(number),
@@ -157,7 +157,7 @@ class Issues(GithubCommand):
         """Remove an existing label from an issue
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         :param str label: label to remove from issue
         """
         return self.get_values("label/remove", project, label, str(number),
@@ -168,7 +168,7 @@ class Issues(GithubCommand):
         """Comment on an issue.
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         :param str comment: comment to attach to issue
         """
         comment_data = {'comment': comment}
@@ -180,7 +180,7 @@ class Issues(GithubCommand):
         """View comments on an issue.
 
         :param str project: GitHub project
-        :param int number: issue number in the Github database
+        :param int number: issue number in the GitHub database
         """
         return self.get_values("comments", project, str(number),
                                filter="comments", datatype=Comment)

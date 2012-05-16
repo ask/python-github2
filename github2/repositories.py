@@ -73,7 +73,7 @@ class Repositories(GithubCommand):
            logged-in user when ``user`` wasn't supplied.  This functionality is
            brittle and will be removed in a future release!
 
-        :param str user: Github user name to list repositories for
+        :param str user: GitHub user name to list repositories for
         :param int page: optional page number
         """
         user = user or self.request.username
@@ -160,8 +160,8 @@ class Repositories(GithubCommand):
     def add_collaborator(self, project, username):
         """Adds an add_collaborator to a repo
 
-        :param str project: Github project
-        :param str username: Github user to add as collaborator
+        :param str project: GitHub project
+        :param str username: GitHub user to add as collaborator
         """
         return self.make_request("collaborators", project, "add", username,
                                  method="POST")
@@ -170,8 +170,8 @@ class Repositories(GithubCommand):
     def remove_collaborator(self, project, username):
         """Removes an add_collaborator from a repo
 
-        :param str project: Github project
-        :param str username: Github user to add as collaborator
+        :param str project: GitHub project
+        :param str username: GitHub user to add as collaborator
         """
         return self.make_request("collaborators", project, "remove",
                                  username, method="POST")
@@ -179,7 +179,7 @@ class Repositories(GithubCommand):
     def network(self, project):
         """Get network data for project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "network", filter="network",
                                datatype=Repository)
@@ -187,7 +187,7 @@ class Repositories(GithubCommand):
     def languages(self, project):
         """Get programming language data for project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "languages",
                                filter="languages")
@@ -195,28 +195,28 @@ class Repositories(GithubCommand):
     def tags(self, project):
         """Get tags for project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "tags", filter="tags")
 
     def branches(self, project):
         """Get branch names for project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "branches", filter="branches")
 
     def watchers(self, project):
         """Get list of watchers for project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "watchers", filter="watchers")
 
     def watching(self, for_user=None, page=None):
         """Lists all the repos a user is watching
 
-        :param str for_user: optional Github user name to list repositories for
+        :param str for_user: optional GitHub user name to list repositories for
         :param int page: optional page number
         """
         for_user = for_user or self.request.username
@@ -226,7 +226,7 @@ class Repositories(GithubCommand):
     def list_contributors(self, project):
         """Lists all the contributors in a project
 
-        :param str project: Github project
+        :param str project: GitHub project
         """
         return self.get_values("show", project, "contributors",
                                filter="contributors", datatype=User)

@@ -59,7 +59,7 @@ class Github(object):
         self.pull_requests = PullRequests(self.request)
 
     def project_for_user_repo(self, user, repo):
-        """Return Github identifier for a user's repository
+        """Return GitHub identifier for a user's repository
 
         :param str user: repository owner
         :param str repo: repository name
@@ -97,7 +97,7 @@ class Github(object):
         return tree.get("tree", [])
 
     def get_network_meta(self, project):
-        """Get Github metadata associated with a project
+        """Get GitHub metadata associated with a project
 
         :param str project: GitHub project
         """
@@ -106,10 +106,10 @@ class Github(object):
                                                   "network_meta"]), {})
 
     def get_network_data(self, project, nethash, start=None, end=None):
-        """Get chunk of Github network data
+        """Get chunk of GitHub network data
 
         :param str project: GitHub project
-        :param str nethash: identifier provided by ``get_network_meta``
+        :param str nethash: identifier provided by :meth:`get_network_meta`
         :param int start: optional start point for data
         :param int stop: optional end point for data
         """

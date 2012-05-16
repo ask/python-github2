@@ -73,42 +73,42 @@ class Users(GithubCommand):
 
     @enhanced_by_auth
     def show(self, username):
-        """Get information on Github user
+        """Get information on GitHub user
 
         if ``username`` is ``None`` or an empty string information for the
         currently authenticated user is returned.
 
-        :param str username: Github user name
+        :param str username: GitHub user name
         """
         return self.get_value("show", username, filter="user", datatype=User)
 
     def followers(self, username):
-        """Get list of Github user's followers
+        """Get list of GitHub user's followers
 
-        :param str username: Github user name
+        :param str username: GitHub user name
         """
         return self.get_values("show", username, "followers", filter="users")
 
     def following(self, username):
-        """Get list of users a Github user is following
+        """Get list of users a GitHub user is following
 
-        :param str username: Github user name
+        :param str username: GitHub user name
         """
         return self.get_values("show", username, "following", filter="users")
 
     @requires_auth
     def follow(self, other_user):
-        """Follow a Github user
+        """Follow a GitHub user
 
-        :param str other_user: Github user name
+        :param str other_user: GitHub user name
         """
         return self.get_values("follow", other_user, method="POST")
 
     @requires_auth
     def unfollow(self, other_user):
-        """Unfollow a Github user
+        """Unfollow a GitHub user
 
-        :param str other_user: Github user name
+        :param str other_user: GitHub user name
         """
         return self.get_values("unfollow", other_user, method="POST")
 

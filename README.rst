@@ -1,5 +1,5 @@
 ================================================================================
-github2 - Github API v2 library for Python.
+github2 - GitHub API v2 library for Python.
 ================================================================================
 
 :Authors:
@@ -16,7 +16,7 @@ github2 - Github API v2 library for Python.
    of work needed in moving away from GitHub's API v2.
 
 This is a Python library implementing all of the features available in version 2
-of the `Github API`_.
+of the `GitHub API`_.
 
 See the ``doc/`` directory for installation instructions and usage information.
 If you prefer you can also read the `documentation online`_.
@@ -24,7 +24,7 @@ If you prefer you can also read the `documentation online`_.
 .. _switch off API v2: https://github.com/blog/1090-github-api-moving-on
 .. _remoteobjects: https://github.com/saymedia/remoteobjects
 .. _micromodels: https://github.com/j4mie/micromodels
-.. _Github API: http://develop.github.com/
+.. _GitHub API: http://develop.github.com/
 .. _documentation online: http://packages.python.org/github2
 
 License

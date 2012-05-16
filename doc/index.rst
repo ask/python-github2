@@ -10,7 +10,7 @@
 .. module:: github2
    :synopsis: GitHub API v2 library for Python
 
-``github2`` - Github API v2 library for Python
+``github2`` - GitHub API v2 library for Python
 ==============================================
 
 .. warning::
@@ -31,15 +31,15 @@
    :class: sidebar
 
 This is a Python library implementing all of the features available in version 2
-of the `Github API`_.
+of the `GitHub API`_.
 
-You should read the developer documentation for the `Github API`_ first.
+You should read the developer documentation for the `GitHub API`_ first.
 
 :Git repository:  https://github.com/ask/python-github2/
 :Issue tracker:  https://github.com/ask/python-github2/issues/
 :Contributors:  https://github.com/ask/python-github2/contributors/
 
-.. _Github API: http://develop.github.com/
+.. _GitHub API: http://develop.github.com/
 
 Contents
 --------

@@ -53,7 +53,7 @@ class PullRequests(GithubCommand):
         issue.  If an ``issue`` parameter is supplied the pull request is
         attached to that issue, else a new pull request is created.
 
-        :param str project: the Github project to send the pull request to
+        :param str project: the GitHub project to send the pull request to
         :param str base: branch changes should be pulled into
         :param str head: branch of the changes to be pulled
         :param str title: title for pull request
@@ -78,8 +78,8 @@ class PullRequests(GithubCommand):
     def show(self, project, number):
         """Show a single pull request
 
-        :param str project: Github project
-        :param int number: pull request number in the Github database
+        :param str project: GitHub project
+        :param int number: pull request number in the GitHub database
         """
         return self.get_value(project, str(number), filter="pull",
                               datatype=PullRequest)
@@ -87,7 +87,7 @@ class PullRequests(GithubCommand):
     def list(self, project, state="open", page=1):
         """List all pull requests for a project
 
-        :param str project: Github project
+        :param str project: GitHub project
         :param str state: can be either ``open`` or ``closed``
         :param int page: optional page number
         """

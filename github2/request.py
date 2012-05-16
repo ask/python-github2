@@ -81,11 +81,11 @@ def charset_from_headers(headers):
 
 
 class GithubError(Exception):
-    """An error occurred when making a request to the Github API."""
+    """An error occurred when making a request to the GitHub API."""
 
 
 class HttpError(RuntimeError):
-    """A HTTP error occured when making a request to the Github API."""
+    """A HTTP error occured when making a request to the GitHub API."""
     def __init__(self, message, content, code):
         """Create a HttpError exception
 

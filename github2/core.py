@@ -59,7 +59,7 @@ def _handle_naive_datetimes(f):
 
 @_handle_naive_datetimes
 def datetime_to_ghdate(datetime_):
-    """Convert Python datetime to Github date string
+    """Convert Python datetime to GitHub date string
 
     :param datetime datetime_: datetime object to convert
     """
@@ -68,7 +68,7 @@ def datetime_to_ghdate(datetime_):
 
 @_handle_naive_datetimes
 def datetime_to_commitdate(datetime_):
-    """Convert Python datetime to Github date string
+    """Convert Python datetime to GitHub date string
 
     :param datetime datetime_: datetime object to convert
     """
@@ -80,7 +80,7 @@ def datetime_to_commitdate(datetime_):
 
 
 def datetime_to_isodate(datetime_):
-    """Convert Python datetime to Github date string
+    """Convert Python datetime to GitHub date string
 
     :param str datetime_: datetime object to convert
 
