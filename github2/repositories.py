@@ -68,7 +68,7 @@ class Repositories(GithubCommand):
     def list(self, user=None, page=1):
         """Return a list of all repositories for a user.
 
-        .. deprecated: 0.4.0
+        .. deprecated:: 0.4.0
            Previous releases would attempt to display repositories for the
            logged-in user when ``user`` wasn't supplied.  This functionality is
            brittle and will be removed in a future release!
