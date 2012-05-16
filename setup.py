@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Copyright (C) 2009-2012 Ask Solem <askh@modwheel.net>
+#                         Cody Soyland <codysoyland@gmail.com>
+#                         Donald von Stufft <donald@xenofox.com>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Maximillian Dornseif <m.dornseif@hudora.de>
+#                         Michael Basnight <mbasnight@gmail.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 import codecs
 import sys
 

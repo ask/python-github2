@@ -1,3 +1,20 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2009-2012 Ask Solem <askh@modwheel.net>
+#                         Claudio B. <claudiob@gmail.com>
+#                         Daniel Greenfeld <pydanny@gmail.com>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Jens Ohlig <jens.ohlig@gmail.com>
+#                         Jeremy Dunck <jdunck@gmail.com>
+#                         Jonas Obrist <jonas.obrist@divio.ch>
+#                         Kenneth Reitz <me@kennethreitz.com>
+#                         Mark Paschal <markpasc@markpasc.org>
+#                         Maximillian Dornseif <m.dornseif@hudora.de>
+#                         Sameer Al-Sakran <sameer@whitelabellabs.com>
+#                         Stéphane Angel <s.angel@twidi.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
                           requires_auth)
 

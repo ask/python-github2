@@ -1,3 +1,13 @@
+# Copyright (C) 2009-2012 Adam Vandenberg <flangy@gmail.com>
+#                         Ask Solem <askh@modwheel.net>
+#                         Barthelemy Dagenais <bart@cs.mcgill.ca>
+#                         Fernando Perez <Fernando.Perez@berkeley.edu>
+#                         James Rowe <jnrowe@gmail.com>
+#                         Scott Torborg <scott@crookedmedia.com>
+#
+# This file is part of python-github2, and is made available under the 3-clause
+# BSD license.  See LICENSE for the full details.
+
 try:
     from urllib.parse import quote_plus  # For Python 3
 except ImportError:
