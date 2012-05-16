@@ -11,6 +11,7 @@ import datetime
 import unittest
 
 from nose.tools import (eq_, ok_)
+from nose.plugins.attrib import attr
 
 from github2.core import repr_string
 from github2.issues import Issue
@@ -45,6 +46,7 @@ class RateLimits(utils.HttpMockTestCase):
 
     """Test API rate-limitting."""
 
+    @attr('slow')
     def test_delays(self):
         """Test call delay is at least one second."""
         client = Github(requests_per_second=.5)
