@@ -229,7 +229,7 @@ man_pages = [
      [u'Ask Solem'], 1)
 ]
 
-autoclass_content = "init"
+autoclass_content = "class"
 autodoc_default_flags = ['members', ]
 
 intersphinx_mapping = {
