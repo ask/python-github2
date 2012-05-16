@@ -1,0 +1,4 @@
+-r requirements.txt
+cloud_sptheme>=1.2
+sphinx>=1.1
+sphinxcontrib-cheeseshop
