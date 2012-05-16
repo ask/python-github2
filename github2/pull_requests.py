@@ -3,10 +3,13 @@ from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
 
 
 class PullRequest(BaseData):
-    """Pull request encapsulation
+
+    """Pull request container.
 
     .. versionadded:: 0.5.0
+
     """
+
     state = Attribute("The pull request state")
     base = Attribute("The base repo")
     head = Attribute("The head of the pull request")
@@ -40,14 +43,17 @@ class PullRequest(BaseData):
 
 
 class PullRequests(GithubCommand):
-    """Operations on pull requests
+
+    """GitHub API pull request functionality.
 
     .. versionadded:: 0.5.0
+
     """
+
     domain = "pulls"
 
     def create(self, project, base, head, title=None, body=None, issue=None):
-        """Create a new pull request
+        """Create a new pull request.
 
         Pull requests can be created from scratch, or attached to an existing
         issue.  If an ``issue`` parameter is supplied the pull request is
@@ -59,6 +65,7 @@ class PullRequests(GithubCommand):
         :param str title: title for pull request
         :param str body: optional body for pull request
         :param str issue: existing issue to attach pull request to
+
         """
         post_data = {"base": base, "head": head}
         if issue:
@@ -76,20 +83,22 @@ class PullRequests(GithubCommand):
                               filter="pull", datatype=PullRequest)
 
     def show(self, project, number):
-        """Show a single pull request
+        """Show a single pull request.
 
         :param str project: GitHub project
         :param int number: pull request number in the GitHub database
+
         """
         return self.get_value(project, str(number), filter="pull",
                               datatype=PullRequest)
 
     def list(self, project, state="open", page=1):
-        """List all pull requests for a project
+        """List all pull requests for a project.
 
         :param str project: GitHub project
         :param str state: can be either ``open`` or ``closed``
         :param int page: optional page number
+
         """
         return self.get_values(project, state, filter="pulls",
                                datatype=PullRequest, page=page)

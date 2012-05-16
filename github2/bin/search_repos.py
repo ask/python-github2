@@ -17,9 +17,11 @@ PY3K = sys.version_info[0] == 3 and True or False
 
 
 def print_(text):
-    """Python 2 & 3 compatible print function
+    """Python 2 & 3 compatible print function.
 
-    We support <2.6, so can't use __future__.print_function"""
+    We support <2.6, so can't use __future__.print_function
+
+    """
     if PY3K:
         print(text)
     else:
@@ -27,7 +29,7 @@ def print_(text):
 
 
 def parse_commandline():
-    """Parse the comandline and return parsed options."""
+    """Parse the command line and return parsed options."""
 
     parser = OptionParser()
     parser.description = __doc__
@@ -46,7 +48,7 @@ def parse_commandline():
 
 
 def main():
-    """This implements the actual program functionality"""
+    """Implement the actual program functionality."""
     return_value = 0
 
     options, term = parse_commandline()

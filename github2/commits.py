@@ -3,6 +3,9 @@ from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
 
 
 class Commit(BaseData):
+
+    """Commit container."""
+
     message = Attribute("Commit message.")
     parents = Attribute("List of parents for this commit.")
     url = Attribute("Canonical URL for this commit.")
@@ -25,10 +28,13 @@ class Commit(BaseData):
 
 
 class Commits(GithubCommand):
+
+    """GitHub API commits functionality."""
+
     domain = "commits"
 
     def list(self, project, branch="master", file=None, page=1):
-        """List commits on a project
+        """List commits on a project.
 
         .. warning::
            Not all projects use ``master`` as their default branch, you can
@@ -39,15 +45,17 @@ class Commits(GithubCommand):
         :param str branch: branch name, or ``master`` if not given
         :param str file: optional file filter
         :param int page: optional page number
+
         """
         return self.get_values("list", project, branch, file, filter="commits",
                                datatype=Commit, page=page)
 
     def show(self, project, sha):
-        """Get a specific commit
+        """Get a specific commit.
 
         :param str project: project name
         :param str sha: commit id
+
         """
         return self.get_value("show", project, sha,
                               filter="commit", datatype=Commit)

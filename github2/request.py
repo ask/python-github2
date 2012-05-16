@@ -67,10 +67,11 @@ responses[422] = 'Unprocessable Entity'
 
 
 def charset_from_headers(headers):
-    """Parse charset from headers
+    """Parse charset from headers.
 
     :param httplib2.Response headers: Request headers
     :return: Defined encoding, or default to ASCII
+
     """
     match = re.search("charset=([^ ;]+)", headers.get('content-type', ""))
     if match:
@@ -81,17 +82,21 @@ def charset_from_headers(headers):
 
 
 class GithubError(Exception):
+
     """An error occurred when making a request to the GitHub API."""
 
 
 class HttpError(RuntimeError):
+
     """A HTTP error occured when making a request to the GitHub API."""
+
     def __init__(self, message, content, code):
-        """Create a HttpError exception
+        """Create a HttpError exception.
 
         :param str message: Exception string
         :param str content: Full content of HTTP request
         :param int code: HTTP status code
+
         """
         self.args = (message, content, code)
         self.message = message
@@ -106,6 +111,13 @@ class HttpError(RuntimeError):
 
 
 class GithubRequest(object):
+
+    """Make an API request.
+
+    :see: :class:`github2.client.Github`
+
+    """
+
     url_format = "%(github_url)s/api/%(api_version)s/%(api_format)s"
     api_version = "v2"
     api_format = "json"
@@ -115,10 +127,6 @@ class GithubRequest(object):
                  requests_per_second=None, access_token=None,
                  cache=None, proxy_host=None, proxy_port=None,
                  github_url=None):
-        """Make an API request.
-
-        :see: :class:`github2.client.Github`
-        """
         self.username = username
         self.api_token = api_token
         self.access_token = access_token

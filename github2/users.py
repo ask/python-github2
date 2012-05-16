@@ -8,6 +8,9 @@ from github2.core import (BaseData, GithubCommand, DateAttribute, Attribute,
 
 
 class Key(BaseData):
+
+    """SSH key container."""
+
     id = Attribute('The key id')
     key = Attribute('The SSH key data')
     title = Attribute('The title for the SSH key')
@@ -17,6 +20,9 @@ class Key(BaseData):
 
 
 class User(BaseData):
+
+    """GitHub user container."""
+
     id = Attribute("The user id")
     login = Attribute("The login username")
     name = Attribute("The users full name")
@@ -41,9 +47,11 @@ class User(BaseData):
                                format="user")
 
     def is_authenticated(self):
-        """Test for user authentication
+        """Test for user authentication.
 
-        :return bool: ``True`` if user is authenticated"""
+        :return bool: ``True`` if user is authenticated
+
+       """
         return self.plan is not None
 
     def __repr__(self):
@@ -51,78 +59,88 @@ class User(BaseData):
 
 
 class Users(GithubCommand):
+
+    """GitHub API user functionality."""
+
     domain = "user"
 
     def search(self, query):
-        """Search for users
+        """Search for users.
 
         .. warning:
            Returns at most 100 users
 
         :param str query: term to search for
+
         """
         return self.get_values("search", quote_plus(query), filter="users",
                                datatype=User)
 
     def search_by_email(self, query):
-        """Search for users by email address
+        """Search for users by email address.
 
         :param str query: email to search for
+
         """
         return self.get_value("email", query, filter="user", datatype=User)
 
     @enhanced_by_auth
     def show(self, username):
-        """Get information on GitHub user
+        """Get information on GitHub user.
 
         if ``username`` is ``None`` or an empty string information for the
         currently authenticated user is returned.
 
-        :param str username: GitHub user name
+
         """
         return self.get_value("show", username, filter="user", datatype=User)
 
     def followers(self, username):
-        """Get list of GitHub user's followers
+        """Get list of GitHub user's followers.
 
         :param str username: GitHub user name
+
         """
         return self.get_values("show", username, "followers", filter="users")
 
     def following(self, username):
-        """Get list of users a GitHub user is following
+        """Get list of users a GitHub user is following.
 
         :param str username: GitHub user name
+
         """
         return self.get_values("show", username, "following", filter="users")
 
     @requires_auth
     def follow(self, other_user):
-        """Follow a GitHub user
+        """Follow a GitHub user.
 
         :param str other_user: GitHub user name
+
         """
         return self.get_values("follow", other_user, method="POST")
 
     @requires_auth
     def unfollow(self, other_user):
-        """Unfollow a GitHub user
+        """Unfollow a GitHub user.
 
         :param str other_user: GitHub user name
+
         """
         return self.get_values("unfollow", other_user, method="POST")
 
     @requires_auth
     def list_keys(self):
-        """Get list of SSH keys for the authenticated user"""
+        """Get list of SSH keys for the authenticated user."""
         return self.get_values('keys', filter='public_keys', datatype=Key)
 
     @requires_auth
     def add_key(self, key, title=''):
-        """Add a SSH key for the authenticated user
+        """Add a SSH key for the authenticated user.
 
         :param str key: SSH key identifier
         :param str title: Optional title for the SSH key
+
         """
         return self.get_values("key/add",
                                post_data={'key': key, 'title': title},
@@ -131,9 +149,10 @@ class Users(GithubCommand):
 
     @requires_auth
     def remove_key(self, key_id):
-        """Remove a SSH key for the authenticated user
+        """Remove a SSH key for the authenticated user.
 
         :param int key_id: SSH key's GitHub identifier
+
         """
         return self.get_values('key/remove', post_data={'id': str(key_id)},
                                filter='public_keys', datatype=Key)

@@ -1,4 +1,4 @@
-"Github API v2 library for Python"
+"GitHub API v2 library for Python."
 
 from github2 import _version
 

@@ -8,6 +8,9 @@ from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
 
 
 class Issue(BaseData):
+
+    """Issue container."""
+
     position = Attribute("The position of this issue in a list.")
     number = Attribute("The issue number (unique for project).")
     votes = Attribute("Number of votes for this issue.")
@@ -28,6 +31,9 @@ class Issue(BaseData):
 
 
 class Comment(BaseData):
+
+    """Comment container."""
+
     created_at = DateAttribute("The date this comment was created.")
     updated_at = DateAttribute("The date when this comment was last updated.")
     body = Attribute("The full text of this comment.")
@@ -39,6 +45,9 @@ class Comment(BaseData):
 
 
 class Issues(GithubCommand):
+
+    """GitHub API issues functionality."""
+
     domain = "issues"
 
     def search(self, project, term, state="open"):
@@ -48,7 +57,8 @@ class Issues(GithubCommand):
 
         :param str project: GitHub project
         :param str term: term to search issues for
-        :param str state: can be either ``open`` or ``closed``.
+        :param str state: can be either ``open`` or ``closed``
+
         """
         return self.get_values("search", project, state, quote_plus(term),
                                filter="issues", datatype=Issue)
@@ -57,7 +67,8 @@ class Issues(GithubCommand):
         """Get all issues for project with given state.
 
         :param str project: GitHub project
-        :param str state: can be either ``open`` or ``closed``.
+        :param str state: can be either ``open`` or ``closed``
+
         """
         return self.get_values("list", project, state, filter="issues",
                                datatype=Issue)
@@ -68,7 +79,8 @@ class Issues(GithubCommand):
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
-        :param str label:  a string representing a label (e.g., ``bug``).
+        :param str label:  a string representing a label (e.g., ``bug``)
+
         """
         return self.get_values("list", project, "label", label,
                                filter="issues", datatype=Issue)
@@ -79,6 +91,7 @@ class Issues(GithubCommand):
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
+
         """
         return self.get_values("labels", project, filter="labels")
 
@@ -87,6 +100,7 @@ class Issues(GithubCommand):
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
+
         """
         return self.get_value("show", project, str(number),
                               filter="issue", datatype=Issue)
@@ -98,6 +112,7 @@ class Issues(GithubCommand):
         :param str project: GitHub project
         :param str title: title for issue
         :param str body: body for issue
+
         """
         issue_data = {"title": title, "body": body}
         return self.get_value("open", project, post_data=issue_data,
@@ -105,29 +120,31 @@ class Issues(GithubCommand):
 
     @requires_auth
     def close(self, project, number):
-        """Close an issue
+        """Close an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
+
         """
         return self.get_value("close", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
 
     @requires_auth
     def reopen(self, project, number):
-        """Reopen a closed issue
+        """Reopen a closed issue.
 
         .. versionadded:: 0.3.0
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
+
         """
         return self.get_value("reopen", project, str(number), filter="issue",
                               datatype=Issue, method="POST")
 
     @requires_auth
     def edit(self, project, number, title, body):
-        """Edit an existing issue
+        """Edit an existing issue.
 
         .. versionadded:: 0.3.0
 
@@ -135,6 +152,7 @@ class Issues(GithubCommand):
         :param int number: issue number in the GitHub database
         :param str title: title for issue
         :param str body: body for issue
+
         """
         issue_data = {"title": title, "body": body}
         return self.get_value("edit", project, str(number),
@@ -143,22 +161,24 @@ class Issues(GithubCommand):
 
     @requires_auth
     def add_label(self, project, number, label):
-        """Add a label to an issue
+        """Add a label to an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
         :param str label: label to attach to issue
+
         """
         return self.get_values("label/add", project, label, str(number),
                                filter="labels", method="POST")
 
     @requires_auth
     def remove_label(self, project, number, label):
-        """Remove an existing label from an issue
+        """Remove an existing label from an issue.
 
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
         :param str label: label to remove from issue
+
         """
         return self.get_values("label/remove", project, label, str(number),
                                filter="labels", method="POST")
@@ -170,6 +190,7 @@ class Issues(GithubCommand):
         :param str project: GitHub project
         :param int number: issue number in the GitHub database
         :param str comment: comment to attach to issue
+
         """
         comment_data = {'comment': comment}
         return self.get_value("comment", project, str(number),
@@ -180,7 +201,7 @@ class Issues(GithubCommand):
         """View comments on an issue.
 
         :param str project: GitHub project
-        :param int number: issue number in the GitHub database
+
         """
         return self.get_values("comments", project, str(number),
                                filter="comments", datatype=Comment)
