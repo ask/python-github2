@@ -6,7 +6,13 @@ from github2.users import User
 
 
 class Organization(BaseData):
-    """.. versionadded:: 0.4.0"""
+
+    """Organization container.
+
+    .. versionadded:: 0.4.0
+
+    """
+
     id = Attribute("The organization id.")
     name = Attribute("The full name of the organization.")
     blog = Attribute("The organization's blog.")
@@ -35,7 +41,13 @@ class Organization(BaseData):
 
 
 class Organizations(GithubCommand):
-    """.. versionadded:: 0.4.0"""
+
+    """GitHub API organizations functionality.
+
+    .. versionadded:: 0.4.0
+
+    """
+
     domain = "organizations"
 
     def show(self, organization):

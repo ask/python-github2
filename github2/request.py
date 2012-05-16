@@ -111,6 +111,13 @@ class HttpError(RuntimeError):
 
 
 class GithubRequest(object):
+
+    """Make an API request.
+
+    :see: :class:`github2.client.Github`
+
+    """
+
     url_format = "%(github_url)s/api/%(api_version)s/%(api_format)s"
     api_version = "v2"
     api_format = "json"
@@ -120,10 +127,6 @@ class GithubRequest(object):
                  requests_per_second=None, access_token=None,
                  cache=None, proxy_host=None, proxy_port=None,
                  github_url=None):
-        """Make an API request.
-
-        :see: :class:`github2.client.Github`
-        """
         self.username = username
         self.api_token = api_token
         self.access_token = access_token

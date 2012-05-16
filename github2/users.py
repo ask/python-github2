@@ -8,6 +8,9 @@ from github2.core import (BaseData, GithubCommand, DateAttribute, Attribute,
 
 
 class Key(BaseData):
+
+    """SSH key container."""
+
     id = Attribute('The key id')
     key = Attribute('The SSH key data')
     title = Attribute('The title for the SSH key')
@@ -17,6 +20,9 @@ class Key(BaseData):
 
 
 class User(BaseData):
+
+    """GitHub user container."""
+
     id = Attribute("The user id")
     login = Attribute("The login username")
     name = Attribute("The users full name")
@@ -53,6 +59,9 @@ class User(BaseData):
 
 
 class Users(GithubCommand):
+
+    """GitHub API user functionality."""
+
     domain = "user"
 
     def search(self, query):

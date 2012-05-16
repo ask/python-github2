@@ -143,8 +143,10 @@ def enhanced_by_auth(f):
 
 class GithubCommand(object):
 
+    """Main API binding interface."""
+
     def __init__(self, request):
-        """Main API binding interface.
+        """Setup command object.
 
         :param github2.request.GithubRequest request: HTTP request handler
 
@@ -244,8 +246,11 @@ def doc_generator(docstring, attributes):
 
 
 class Attribute(object):
+
+    """Generic object attribute for use with :class:`BaseData`."""
+
     def __init__(self, help):
-        """Generic object attribute for use with :class:`BaseData`.
+        """Setup Attribute object.
 
         :param str help: Attribute description
 
@@ -259,6 +264,9 @@ class Attribute(object):
 
 
 class DateAttribute(Attribute):
+
+    """Date handling attribute for use with :class:`BaseData`."""
+
     format = "github"
     converter_for_format = {
         "github": datetime_to_ghdate,
@@ -268,7 +276,7 @@ class DateAttribute(Attribute):
     }
 
     def __init__(self, *args, **kwargs):
-        """Date handling attribute for use with :class:`BaseData`.
+        """Setup DateAttribute object.
 
         :param str format: The date format to support, see
             :data:`convertor_for_format` for supported options

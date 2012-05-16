@@ -5,6 +5,9 @@ from github2.users import User
 
 
 class Repository(BaseData):
+
+    """Repository container."""
+
     name = Attribute("Name of repository.")
     description = Attribute("Repository description.")
     forks = Attribute("Number of forks of this repository.")
@@ -35,6 +38,8 @@ class Repository(BaseData):
 
 
 class Repositories(GithubCommand):
+    """GitHub API repository functionality."""
+
     domain = "repos"
 
     def search(self, query):

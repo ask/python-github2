@@ -5,7 +5,11 @@ from github2.users import User
 
 class Team(BaseData):
 
-    """.. versionadded:: 0.4.0"""
+    """Team container.
+
+    .. versionadded:: 0.4.0
+
+    """
 
     id = Attribute("The team id")
     name = Attribute("Name of the team")
@@ -17,7 +21,11 @@ class Team(BaseData):
 
 class Teams(GithubCommand):
 
-    """.. versionadded:: 0.4.0"""
+    """GitHub API teams functionality.
+
+    .. versionadded:: 0.4.0
+
+    """
 
     domain = "teams"
 

@@ -3,6 +3,9 @@ from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
 
 
 class Commit(BaseData):
+
+    """Commit container."""
+
     message = Attribute("Commit message.")
     parents = Attribute("List of parents for this commit.")
     url = Attribute("Canonical URL for this commit.")
@@ -25,6 +28,9 @@ class Commit(BaseData):
 
 
 class Commits(GithubCommand):
+
+    """GitHub API commits functionality."""
+
     domain = "commits"
 
     def list(self, project, branch="master", file=None, page=1):

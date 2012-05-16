@@ -3,7 +3,8 @@ from github2.core import (BaseData, GithubCommand, Attribute, DateAttribute,
 
 
 class PullRequest(BaseData):
-    """Pull request encapsulation.
+
+    """Pull request container.
 
     .. versionadded:: 0.5.0
 
@@ -42,7 +43,8 @@ class PullRequest(BaseData):
 
 
 class PullRequests(GithubCommand):
-    """Operations on pull requests.
+
+    """GitHub API pull request functionality.
 
     .. versionadded:: 0.5.0
 

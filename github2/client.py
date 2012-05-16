@@ -10,11 +10,12 @@ from github2.pull_requests import PullRequests
 
 class Github(object):
 
+    """Interface to GitHub's API v2."""
+
     def __init__(self, username=None, api_token=None, requests_per_second=None,
                  access_token=None, cache=None, proxy_host=None,
                  proxy_port=8080, github_url=None):
-        """An interface to GitHub's API:
-            http://develop.github.com/
+        """Setup GitHub API object.
 
         .. versionadded:: 0.2.0
            The ``requests_per_second`` parameter

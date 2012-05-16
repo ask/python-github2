@@ -8,6 +8,9 @@ from github2.core import (GithubCommand, BaseData, Attribute, DateAttribute,
 
 
 class Issue(BaseData):
+
+    """Issue container."""
+
     position = Attribute("The position of this issue in a list.")
     number = Attribute("The issue number (unique for project).")
     votes = Attribute("Number of votes for this issue.")
@@ -28,6 +31,9 @@ class Issue(BaseData):
 
 
 class Comment(BaseData):
+
+    """Comment container."""
+
     created_at = DateAttribute("The date this comment was created.")
     updated_at = DateAttribute("The date when this comment was last updated.")
     body = Attribute("The full text of this comment.")
@@ -39,6 +45,9 @@ class Comment(BaseData):
 
 
 class Issues(GithubCommand):
+
+    """GitHub API issues functionality."""
+
     domain = "issues"
 
     def search(self, project, term, state="open"):
