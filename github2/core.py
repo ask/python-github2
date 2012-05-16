@@ -364,8 +364,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
 
         """
         LOGGER.warning("Subscript access on %r is deprecated, use object "
-                       "attributes" % self.__class__.__name__,
-                       DeprecationWarning)
+                       "attributes" % self.__class__.__name__)
         if not key in self._meta.keys():
             raise KeyError(key)
         return getattr(self, key)
@@ -377,8 +376,7 @@ class BaseData(BaseDataType('BaseData', (object, ), {})):
 
         """
         LOGGER.warning("Subscript access on %r is deprecated, use object "
-                       "attributes" % self.__class__.__name__,
-                       DeprecationWarning)
+                       "attributes" % self.__class__.__name__)
         if not key in self._meta.keys():
             raise KeyError(key)
         setattr(self, key, value)
