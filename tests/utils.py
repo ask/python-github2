@@ -31,15 +31,8 @@ class HttpMock(object):
 
     """
 
-    def __init__(self, cache=None, timeout=None, proxy_info=None,
-                 ca_certs=None):
-        """Create a mock httplib.Http object
-
-        .. attribute: called_with
-
-           ``locals()`` during ``__init__``, for testing call spec
-        """
-        self.called_with = locals()
+    def __init__(self, *args, **kwargs):
+        pass
 
     def request(self, uri, method='GET', body=None, headers=None,
                 redirections=5, connection_type=None):
