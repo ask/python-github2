@@ -4,9 +4,9 @@ Contributing
 Patches for :mod:`github2` are most welcome!
 
 Forks on GitHub_ and patches attached to issues are both great ways to
-contribute.  If you're comfortable with ``git`` using a fork hosted on GitHub is
-probably the simpler solution, both for the package maintainers and you as a
-contributor.
+contribute.  If you're comfortable with ``git`` then using a fork hosted on
+GitHub is probably the simpler solution, both for the :mod:`github2` maintainers
+and for you as a contributor.
 
 Following the simple guidelines below makes it easier to review and integrate
 your changes:
