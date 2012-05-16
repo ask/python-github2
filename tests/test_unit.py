@@ -7,11 +7,10 @@
 # This file is part of python-github2, and is made available under the 3-clause
 # BSD license.  See LICENSE for the full details.
 
-import datetime
 import unittest
 
+from mock import patch
 from nose.tools import (eq_, ok_, raises)
-from nose.plugins.attrib import attr
 
 from github2.core import (AuthError, repr_string, requires_auth)
 from github2.issues import Issue
@@ -44,23 +43,17 @@ class HostSetting(unittest.TestCase):
 
 class RateLimits(utils.HttpMockTestCase):
 
-    """Test API rate-limitting."""
+    """Test API rate-limiting."""
 
-    @attr('slow')
-    def test_delays(self):
-        """Test call delay is at least one second."""
+    @patch('github2.request.time.sleep')
+    def test_delays(self, sleep):
+        """Test calls in quick succession are delayed."""
         client = Github(requests_per_second=.5)
         client.users.show('defunkt')
-        start = datetime.datetime.utcnow()
         client.users.show('mojombo')
-        end = datetime.datetime.utcnow()
 
-        delta = end - start
-        delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
-
-        ok_(delta_seconds >= 2,
-            "Expected .5 reqs per second to require a 2 second delay between "
-            "calls.")
+        # 0.5 requests per second, means a two second delay
+        sleep.assert_called_once_with(2.0)
 
 
 class BaseDataIter(utils.HttpMockTestCase):
