@@ -19,8 +19,12 @@ import github2
 
 
 install_requires = ['httplib2 >= 0.7.0', ]
-# simplejson is included in the standard library since Python 2.6 as json.
-if sys.version_info[:2] < (2, 6):
+
+# simplejson is included in the standard library since Python 2.6 as json
+if sys.version_info < (2, 5):
+    # 2.1 drops support for 2.4
+    install_requires.append('simplejson >= 2.0.9, < 2.1')
+elif sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
 # dateutil supports python 2.x in dateutil-1, python 3.x in dateutil-2.0 and
