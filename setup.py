@@ -23,10 +23,14 @@ install_requires = ['httplib2 >= 0.7.0', ]
 if sys.version_info[:2] < (2, 6):
     install_requires.append('simplejson >= 2.0.9')
 
-if sys.version_info >= (3,):
-    install_requires.append('python-dateutil >= 2.0')
-else:
+# dateutil supports python 2.x in dateutil-1, python 3.x in dateutil-2.0 and
+# python 2.6+ in dateutil-2.1.  Exciting…
+if sys.version_info[:2] <= (2, 5):
     install_requires.append('python-dateutil < 2.0')
+elif sys.version_info < (3, ):
+    install_requires.append('python-dateutil < 2.0, >= 2.1')
+else:
+    install_requires.append('python-dateutil > 2.0')
 
 long_description = (codecs.open('README.rst', "r", "utf-8").read()
     + "\n" + codecs.open('NEWS.rst', "r", "utf-8").read())

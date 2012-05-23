@@ -33,5 +33,6 @@ handling [#]_.  :pypi:`simplejson` is also required when using :mod:`github2`
 with Python 2.4 or 2.5.  If you install via :pypi:`pip` or :pypi:`easy_install
 <setuptools>` the dependencies should be installed automatically for you.
 
-.. [#] You must use :pypi:`python-dateutil` 1.x when working with Python 2.x,
-       the latest 2.x releases are for Python 3.x installations only.
+.. [#] You must use :pypi:`python-dateutil` 1.x when working with Python 2.5 or
+       earlier, the latest 2.x releases are for Python 2.6 and newer
+       installations only.
