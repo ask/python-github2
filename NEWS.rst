@@ -6,6 +6,12 @@ look at the `git repository`_ for the full project history.
 
 .. _git repository: https://github.com/ask/python-github2/
 
+0.6.2 - 2012-06-11
+------------------
+
+* Updated dependencies to handle recent ``python-dateutil`` releases
+* Fixed ``simplejson`` dependencies for Python 2.4
+
 0.6.1 - 2012-02-28
 ------------------
 

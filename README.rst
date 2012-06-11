@@ -4,7 +4,7 @@ github2 - GitHub API v2 library for Python.
 
 :Authors:
     Ask Solem (askh@opera.com)
-:Version: 0.6.1
+:Version: 0.6.2
 
 .. warning::
 
