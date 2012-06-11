@@ -13,6 +13,7 @@ package.
 
 Create an unauthenticated client object::
 
+    >>> from github2.client import Github
     >>> github = Github()
 
 .. note::
@@ -28,6 +29,7 @@ Read the description of the ``python-github2`` project::
 
     >>> repo = github.repos.show("ask/python-github2")
     >>> repo.description
+    u'github client in python, with issues support.'
 
 We can take advantage of Python's :func:`dir` to explore the package a
 little more::
