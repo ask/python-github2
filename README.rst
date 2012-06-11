@@ -8,8 +8,8 @@ github2 - GitHub API v2 library for Python.
 
 .. warning::
 
-   GitHub are planning to `switch off API v2`_ on 2012-05-01, you should
-   be looking to replace ``github2`` as soon as possible.
+   GitHub have marked API v2 as deprecated, you should be looking to replace
+   your usage of ``github2`` in the near future.
 
    Both remoteobjects_ and micromodels_ provide easy-to-use functionality for
    creating bindings to remote APIs, and should significantly reduce the amount
@@ -21,7 +21,6 @@ of the `GitHub API`_.
 See the ``doc/`` directory for installation instructions and usage information.
 If you prefer you can also read the `documentation online`_.
 
-.. _switch off API v2: https://github.com/blog/1090-github-api-moving-on
 .. _remoteobjects: https://github.com/saymedia/remoteobjects
 .. _micromodels: https://github.com/j4mie/micromodels
 .. _GitHub API: http://develop.github.com/
