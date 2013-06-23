@@ -79,6 +79,12 @@ class Repositories(GithubCommand):
         """
         return self.get_value("show", project, filter="repository",
                               datatype=Repository)
+    def pushable(self):
+        """
+        Return a list of repos you can push to that are not your own.
+        """
+        return self.get_values("pushable", filter="repositories", datatype=Repository)
+        
 
     @requires_auth
     def pushable(self):
