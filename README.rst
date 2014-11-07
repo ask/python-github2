@@ -3,7 +3,7 @@ github2 - GitHub API v2 library for Python.
 ================================================================================
 
 :Authors:
-    Ask Solem (askh@opera.com)
+    Ask Solem (ask@celeryproject.org)
 :Version: 0.6.2
 
 .. warning::
