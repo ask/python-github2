@@ -50,7 +50,7 @@ look at the `git repository`_ for the full project history.
 * Simple logging_ based messages for event tracking and debugging
 * Requires python-dateutil_
 
-.. _pull requests: http://develop.github.com/p/pulls.html
+.. _pull requests: https://developer.github.com/v3/pulls/
 .. _logging: http://docs.python.org/library/logging.html
 .. _python-dateutil: http://pypi.python.org/pypi/python-dateutil
 
@@ -86,5 +86,5 @@ look at the `git repository`_ for the full project history.
 
 * Requires httplib2_
 
-.. _OAuth2: http://develop.github.com/p/oauth.html
+.. _OAuth2: https://developer.github.com/apps/building-oauth-apps/
 .. _httplib2: http://code.google.com/p/httplib2/
