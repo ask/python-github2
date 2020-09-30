@@ -19,12 +19,12 @@ This is a Python library implementing all of the features available in version 2
 of the `GitHub API`_.
 
 See the ``doc/`` directory for installation instructions and usage information.
-If you prefer you can also read the `documentation online`_.
+If you prefer you can also read the `documentation`_.
 
 .. _remoteobjects: https://github.com/saymedia/remoteobjects
 .. _micromodels: https://github.com/j4mie/micromodels
 .. _GitHub API: http://develop.github.com/
-.. _documentation online: http://packages.python.org/github2
+.. _documentation: http://packages.python.org/github2
 
 License
 =======
