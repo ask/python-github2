@@ -107,7 +107,7 @@ class Github(object):
         return blob.get("blob")
 
     def get_tree(self, project, tree_sha):
-        """Get tree information for a specifc tree.
+        """Get tree information for a specific tree.
 
         :param str project: GitHub project
         :param str tree_sha: object ID of tree

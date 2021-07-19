@@ -113,7 +113,7 @@ class GithubError(Exception):
 
 class HttpError(RuntimeError):
 
-    """A HTTP error occured when making a request to the GitHub API."""
+    """A HTTP error occurred when making a request to the GitHub API."""
 
     def __init__(self, message, content, code):
         """Create a HttpError exception.
